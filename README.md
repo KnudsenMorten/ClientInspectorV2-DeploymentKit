@@ -1349,7 +1349,7 @@ CompanyName - Automation - Log-Ingestion
 LogIngestion Azure App Id:
 8837b5cf-9b6e-46b9-8c53-3d66137c13d9
 LogIngestion Azure App Secret:
-Y478Q~vCkb6PiqtoLSCP0jQvNwTTesIHJ-9dwbdB
+<<<removed>>>
 
 LogIngestion Azure Service Principal Object Id for app:
 5a1cba73-26f3-4267-9078-259ee35e0bc4
