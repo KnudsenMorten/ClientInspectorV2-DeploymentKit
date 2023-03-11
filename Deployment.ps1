@@ -254,7 +254,7 @@
                 }
 
     #-------------------------------------------------------------------------------------
-    # Create the resource group for Data Collection Endpoints (DCE) in same region af LA
+    # Create the resource group for Data Collection Endpoints (DCE) in same region as LA
     #-------------------------------------------------------------------------------------
 
         Write-Output ""
@@ -268,7 +268,7 @@
         }
 
     #-------------------------------------------------------------------------------------
-    # Create the resource group for Data Collection Rules (DCR) in same region af LA
+    # Create the resource group for Data Collection Rules (DCR) in same region as LA
     #-------------------------------------------------------------------------------------
 
         Write-Output ""
@@ -324,6 +324,12 @@
                     }
             }
         
+    #-------------------------------------------------------------------------------------
+    # Sleeping 1 min to let Azure AD replicate before doing delegation
+    #-------------------------------------------------------------------------------------
+
+        Write-Output "Sleeping 1 min to let Azure AD replicate before doing delegation"
+        Start-Sleep -s 60
 
     #-------------------------------------------------------------------------------------
     # Delegation permissions for Azure App on LogAnalytics workspace
@@ -424,15 +430,15 @@
     #-------------------------------------------------------------------------------------
 
         Write-Output ""
-        Write-Output "Setting Contributor permissions for app [ $($AzDceName) ] on RG [ $($AzDceResourceGroup) ]"
+        Write-Output "Setting Reader permissions for app [ $($AzDceName) ] on RG [ $($AzDceResourceGroup) ]"
 
         $ServicePrincipalObjectId = (Get-MgServicePrincipal -Filter "AppId eq '$AppId'").Id
         $AzDceRgResourceId        = (Get-AzResourceGroup -Name $AzDceResourceGroup).ResourceId
 
-        # Contributor
+        # Reader
             $guid = (new-guid).guid
-            $ContributorRoleId = "b24988ac-6180-42a0-ab88-20f7382dd24c"  # Contributor
-            $roleDefinitionId = "/subscriptions/$($LogAnalyticsSubscription)/providers/Microsoft.Authorization/roleDefinitions/$($ContributorRoleId)"
+            $ReaderRoleId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"  # Reader
+            $roleDefinitionId = "/subscriptions/$($LogAnalyticsSubscription)/providers/Microsoft.Authorization/roleDefinitions/$($ReaderRoleId)"
             $roleUrl = "https://management.azure.com" + $AzDceRgResourceId + "/providers/Microsoft.Authorization/roleAssignments/$($Guid)?api-version=2018-07-01"
             $roleBody = @{
                 properties = @{
@@ -626,9 +632,6 @@
 
                                 ForEach ($Part in $ArrayParts)
                                     {
-                                        Write-Output "lense $($lense)"
-                                        Write-Output "part  $($part)"
-
                                         $ArrayData = $ArmTemplateJson.properties.lenses.$Lense.parts.$Part.metadata.inputs.name
                                         $Index = 0
                                             Foreach ($Entry in $ArrayData)
@@ -752,4 +755,3 @@
         Write-Output "`$AzDcrLogIngestServicePrincipalObjectId     = `"$($ServicePrincipalObjectId)`" "
         Write-Output "`$AzDcrDceTableCreateFromReferenceMachine    = @()"
         Write-Output "`$AzDcrDceTableCreateFromAnyMachine          = `$true"
-
