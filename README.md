@@ -83,9 +83,15 @@ $WorkbookDashboardResourceGroup  = "<put in RG name where workbooks/dashboards w
 
 5. Start the deployment. You will be required to login to **Azure** and **Microsoft Graph** with an account with Contributor permissions on the Azure subscription
 
-NOTE:
+6. When deployment is completed, you will cut/paste the updated variables on the screen - and copy it to your favorite editor
+
+	NOTE: You need to adjust the line-separate issue
+	
+
+### NOTE ABOUT DEPLOYMENT
 Due to latency in Azure tenant replication, the steps with delegation sometimes do not complete on the initial run.
-You can re-run the script multiple times, if needed - and it will fix any missing things.
+To mitigate this, the script will pause for 1 min - hopefully Azure AD will replicate by that time.
+Otherwise wait 5-10 min - and re-run the script, if needed - and it will fix any missing things. Before doing that, grap the secret from the screen - as it will not be set afterwards.
 
 
 ## Deployment of ClientInspector (v2) demo-environment
