@@ -20,16 +20,16 @@
 #------------------------------------------------------------------------------------------------------------
 
     # Azure App
-    $AzureAppName                          = "Solar - Automation - Log-Ingestion"
-    $AzAppSecretName                       = "Used for Log-Ingestion"
+    $AzureAppName                          = "Demo - Automation - Log-Ingestion"
+    $AzAppSecretName                       = "Secret used for Log-Ingestion"
 
     # Azure Active Directory (AAD)
-    $TenantId                              = "f0fa27a0-8e7c-4f63-9a77-ec94786b7c9e"
+    $TenantId                              = "f0fa27a0-8e7c-4f63-9a77-ec94786b7c9e" # "<put in your Azure AD TenantId>"
 
     # Azure LogAnalytics
-    $LogAnalyticsSubscription              = "fce4f282-fcc6-43fb-94d8-bf1701b862c3"
-    $LogAnalyticsResourceGroup             = "rg-logworkspaces"
-    $LoganalyticsWorkspaceName             = "log-platform-management-client-demo2-p"
+    $LogAnalyticsSubscription              = "fce4f282-fcc6-43fb-94d8-bf1701b862c3" # "<put in the SubId of where to place environment>"
+    $LogAnalyticsResourceGroup             = "rg-logworkspaces-demo"
+    $LoganalyticsWorkspaceName             = "log-platform-management-client-demo-p"
     $LoganalyticsLocation                  = "westeurope"
 
 
@@ -42,8 +42,8 @@
     $AzDcrPrefixClient                     = "clt"
 
     # Azure Workbooks & Dashboards
-    $TemplateCategory                      = "Demo2 IT Operation Security Templates"
-    $WorkbookDashboardResourceGroup        = "rg-dashboards-workbooks-demo2"
+    $TemplateCategory                      = "Demo IT Operation Security Templates"
+    $WorkbookDashboardResourceGroup        = "rg-dashboards-workbooks-demo"
 
     $ScriptDirectory                       = $PSScriptRoot
     $WorkBook_Repository_Path              = "$($ScriptDirectory)\AZURE_WORKBOOKS_LATEST_RELEASE_V2"
