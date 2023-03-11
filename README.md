@@ -20,14 +20,17 @@ The deployment includes the following steps:
 
 ### Deployment
 [You can see details on how to configure the deployment here](#deployment-of-clientinspector-v2-environment)
+
 [If you want to deploy a demo environment, you can click here](deployment-of-clientinspector-v2-demo-environment)
 
 ### Workbooks & Dashboards, part of deployment
 [Click here to see the included workbooks](#azure-workbooks-part-of-deployment)
+
 [Click here to see the included dashboards](#azure-dashboards-part-of-deployment)
 
 ### Security
-[Click here to see the security configured as part of deployment](#security-1)
+[Click here to see the security configured as part of deployment with 1 Azure app](#security-1)
+
 [Click here to see the security separate with 2 Azure app's](#azure-rbac-security-adjustment-separation-of-permissions-between-log-ingestion-and-tabledcr-management)
 
 You can configure the parameters according to you needs. Please go to [deployment section](#Deployment of ClientInspector (v2) environment)
@@ -83,7 +86,6 @@ $AzDcrPrefixClient               = "<put in prefix for easier sorting/searching 
 $TemplateCategory                = "<put in name for Azure Workbook Templates name>" # sample: "CompanyX IT Operation Security Templates"
 $WorkbookDashboardResourceGroup  = "<put in RG name where workbooks/dashboards wi be deployed>" # sample: "rg-dashboards-workbooks"
 ```
-
 4. Verify that you have the required Powershell modules installed. Otherwise you can do this with these commands.
 
 		| Module          | Install cmdlet (CurrentUser-scope)
@@ -91,14 +93,10 @@ $WorkbookDashboardResourceGroup  = "<put in RG name where workbooks/dashboards w
 		| Az              | Install-module Az -Scope CurrentUser |
 		| Microsoft.Graph | Install-module Microsoft.Graph -Scope CurrentUser |
 		| Az.Portal       | Install-module Az.portal -Scope CurrentUser |
-
-
 5. Start the deployment. You will be required to login to **Azure** and **Microsoft Graph** with an account with Contributor permissions on the Azure subscription
-
 6. When deployment is completed, you will cut/paste the updated variables on the screen - and copy it to your favorite editor
 
 	NOTE: You need to adjust the line-separate issue
-	
 
 ### Potential deployment issues (Azure AD replication latency)
 Due to latency in Azure tenant replication, the steps with delegation sometimes do not complete on the initial run.
@@ -106,7 +104,6 @@ To mitigate this, the script will pause for 1 min - hopefully Azure AD will repl
 
 If it is not working, wait 10-15 min - and re-run the script, if needed - and it will fix any missing things. 
 NOTE: Before doing that, grap the secret from the screen - as it will not be seen afterwards.
-
 
 ## Deployment of ClientInspector (v2) demo-environment
 If you want to deploy a demo environment, please modify the file **Deployment-Demo.ps1** and just fill out **Azure SubscriptionId** and **Azure TenantId** - and you will get a complete environment with this configuration:
@@ -174,7 +171,7 @@ For simplicity purpose, the deployment will configure the created Azure app with
 | Azure Resource Group for Azure Data Collection Endpoint | Azure app used for log ingestion | Contributor                  | needed to create/update DCEs (if needed after deployment)                 |
 | Azure LogAnalytics Workspace                            | Azure app used for log ingestion | Contributor                  | needed to create/update Azure LogAnaltyics custom log tables              |
 
-If you want to separate permissions from log ingestion and create/update table/DCR management, you can do this by creating a separate Azure app used for table/DCR management (fx. xxxx - Automation - Log Ingest Management). Please go to section [Azure RBAC Security adjustment, separation of permissions between log ingestion and table/DCR management] (#Azure RBAC Security adjustment, separation of permissions between log ingestion and table/DCR management)
+If you want to separate permissions from log ingestion and create/update table/DCR management, you can do this by creating a separate Azure app used for table/DCR management (fx. xxxx - Automation - Log Ingest Management). [Click here to see the security separate with 2 Azure app's](#azure-rbac-security-adjustment-separation-of-permissions-between-log-ingestion-and-tabledcr-management)
 
 ## Azure RBAC Security adjustment, separation of permissions between log ingestion and table/DCR management
 You need to adjust permissions according to these settings:
