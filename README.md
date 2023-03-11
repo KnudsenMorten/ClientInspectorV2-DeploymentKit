@@ -88,7 +88,7 @@ $WorkbookDashboardResourceGroup  = "<put in RG name where workbooks/dashboards w
 	NOTE: You need to adjust the line-separate issue
 	
 
-### NOTE ABOUT DEPLOYMENT
+### Potential deployment issues (Azure AD replication latency)
 Due to latency in Azure tenant replication, the steps with delegation sometimes do not complete on the initial run.
 To mitigate this, the script will pause for 1 min - hopefully Azure AD will replicate by that time.
 Otherwise wait 5-10 min - and re-run the script, if needed - and it will fix any missing things. Before doing that, grap the secret from the screen - as it will not be set afterwards.
