@@ -15,8 +15,8 @@ The deployment includes the following steps:
 9. delegate permissions for **Azure App** on **LogAnalytics workspace** - see section Security for more info
 10. delegate permissions for **Azure App** on **Azure Resource Group** for **Azure Data Collection Rules (DCR)**
 11. delegate permissions for **Azure App** on **Azure Resource Group** for **Azure Data Collection Endpoints (DCE)**
-12. deployment of **20+ Azure Workbooks**
-13. deployment of **20+ Azure Dashboards**
+12. deployment of **Azure Workbooks**
+13. deployment of **Azure Dashboards**
 
 You can configure the parameters according to you needs. Please go to [deployment section](#Deployment of ClientInspector (v2) environment)
 
@@ -74,11 +74,11 @@ $WorkbookDashboardResourceGroup  = "<put in RG name where workbooks/dashboards w
 
 4. Verify that you have the required Powershell modules installed. Otherwise you can do this with these commands.
 
-| Module          | Install cmdlet (CurrentUser-scope)
-| -------------   | :-----|
-| Az              | Install-module Az -Scope CurrentUser |
-| Microsoft.Graph | Install-module Microsoft.Graph -Scope CurrentUser |
-| Az.Portal       | Install-module Az.portal -Scope CurrentUser |
+		| Module          | Install cmdlet (CurrentUser-scope)
+		| :-------------   | :-----|
+		| Az              | Install-module Az -Scope CurrentUser |
+		| Microsoft.Graph | Install-module Microsoft.Graph -Scope CurrentUser |
+		| Az.Portal       | Install-module Az.portal -Scope CurrentUser |
 
 
 5. Start the deployment. You will be required to login to **Azure** and **Microsoft Graph** with an account with Contributor permissions on the Azure subscription
@@ -105,7 +105,6 @@ If you want to deploy a demo environment, please modify the file **Deployment-De
 | TemplateCategory                | Demo IT Operation Security Templates |
 | WorkbookDashboardResourceGroup  | rg-dashboards-workbooks-demo |
 
-#workbooks
 ## Azure Workbooks, part of deployment
 
 | Workbook Name                                | Purpose
@@ -124,7 +123,6 @@ If you want to deploy a demo environment, please modify the file **Deployment-De
 | WINDOWS FIREWALL - CLIENTS - V2              | Windows firewall - settings for all 3 modes |
 | WINDOWS UPDATE - CLIENTS - V2                | Windows Update - last result (when), windows update source information (where), pending updates, last installations (what) |
 
-#dashboards
 ## Azure Dashboards, part of deployment
 
 | Dashboards Name                              | Purpose
