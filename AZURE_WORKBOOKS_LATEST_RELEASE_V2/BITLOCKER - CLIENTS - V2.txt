@@ -1,0 +1,57 @@
+{
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workbookDisplayName": {
+      "type": "string",
+      "defaultValue": "BITLOCKER - CLIENTS - V2",
+      "metadata": {
+        "description": "The friendly name for the workbook that is used in the Gallery or Saved List.  This name must be unique within a resource group."
+      }
+    },
+    "workbookType": {
+      "type": "string",
+      "defaultValue": "workbook",
+      "metadata": {
+        "description": "The gallery that the workbook will been shown under. Supported values include workbook, tsg, etc. Usually, this is 'workbook'"
+      }
+    },
+    "workbookSourceId": {
+      "type": "string",
+      "defaultValue": "Azure Monitor",
+      "metadata": {
+        "description": "The id of resource instance to which the workbook will be associated"
+      }
+    },
+    "workbookId": {
+      "type": "string",
+      "defaultValue": "[newGuid()]",
+      "metadata": {
+        "description": "The unique guid for this workbook instance"
+      }
+    }
+  },
+  "resources": [
+    {
+      "name": "[parameters('workbookId')]",
+      "type": "microsoft.insights/workbooks",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2021-03-08",
+      "dependsOn": [],
+      "kind": "shared",
+      "properties": {
+        "displayName": "[parameters('workbookDisplayName')]",
+        "serializedData": "{\"version\":\"Notebook/1.0\",\"items\":[{\"type\":3,\"content\":{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientBitlockerInfoV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where OSDisk_ProtectionStatus == 0\\r\\n| project Computer, UserLoggedOn, CollectionTime, OSDisk_DriveLetter, OSDisk_EncryptionPercentage, OSDisk_VolumeStatus, OSDisk_ProtectionStatus, OSDisk_CapacityGB,  OSDisk_KeyProtector\\r\\n| sort by Computer asc  \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"INCOMPLIANT BITLOCKER | CLIENTS | COUNT\",\"noDataMessageStyle\":3,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourcegroups/rg-logworkspaces/providers/microsoft.operationalinsights/workspaces/log-platform-management-client-demo1-p\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}},\"name\":\"INCOMPLIANT BITLOCKER | CLIENTS | COUNT\"},{\"type\":3,\"content\":{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientBitlockerInfoV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where OSDisk_ProtectionStatus == 0\\r\\n| project Computer, UserLoggedOn, CollectionTime, OSDisk_DriveLetter, OSDisk_EncryptionPercentage, OSDisk_VolumeStatus, OSDisk_ProtectionStatus, OSDisk_CapacityGB,  OSDisk_KeyProtector\\r\\n| sort by Computer asc  \\r\\n| summarize total = count() by bin(CollectionTime, 1d)\\r\\n| render timechart\",\"size\":0,\"aggregation\":3,\"title\":\"INCOMPLIANT BITLOCKER | CLIENTS | TIME 1 MONTH\",\"noDataMessageStyle\":3,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourcegroups/rg-logworkspaces/providers/microsoft.operationalinsights/workspaces/log-platform-management-client-demo1-p\"],\"visualization\":\"timechart\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"},\"chartSettings\":{\"seriesLabelSettings\":[{\"seriesName\":\"total\",\"color\":\"redBright\"},{\"seriesName\":\"$hresholdLine\",\"color\":\"green\"},{\"color\":\"green\"}],\"customThresholdLine\":\"0\",\"customThresholdLineStyle\":2,\"ySettings\":{\"numberFormatSettings\":{\"unit\":17,\"options\":{\"style\":\"decimal\",\"useGrouping\":false,\"maximumFractionDigits\":0},\"missingSparkDataOption\":\"Average\"}}}},\"name\":\"INCOMPLIANT BITLOCKER | CLIENTS | TIME 1 MONTH\"},{\"type\":3,\"content\":{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientBitlockerInfoV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where OSDisk_ProtectionStatus == 1\\r\\n| project Computer, UserLoggedOn, CollectionTime, OSDisk_DriveLetter, OSDisk_EncryptionPercentage, OSDisk_VolumeStatus, OSDisk_ProtectionStatus, OSDisk_CapacityGB,  OSDisk_KeyProtector\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"COMPLIANT BITLOCKER | CLIENTS | COUNT\",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourcegroups/rg-logworkspaces/providers/microsoft.operationalinsights/workspaces/log-platform-management-client-demo1-p\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"green\"}},\"showBorder\":true,\"size\":\"auto\"}},\"name\":\"COMPLIANT BITLOCKER | CLIENTS | COUNT\"},{\"type\":3,\"content\":{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientBitlockerInfoV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where OSDisk_ProtectionStatus == 1\\r\\n| project Computer, UserLoggedOn, CollectionTime, OSDisk_DriveLetter, OSDisk_EncryptionPercentage, OSDisk_VolumeStatus, OSDisk_ProtectionStatus, OSDisk_CapacityGB,  OSDisk_KeyProtector\\r\\n| sort by Computer asc \",\"size\":0,\"showAnalytics\":true,\"title\":\"BITLOCKER COMPLIANT | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourcegroups/rg-logworkspaces/providers/microsoft.operationalinsights/workspaces/log-platform-management-client-demo1-p\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}},\"name\":\"BITLOCKER COMPLIANT | CLIENTS | LIST\"},{\"type\":3,\"content\":{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientBitlockerInfoV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where OSDisk_ProtectionStatus == 0\\r\\n| project Computer, UserLoggedOn, CollectionTime, OSDisk_DriveLetter, OSDisk_EncryptionPercentage, OSDisk_VolumeStatus, OSDisk_ProtectionStatus, OSDisk_CapacityGB, OSDisk_KeyProtector\\r\\n| sort by Computer asc \",\"size\":0,\"showAnalytics\":true,\"title\":\"BITLOCKER INCOMPLIANT | CLIENTS | LIST\",\"noDataMessageStyle\":3,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourcegroups/rg-logworkspaces/providers/microsoft.operationalinsights/workspaces/log-platform-management-client-demo1-p\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}},\"name\":\"BITLOCKER INCOMPLIANT | CLIENTS | LIST\"},{\"type\":3,\"content\":{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientBitlockerInfoV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| project Computer, UserLoggedOn, CollectionTime, OSDisk_DriveLetter, OSDisk_EncryptionPercentage, OSDisk_VolumeStatus, OSDisk_ProtectionStatus, OSDisk_CapacityGB,  OSDisk_KeyProtector\\r\\n| sort by Computer asc \",\"size\":0,\"showAnalytics\":true,\"title\":\"BITLOCKER COMPLIANCE OVERVIEW | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourcegroups/rg-logworkspaces/providers/microsoft.operationalinsights/workspaces/log-platform-management-client-demo1-p\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}},\"name\":\"BITLOCKER COMPLIANCE OVERVIEW | CLIENTS | LIST\"},{\"type\":3,\"content\":{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientHardwareTPMInfoV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n// TpmReady. Whether a TPM complies with Windows Server 2012 standards.\\r\\n// TpmPresent. Whether there is a TPM on the current computer\\r\\n// ManagedAuthLevel. The level at which the operating system manages the owner authorization. Possible values are Legacy, Balanced, and Full (4).\\r\\n// OwnerAuth. Current owner authorization value of the Trusted Platform Module (TPM).\\r\\n// OwnerClearDisabled. Whether TPM can be reset. If this value is True, the TPM cannot be reset through the operating system by using the owner authorization value. If this value is False, the TPM can be reset through the operating system.\\r\\n// AutoProvisioning. Whether the computer can use auto-provisioning. Possible values are NotDefined, Enabled, Disabled, and DisabledForNextBoot.\\r\\n// LockedOut. Whether a TPM is locked out.\\r\\n// LockoutHealTime. The time that has to pass until you can unlock the TPM.\\r\\n// LockoutCount. Number of failed attempts.\\r\\n// LockoutMax. Limit of failed attempts.\\r\\n| project Computer, UserLoggedOn, CollectionTime, TpmActivated, TpmEnabled, TpmReady, TpmPresent, TpmOwned, RestartPending, OwnerClearDisabled, AutoProvisioning, ManufacturerIdTxt, ManufacturerId, ManufacturerVersionFull20, ManufacturerVersion, ManagedAuthLevel, LockoutMax, LockoutHealTime, LockoutCount, LockedOut\",\"size\":0,\"showAnalytics\":true,\"title\":\"TPM OVERVIEW | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourcegroups/rg-logworkspaces/providers/microsoft.operationalinsights/workspaces/log-platform-management-client-demo1-p\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}},\"name\":\"TPM OVERVIEW | CLIENTS | LIST\"}],\"isLocked\":false,\"fallbackResourceIds\":[\"Azure Monitor\"],\"fromTemplateId\":\"ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-managed-dashboards-workbooks/providers/microsoft.insights/workbooktemplates/BITLOCKER - CLIENTS - V2\"}",
+        "version": "1.0",
+        "sourceId": "[parameters('workbookSourceId')]",
+        "category": "[parameters('workbookType')]"
+      }
+    }
+  ],
+  "outputs": {
+    "workbookId": {
+      "type": "string",
+      "value": "[resourceId( 'microsoft.insights/workbooks', parameters('workbookId'))]"
+    }
+  },
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#"
+}

@@ -1,0 +1,57 @@
+{
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workbookDisplayName": {
+      "type": "string",
+      "defaultValue": "ANTIVIRUS SECURITY CENTER - CLIENTS - V2",
+      "metadata": {
+        "description": "The friendly name for the workbook that is used in the Gallery or Saved List.  This name must be unique within a resource group."
+      }
+    },
+    "workbookType": {
+      "type": "string",
+      "defaultValue": "workbook",
+      "metadata": {
+        "description": "The gallery that the workbook will been shown under. Supported values include workbook, tsg, etc. Usually, this is 'workbook'"
+      }
+    },
+    "workbookSourceId": {
+      "type": "string",
+      "defaultValue": "Azure Monitor",
+      "metadata": {
+        "description": "The id of resource instance to which the workbook will be associated"
+      }
+    },
+    "workbookId": {
+      "type": "string",
+      "defaultValue": "[newGuid()]",
+      "metadata": {
+        "description": "The unique guid for this workbook instance"
+      }
+    }
+  },
+  "resources": [
+    {
+      "name": "[parameters('workbookId')]",
+      "type": "microsoft.insights/workbooks",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2021-03-08",
+      "dependsOn": [],
+      "kind": "shared",
+      "properties": {
+        "displayName": "[parameters('workbookDisplayName')]",
+        "serializedData": "{\"version\":\"Notebook/1.0\",\"items\":[{\"type\":3,\"content\":{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientAntivirusV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where PrimaryAntivirusProduct !contains \\\"Defender\\\"\\r\\n| project Computer, CollectionTime, PrimaryAntivirusProduct, PrimaryAntivirusEXE, PrimaryAntivirusProductStateCode, PrimaryAntivirusProductStateTimestamp, PrimaryAntivirusRealTimeStatus, PrimaryAntivirusDefinitionStatus,Alternative1AntivirusProduct, Alternative1AntivirusEXE, Alternative1AntivirusProductStateCode, Alternative1AntivirusProductStateTimestamp\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"OTHER PRIMARY ANTIVIRUS (SECURITY CENTER) | CLIENTS | COUNT\",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourcegroups/rg-logworkspaces/providers/microsoft.operationalinsights/workspaces/log-platform-management-client-demo1-p\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}},\"name\":\"OTHER PRIMARY ANTIVIRUS (SECURITY CENTER) | CLIENTS | COUNT\"},{\"type\":3,\"content\":{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientAntivirusV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where PrimaryAntivirusProduct contains \\\"Defender\\\"\\r\\n| project Computer, CollectionTime, UserLoggedOn, PrimaryAntivirusProduct, PrimaryAntivirusEXE, PrimaryAntivirusProductStateCode, PrimaryAntivirusProductStateTimestamp, PrimaryAntivirusRealTimeStatus, PrimaryAntivirusDefinitionStatus,Alternative1AntivirusProduct, Alternative1AntivirusEXE, Alternative1AntivirusProductStateCode, Alternative1AntivirusProductStateTimestamp\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"DEFENDER PRIMARY ANTIVIRUS (SECURITY CENTER) | CLIENTS | COUNT\",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourcegroups/rg-logworkspaces/providers/microsoft.operationalinsights/workspaces/log-platform-management-client-demo1-p\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"green\"}},\"showBorder\":true,\"size\":\"auto\"}},\"name\":\"DEFENDER PRIMARY ANTIVIRUS (SECURITY CENTER) | CLIENTS | COUNT\"},{\"type\":3,\"content\":{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientAntivirusV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where PrimaryAntivirusProduct !contains \\\"Defender\\\"\\r\\n| project Computer, CollectionTime, UserLoggedOn, PrimaryAntivirusProduct, PrimaryAntivirusEXE, PrimaryAntivirusProductStateCode, PrimaryAntivirusProductStateTimestamp, PrimaryAntivirusRealTimeStatus, PrimaryAntivirusDefinitionStatus,Alternative1AntivirusProduct, Alternative1AntivirusEXE, Alternative1AntivirusProductStateCode, Alternative1AntivirusProductStateTimestamp\\r\\n| sort by Computer asc \",\"size\":0,\"title\":\"OTHER PRIMARY ANTIVIRUS (SECURITY CENTER) | CLIENTS | LIST\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourcegroups/rg-logworkspaces/providers/microsoft.operationalinsights/workspaces/log-platform-management-client-demo1-p\"],\"visualization\":\"table\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}},\"name\":\"OTHER PRIMARY ANTIVIRUS (SECURITY CENTER) | CLIENTS | LIST\"},{\"type\":3,\"content\":{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientAntivirusV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where PrimaryAntivirusProduct contains \\\"Defender\\\"\\r\\n| project Computer, CollectionTime, UserLoggedOn, PrimaryAntivirusProduct, PrimaryAntivirusEXE, PrimaryAntivirusProductStateCode, PrimaryAntivirusProductStateTimestamp, PrimaryAntivirusRealTimeStatus, PrimaryAntivirusDefinitionStatus,Alternative1AntivirusProduct, Alternative1AntivirusEXE, Alternative1AntivirusProductStateCode, Alternative1AntivirusProductStateTimestamp\\r\\n| sort by Computer asc \",\"size\":0,\"showAnalytics\":true,\"title\":\"DEFENDER PRIMARY ANTIVIRUS (SECURITY CENTER) | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourcegroups/rg-logworkspaces/providers/microsoft.operationalinsights/workspaces/log-platform-management-client-demo1-p\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}},\"name\":\"DEFENDER PRIMARY ANTIVIRUS (SECURITY CENTER) | CLIENTS | LIST\"},{\"type\":3,\"content\":{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientAntivirusV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| project Computer, CollectionTime, PrimaryAntivirusProduct, PrimaryAntivirusEXE, UserLoggedOn, PrimaryAntivirusProductStateCode, PrimaryAntivirusProductStateTimestamp, PrimaryAntivirusRealTimeStatus, PrimaryAntivirusDefinitionStatus,Alternative1AntivirusProduct, Alternative1AntivirusEXE, Alternative1AntivirusProductStateCode, Alternative1AntivirusProductStateTimestamp\\r\\n| sort by Computer asc \",\"size\":0,\"showAnalytics\":true,\"title\":\"ANTIVIRUS COMPLIANCE OVERVIEW (SECURITY CENTER) | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourcegroups/rg-logworkspaces/providers/microsoft.operationalinsights/workspaces/log-platform-management-client-demo1-p\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}},\"name\":\"ANTIVIRUS COMPLIANCE OVERVIEW (SECURITY CENTER) | CLIENTS | LIST\"}],\"isLocked\":false,\"fallbackResourceIds\":[\"Azure Monitor\"],\"fromTemplateId\":\"ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-managed-dashboards-workbooks/providers/microsoft.insights/workbooktemplates/ANTIVIRUS SECURITY CENTER - CLIENTS - V2\"}",
+        "version": "1.0",
+        "sourceId": "[parameters('workbookSourceId')]",
+        "category": "[parameters('workbookType')]"
+      }
+    }
+  ],
+  "outputs": {
+    "workbookId": {
+      "type": "string",
+      "value": "[resourceId( 'microsoft.insights/workbooks', parameters('workbookId'))]"
+    }
+  },
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#"
+}
