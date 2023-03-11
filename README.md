@@ -33,8 +33,6 @@ The deployment includes the following steps:
 
 [Click here to see the security separate with 2 Azure app's](#azure-rbac-security-adjustment-separation-of-permissions-between-log-ingestion-and-tabledcr-management)
 
-You can configure the parameters according to you needs. Please go to [deployment section](#Deployment of ClientInspector (v2) environment)
-
 ## Introduction - ClientInspector
 **ClientInspector** can be used to collect lots of great information of from your **Windows clients** - and send the data to **Azure LogAnalytics Custom Tables**.
 
@@ -88,11 +86,11 @@ $WorkbookDashboardResourceGroup  = "<put in RG name where workbooks/dashboards w
 ```
 4. Verify that you have the required Powershell modules installed. Otherwise you can do this with these commands.
 
-		| Module          | Install cmdlet (CurrentUser-scope)
-		| :-------------   | :-----|
-		| Az              | Install-module Az -Scope CurrentUser |
+		| Module          | Install cmdlet (CurrentUser-scope)                |
+		|:-------------   |:-----                                             |
+		| Az              | Install-module Az -Scope CurrentUser              |
 		| Microsoft.Graph | Install-module Microsoft.Graph -Scope CurrentUser |
-		| Az.Portal       | Install-module Az.portal -Scope CurrentUser |
+		| Az.Portal       | Install-module Az.portal -Scope CurrentUser       |
 5. Start the deployment. You will be required to login to **Azure** and **Microsoft Graph** with an account with Contributor permissions on the Azure subscription
 6. When deployment is completed, you will cut/paste the updated variables on the screen - and copy it to your favorite editor
 
