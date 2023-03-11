@@ -51,7 +51,7 @@
 #------------------------------------------------------------------------------------------------------------
 
     # Azure App
-    $AzureAppName                          = "Demo - Automation - Log-Ingestion"
+    $AzureAppName                          = "CompanyName - Automation - Log-Ingestion"
     $AzAppSecretName                       = "Secret used for Log-Ingestion"
 
     # Azure Active Directory (AAD)
@@ -59,8 +59,8 @@
 
     # Azure LogAnalytics
     $LogAnalyticsSubscription              = "fce4f282-fcc6-43fb-94d8-bf1701b862c3" # "<put in the SubId of where to place environment>"
-    $LogAnalyticsResourceGroup             = "rg-logworkspaces-demo"
-    $LoganalyticsWorkspaceName             = "log-platform-management-client-demo-p"
+    $LogAnalyticsResourceGroup             = "rg-logworkspaces-client"
+    $LoganalyticsWorkspaceName             = "log-platform-management-client-p"
     $LoganalyticsLocation                  = "westeurope"
 
 
@@ -73,7 +73,7 @@
     $AzDcrPrefixClient                     = "clt"
 
     # Azure Workbooks & Dashboards
-    $TemplateCategory                      = "Demo IT Operation Security Templates"
+    $TemplateCategory                      = "CompanyName IT Operation Security Templates"
     $WorkbookDashboardResourceGroup        = "rg-dashboards-workbooks-demo"
 
     $ScriptDirectory                       = $PSScriptRoot
@@ -325,10 +325,10 @@
             }
         
     #-------------------------------------------------------------------------------------
-    # Sleeping 1 min to let Azure AD replication, before doing delegation
+    # Sleeping 1 min to let Azure AD replicate before doing delegation
     #-------------------------------------------------------------------------------------
 
-        Write-Output "Sleeping 1 min to let Azure AD replication, before doing delegation"
+        Write-Output "Sleeping 1 min to let Azure AD replicate before doing delegation"
         Start-Sleep -s 60
 
     #-------------------------------------------------------------------------------------
@@ -632,9 +632,6 @@
 
                                 ForEach ($Part in $ArrayParts)
                                     {
-                                        Write-Output "lense $($lense)"
-                                        Write-Output "part  $($part)"
-
                                         $ArrayData = $ArmTemplateJson.properties.lenses.$Lense.parts.$Part.metadata.inputs.name
                                         $Index = 0
                                             Foreach ($Entry in $ArrayData)
