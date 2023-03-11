@@ -91,6 +91,7 @@ $WorkbookDashboardResourceGroup  = "<put in RG name where workbooks/dashboards w
 		| Az              | Install-module Az -Scope CurrentUser              |
 		| Microsoft.Graph | Install-module Microsoft.Graph -Scope CurrentUser |
 		| Az.Portal       | Install-module Az.portal -Scope CurrentUser       |
+		
 5. Start the deployment. You will be required to login to **Azure** and **Microsoft Graph** with an account with Contributor permissions on the Azure subscription
 6. When deployment is completed, you will cut/paste the updated variables on the screen - and copy it to your favorite editor
 
