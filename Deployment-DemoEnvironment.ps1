@@ -29,7 +29,7 @@
     .NOTES
     
     .VERSION
-    2303.1
+    1.0.0
     
     .AUTHOR
     Morten Knudsen, Microsoft MVP - https://mortenknudsen.net
@@ -38,7 +38,7 @@
     Licensed under the MIT license.
 
     .PROJECTURI
-    https://github.com/KnudsenMorten/AzLogDcrIngestPS
+    https://github.com/KnudsenMorten/ClientInspectorV2-DeploymentKit
 
 
     .WARRANTY
@@ -85,17 +85,16 @@
 # Functions
 #------------------------------------------------------------------------------------------------------------
 
-    Write-Output "Loading functions ... Please Wait !"
     <#
-        Install-module Az
-        Install-module Microsoft.Graph
-        install-module Az.portal
+        Install-module Az -Scope CurrentUser
+        Install-module Microsoft.Graph -Scope CurrentUser
+        install-module Az.portal -Scope CurrentUser
 
-        Import-module Az
-        Import-module Az.Accounts
-        Import-module Az.Resources
-        Import-module Microsoft.Graph.Applications
-        Import-Module Microsoft.Graph.DeviceManagement.Enrolment
+        Import-module Az -Scope CurrentUser
+        Import-module Az.Accounts -Scope CurrentUser
+        Import-module Az.Resources -Scope CurrentUser
+        Import-module Microsoft.Graph.Applications -Scope CurrentUser
+        Import-Module Microsoft.Graph.DeviceManagement.Enrolment -Scope CurrentUser
     #>
 
 
@@ -325,6 +324,12 @@
                     }
             }
         
+    #-------------------------------------------------------------------------------------
+    # Sleeping 1 min to let Azure AD replication, before doing delegation
+    #-------------------------------------------------------------------------------------
+
+        Write-Output "Sleeping 1 min to let Azure AD replication, before doing delegation"
+        Start-Sleep -s 60
 
     #-------------------------------------------------------------------------------------
     # Delegation permissions for Azure App on LogAnalytics workspace
@@ -753,65 +758,3 @@
         Write-Output "`$AzDcrLogIngestServicePrincipalObjectId     = `"$($ServicePrincipalObjectId)`" "
         Write-Output "`$AzDcrDceTableCreateFromReferenceMachine    = @()"
         Write-Output "`$AzDcrDceTableCreateFromAnyMachine          = `$true"
-
-#---------------------------------------------------------------------------------------------------------------------------
-
-<#
-    Delete-AzLogAnalyticsCustomLogTables -TableNameLike "*V2*" `
-                                         -AzLogWorkspaceResourceId $LogAnalyticsWorkspaceResourceId `
-                                         -AzAppId $LogIngestAppId `
-                                         -AzAppSecret $LogIngestAppSecret `
-                                         -TenantId $TenantId
-
-    Delete-AzDataCollectionRules -DcrNameLike "*V2*" `
-                                 -AzAppId $LogIngestAppId `
-                                 -AzAppSecret $LogIngestAppSecret `
-                                 -TenantId $TenantId
-
-
-    # Set permissions on DCRs after initial deployment due to Azure replication delays
-
-    $TenantId                                   = "f0fa27a0-8e7c-4f63-9a77-ec94786b7c9e" 
-    $LogIngestAppId                             = "34490f90-8153-44c6-8eec-e03e95df3bc4" 
-    $LogIngestAppSecret                         = "mM28Q~wZAkgyTm5fSwUZTS4~cgMbwjNiwUbLDa5k" 
-
-    $AzDcrDetails = Get-AzDcrListAll
-
-    $AppInfo  = Get-MgApplication -Filter "DisplayName eq '$AzureAppName'"
-
-    $AppId    = $AppInfo.AppId
-    $ObjectId = $AppInfo.Id
-
-    $ServicePrincipalObjectId = (Get-MgServicePrincipal -Filter "AppId eq '$AppId'").Id
-
-    $DcrScope     = $AzDcrDetails | Where-Object { $_.resourcegroup -eq $AzDcrResourceGroup }
-
-    ForEach ($Dcr in $DcrScope)
-        {
-            $DcrSubscription     = $Dcr.subscriptionId
-            $DcrResourceGroup    = $Dcr.resourceGroup
-            $DcrRuleId           = $Dcr.id
-            $DcrName             = $Dcr.name
-
-            Write-Host ""
-            Write-host "Setting Monitor Metrics Publisher Role permissions on DCR [ $($DcrName) ]"
-
-
-            $guid = (new-guid).guid
-            $monitorMetricsPublisherRoleId = "3913510d-42f4-4e42-8a64-420c390055eb"
-            $roleDefinitionId = "/subscriptions/$($DcrSubscription)/providers/Microsoft.Authorization/roleDefinitions/$($monitorMetricsPublisherRoleId)"
-            $roleUrl = "https://management.azure.com" + $DcrRuleId + "/providers/Microsoft.Authorization/roleAssignments/$($Guid)?api-version=2018-07-01"
-            $roleBody = @{
-                properties = @{
-                    roleDefinitionId = $roleDefinitionId
-                    principalId      = $ServicePrincipalObjectId
-                    scope            = $DcrRuleId
-                }
-            }
-            $jsonRoleBody = $roleBody | ConvertTo-Json -Depth 6
-
-            Invoke-RestMethod -Uri $roleUrl -Method PUT -Body $jsonRoleBody -headers $Headers -ErrorAction SilentlyContinue
-        }
-
-#>
-

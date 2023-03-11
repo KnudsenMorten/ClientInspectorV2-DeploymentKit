@@ -1,18 +1,49 @@
-﻿###############################################################################
-#
-#   Deployment of environment for demonstration :
-#   Inventory of Clients via ClientInspector (Powershell script).
-#   Script runs via Intune Remediation Tasks.
-#   Communication happens with Azure App.
-#
-#   Upload of inventory data to Loganalytics via Log Ingestion API &
-#   Azure Data Collection Rules (DCR) and Azure Data Collection Endpoint (DCE)
-#
-#   Furthermore, +20 Azure Workbooks + Azure Dashboards will also be deployed
-#
-#   Developed by Morten Knudsen, Micrsoft MVP - mok@mortenknudsen.net
-#
-###############################################################################
+﻿#Requires -Version 5.0
+
+<#
+    .NAME
+    ClientInspector-DeploymentKit
+
+    .SYNOPSIS
+    The purpose of this repository is to provide everything needed to deploy a complete environment for ClientInspector (v2)
+
+    The deployment includes the following steps:
+
+    (1)  create Azure Resource Group for Azure LogAnalytics Workspace
+    (2)  create Azure LogAnalytics Workspace
+    (3)  create Azure App registration used for upload of data by ClientInspector
+    (4)  create Azure service principal on Azure App
+    (5)  create needed secret on Azure app
+    (6)  create the Azure Resource Group for Azure Data Collection Endpoint (DCE) in same region as Azure LogAnalytics Workspace
+    (7)  create the Azure Resource Group for Azure Data Collection Rules (DCR) in same region as Azure LogAnalytics Workspace
+    (8)  create Azure Data Collection Endpoint (DCE) in same region as Azure LogAnalytics Workspace
+    (9)  delegate permissions for Azure App on LogAnalytics workspace - see section Security for more info
+    (10) delegate permissions for Azure App on Azure Resource Group for Azure Data Collection Rules (DCR)
+    (11) delegate permissions for Azure App on Azure Resource Group for Azure Data Collection Endpoints (DCE)
+    (12) deployment of Azure Workbooks
+    (13) deployment of Azure Dashboards
+
+    Please check out the deployment guide on link https://github.com/KnudsenMorten/ClientInspectorV2-DeploymentKit
+
+
+    .NOTES
+    
+    .VERSION
+    1.0.0
+    
+    .AUTHOR
+    Morten Knudsen, Microsoft MVP - https://mortenknudsen.net
+
+    .LICENSE
+    Licensed under the MIT license.
+
+    .PROJECTURI
+    https://github.com/KnudsenMorten/ClientInspectorV2-DeploymentKit
+
+
+    .WARRANTY
+    Use at your own risk, no warranty given!
+#>
 
 
 #------------------------------------------------------------------------------------------------------------
@@ -54,17 +85,16 @@
 # Functions
 #------------------------------------------------------------------------------------------------------------
 
-    Write-Output "Loading functions ... Please Wait !"
     <#
-        Install-module Az
-        Install-module Microsoft.Graph
-        install-module Az.portal
+        Install-module Az -Scope CurrentUser
+        Install-module Microsoft.Graph -Scope CurrentUser
+        install-module Az.portal -Scope CurrentUser
 
-        Import-module Az
-        Import-module Az.Accounts
-        Import-module Az.Resources
-        Import-module Microsoft.Graph.Applications
-        Import-Module Microsoft.Graph.DeviceManagement.Enrolment
+        Import-module Az -Scope CurrentUser
+        Import-module Az.Accounts -Scope CurrentUser
+        Import-module Az.Resources -Scope CurrentUser
+        Import-module Microsoft.Graph.Applications -Scope CurrentUser
+        Import-Module Microsoft.Graph.DeviceManagement.Enrolment -Scope CurrentUser
     #>
 
 
