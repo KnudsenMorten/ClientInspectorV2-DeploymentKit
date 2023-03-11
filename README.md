@@ -18,13 +18,14 @@ The deployment includes the following steps:
 12. deployment of **20+ Azure Workbooks**
 13. deployment of **20+ Azure Dashboards**
 
-You can configure the parameters according to you needs. Please go to section [Deployment](#deployment)
+You can configure the parameters according to you needs. Please go to [deployment section](#Deployment of ClientInspector (v2) environment)
 
 You can re-run the script multiple times, if needed - and it will only fix any missing things.
 This can be useful, when you are dependent on Azure worldwide replication. For example delegation of permissions can sometimes fail on the initial deployment just after the Azure App was created due to Azure needs to replicate worldwide.
 
 ## Introduction - ClientInspector
 **ClientInspector** will collect tons of **information from the Windows clients** - and send the data to **Azure LogAnalytics Custom Tables**.
+
 All the data can be accessed using Kusto (KQL) queries in Loganalytics - or by the provided 20+ Azure Workbooks and **20+ Azure Dashboards**
    
 [Click here can you get detailed insight to ClientInspector](https://github.com/KnudsenMorten/ClientInspectorV2) 
@@ -34,7 +35,7 @@ All the data can be accessed using Kusto (KQL) queries in Loganalytics - or by t
 The old ClientInspector (v1) was using the HTTP Data Collector API and custom logs (MMA-format).
 
 
-#deployment## Deployment of ClientInspectorV2 environment
+## Deployment of ClientInspector (v2) environment
 1. [Download all files in this Github Repository as zip to your environment](https://github.com/KnudsenMorten/ClientInspectorV2-DeploymentKit/archive/refs/heads/main.zip)
 2. Open the file **Deployment.ps1** in your favorite editor
 3. Change the variables to your needs
@@ -70,12 +71,11 @@ $TemplateCategory                      = "<put in name for Azure Workbook Templa
 $WorkbookDashboardResourceGroup        = "<put in RG name whre workbooks/dashboards wi be deployed>" # sample: "rg-dashboards-workbooks"
 ```
 
-#deployment
-## Deployment of ClientInspectorV2 demo-environment
+## Deployment of ClientInspector (v2) demo-environment
 If you want to deploy a demo environment, please modify the file **Deployment-Demo.ps1** and just fill out **Azure SubscriptionId** and **Azure TenantId** - and you will get a complete environment with this configuration:
 
 | Parameter                       | Configuration
-| -------------                   | -----:|
+| -------------                   | :-----|
 | AzureAppName                    | Demo - Automation - Log-Ingestion |
 | AzAppSecretName                 | Secret used for Log-Ingestion |
 | LogAnalyticsResourceGroup       | rg-logworkspaces-demo |
