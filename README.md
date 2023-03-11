@@ -141,3 +141,30 @@ If you want to deploy a demo environment, please modify the file **Deployment-De
 | UNEXPECTED SHUTDOWNS - CLIENTS - V2          | Events from eventlog looking for specific events including logon events, blue screens, etc. |
 | WINDOWS FIREWALL - CLIENTS - V2              | Windows firewall - settings for all 3 modes |
 | WINDOWS UPDATE - CLIENTS - V2                | Windows Update - last result (when), windows update source information (where), pending updates, last installations (what) |
+
+
+## Security
+For simplicity purpose, the deployment will configure the created Azure app with RBAC permissions to both do log ingestion and table/DCR management.
+
+| Target                                                  | Delegation To                    | Azure RBAC Permission        | Comment                                                                   | 
+|:-------------                                           |:-----                            |:-----                        |:-----                                                                     |
+| Azure Resource Group for Azure Data Collection Rules    | Azure app used for log ingestion | Monitoring Publisher Metrics | used to send in data                                                      |
+| Azure Resource Group for Azure Data Endpoint            | Azure app used for log ingestion | Reader                       | needed to retrieve information about DCE - used as part of uploading data |
+| Azure Resource Group for Azure Data Collection Rules    | Azure app used for log ingestion | Contributor                  | needed to send in data                                                    |
+| Azure Resource Group for Azure Data Collection Endpoint | Azure app used for log ingestion | Contributor                  | needed to create/update DCEs (if needed after deployment)                 |
+| Azure LogAnalytics Workspace                            | Azure app used for log ingestion | Contributor                  | needed to create/update Azure LogAnaltyics custom log tables              |
+
+If you want to separate permissions from log ingestion and create/update table/DCR management, you can do this by creating a separate Azure app used for table/DCR management (fx. xxxx - Automation - Log Ingest Management). Please go to section [Azure RBAC Security adjustment, separation of permissions between log ingestion and table/DCR management] (#Azure RBAC Security adjustment, separation of permissions between log ingestion and table/DCR management)
+
+## Azure RBAC Security adjustment, separation of permissions between log ingestion and table/DCR management
+You need to adjust permissions according to these settings:
+
+| Target                                                  | Delegation To                           | Azure RBAC Permission        | Comment                                                                   | 
+|:-------------                                           |:-----                                   |:-----                        |:-----                                                                     |
+| Azure Resource Group for Azure Data Collection Rules    | Azure app used for log ingestion        | Monitoring Publisher Metrics | used to send in data                                                      |
+| Azure Resource Group for Azure Data Endpoint            | Azure app used for log ingestion        | Reader                       | needed to retrieve information about DCE - used as part of uploading data |
+| Azure Resource Group for Azure Data Collection Rules    | Azure app used for table/DCR management | Contributor                  | needed to send in data                                                    |
+| Azure Resource Group for Azure Data Collection Endpoint | Azure app used for table/DCR management | Contributor                  | needed to create/update DCEs (if needed after deployment)                 |
+| Azure LogAnalytics Workspace                            | Azure app used for table/DCR management | Contributor                  | needed to create/update Azure LogAnaltyics custom log tables              |
+
+[Please go to the ClientInspector site to see how this specific scenario is configured](https://github.com/KnudsenMorten/ClientInspectorV2) 
