@@ -84,6 +84,7 @@ $AzDcrPrefixClient               = "<put in prefix for easier sorting/searching 
 $TemplateCategory                = "<put in name for Azure Workbook Templates name>" # sample: "CompanyX IT Operation Security Templates"
 $WorkbookDashboardResourceGroup  = "<put in RG name where workbooks/dashboards wi be deployed>" # sample: "rg-dashboards-workbooks"
 ```
+
 4. Verify that you have the required Powershell modules installed. Otherwise you can do this with these commands.
 
 		| Module          | Install cmdlet (CurrentUser-scope)                |
