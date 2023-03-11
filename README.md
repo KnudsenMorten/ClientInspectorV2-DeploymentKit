@@ -70,7 +70,7 @@ The old ClientInspector (v1) was using the HTTP Data Collector API and custom lo
 	$WorkbookDashboardResourceGroup        = "<put in RG name whre workbooks/dashboards wi be deployed>" # sample: "rg-dashboards-workbooks"
 ```
 
-#deployment## Deployment of ClientInspectorV2 demo-environment
+#deployment ## Deployment of ClientInspectorV2 demo-environment
 If you want to deploy a demo environment, please modify the file **Deployment-Demo.ps1** and just fill out **Azure SubscriptionId** and **Azure TenantId** - and you will get a complete environment with this configuration:
 
 | Parameter                       | Configuration
@@ -87,6 +87,6 @@ If you want to deploy a demo environment, please modify the file **Deployment-De
 | TemplateCategory                | Demo IT Operation Security Templates |
 | WorkbookDashboardResourceGroup  | rg-dashboards-workbooks-demo |
 
-#workbooks## Azure Workbooks, part of deployment
+#workbooks ## Azure Workbooks, part of deployment
 
-#dashboards## Azure Dashboards, part of deployment
+#dashboards ## Azure Dashboards, part of deployment
