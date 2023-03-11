@@ -18,6 +18,18 @@ The deployment includes the following steps:
 12. deployment of **Azure Workbooks**
 13. deployment of **Azure Dashboards**
 
+### Deployment
+[You can see details on how to configure the deployment here](#Deployment of ClientInspector (v2) environment)
+[If you want to deploy a demo environment, you can click here](#Deployment of ClientInspector (v2) demo-environment)
+
+### Workbooks & Dashboards, part of deployment
+[Click here to see the included workbooks](#Azure Workbooks, part of deployment)
+[Click here to see the included dashboards](#Azure Dashboards, part of deployment)
+
+### Security
+[Click here to see the security configured as part of deployment](#Security)
+[Click here to see the security separate with 2 Azure app's](#Azure RBAC Security adjustment, separation of permissions between log ingestion and table/DCR management)
+
 You can configure the parameters according to you needs. Please go to [deployment section](#Deployment of ClientInspector (v2) environment)
 
 ## Introduction - ClientInspector
