@@ -43,34 +43,35 @@ The old ClientInspector (v1) was using the HTTP Data Collector API and custom lo
 # Variables
 #------------------------------------------------------------------------------------------------------------
 
-	# Azure App
-	$AzureAppName                          = "<put in name for your Azure App used for log ingestion>" # sample - "xxxx - Automation - Log-Ingestion"
-	$AzAppSecretName                       = "Secret used for Log-Ingestion"  # sample showed - use any text to show purpose of secret on Azure app
+# Azure App
+$AzureAppName                          = "<put in name for your Azure App used for log ingestion>" # sample - "xxxx - Automation - Log-Ingestion"
+$AzAppSecretName                       = "Secret used for Log-Ingestion"  # sample showed - use any text to show purpose of secret on Azure app
 
-	# Azure Active Directory (AAD)
-	$TenantId                              = "<put in your Azure AD TenantId>"
+# Azure Active Directory (AAD)
+$TenantId                              = "<put in your Azure AD TenantId>"
 
-	# Azure LogAnalytics
-	$LogAnalyticsSubscription              = "<put in the SubId of where to place environment>"
-	$LogAnalyticsResourceGroup             = "<put in RG name for LogAnalytics workspace>" # sample: "rg-logworkspaces"
-	$LoganalyticsWorkspaceName             = "<put in name of LogAnalytics workspace>" # sample: "log-platform-management-client-p"
-	$LoganalyticsLocation                  = "<put in desired region>" # sample: westeurope
+# Azure LogAnalytics
+$LogAnalyticsSubscription              = "<put in the SubId of where to place environment>"
+$LogAnalyticsResourceGroup             = "<put in RG name for LogAnalytics workspace>" # sample: "rg-logworkspaces"
+$LoganalyticsWorkspaceName             = "<put in name of LogAnalytics workspace>" # sample: "log-platform-management-client-p"
+$LoganalyticsLocation                  = "<put in desired region>" # sample: westeurope
 
 
-	# Azure Data Collection Endpoint
-	$AzDceName                             = "<put in naming cnvention for Azure DCE>" # sample: "dce-" + $LoganalyticsWorkspaceName
-	$AzDceResourceGroup                    = "<put in RG name for Azure DCE>" # sample: "rg-dce-" + $LoganalyticsWorkspaceName
+# Azure Data Collection Endpoint
+$AzDceName                             = "<put in naming cnvention for Azure DCE>" # sample: "dce-" + $LoganalyticsWorkspaceName
+$AzDceResourceGroup                    = "<put in RG name for Azure DCE>" # sample: "rg-dce-" + $LoganalyticsWorkspaceName
 
-	# Azure Data Collection Rules
-	$AzDcrResourceGroup                    = "<put in RG name for Azure DCRs>" # sample: "rg-dcr-" + $LoganalyticsWorkspaceName
-	$AzDcrPrefixClient                     = "<put in prefix for easier sorting/searching of DCRs>" # sample: "clt" (short for client)
+# Azure Data Collection Rules
+$AzDcrResourceGroup                    = "<put in RG name for Azure DCRs>" # sample: "rg-dcr-" + $LoganalyticsWorkspaceName
+$AzDcrPrefixClient                     = "<put in prefix for easier sorting/searching of DCRs>" # sample: "clt" (short for client)
 
-	# Azure Workbooks & Dashboards
-	$TemplateCategory                      = "<put in name for Azure Workbook Templates name>" # sample: "CompanyX IT Operation Security Templates"
-	$WorkbookDashboardResourceGroup        = "<put in RG name whre workbooks/dashboards wi be deployed>" # sample: "rg-dashboards-workbooks"
+# Azure Workbooks & Dashboards
+$TemplateCategory                      = "<put in name for Azure Workbook Templates name>" # sample: "CompanyX IT Operation Security Templates"
+$WorkbookDashboardResourceGroup        = "<put in RG name whre workbooks/dashboards wi be deployed>" # sample: "rg-dashboards-workbooks"
 ```
 
-#deployment ## Deployment of ClientInspectorV2 demo-environment
+#deployment
+## Deployment of ClientInspectorV2 demo-environment
 If you want to deploy a demo environment, please modify the file **Deployment-Demo.ps1** and just fill out **Azure SubscriptionId** and **Azure TenantId** - and you will get a complete environment with this configuration:
 
 | Parameter                       | Configuration
@@ -87,6 +88,8 @@ If you want to deploy a demo environment, please modify the file **Deployment-De
 | TemplateCategory                | Demo IT Operation Security Templates |
 | WorkbookDashboardResourceGroup  | rg-dashboards-workbooks-demo |
 
-#workbooks ## Azure Workbooks, part of deployment
+#workbooks
+## Azure Workbooks, part of deployment
 
-#dashboards ## Azure Dashboards, part of deployment
+#dashboards
+## Azure Dashboards, part of deployment
