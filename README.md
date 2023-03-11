@@ -20,19 +20,20 @@ The deployment includes the following steps:
 
 You can configure the parameters according to you needs. Please go to [deployment section](#Deployment of ClientInspector (v2) environment)
 
-You can re-run the script multiple times, if needed - and it will only fix any missing things.
-This can be useful, when you are dependent on Azure worldwide replication. For example delegation of permissions can sometimes fail on the initial deployment just after the Azure App was created due to Azure needs to replicate worldwide.
-
 ## Introduction - ClientInspector
-**ClientInspector** will collect tons of **information from the Windows clients** - and send the data to **Azure LogAnalytics Custom Tables**.
+**ClientInspector** can be used to collect lots of great information of from your **Windows clients** - and send the data to **Azure LogAnalytics Custom Tables**.
 
-All the data can be accessed using Kusto (KQL) queries in Loganalytics - or by the provided 20+ Azure Workbooks and **20+ Azure Dashboards**
+All the data can be accessed using Kusto (KQL) queries in Azure LogAnalytics - or by the provided Azure Workbooks and Azure Dashboards
+
+The deployment installs **13 ready-to-use workbooks** and **14 ready-to-use dashboards**.
+
+If you want to add more views (or workbooks), you can start by investigating the collected data in the custom logs tables using KQL quries. Then make your new views in the workbooks - and pin your favorites to your dashboards.
    
-[Click here can you get detailed insight to ClientInspector](https://github.com/KnudsenMorten/ClientInspectorV2) 
-
 **ClientInspector (v2)** is uploading the collected data into custom logs in Azure LogAnalytics workspace - using Log ingestion API, Azure Data Collection Rules (DCR) and Azure Data Collection Endpoints (DCE). 
 
-The old ClientInspector (v1) was using the HTTP Data Collector API and custom logs (MMA-format).
+You can run the ClientInspector script using your favorite deployment tool. Scripts for Microsoft Intune and ConfigMgr are provided. 
+
+[Click here if you want to get detailed insight about ClientInspector](https://github.com/KnudsenMorten/ClientInspectorV2) 
 
 
 ## Deployment of ClientInspector (v2) environment
@@ -45,31 +46,47 @@ The old ClientInspector (v1) was using the HTTP Data Collector API and custom lo
 #------------------------------------------------------------------------------------------------------------
 
 # Azure App
-$AzureAppName                          = "<put in name for your Azure App used for log ingestion>" # sample - "xxxx - Automation - Log-Ingestion"
-$AzAppSecretName                       = "Secret used for Log-Ingestion"  # sample showed - use any text to show purpose of secret on Azure app
+$AzureAppName                    = "<put in name for your Azure App used for log ingestion>" # sample - "xxxx - Automation - Log-Ingestion"
+$AzAppSecretName                 = "Secret used for Log-Ingestion"  # sample showed - use any text to show purpose of secret on Azure app
 
 # Azure Active Directory (AAD)
-$TenantId                              = "<put in your Azure AD TenantId>"
+$TenantId                        = "<put in your Azure AD TenantId>"
 
 # Azure LogAnalytics
-$LogAnalyticsSubscription              = "<put in the SubId of where to place environment>"
-$LogAnalyticsResourceGroup             = "<put in RG name for LogAnalytics workspace>" # sample: "rg-logworkspaces"
-$LoganalyticsWorkspaceName             = "<put in name of LogAnalytics workspace>" # sample: "log-platform-management-client-p"
-$LoganalyticsLocation                  = "<put in desired region>" # sample: westeurope
+$LogAnalyticsSubscription        = "<put in the SubId of where to place environment>"
+$LogAnalyticsResourceGroup       = "<put in RG name for LogAnalytics workspace>" # sample: "rg-logworkspaces"
+$LoganalyticsWorkspaceName       = "<put in name of LogAnalytics workspace>" # sample: "log-platform-management-client-p"
+$LoganalyticsLocation            = "<put in desired region>" # sample: westeurope
 
 
 # Azure Data Collection Endpoint
-$AzDceName                             = "<put in naming cnvention for Azure DCE>" # sample: "dce-" + $LoganalyticsWorkspaceName
-$AzDceResourceGroup                    = "<put in RG name for Azure DCE>" # sample: "rg-dce-" + $LoganalyticsWorkspaceName
+$AzDceName                       = "<put in naming convention for Azure DCE>" # sample: "dce-" + $LoganalyticsWorkspaceName
+$AzDceResourceGroup              = "<put in RG name for Azure DCE>" # sample: "rg-dce-" + $LoganalyticsWorkspaceName
 
 # Azure Data Collection Rules
-$AzDcrResourceGroup                    = "<put in RG name for Azure DCRs>" # sample: "rg-dcr-" + $LoganalyticsWorkspaceName
-$AzDcrPrefixClient                     = "<put in prefix for easier sorting/searching of DCRs>" # sample: "clt" (short for client)
+$AzDcrResourceGroup              = "<put in RG name for Azure DCRs>" # sample: "rg-dcr-" + $LoganalyticsWorkspaceName
+$AzDcrPrefixClient               = "<put in prefix for easier sorting/searching of DCRs>" # sample: "clt" (short for client)
 
 # Azure Workbooks & Dashboards
-$TemplateCategory                      = "<put in name for Azure Workbook Templates name>" # sample: "CompanyX IT Operation Security Templates"
-$WorkbookDashboardResourceGroup        = "<put in RG name whre workbooks/dashboards wi be deployed>" # sample: "rg-dashboards-workbooks"
+$TemplateCategory                = "<put in name for Azure Workbook Templates name>" # sample: "CompanyX IT Operation Security Templates"
+$WorkbookDashboardResourceGroup  = "<put in RG name where workbooks/dashboards wi be deployed>" # sample: "rg-dashboards-workbooks"
 ```
+
+4. Verify that you have the required Powershell modules installed. Otherwise you can do this with these commands.
+```
+| Module          | Install cmdlet (CurrentUser-scope)
+| -------------   | :-----|
+| Az              | Install-module Az -Scope CurrentUser |
+| Microsoft.Graph | Install-module Microsoft.Graph -Scope CurrentUser |
+| Az.Portal       | Install-module Az.portal -Scope CurrentUser |
+
+```
+5. Start the deployment. You will be required to login to **Azure** and **Microsoft Graph** with an account with Contributor permissions on the Azure subscription
+
+NOTE:
+Due to latency in Azure tenant replication, the steps with delegation sometimes do not complete on the initial run.
+You can re-run the script multiple times, if needed - and it will fix any missing things.
+
 
 ## Deployment of ClientInspector (v2) demo-environment
 If you want to deploy a demo environment, please modify the file **Deployment-Demo.ps1** and just fill out **Azure SubscriptionId** and **Azure TenantId** - and you will get a complete environment with this configuration:
@@ -91,5 +108,38 @@ If you want to deploy a demo environment, please modify the file **Deployment-De
 #workbooks
 ## Azure Workbooks, part of deployment
 
+| Workbook Name                                | Purpose
+| -------------                                | :-----|
+| ANTIVIRUS SECURITY CENTER - CLIENTS - V2     | Antivirus Security Center from Windows - default antivirus, state, configuration |
+| APPLICATIONS - CLIENTS - V2                  | Installed applications, both using WMI and registry |
+| BITLOCKER - CLIENTS - V2                     | Bitlocker & TPM configuration |
+| DEFENDER AV - CLIENTS - V2                   | Microsoft Defender Antivirus settings including ASR, exclusions, realtime protection, etc |
+| GROUP POLICY REFRESH - CLIENTS - V2          | Group Policy - last refresh |
+| INVENTORY - CLIENTS - V2                     | Computer information - bios, processor, hardware info, Windows OS info, OS information, last restart, vpn |
+| INVENTORY COLLECTION ISSUES - CLIENTS - V2   | Collection issues related to WMI |
+| LAPS - CLIENTS - V2                          | LAPS - version |
+| LOCAL ADMINS - CLIENTS - V2                  | Local administrators group membership |
+| NETWORK INFORMATION - CLIENTS - V2           | Network adapters, IP configuration |
+| UNEXPECTED SHUTDOWNS - CLIENTS - V2          | Events from eventlog looking for specific events including logon events, blue screens, etc. |
+| WINDOWS FIREWALL - CLIENTS - V2              | Windows firewall - settings for all 3 modes |
+| WINDOWS UPDATE - CLIENTS - V2                | Windows Update - last result (when), windows update source information (where), pending updates, last installations (what) |
+
 #dashboards
 ## Azure Dashboards, part of deployment
+
+| Dashboards Name                              | Purpose
+| -------------                                | :-----|
+| CLIENT KPI STATUS                            | Core security and operational KPIs - related to clients |
+| ANTIVIRUS SECURITY CENTER - CLIENTS - V2     | Antivirus Security Center from Windows - default antivirus, state, configuration |
+| APPLICATIONS - CLIENTS - V2                  | Installed applications, both using WMI and registry |
+| BITLOCKER - CLIENTS - V2                     | Bitlocker & TPM configuration |
+| DEFENDER AV - CLIENTS - V2                   | Microsoft Defender Antivirus settings including ASR, exclusions, realtime protection, etc |
+| GROUP POLICY REFRESH - CLIENTS - V2          | Group Policy - last refresh |
+| INVENTORY - CLIENTS - V2                     | Computer information - bios, processor, hardware info, Windows OS info, OS information, last restart, vpn |
+| INVENTORY COLLECTION ISSUES - CLIENTS - V2   | Collection issues related to WMI |
+| LAPS - CLIENTS - V2                          | LAPS - version |
+| LOCAL ADMINS - CLIENTS - V2                  | Local administrators group membership |
+| NETWORK INFORMATION - CLIENTS - V2           | Network adapters, IP configuration |
+| UNEXPECTED SHUTDOWNS - CLIENTS - V2          | Events from eventlog looking for specific events including logon events, blue screens, etc. |
+| WINDOWS FIREWALL - CLIENTS - V2              | Windows firewall - settings for all 3 modes |
+| WINDOWS UPDATE - CLIENTS - V2                | Windows Update - last result (when), windows update source information (where), pending updates, last installations (what) |
