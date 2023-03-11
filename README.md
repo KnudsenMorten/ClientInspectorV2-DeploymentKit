@@ -87,7 +87,7 @@ $WorkbookDashboardResourceGroup  = "<put in RG name where workbooks/dashboards w
 4. Verify that you have the required Powershell modules installed. Otherwise you can do this with these commands.
 
 		| Module          | Install cmdlet (CurrentUser-scope)                |
-		|:-------------   |:-----                                             |
+		| :-------------  | :-----                                            |
 		| Az              | Install-module Az -Scope CurrentUser              |
 		| Microsoft.Graph | Install-module Microsoft.Graph -Scope CurrentUser |
 		| Az.Portal       | Install-module Az.portal -Scope CurrentUser       |
@@ -107,19 +107,19 @@ NOTE: Before doing that, grap the secret from the screen - as it will not be see
 ## Deployment of ClientInspector (v2) demo-environment
 If you want to deploy a demo environment, please modify the file **Deployment-Demo.ps1** and just fill out **Azure SubscriptionId** and **Azure TenantId** - and you will get a complete environment with this configuration:
 
-| Parameter                       | Configuration
-| :-------------                  | :------------------ |
-| AzureAppName                    | Demo - Automation - Log-Ingestion |
-| AzAppSecretName                 | Secret used for Log-Ingestion |
-| LogAnalyticsResourceGroup       | rg-logworkspaces-demo |
-| LoganalyticsWorkspaceName       | log-platform-management-client-demo-p |
-| LoganalyticsLocation            | westeurope |
-| AzDceName                       | dce-log-platform-management-client-demo-p |
+| Parameter                       | Configuration                                |
+| :-------------                  | :------------------                          |
+| AzureAppName                    | Demo - Automation - Log-Ingestion            |
+| AzAppSecretName                 | Secret used for Log-Ingestion                |
+| LogAnalyticsResourceGroup       | rg-logworkspaces-demo                        |
+| LoganalyticsWorkspaceName       | log-platform-management-client-demo-p        |
+| LoganalyticsLocation            | westeurope                                   |
+| AzDceName                       | dce-log-platform-management-client-demo-p    |
 | AzDceResourceGroup              | rg-dce-log-platform-management-client-demo-p |
 | AzDcrResourceGroup              | rg-dcr-log-platform-management-client-demo-p |
-| AzDcrPrefixClient               | clt |
-| TemplateCategory                | Demo IT Operation Security Templates |
-| WorkbookDashboardResourceGroup  | rg-dashboards-workbooks-demo |
+| AzDcrPrefixClient               | clt                                          |
+| TemplateCategory                | Demo IT Operation Security Templates         |
+| WorkbookDashboardResourceGroup  | rg-dashboards-workbooks-demo                 |
 
 ## Azure Workbooks, part of deployment
 
