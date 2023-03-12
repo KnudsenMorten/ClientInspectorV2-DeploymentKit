@@ -333,6 +333,7 @@
 
     #-------------------------------------------------------------------------------------
     # Delegation permissions for Azure App on LogAnalytics workspace
+    # Needed for table management - not needed for log ingestion - for simplifity it is setup when having 1 app
     #-------------------------------------------------------------------------------------
 
         Write-Output ""
