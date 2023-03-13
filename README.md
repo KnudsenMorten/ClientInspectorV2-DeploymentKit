@@ -107,7 +107,6 @@ ces/log-platform-management-client-p"
 $LogAnalyticsWorkspaceResourceId            = "/subscriptions/fce4f282-fcc6-43fb-94d8-bfxxxxxxxxx/resourceGroups/rg-logworkspaces-client/providers/Microsoft.OperationalInsights/workspaces/log-platform-management-client-p" 
 ```
 
-
 ### Potential deployment issues (Azure AD replication latency)
 Due to latency in Azure tenant replication, the steps with delegation sometimes do not complete on the initial run.
 To mitigate this, the script will pause for 1 min - hopefully Azure AD will replicate by that time.
@@ -171,7 +170,9 @@ If you want to deploy a demo environment, please modify the file **Deployment-De
 
 
 ## Security
-For simplicity purpose, the deployment will configure the created Azure app with RBAC permissions to both do log ingestion and table/DCR management.
+
+
+For simplicity demo-purpose, the deployment will configure the created Azure app with RBAC permissions to both do log ingestion and table/DCR management. If you want to go into product, I recommend, that you implement separation 
 
 | Target                                                  | Delegation To                    | Azure RBAC Permission        | Comment                                                                   | 
 |:-------------                                           |:-----                            |:-----                        |:-----                                                                     |
@@ -184,14 +185,16 @@ For simplicity purpose, the deployment will configure the created Azure app with
 If you want to separate permissions from log ingestion and create/update table/DCR management, you can do this by creating a separate Azure app used for table/DCR management (fx. xxxx - Automation - Log Ingest Management). [Click here to see the security separate with 2 Azure app's](#azure-rbac-security-adjustment-separation-of-permissions-between-log-ingestion-and-tabledcr-management)
 
 ## Azure RBAC Security adjustment, separation of permissions between log ingestion and table/DCR management
+If you want to separate the log ingestion process with the table management process, we can do this by having one more Azure app, which is used for table/dcr/schema management.
+
 You need to adjust permissions according to these settings:
 
 | Target                                                  | Delegation To                           | Azure RBAC Permission        | Comment                                                                   | 
 |:-------------                                           |:-----                                   |:-----                        |:-----                                                                     |
 | Azure Resource Group for Azure Data Collection Rules    | Azure app used for log ingestion        | Monitoring Publisher Metrics | used to send in data                                                      |
-| Azure Resource Group for Azure Data Endpoint            | Azure app used for log ingestion        | Reader                       | needed to retrieve information about DCE - used as part of uploading data |
+| Azure Resource Group for Azure Data Endpoint            | Azure app used for log ingestion        | Reader<br><br>When you run this script, it will configure the log ingestion account with Contributor permissions, if you run with default config. This configuration must be adjusted, so the logestion app will only need Reader permissions.| needed to retrieve information about DCE - used as part of uploading data |
 | Azure Resource Group for Azure Data Collection Rules    | Azure app used for table/DCR management | Contributor                  | needed to send in data                                                    |
-| Azure Resource Group for Azure Data Collection Endpoint | Azure app used for table/DCR management | Contributor                  | needed to create/update DCEs (if needed after deployment)                 |
+| Azure Resource Group for Azure Data Collection Endpoint | Azure app used for table/DCR management | Contributor                  | needed to create/update DCEs and also needed to create/update an DCR with referrences to a DCE |
 | Azure LogAnalytics Workspace                            | Azure app used for table/DCR management | Contributor                  | needed to create/update Azure LogAnaltyics custom log tables              |
 
 [Please go to the ClientInspector site to see how this specific scenario is configured](https://github.com/KnudsenMorten/ClientInspectorV2) 

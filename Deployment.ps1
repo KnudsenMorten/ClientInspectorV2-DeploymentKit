@@ -59,7 +59,7 @@
 
     # Azure LogAnalytics
     $LogAnalyticsSubscription              = "<put in the SubId of where to place environment>"
-    $LogAnalyticsResourceGroup             = "<put in RG name for LogAnalytics workspace>" # sample: "rg-logworkspaces"
+    $LogAnalyticsResourceGroup             = "<put in RG name for LogAnalytics workspace>" # sample: "rg-logworkspaces-p"
     $LoganalyticsWorkspaceName             = "<put in name of LogAnalytics workspace>" # sample: "log-platform-management-client-p"
     $LoganalyticsLocation                  = "<put in desired region>" # sample: westeurope
 
@@ -74,7 +74,7 @@
 
     # Azure Workbooks & Dashboards
     $TemplateCategory                      = "<put in name for Azure Workbook Templates name>" # sample: "CompanyX IT Operation Security Templates"
-    $WorkbookDashboardResourceGroup        = "<put in RG name whre workbooks/dashboards wi be deployed>" # sample: "rg-dashboards-workbooks"
+    $WorkbookDashboardResourceGroup        = "<put in RG name whre workbooks/dashboards will be deployed>" # sample: "rg-dashboards-workbooks"
 
     $ScriptDirectory                       = $PSScriptRoot
     $WorkBook_Repository_Path              = "$($ScriptDirectory)\AZURE_WORKBOOKS_LATEST_RELEASE_V2"
@@ -754,5 +754,5 @@
         Write-Output "`$AzDcrPrefixClient                          = `"$($AzDcrPrefixClient)`" "
         Write-Output "`$AzDcrSetLogIngestApiAppPermissionsDcrLevel = `$false"
         Write-Output "`$AzDcrLogIngestServicePrincipalObjectId     = `"$($ServicePrincipalObjectId)`" "
-        Write-Output "`$AzDcrDceTableCreateFromReferenceMachine    = @()"
-        Write-Output "`$AzDcrDceTableCreateFromAnyMachine          = `$true"
+        Write-Output "`$AzLogDcrTableCreateFromReferenceMachine    = @()"
+        Write-Output "`$AzLogDcrTableCreateFromAnyMachine          = `$true"

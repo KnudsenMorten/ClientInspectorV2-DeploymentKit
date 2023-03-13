@@ -59,7 +59,7 @@
 
     # Azure LogAnalytics
     $LogAnalyticsSubscription              = "fce4f282-fcc6-43fb-94d8-bf1701b862c3" # "<put in the SubId of where to place environment>"
-    $LogAnalyticsResourceGroup             = "rg-logworkspaces-client"
+    $LogAnalyticsResourceGroup             = "rg-logworkspaces-client-p"
     $LoganalyticsWorkspaceName             = "log-platform-management-client-p"
     $LoganalyticsLocation                  = "westeurope"
 
@@ -753,5 +753,5 @@
         Write-Output "`$AzDcrPrefixClient                          = `"$($AzDcrPrefixClient)`" "
         Write-Output "`$AzDcrSetLogIngestApiAppPermissionsDcrLevel = `$false"
         Write-Output "`$AzDcrLogIngestServicePrincipalObjectId     = `"$($ServicePrincipalObjectId)`" "
-        Write-Output "`$AzDcrDceTableCreateFromReferenceMachine    = @()"
-        Write-Output "`$AzDcrDceTableCreateFromAnyMachine          = `$true"
+        Write-Output "`$AzLogDcrTableCreateFromReferenceMachine    = @()"
+        Write-Output "`$AzLogDcrTableCreateFromAnyMachine          = `$true"
