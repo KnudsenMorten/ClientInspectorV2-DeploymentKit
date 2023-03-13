@@ -125,6 +125,10 @@ $LogAnalyticsWorkspaceResourceId            = "/subscriptions/fce4f282-fcc6-43fb
 ```
 Example
 ```
+##########################################
+# VARIABLES
+##########################################
+
 <# ----- onboarding lines ----- BEGIN #>
 
     $TenantId                                   = "xxxxxx" 
@@ -224,7 +228,7 @@ For simplicity demo-purpose, the deployment will configure the created Azure app
 If you want to separate permissions from log ingestion and create/update table/DCR management, you can do this by creating a separate Azure app used for table/DCR management (fx. xxxx - Automation - Log Ingest Management). [Click here to see the security separate with 2 Azure app's](#azure-rbac-security-adjustment-separation-of-permissions-between-log-ingestion-and-tabledcr-management)
 
 ## Azure RBAC Security adjustment, separation of permissions between log ingestion and table/DCR management
-If you want to separate the log ingestion process with the table management process, we can do this by having one more Azure app, which is used for table/dcr/schema management.
+If you want to separate the log ingestion process with the table management process, you can do this by having one more Azure app, which is used for table/dcr/schema management.
 
 You need to adjust permissions according to these settings:
 
@@ -236,9 +240,10 @@ You need to adjust permissions according to these settings:
 | Azure Resource Group for Azure Data Collection Endpoint | Azure app used for table/DCR management | Contributor                  | needed to create/update DCEs and also needed to create/update an DCR with referrences to a DCE |
 | Azure LogAnalytics Workspace                            | Azure app used for table/DCR management | Contributor                  | needed to create/update Azure LogAnaltyics custom log tables              |
 
-[Please go to the ClientInspector site to see how this specific scenario is configured](https://github.com/KnudsenMorten/ClientInspectorV2) 
 
-## Sample output of deployment
+
+<details>
+  <summary><h2>Sample output of deployment</h2></summary>
 ```
 Validating Azure context is subscription [ fce4f282-fcc6-43fb-94d8-bf1701b862c3 ]
 
@@ -1426,3 +1431,4 @@ $AzLogDcrTableCreateFromReferenceMachine    = @()
 $AzDcrDceTableCreateFromAnyMachine          = $true
 
 ```
+</details>
