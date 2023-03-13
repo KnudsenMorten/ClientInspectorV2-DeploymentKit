@@ -159,6 +159,7 @@ NOTE: Before doing that, grap the secret from the screen - as it will not be see
 
 <details>
   <summary><h2>Sample output of deployment</h2></summary>
+
 ```
 Validating Azure context is subscription [ fce4f282-fcc6-43fb-94d8-bf1701b862c3 ]
 
