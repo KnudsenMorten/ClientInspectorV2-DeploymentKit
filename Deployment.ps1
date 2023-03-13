@@ -431,15 +431,15 @@
     #-------------------------------------------------------------------------------------
 
         Write-Output ""
-        Write-Output "Setting Reader permissions for app [ $($AzDceName) ] on RG [ $($AzDceResourceGroup) ]"
+        Write-Output "Setting Contributor permissions for app [ $($AzDceName) ] on RG [ $($AzDceResourceGroup) ]"
 
         $ServicePrincipalObjectId = (Get-MgServicePrincipal -Filter "AppId eq '$AppId'").Id
         $AzDceRgResourceId        = (Get-AzResourceGroup -Name $AzDceResourceGroup).ResourceId
 
-        # Reader
+        # Contributor
             $guid = (new-guid).guid
-            $ReaderRoleId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"  # Reader
-            $roleDefinitionId = "/subscriptions/$($LogAnalyticsSubscription)/providers/Microsoft.Authorization/roleDefinitions/$($ReaderRoleId)"
+            $ContributorRoleId = "b24988ac-6180-42a0-ab88-20f7382dd24c"  # Contributor
+            $roleDefinitionId = "/subscriptions/$($LogAnalyticsSubscription)/providers/Microsoft.Authorization/roleDefinitions/$($ContributorRoleId)"
             $roleUrl = "https://management.azure.com" + $AzDceRgResourceId + "/providers/Microsoft.Authorization/roleAssignments/$($Guid)?api-version=2018-07-01"
             $roleBody = @{
                 properties = @{
@@ -755,4 +755,4 @@
         Write-Output "`$AzDcrSetLogIngestApiAppPermissionsDcrLevel = `$false"
         Write-Output "`$AzDcrLogIngestServicePrincipalObjectId     = `"$($ServicePrincipalObjectId)`" "
         Write-Output "`$AzLogDcrTableCreateFromReferenceMachine    = @()"
-        Write-Output "`$AzLogDcrTableCreateFromAnyMachine          = `$true"
+        Write-Output "`$AzDcrDceTableCreateFromAnyMachine          = `$true"
