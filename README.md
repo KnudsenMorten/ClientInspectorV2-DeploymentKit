@@ -67,7 +67,7 @@ $TenantId                        = "<put in your Azure AD TenantId>"
 
 # Azure LogAnalytics
 $LogAnalyticsSubscription        = "<put in the SubId of where to place environment>"
-$LogAnalyticsResourceGroup       = "<put in RG name for LogAnalytics workspace>" # sample: "rg-logworkspaces"
+$LogAnalyticsResourceGroup       = "<put in RG name for LogAnalytics workspace>" # sample: "rg-logworkspaces-p"
 $LoganalyticsWorkspaceName       = "<put in name of LogAnalytics workspace>" # sample: "log-platform-management-client-p"
 $LoganalyticsLocation            = "<put in desired region>" # sample: westeurope
 
@@ -82,7 +82,7 @@ $AzDcrPrefixClient               = "<put in prefix for easier sorting/searching 
 
 # Azure Workbooks & Dashboards
 $TemplateCategory                = "<put in name for Azure Workbook Templates name>" # sample: "CompanyX IT Operation Security Templates"
-$WorkbookDashboardResourceGroup  = "<put in RG name where workbooks/dashboards wi be deployed>" # sample: "rg-dashboards-workbooks"
+$WorkbookDashboardResourceGroup  = "<put in RG name where workbooks/dashboards will be deployed>" # sample: "rg-dashboards-workbooks"
 ```
 
 4. Verify that you have the required Powershell modules installed. Otherwise you can do this with these commands.
@@ -106,6 +106,45 @@ ces/log-platform-management-client-p"
 ```
 $LogAnalyticsWorkspaceResourceId            = "/subscriptions/fce4f282-fcc6-43fb-94d8-bfxxxxxxxxx/resourceGroups/rg-logworkspaces-client/providers/Microsoft.OperationalInsights/workspaces/log-platform-management-client-p" 
 ```
+7. Insert the lines in the ClientInspector.ps1 file in this section
+```
+##########################################
+# VARIABLES
+##########################################
+
+<# ----- onboarding lines ----- BEGIN #>
+
+
+
+
+
+
+
+<#  ----- onboading lines -----  END  #>
+
+```
+Example
+```
+<# ----- onboarding lines ----- BEGIN #>
+
+    $TenantId                                   = "xxxxxx" 
+    $LogIngestAppId                             = "xxxxxx" 
+    $LogIngestAppSecret                         = "xxxxx" 
+
+    $DceName                                    = "dce-log-platform-management-client-eu01-p" 
+    $LogAnalyticsWorkspaceResourceId            = "/subscriptions/6ab28656-d943-439a-9079-4fd3ac3062a1/resourceGroups/rg-logworkspaces-p/providers/Microsoft.OperationalInsights/workspaces/log-platform-management-client-eu01-p" 
+
+    $AzDcrPrefixClient                          = "clt" 
+    $AzDcrSetLogIngestApiAppPermissionsDcrLevel = $false
+    $AzDcrLogIngestServicePrincipalObjectId     = "xxxx" 
+    $AzLogDcrTableCreateFromReferenceMachine    = @()
+    $AzLogDcrTableCreateFromAnyMachine          = $true
+
+<#  ----- onboading lines -----  END  #>
+
+```
+8. You are now done with the initial setup of the infrastructure for ClientInspector.
+
 
 ### Potential deployment issues (Azure AD replication latency)
 Due to latency in Azure tenant replication, the steps with delegation sometimes do not complete on the initial run.
@@ -1383,7 +1422,7 @@ ces/log-platform-management-client-p"
 $AzDcrPrefixClient                          = "clt" 
 $AzDcrSetLogIngestApiAppPermissionsDcrLevel = $false
 $AzDcrLogIngestServicePrincipalObjectId     = "5a1cba73-26f3-4267-9078-259ee35e0bc4" 
-$AzDcrDceTableCreateFromReferenceMachine    = @()
+$AzLogDcrTableCreateFromReferenceMachine    = @()
 $AzDcrDceTableCreateFromAnyMachine          = $true
 
 ```
