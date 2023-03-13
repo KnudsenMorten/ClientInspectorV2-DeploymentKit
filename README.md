@@ -149,97 +149,12 @@ Example
 ```
 8. You are now done with the initial setup of the infrastructure for ClientInspector.
 
-
 ### Potential deployment issues (Azure AD replication latency)
 Due to latency in Azure tenant replication, the steps with delegation sometimes do not complete on the initial run.
 To mitigate this, the script will pause for 1 min - hopefully Azure AD will replicate by that time.
 
 If it is not working, wait 10-15 min - and re-run the script, if needed - and it will fix any missing things. 
 NOTE: Before doing that, grap the secret from the screen - as it will not be seen afterwards.
-
-## Deployment of ClientInspector (v2) demo-environment
-If you want to deploy a demo environment, please modify the file **Deployment-Demo.ps1** and just fill out **Azure SubscriptionId** and **Azure TenantId** - and you will get a complete environment with this configuration:
-
-| Parameter                       | Configuration                                |
-| :-------------                  | :------------------                          |
-| AzureAppName                    | Demo - Automation - Log-Ingestion            |
-| AzAppSecretName                 | Secret used for Log-Ingestion                |
-| LogAnalyticsResourceGroup       | rg-logworkspaces-demo                        |
-| LoganalyticsWorkspaceName       | log-platform-management-client-demo-p        |
-| LoganalyticsLocation            | westeurope                                   |
-| AzDceName                       | dce-log-platform-management-client-demo-p    |
-| AzDceResourceGroup              | rg-dce-log-platform-management-client-demo-p |
-| AzDcrResourceGroup              | rg-dcr-log-platform-management-client-demo-p |
-| AzDcrPrefixClient               | clt                                          |
-| TemplateCategory                | Demo IT Operation Security Templates         |
-| WorkbookDashboardResourceGroup  | rg-dashboards-workbooks-demo                 |
-
-## Azure Workbooks, part of deployment
-
-| Workbook Name                                | Purpose
-| -------------                                | :-----|
-| ANTIVIRUS SECURITY CENTER - CLIENTS - V2     | Antivirus Security Center from Windows - default antivirus, state, configuration |
-| APPLICATIONS - CLIENTS - V2                  | Installed applications, both using WMI and registry |
-| BITLOCKER - CLIENTS - V2                     | Bitlocker & TPM configuration |
-| DEFENDER AV - CLIENTS - V2                   | Microsoft Defender Antivirus settings including ASR, exclusions, realtime protection, etc |
-| GROUP POLICY REFRESH - CLIENTS - V2          | Group Policy - last refresh |
-| INVENTORY - CLIENTS - V2                     | Computer information - bios, processor, hardware info, Windows OS info, OS information, last restart, vpn |
-| INVENTORY COLLECTION ISSUES - CLIENTS - V2   | Collection issues related to WMI |
-| LAPS - CLIENTS - V2                          | LAPS - version |
-| LOCAL ADMINS - CLIENTS - V2                  | Local administrators group membership |
-| NETWORK INFORMATION - CLIENTS - V2           | Network adapters, IP configuration |
-| UNEXPECTED SHUTDOWNS - CLIENTS - V2          | Events from eventlog looking for specific events including logon events, blue screens, etc. |
-| WINDOWS FIREWALL - CLIENTS - V2              | Windows firewall - settings for all 3 modes |
-| WINDOWS UPDATE - CLIENTS - V2                | Windows Update - last result (when), windows update source information (where), pending updates, last installations (what) |
-
-## Azure Dashboards, part of deployment
-
-| Dashboards Name                              | Purpose
-| -------------                                | :-----|
-| CLIENT KPI STATUS                            | Core security and operational KPIs - related to clients |
-| ANTIVIRUS SECURITY CENTER - CLIENTS - V2     | Antivirus Security Center from Windows - default antivirus, state, configuration |
-| APPLICATIONS - CLIENTS - V2                  | Installed applications, both using WMI and registry |
-| BITLOCKER - CLIENTS - V2                     | Bitlocker & TPM configuration |
-| DEFENDER AV - CLIENTS - V2                   | Microsoft Defender Antivirus settings including ASR, exclusions, realtime protection, etc |
-| GROUP POLICY REFRESH - CLIENTS - V2          | Group Policy - last refresh |
-| INVENTORY - CLIENTS - V2                     | Computer information - bios, processor, hardware info, Windows OS info, OS information, last restart, vpn |
-| INVENTORY COLLECTION ISSUES - CLIENTS - V2   | Collection issues related to WMI |
-| LAPS - CLIENTS - V2                          | LAPS - version |
-| LOCAL ADMINS - CLIENTS - V2                  | Local administrators group membership |
-| NETWORK INFORMATION - CLIENTS - V2           | Network adapters, IP configuration |
-| UNEXPECTED SHUTDOWNS - CLIENTS - V2          | Events from eventlog looking for specific events including logon events, blue screens, etc. |
-| WINDOWS FIREWALL - CLIENTS - V2              | Windows firewall - settings for all 3 modes |
-| WINDOWS UPDATE - CLIENTS - V2                | Windows Update - last result (when), windows update source information (where), pending updates, last installations (what) |
-
-
-## Security
-
-
-For simplicity demo-purpose, the deployment will configure the created Azure app with RBAC permissions to both do log ingestion and table/DCR management. If you want to go into product, I recommend, that you implement separation 
-
-| Target                                                  | Delegation To                    | Azure RBAC Permission        | Comment                                                                   | 
-|:-------------                                           |:-----                            |:-----                        |:-----                                                                     |
-| Azure Resource Group for Azure Data Collection Rules    | Azure app used for log ingestion | Monitoring Publisher Metrics | used to send in data                                                      |
-| Azure Resource Group for Azure Data Endpoint            | Azure app used for log ingestion | Reader                       | needed to retrieve information about DCE - used as part of uploading data |
-| Azure Resource Group for Azure Data Collection Rules    | Azure app used for log ingestion | Contributor                  | needed to send in data                                                    |
-| Azure Resource Group for Azure Data Collection Endpoint | Azure app used for log ingestion | Contributor                  | needed to create/update DCEs (if needed after deployment)                 |
-| Azure LogAnalytics Workspace                            | Azure app used for log ingestion | Contributor                  | needed to create/update Azure LogAnaltyics custom log tables              |
-
-If you want to separate permissions from log ingestion and create/update table/DCR management, you can do this by creating a separate Azure app used for table/DCR management (fx. xxxx - Automation - Log Ingest Management). [Click here to see the security separate with 2 Azure app's](#azure-rbac-security-adjustment-separation-of-permissions-between-log-ingestion-and-tabledcr-management)
-
-## Azure RBAC Security adjustment, separation of permissions between log ingestion and table/DCR management
-If you want to separate the log ingestion process with the table management process, you can do this by having one more Azure app, which is used for table/dcr/schema management.
-
-You need to adjust permissions according to these settings:
-
-| Target                                                  | Delegation To                           | Azure RBAC Permission        | Comment                                                                   | 
-|:-------------                                           |:-----                                   |:-----                        |:-----                                                                     |
-| Azure Resource Group for Azure Data Collection Rules    | Azure app used for log ingestion        | Monitoring Publisher Metrics | used to send in data                                                      |
-| Azure Resource Group for Azure Data Endpoint            | Azure app used for log ingestion        | Reader<br><br>When you run this script, it will configure the log ingestion account with Contributor permissions, if you run with default config. This configuration must be adjusted, so the logestion app will only need Reader permissions.| needed to retrieve information about DCE - used as part of uploading data |
-| Azure Resource Group for Azure Data Collection Rules    | Azure app used for table/DCR management | Contributor                  | needed to send in data                                                    |
-| Azure Resource Group for Azure Data Collection Endpoint | Azure app used for table/DCR management | Contributor                  | needed to create/update DCEs and also needed to create/update an DCR with referrences to a DCE |
-| Azure LogAnalytics Workspace                            | Azure app used for table/DCR management | Contributor                  | needed to create/update Azure LogAnaltyics custom log tables              |
-
 
 
 <details>
@@ -1432,3 +1347,87 @@ $AzDcrDceTableCreateFromAnyMachine          = $true
 
 ```
 </details>
+
+
+## Deployment of ClientInspector (v2) demo-environment
+If you want to deploy a demo environment, please modify the file **Deployment-Demo.ps1** and just fill out **Azure SubscriptionId** and **Azure TenantId** - and you will get a complete environment with this configuration:
+
+| Parameter                       | Configuration                                |
+| :-------------                  | :------------------                          |
+| AzureAppName                    | Demo - Automation - Log-Ingestion            |
+| AzAppSecretName                 | Secret used for Log-Ingestion                |
+| LogAnalyticsResourceGroup       | rg-logworkspaces-demo                        |
+| LoganalyticsWorkspaceName       | log-platform-management-client-demo-p        |
+| LoganalyticsLocation            | westeurope                                   |
+| AzDceName                       | dce-log-platform-management-client-demo-p    |
+| AzDceResourceGroup              | rg-dce-log-platform-management-client-demo-p |
+| AzDcrResourceGroup              | rg-dcr-log-platform-management-client-demo-p |
+| AzDcrPrefixClient               | clt                                          |
+| TemplateCategory                | Demo IT Operation Security Templates         |
+| WorkbookDashboardResourceGroup  | rg-dashboards-workbooks-demo                 |
+
+## Azure Workbooks, part of deployment
+
+| Workbook Name                                | Purpose
+| -------------                                | :-----|
+| ANTIVIRUS SECURITY CENTER - CLIENTS - V2     | Antivirus Security Center from Windows - default antivirus, state, configuration |
+| APPLICATIONS - CLIENTS - V2                  | Installed applications, both using WMI and registry |
+| BITLOCKER - CLIENTS - V2                     | Bitlocker & TPM configuration |
+| DEFENDER AV - CLIENTS - V2                   | Microsoft Defender Antivirus settings including ASR, exclusions, realtime protection, etc |
+| GROUP POLICY REFRESH - CLIENTS - V2          | Group Policy - last refresh |
+| INVENTORY - CLIENTS - V2                     | Computer information - bios, processor, hardware info, Windows OS info, OS information, last restart, vpn |
+| INVENTORY COLLECTION ISSUES - CLIENTS - V2   | Collection issues related to WMI |
+| LAPS - CLIENTS - V2                          | LAPS - version |
+| LOCAL ADMINS - CLIENTS - V2                  | Local administrators group membership |
+| NETWORK INFORMATION - CLIENTS - V2           | Network adapters, IP configuration |
+| UNEXPECTED SHUTDOWNS - CLIENTS - V2          | Events from eventlog looking for specific events including logon events, blue screens, etc. |
+| WINDOWS FIREWALL - CLIENTS - V2              | Windows firewall - settings for all 3 modes |
+| WINDOWS UPDATE - CLIENTS - V2                | Windows Update - last result (when), windows update source information (where), pending updates, last installations (what) |
+
+## Azure Dashboards, part of deployment
+
+| Dashboards Name                              | Purpose
+| -------------                                | :-----|
+| CLIENT KPI STATUS                            | Core security and operational KPIs - related to clients |
+| ANTIVIRUS SECURITY CENTER - CLIENTS - V2     | Antivirus Security Center from Windows - default antivirus, state, configuration |
+| APPLICATIONS - CLIENTS - V2                  | Installed applications, both using WMI and registry |
+| BITLOCKER - CLIENTS - V2                     | Bitlocker & TPM configuration |
+| DEFENDER AV - CLIENTS - V2                   | Microsoft Defender Antivirus settings including ASR, exclusions, realtime protection, etc |
+| GROUP POLICY REFRESH - CLIENTS - V2          | Group Policy - last refresh |
+| INVENTORY - CLIENTS - V2                     | Computer information - bios, processor, hardware info, Windows OS info, OS information, last restart, vpn |
+| INVENTORY COLLECTION ISSUES - CLIENTS - V2   | Collection issues related to WMI |
+| LAPS - CLIENTS - V2                          | LAPS - version |
+| LOCAL ADMINS - CLIENTS - V2                  | Local administrators group membership |
+| NETWORK INFORMATION - CLIENTS - V2           | Network adapters, IP configuration |
+| UNEXPECTED SHUTDOWNS - CLIENTS - V2          | Events from eventlog looking for specific events including logon events, blue screens, etc. |
+| WINDOWS FIREWALL - CLIENTS - V2              | Windows firewall - settings for all 3 modes |
+| WINDOWS UPDATE - CLIENTS - V2                | Windows Update - last result (when), windows update source information (where), pending updates, last installations (what) |
+
+
+## Security
+
+
+For simplicity demo-purpose, the deployment will configure the created Azure app with RBAC permissions to both do log ingestion and table/DCR management. If you want to go into product, I recommend, that you implement separation 
+
+| Target                                                  | Delegation To                    | Azure RBAC Permission        | Comment                                                                   | 
+|:-------------                                           |:-----                            |:-----                        |:-----                                                                     |
+| Azure Resource Group for Azure Data Collection Rules    | Azure app used for log ingestion | Monitoring Publisher Metrics | used to send in data                                                      |
+| Azure Resource Group for Azure Data Endpoint            | Azure app used for log ingestion | Reader                       | needed to retrieve information about DCE - used as part of uploading data |
+| Azure Resource Group for Azure Data Collection Rules    | Azure app used for log ingestion | Contributor                  | needed to send in data                                                    |
+| Azure Resource Group for Azure Data Collection Endpoint | Azure app used for log ingestion | Contributor                  | needed to create/update DCEs (if needed after deployment)                 |
+| Azure LogAnalytics Workspace                            | Azure app used for log ingestion | Contributor                  | needed to create/update Azure LogAnaltyics custom log tables              |
+
+If you want to separate permissions from log ingestion and create/update table/DCR management, you can do this by creating a separate Azure app used for table/DCR management (fx. xxxx - Automation - Log Ingest Management). [Click here to see the security separate with 2 Azure app's](#azure-rbac-security-adjustment-separation-of-permissions-between-log-ingestion-and-tabledcr-management)
+
+## Azure RBAC Security adjustment, separation of permissions between log ingestion and table/DCR management
+If you want to separate the log ingestion process with the table management process, you can do this by having one more Azure app, which is used for table/dcr/schema management.
+
+You need to adjust permissions according to these settings:
+
+| Target                                                  | Delegation To                           | Azure RBAC Permission        | Comment                                                                   | 
+|:-------------                                           |:-----                                   |:-----                        |:-----                                                                     |
+| Azure Resource Group for Azure Data Collection Rules    | Azure app used for log ingestion        | Monitoring Publisher Metrics | used to send in data                                                      |
+| Azure Resource Group for Azure Data Endpoint            | Azure app used for log ingestion        | Reader<br><br>When you run this script, it will configure the log ingestion account with Contributor permissions, if you run with default config. This configuration must be adjusted, so the logestion app will only need Reader permissions.| needed to retrieve information about DCE - used as part of uploading data |
+| Azure Resource Group for Azure Data Collection Rules    | Azure app used for table/DCR management | Contributor                  | needed to send in data                                                    |
+| Azure Resource Group for Azure Data Collection Endpoint | Azure app used for table/DCR management | Contributor                  | needed to create/update DCEs and also needed to create/update an DCR with referrences to a DCE |
+| Azure LogAnalytics Workspace                            | Azure app used for table/DCR management | Contributor                  | needed to create/update Azure LogAnaltyics custom log tables              |
