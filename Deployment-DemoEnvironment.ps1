@@ -87,7 +87,7 @@
 
     # Azure Data Collection Rules
     $AzDcrResourceGroup                    = "rg-dcr-" + $LoganalyticsWorkspaceName
-    $AzDcrPrefixClient                     = "clt"
+    $AzDcrPrefix                           = "clt"
 
     # Azure Workbooks & Dashboards
     $TemplateCategory                      = "Demo" + $Number + " IT Operation Security Templates"
@@ -897,7 +897,7 @@
         Write-Output "`$LogAnalyticsWorkspaceResourceId            = "
         Write-Output "`"$($LogAnalyticsWorkspaceResourceId)`" "
         Write-Output ""
-        Write-Output "`$AzDcrPrefixClient                          = `"$($AzDcrPrefixClient)`" "
+        Write-Output "`$AzDcrPrefix                                = `"$($AzDcrPrefix)`" "
         Write-Output "`$AzDcrSetLogIngestApiAppPermissionsDcrLevel = `$false"
         Write-Output "`$AzDcrLogIngestServicePrincipalObjectId     = `"$($ServicePrincipalObjectId)`" "
         Write-Output "`$AzLogDcrTableCreateFromReferenceMachine    = @()"

@@ -138,7 +138,7 @@ Example
     $DceName                                    = "dce-log-platform-management-client-eu01-p" 
     $LogAnalyticsWorkspaceResourceId            = "/subscriptions/6ab28656-d943-439a-9079-4fd3ac3062a1/resourceGroups/rg-logworkspaces-p/providers/Microsoft.OperationalInsights/workspaces/log-platform-management-client-eu01-p" 
 
-    $AzDcrPrefixClient                          = "clt" 
+    $AzDcrPrefix                                = "clt" 
     $AzDcrSetLogIngestApiAppPermissionsDcrLevel = $false
     $AzDcrLogIngestServicePrincipalObjectId     = "xxxx" 
     $AzLogDcrTableCreateFromReferenceMachine    = @()
@@ -1340,7 +1340,7 @@ $LogAnalyticsWorkspaceResourceId            =
 "/subscriptions/fce4f282-fcc6-43fb-94d8-bfxxxxxxxxx/resourceGroups/rg-logworkspaces-client/providers/Microsoft.OperationalInsights/workspa
 ces/log-platform-management-client-p" 
 
-$AzDcrPrefixClient                          = "clt" 
+$AzDcrPrefix                                = "clt" 
 $AzDcrSetLogIngestApiAppPermissionsDcrLevel = $false
 $AzDcrLogIngestServicePrincipalObjectId     = "5a1cba73-26f3-4267-9078-259ee35e0bc4" 
 $AzLogDcrTableCreateFromReferenceMachine    = @()
@@ -1351,21 +1351,23 @@ $AzDcrDceTableCreateFromAnyMachine          = $true
 
 
 ## Deployment of ClientInspector (v2) demo-environment
-If you want to deploy a demo environment, please modify the file **Deployment-Demo.ps1** and just fill out **Azure SubscriptionId** and **Azure TenantId** - and you will get a complete environment with this configuration:
+If you want to deploy a demo environment, please modify the file **Deployment-Demo.ps1** and just fill out **Azure SubscriptionId** and **Azure TenantId** - and you will get a complete environment with this configuration. 
+
+You will have the option to control the demo number using the $UseRandomNumber = $true/false. If you choose $true the number will randomize, so it is easy to re-run multiple times.
 
 | Parameter                       | Configuration                                |
 | :-------------                  | :------------------                          |
-| AzureAppName                    | Demo - Automation - Log-Ingestion            |
+| AzureAppName                    | Demo1 - Automation - Log-Ingestion            |
 | AzAppSecretName                 | Secret used for Log-Ingestion                |
-| LogAnalyticsResourceGroup       | rg-logworkspaces-demo                        |
-| LoganalyticsWorkspaceName       | log-platform-management-client-demo-p        |
+| LogAnalyticsResourceGroup       | rg-logworkspaces-demo1                        |
+| LoganalyticsWorkspaceName       | log-platform-management-client-demo1-p        |
 | LoganalyticsLocation            | westeurope                                   |
-| AzDceName                       | dce-log-platform-management-client-demo-p    |
-| AzDceResourceGroup              | rg-dce-log-platform-management-client-demo-p |
-| AzDcrResourceGroup              | rg-dcr-log-platform-management-client-demo-p |
-| AzDcrPrefixClient               | clt                                          |
+| AzDceName                       | dce-log-platform-management-client-demo1-p    |
+| AzDceResourceGroup              | rg-dce-log-platform-management-client-demo1-p |
+| AzDcrResourceGroup              | rg-dcr-log-platform-management-client-demo1-p |
+| AzDcrPrefix                     | clt                                          |
 | TemplateCategory                | Demo IT Operation Security Templates         |
-| WorkbookDashboardResourceGroup  | rg-dashboards-workbooks-demo                 |
+| WorkbookDashboardResourceGroup  | rg-dashboards-workbooks-demo1                 |
 
 ## Azure Workbooks, part of deployment
 
@@ -1389,20 +1391,20 @@ If you want to deploy a demo environment, please modify the file **Deployment-De
 
 | Dashboards Name                              | Purpose
 | -------------                                | :-----|
-| CLIENT KPI STATUS                            | Core security and operational KPIs - related to clients |
-| ANTIVIRUS SECURITY CENTER - CLIENTS - V2     | Antivirus Security Center from Windows - default antivirus, state, configuration |
-| APPLICATIONS - CLIENTS - V2                  | Installed applications, both using WMI and registry |
-| BITLOCKER - CLIENTS - V2                     | Bitlocker & TPM configuration |
-| DEFENDER AV - CLIENTS - V2                   | Microsoft Defender Antivirus settings including ASR, exclusions, realtime protection, etc |
-| GROUP POLICY REFRESH - CLIENTS - V2          | Group Policy - last refresh |
-| INVENTORY - CLIENTS - V2                     | Computer information - bios, processor, hardware info, Windows OS info, OS information, last restart, vpn |
-| INVENTORY COLLECTION ISSUES - CLIENTS - V2   | Collection issues related to WMI |
-| LAPS - CLIENTS - V2                          | LAPS - version |
-| LOCAL ADMINS - CLIENTS - V2                  | Local administrators group membership |
-| NETWORK INFORMATION - CLIENTS - V2           | Network adapters, IP configuration |
-| UNEXPECTED SHUTDOWNS - CLIENTS - V2          | Events from eventlog looking for specific events including logon events, blue screens, etc. |
-| WINDOWS FIREWALL - CLIENTS - V2              | Windows firewall - settings for all 3 modes |
-| WINDOWS UPDATE - CLIENTS - V2                | Windows Update - last result (when), windows update source information (where), pending updates, last installations (what) |
+| CLIENT KPI STATUS | CLIENTS | MANAGED DASHBOARD (V2)            | Core security and operational KPIs - related to clients |
+| ANTIVIRUS SECURITY CENTER | CLIENTS | MANAGED DASHBOARD (V2)    | Antivirus Security Center from Windows - default antivirus, state, configuration |
+| APPLICATIONS | CLIENTS | MANAGED DASHBOARD (V2)                 | Installed applications, both using WMI and registry |
+| BITLOCKER | CLIENTS | MANAGED DASHBOARD (V2)                    | Bitlocker & TPM configuration |
+| DEFENDER AV | CLIENTS | MANAGED DASHBOARD (V2)                  | Microsoft Defender Antivirus settings including ASR, exclusions, realtime protection, etc |
+| GROUP POLICY REFRESH | CLIENTS | MANAGED DASHBOARD (V2)         | Group Policy - last refresh |
+| INVENTORY | CLIENTS | MANAGED DASHBOARD (V2)                    | Computer information - bios, processor, hardware info, Windows OS info, OS information, last restart, vpn |
+| INVENTORY COLLECTION ISSUES | CLIENTS | MANAGED DASHBOARD (V2)  | Collection issues related to WMI |
+| LAPS | CLIENTS | MANAGED DASHBOARD (V2)                         | LAPS - version |
+| LOCAL ADMINS | CLIENTS | MANAGED DASHBOARD (V2)                 | Local administrators group membership |
+| NETWORK INFORMATION | CLIENTS | MANAGED DASHBOARD (V2)          | Network adapters, IP configuration |
+| UNEXPECTED SHUTDOWNS | CLIENTS | MANAGED DASHBOARD (V2)         | Events from eventlog looking for specific events including logon events, blue screens, etc. |
+| WINDOWS FIREWALL | CLIENTS | MANAGED DASHBOARD (V2)             | Windows firewall - settings for all 3 modes |
+| WINDOWS UPDATE | CLIENTS | MANAGED DASHBOARD (V2)               | Windows Update - last result (when), windows update source information (where), pending updates, last installations (what) |
 
 
 ## Security
