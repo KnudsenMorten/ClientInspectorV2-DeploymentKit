@@ -50,8 +50,17 @@
 # Variables
 #------------------------------------------------------------------------------------------------------------
 
+    # random character + random number -> name for demo
+    $RandomChar                            = (65..90) + (97..122) | Get-Random -Count 1 | % {[char]$_}
+    $RandomNumber                          = [string](Get-Random -Minimum 1000 -Maximum 10000) + $RandomChar 
+
+$randomnumber = "6470D"
+
+    # put in your path where ClientInspector and AzLogDcrIngestPS will be downloaded to !
+    $ClientFolder                          = $Env:OneDrive + "\Desktop\Speaks\Fun with AzLogs\ClientInspectorV2\Demo" + $RandomNumber
+
     # Azure App
-    $AzureAppName                          = "CompanyName - Automation - Log-Ingestion"
+    $AzureAppName                          = "Demo" + $RandomNumber + " - Automation - Log-Ingestion"
     $AzAppSecretName                       = "Secret used for Log-Ingestion"
 
     # Azure Active Directory (AAD)
@@ -59,8 +68,8 @@
 
     # Azure LogAnalytics
     $LogAnalyticsSubscription              = "fce4f282-fcc6-43fb-94d8-bf1701b862c3" # "<put in the SubId of where to place environment>"
-    $LogAnalyticsResourceGroup             = "rg-logworkspaces-client-p"
-    $LoganalyticsWorkspaceName             = "log-platform-management-client-p"
+    $LogAnalyticsResourceGroup             = "rg-logworkspaces-client-demo" + $RandomNumber  + "-t"
+    $LoganalyticsWorkspaceName             = "log-management-client-demo" + $RandomNumber + "-t"
     $LoganalyticsLocation                  = "westeurope"
 
 
@@ -73,13 +82,33 @@
     $AzDcrPrefixClient                     = "clt"
 
     # Azure Workbooks & Dashboards
-    $TemplateCategory                      = "CompanyName IT Operation Security Templates"
-    $WorkbookDashboardResourceGroup        = "rg-dashboards-workbooks-demo"
+    $TemplateCategory                      = "Demo" + $RandomNumber + " IT Operation Security Templates"
+    $WorkbookDashboardResourceGroup        = "rg-dashboards-workbooks-demo" + $RandomNumber + "-t"
 
-    $ScriptDirectory                       = $PSScriptRoot
-    $WorkBook_Repository_Path              = "$($ScriptDirectory)\AZURE_WORKBOOKS_LATEST_RELEASE_V2"
-    $Dashboard_Repository_Path             = "$($ScriptDirectory)\AZURE_DASHBOARDS_LATEST_RELEASE_v2"
+    $WorkBook_Repository_Path              = "AZURE_WORKBOOKS_LATEST_RELEASE_V2"
+    $Dashboard_Repository_Path             = "AZURE_DASHBOARDS_LATEST_RELEASE_v2"
     
+#------------------------------------------------------------------------------------------------------------
+# Checking PreReq for folders
+#------------------------------------------------------------------------------------------------------------
+
+    If (!(Get-childitem -Path .\$WorkBook_Repository_Path\*.json -ErrorAction SilentlyContinue))
+        {
+            If (!(Get-childitem -Path $PsScriptRoot\$WorkBook_Repository_Path\*.json  -ErrorAction SilentlyContinue))
+                {
+                    Write-Output "Cannot find the workbook files (AZURE_WORKBOOKS_LATEST_RELEASE_V2) in this directory !"
+                    Break
+                }
+        }
+    If (!(Get-childitem -Path .\$Dashboard_Repository_Path\*.json -ErrorAction SilentlyContinue))
+        {
+            If (!(Get-childitem -Path $PsScriptRoot\$Dashboard_Repository_Path\*.json  -ErrorAction SilentlyContinue))
+                {
+                    Write-Output "Cannot find the workbook files (AZURE_DASHBOARDS_LATEST_RELEASE_v2) in this directory !"
+                    Break
+                }
+        }
+
 
 #------------------------------------------------------------------------------------------------------------
 # Functions
@@ -105,7 +134,7 @@
     #---------------------------------------------------------
     # Connect to Azure
     #---------------------------------------------------------
-        Connect-AzAccount -Tenant $TenantId
+        Connect-AzAccount -Tenant $TenantId -WarningAction SilentlyContinue
 
         #---------------------------------------------------------
         # Get Access Token
@@ -677,6 +706,35 @@
                         -DashboardName $DashboardName
                 }
 
+
+#-----------------------------------------------------------------------------------------------
+# Building demo-setup
+#-----------------------------------------------------------------------------------------------
+
+
+    Write-Output ""
+    Write-Output "Building demo structure in folder"
+    Write-Output $ClientFolder
+
+    MD $ClientFolder | Out-Null
+
+    Write-Output ""
+    Write-Output "Downloading latest version of module AzLogDcrIngestPS from https://github.com/KnudsenMorten/AzLogDcrIngestPS"
+    Write-Output "into local path $($ClientFolder)"
+
+    # download newest version
+    $Download = (New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/KnudsenMorten/AzLogDcrIngestPS/main/AzLogDcrIngestPS.psm1", "$($ClientFolder)\AzLogDcrIngestPS.psm1")
+
+    Write-Output ""
+    Write-Output "Downloading latest version of module ClientInspectorV2 from https://github.com/KnudsenMorten/ClientInspectorV2"
+    Write-Output "into local path $($ClientFolder)"
+
+    # download newest version
+    $Download = (New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/KnudsenMorten/ClientInspectorV2/main/ClientInspector.ps1", "$($ClientFolder)\ClientInspector.ps1")
+
+    # Changing to directory where files where downloaded
+    Cd $ClientFolder
+
 #-------------------------------------------------------------------------------------
 # Summarize
 #-------------------------------------------------------------------------------------
@@ -698,6 +756,7 @@
         Write-Output ""
         Write-Output "LogIngestion Azure App Id:"
         Write-Output $AppId
+        Write-Output ""
 
 
         If ($AzAppSecret)
@@ -718,6 +777,7 @@
         Write-Output $ServicePrincipalObjectId
 
     # Azure Loganalytics
+        Write-Output ""
         $LogWorkspaceInfo = Get-AzOperationalInsightsWorkspace -Name $LoganalyticsWorkspaceName -ResourceGroupName $LogAnalyticsResourceGroup
         $LogAnalyticsWorkspaceResourceId = $LogWorkspaceInfo.ResourceId
 
@@ -755,4 +815,22 @@
         Write-Output "`$AzDcrSetLogIngestApiAppPermissionsDcrLevel = `$false"
         Write-Output "`$AzDcrLogIngestServicePrincipalObjectId     = `"$($ServicePrincipalObjectId)`" "
         Write-Output "`$AzLogDcrTableCreateFromReferenceMachine    = @()"
-        Write-Output "`$AzDcrDceTableCreateFromAnyMachine          = `$true"
+        Write-Output "`$AzLogDcrTableCreateFromAnyMachine          = `$true"
+
+
+        Notepad ClientInspector.ps1
+
+        Write-Output ""
+        Write-Output "We are almost done ... we just need to wait 1-1,5 hours for Microsoft to replicate and update RBAC"
+        Write-Output ""
+        Write-Output "While waiting you have to copy the above variables into the open ClientInspector.ps1 file - and save it "
+        Write-Output ""
+        Write-Output "You can also prepare the command  .\ClientInspector.ps1 -function:localpath -verbose:$true in the path, where deployment was done"
+        Write-Output ""
+        Write-Output "NOTE: Powershell session must be running in local admin, when you kick off ClientInspector"
+        Write-Output ""
+        Write-Output "Feel free to try it a few times until it stops failing .... !"
+        Write-Output ""
+        Write-Output "When running, if the script throws lots of PUT = 200, then we are happy....it is creating tables and DCRs. It will take 15-20 min. first time !"
+        Write-Output ""
+        Write-Output "Happy hunting with ClientInspector :-)"

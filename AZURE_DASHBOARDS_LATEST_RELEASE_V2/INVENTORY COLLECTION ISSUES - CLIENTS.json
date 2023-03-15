@@ -8,8 +8,8 @@
             "position": {
               "x": 0,
               "y": 0,
-              "colSpan": 22,
-              "rowSpan": 7
+              "colSpan": 6,
+              "rowSpan": 2
             },
             "metadata": {
               "inputs": [
@@ -32,7 +32,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/APPLICATIONS - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/INVENTORY COLLECTION ISSUES - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -47,12 +47,12 @@
                 },
                 {
                   "name": "PinName",
-                  "value": "APPLICATIONS - CLIENTS - V2",
+                  "value": "INVENTORY COLLECTION ISSUES - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientApplicationsFromRegistryV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer, DisplayName\\r\\n| project-reorder Computer asc, DisplayName, Publisher, DisplayVersion, InstallDate, Comments, InstallLocation,CollectionTime desc\\r\\n| sort by Computer asc\\r\\n\",\"size\":0,\"showAnalytics\":true,\"title\":\"APPLICATIONS (REGISTRY) | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"let MissingTable = datatable(ResourceId: string) [];\\r\\nunion isfuzzy=true MissingTable, (InvClientCollectionIssuesV2_CL)\\r\\n| extend Computer = column_ifexists('Computer', '')\\r\\n| extend CollectionTime = column_ifexists('CollectionTime', '')\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"DEVICES WITH COLLECTION ISSUES (FIX WMI) | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true}}",
                   "isOptional": true
                 },
                 {
@@ -71,9 +71,9 @@
           "1": {
             "position": {
               "x": 0,
-              "y": 7,
-              "colSpan": 22,
-              "rowSpan": 6
+              "y": 2,
+              "colSpan": 13,
+              "rowSpan": 5
             },
             "metadata": {
               "inputs": [
@@ -96,7 +96,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/APPLICATIONS - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/INVENTORY COLLECTION ISSUES - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -111,12 +111,12 @@
                 },
                 {
                   "name": "PinName",
-                  "value": "APPLICATIONS - CLIENTS - V2",
+                  "value": "INVENTORY COLLECTION ISSUES - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientApplicationsFromWmiV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer, Name\\r\\n| project-reorder CollectionTime desc, Computer asc\\r\\n| sort by Computer asc\\r\\n\",\"size\":0,\"showAnalytics\":true,\"title\":\"APPLICATIONS (WMI) | CLIENTS | LIST\",\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"let MissingTable = datatable(ResourceId: string) [];\\r\\nunion isfuzzy=true MissingTable, (InvClientCollectionIssuesV2_CL)\\r\\n| extend Computer = column_ifexists('Computer', '')\\r\\n| extend CollectionTime = column_ifexists('CollectionTime', '')\\r\\n| extend UserLoggedOn = column_ifexists('UserLoggedOn', '')\\r\\n| extend IssueCategory = column_ifexists('IssueCategory', '')\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| project Computer, UserLoggedOn, CollectionTime, IssueCategory\",\"size\":0,\"showAnalytics\":true,\"title\":\"DEVICES WITH COLLECTION ISSUES (FIX WMI) | CLIENTS | LIST\",\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
                   "isOptional": true
                 },
                 {
@@ -162,8 +162,8 @@
                 "value": "Past 24 hours"
               },
               "filteredPartIds": [
-                "StartboardPart-PinnedNotebookQueryPart-d2c8ef12-9af8-4faf-a5b7-1d1fbff9c3a9",
-                "StartboardPart-PinnedNotebookQueryPart-d2c8ef12-9af8-4faf-a5b7-1d1fbff9c3ab"
+                "StartboardPart-PinnedNotebookQueryPart-d0b5b5ab-01e5-4c78-8886-140d67be80b3",
+                "StartboardPart-PinnedNotebookQueryPart-d0b5b5ab-01e5-4c78-8886-140d67be80b5"
               ]
             }
           }
@@ -171,11 +171,11 @@
       }
     }
   },
-  "name": "APPLICATIONS | CLIENTS | MANAGED DASHBOARD (V2)",
+  "name": "INVENTORY COLLECTION ISSUES | CLIENTS | MANAGED DASHBOARD (V2)",
   "type": "Microsoft.Portal/dashboards",
   "location": "INSERT LOCATION",
   "tags": {
-    "hidden-title": "APPLICATIONS | CLIENTS | MANAGED DASHBOARD (V2)"
+    "hidden-title": "INVENTORY COLLECTION ISSUES | CLIENTS | MANAGED DASHBOARD (V2)"
   },
   "apiVersion": "2015-08-01-preview"
 }

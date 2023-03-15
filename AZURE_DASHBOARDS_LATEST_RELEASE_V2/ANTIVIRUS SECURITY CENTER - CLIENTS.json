@@ -1,0 +1,372 @@
+{
+  "properties": {
+    "lenses": {
+      "0": {
+        "order": 0,
+        "parts": {
+          "0": {
+            "position": {
+              "x": 0,
+              "y": 0,
+              "colSpan": 6,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourceGroups/rg-managed-dashboards-workbooks/providers/microsoft.insights/workbooktemplates/ANTIVIRUS (SECURITY CENTER) - CLIENTS",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "ANTIVIRUS (SECURITY CENTER) - CLIENTS",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientAntivirus_CL \\r\\n| summarize CollectionTime_t = arg_max(CollectionTime_t,*) by Computer\\r\\n| where PrimaryAntivirusProduct_s !contains \\\"Defender\\\"\\r\\n| project Computer, UserLoggedOn_s, CollectionTime_t, PrimaryAntivirusProduct_s, PrimaryAntivirusEXE_s, PrimaryAntivirusProductStateCode_d, PrimaryAntivirusProductStateTimestamp_s, PrimaryAntivirusRealTimeStatus_s, PrimaryAntivirusDefinitionStatus_s,Alternative1AntivirusProduct_s, Alternative1AntivirusEXE_s, Alternative1AntivirusProductStateCode_s, Alternative1AntivirusProductStateTimestamp_s\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"OTHER PRIMARY ANTIVIRUS (SECURITY CENTER) | CLIENTS | COUNT\",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourcegroups/we-rg-monitoring-p/providers/microsoft.operationalinsights/workspaces/CASA-ws\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "1": {
+            "position": {
+              "x": 6,
+              "y": 0,
+              "colSpan": 6,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourceGroups/rg-managed-dashboards-workbooks/providers/microsoft.insights/workbooktemplates/ANTIVIRUS (SECURITY CENTER) - CLIENTS",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "ANTIVIRUS (SECURITY CENTER) - CLIENTS",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientAntivirus_CL \\r\\n| summarize CollectionTime_t = arg_max(CollectionTime_t,*) by Computer\\r\\n| where PrimaryAntivirusProduct_s contains \\\"Defender\\\"\\r\\n| project Computer, UserLoggedOn_s, CollectionTime_t, PrimaryAntivirusProduct_s, PrimaryAntivirusEXE_s, PrimaryAntivirusProductStateCode_d, PrimaryAntivirusProductStateTimestamp_s, PrimaryAntivirusRealTimeStatus_s, PrimaryAntivirusDefinitionStatus_s,Alternative1AntivirusProduct_s, Alternative1AntivirusEXE_s, Alternative1AntivirusProductStateCode_s, Alternative1AntivirusProductStateTimestamp_s\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"DEFENDER PRIMARY ANTIVIRUS (SECURITY CENTER) | CLIENTS | COUNT\",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourcegroups/we-rg-monitoring-p/providers/microsoft.operationalinsights/workspaces/CASA-ws\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"green\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "2": {
+            "position": {
+              "x": 0,
+              "y": 2,
+              "colSpan": 25,
+              "rowSpan": 5
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourceGroups/rg-managed-dashboards-workbooks/providers/microsoft.insights/workbooktemplates/ANTIVIRUS (SECURITY CENTER) - CLIENTS",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "ANTIVIRUS (SECURITY CENTER) - CLIENTS",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientAntivirus_CL \\r\\n| summarize CollectionTime_t = arg_max(CollectionTime_t,*) by Computer\\r\\n| where PrimaryAntivirusProduct_s contains \\\"Defender\\\"\\r\\n| project Computer, UserLoggedOn_s, CollectionTime_t, PrimaryAntivirusProduct_s, PrimaryAntivirusEXE_s, PrimaryAntivirusProductStateCode_d, PrimaryAntivirusProductStateTimestamp_s, PrimaryAntivirusRealTimeStatus_s, PrimaryAntivirusDefinitionStatus_s,Alternative1AntivirusProduct_s, Alternative1AntivirusEXE_s, Alternative1AntivirusProductStateCode_s, Alternative1AntivirusProductStateTimestamp_s\\r\\n| sort by Computer asc \",\"size\":0,\"showAnalytics\":true,\"title\":\"DEFENDER PRIMARY ANTIVIRUS (SECURITY CENTER) | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourcegroups/we-rg-monitoring-p/providers/microsoft.operationalinsights/workspaces/CASA-ws\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "3": {
+            "position": {
+              "x": 0,
+              "y": 7,
+              "colSpan": 25,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourceGroups/rg-managed-dashboards-workbooks/providers/microsoft.insights/workbooktemplates/ANTIVIRUS SECURITY CENTER - CLIENTS",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "ANTIVIRUS SECURITY CENTER - CLIENTS",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientAntivirus_CL \\r\\n| summarize CollectionTime_t = arg_max(CollectionTime_t,*) by Computer\\r\\n| where PrimaryAntivirusProduct_s !contains \\\"Defender\\\"\\r\\n| project Computer, CollectionTime_t, UserLoggedOn_s, PrimaryAntivirusProduct_s, PrimaryAntivirusEXE_s, PrimaryAntivirusProductStateCode_d, PrimaryAntivirusProductStateTimestamp_s, PrimaryAntivirusRealTimeStatus_s, PrimaryAntivirusDefinitionStatus_s,Alternative1AntivirusProduct_s, Alternative1AntivirusEXE_s, Alternative1AntivirusProductStateCode_s, Alternative1AntivirusProductStateTimestamp_s\\r\\n| sort by Computer asc \",\"size\":0,\"title\":\"OTHER PRIMARY ANTIVIRUS (SECURITY CENTER) | CLIENTS | LIST\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourcegroups/we-rg-monitoring-p/providers/microsoft.operationalinsights/workspaces/CASA-ws\"],\"visualization\":\"table\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "4": {
+            "position": {
+              "x": 0,
+              "y": 11,
+              "colSpan": 25,
+              "rowSpan": 5
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourceGroups/rg-managed-dashboards-workbooks/providers/microsoft.insights/workbooktemplates/ANTIVIRUS (SECURITY CENTER) - CLIENTS",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "ANTIVIRUS (SECURITY CENTER) - CLIENTS",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientAntivirus_CL \\r\\n| summarize CollectionTime_t = arg_max(CollectionTime_t,*) by Computer\\r\\n| project Computer, UserLoggedOn_s, CollectionTime_t, PrimaryAntivirusProduct_s, PrimaryAntivirusEXE_s, PrimaryAntivirusProductStateCode_d, PrimaryAntivirusProductStateTimestamp_s, PrimaryAntivirusRealTimeStatus_s, PrimaryAntivirusDefinitionStatus_s,Alternative1AntivirusProduct_s, Alternative1AntivirusEXE_s, Alternative1AntivirusProductStateCode_s, Alternative1AntivirusProductStateTimestamp_s\\r\\n| sort by Computer asc \",\"size\":0,\"showAnalytics\":true,\"title\":\"ANTIVIRUS COMPLIANCE OVERVIEW (SECURITY CENTER) | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourcegroups/we-rg-monitoring-p/providers/microsoft.operationalinsights/workspaces/CASA-ws\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "model": {
+        "timeRange": {
+          "value": {
+            "relative": {
+              "duration": 24,
+              "timeUnit": 1
+            }
+          },
+          "type": "MsPortalFx.Composition.Configuration.ValueTypes.TimeRange"
+        },
+        "filterLocale": {
+          "value": "en-us"
+        },
+        "filters": {
+          "value": {
+            "MsPortalFx_TimeRange": {
+              "model": {
+                "format": "utc",
+                "granularity": "auto",
+                "relative": "24h"
+              },
+              "displayCache": {
+                "name": "UTC Time",
+                "value": "Past 24 hours"
+              },
+              "filteredPartIds": [
+                "StartboardPart-PinnedNotebookQueryPart-9db8240d-3826-461a-9d52-0953e9a01636",
+                "StartboardPart-PinnedNotebookQueryPart-9db8240d-3826-461a-9d52-0953e9a01638",
+                "StartboardPart-PinnedNotebookQueryPart-9db8240d-3826-461a-9d52-0953e9a0163a",
+                "StartboardPart-PinnedNotebookQueryPart-9db8240d-3826-461a-9d52-0953e9a0163e",
+                "StartboardPart-PinnedNotebookQueryPart-9db8240d-3826-461a-9d52-0953e9a0163c"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "name": "ANTIVIRUS SECURITY CENTER | CLIENTS | MANAGED DASHBOARD",
+  "type": "Microsoft.Portal/dashboards",
+  "location": "INSERT LOCATION",
+  "tags": {
+    "hidden-title": "ANTIVIRUS SECURITY CENTER | CLIENTS | MANAGED DASHBOARD"
+  },
+  "apiVersion": "2015-08-01-preview"
+}

@@ -8,71 +8,7 @@
             "position": {
               "x": 0,
               "y": 0,
-              "colSpan": 22,
-              "rowSpan": 7
-            },
-            "metadata": {
-              "inputs": [
-                {
-                  "name": "ComponentId",
-                  "value": "Azure Monitor",
-                  "isOptional": true
-                },
-                {
-                  "name": "TimeContext",
-                  "value": null,
-                  "isOptional": true
-                },
-                {
-                  "name": "ResourceIds",
-                  "value": [
-                    "Azure Monitor"
-                  ],
-                  "isOptional": true
-                },
-                {
-                  "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/APPLICATIONS - CLIENTS - V2",
-                  "isOptional": true
-                },
-                {
-                  "name": "Type",
-                  "value": "workbook",
-                  "isOptional": true
-                },
-                {
-                  "name": "GalleryResourceType",
-                  "value": "Azure Monitor",
-                  "isOptional": true
-                },
-                {
-                  "name": "PinName",
-                  "value": "APPLICATIONS - CLIENTS - V2",
-                  "isOptional": true
-                },
-                {
-                  "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientApplicationsFromRegistryV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer, DisplayName\\r\\n| project-reorder Computer asc, DisplayName, Publisher, DisplayVersion, InstallDate, Comments, InstallLocation,CollectionTime desc\\r\\n| sort by Computer asc\\r\\n\",\"size\":0,\"showAnalytics\":true,\"title\":\"APPLICATIONS (REGISTRY) | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
-                  "isOptional": true
-                },
-                {
-                  "name": "ParameterValues",
-                  "value": {},
-                  "isOptional": true
-                },
-                {
-                  "name": "Location",
-                  "isOptional": true
-                }
-              ],
-              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
-            }
-          },
-          "1": {
-            "position": {
-              "x": 0,
-              "y": 7,
-              "colSpan": 22,
+              "colSpan": 25,
               "rowSpan": 6
             },
             "metadata": {
@@ -96,7 +32,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/APPLICATIONS - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/NETWORK INFORMATION - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -111,12 +47,76 @@
                 },
                 {
                   "name": "PinName",
-                  "value": "APPLICATIONS - CLIENTS - V2",
+                  "value": "NETWORK INFORMATION - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientApplicationsFromWmiV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer, Name\\r\\n| project-reorder CollectionTime desc, Computer asc\\r\\n| sort by Computer asc\\r\\n\",\"size\":0,\"showAnalytics\":true,\"title\":\"APPLICATIONS (WMI) | CLIENTS | LIST\",\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientNetworkAdapterInfoV2_CL\\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer, InterfaceAlias\\r\\n| project-reorder Computer asc \\r\\n| project-reorder Computer, UserLoggedOn, CollectionTime, Name, InterfaceDescription\\r\\n| sort by Computer asc \",\"size\":0,\"showAnalytics\":true,\"title\":\"NETWORK ADAPTERS | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "1": {
+            "position": {
+              "x": 0,
+              "y": 6,
+              "colSpan": 25,
+              "rowSpan": 8
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/NETWORK INFORMATION - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "NETWORK INFORMATION - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientNetworkIPv4InfoV2_CL \\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer, InterfaceAlias\\r\\n| project-reorder Computer asc \\r\\n| project-reorder Computer, UserLoggedOn, CollectionTime, InterfaceAlias\\r\\n| sort by Computer asc \",\"size\":0,\"showAnalytics\":true,\"title\":\"IP INFORMATION | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
                   "isOptional": true
                 },
                 {
@@ -162,8 +162,8 @@
                 "value": "Past 24 hours"
               },
               "filteredPartIds": [
-                "StartboardPart-PinnedNotebookQueryPart-d2c8ef12-9af8-4faf-a5b7-1d1fbff9c3a9",
-                "StartboardPart-PinnedNotebookQueryPart-d2c8ef12-9af8-4faf-a5b7-1d1fbff9c3ab"
+                "StartboardPart-PinnedNotebookQueryPart-395e73ad-5ceb-4ad7-b7af-4599bc5a10aa",
+                "StartboardPart-PinnedNotebookQueryPart-395e73ad-5ceb-4ad7-b7af-4599bc5a10ac"
               ]
             }
           }
@@ -171,11 +171,11 @@
       }
     }
   },
-  "name": "APPLICATIONS | CLIENTS | MANAGED DASHBOARD (V2)",
+  "name": "NETWORK INFORMATION | CLIENTS | MANAGED DASHBOARD (V2)",
   "type": "Microsoft.Portal/dashboards",
   "location": "INSERT LOCATION",
   "tags": {
-    "hidden-title": "APPLICATIONS | CLIENTS | MANAGED DASHBOARD (V2)"
+    "hidden-title": "NETWORK INFORMATION | CLIENTS | MANAGED DASHBOARD (V2)"
   },
   "apiVersion": "2015-08-01-preview"
 }

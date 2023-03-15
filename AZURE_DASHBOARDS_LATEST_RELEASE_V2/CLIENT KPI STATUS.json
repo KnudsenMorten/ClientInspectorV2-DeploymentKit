@@ -1,0 +1,1676 @@
+{
+  "properties": {
+    "lenses": {
+      "0": {
+        "order": 0,
+        "parts": {
+          "0": {
+            "position": {
+              "x": 0,
+              "y": 0,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/UNEXPECTED SHUTDOWNS - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "UNEXPECTED SHUTDOWNS - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientEventlogInfoV2_CL\\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by MachineName, TimeCreated\\r\\n| project-reorder CollectionTime desc\\r\\n| project-reorder MachineName, Message asc \\r\\n| project-rename EventID=Id_\\r\\n| where EventID == 6008\\r\\n| distinct MachineName\\r\\n| sort by MachineName asc \\r\\n|summarize total = count()\",\"size\":0,\"title\":\"UNEXPECTED SHUTDOWNS | CLIENTS | COUNT\",\"noDataMessageStyle\":3,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "1": {
+            "position": {
+              "x": 5,
+              "y": 0,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/BITLOCKER - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "BITLOCKER - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientBitlockerInfoV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where OSDisk_ProtectionStatus == 0\\r\\n| project Computer, UserLoggedOn, CollectionTime, OSDisk_DriveLetter, OSDisk_EncryptionPercentage, OSDisk_VolumeStatus, OSDisk_ProtectionStatus, OSDisk_CapacityGB,  OSDisk_KeyProtector\\r\\n| sort by Computer asc  \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"INCOMPLIANT BITLOCKER | CLIENTS | COUNT\",\"noDataMessageStyle\":3,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "2": {
+            "position": {
+              "x": 10,
+              "y": 0,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/GROUP POLICY REFRESH - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "GROUP POLICY REFRESH - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientGroupPolicyRefreshV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where GPLastRefresh > ago(-7d)\\r\\n| project Computer, UserLoggedOn, CollectionTime, GPLastRefreshDays, GPLastRefresh\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"LAST GROUP POLICY REFRESH MORE THAN 7 DAYS AGO | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "3": {
+            "position": {
+              "x": 15,
+              "y": 0,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/INVENTORY - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "INVENTORY - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientComputerInfoV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| extend OsUpTime = todynamic(OsUptime)\\r\\n| mv-expand OsUptime\\r\\n| project Computer, UserLoggedOn, OsUptime_Days=toint(OsUpTime.Days), CollectionTime\\r\\n| sort by OsUptime_Days desc\\r\\n| where OsUptime_Days > 7\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"NO RESTART MORE THAN 7 DAYS DAY | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "4": {
+            "position": {
+              "x": 0,
+              "y": 2,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/ANTIVIRUS SECURITY CENTER - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "ANTIVIRUS SECURITY CENTER - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientAntivirusV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where PrimaryAntivirusProduct !contains \\\"Defender\\\"\\r\\n| project Computer, CollectionTime, PrimaryAntivirusProduct, PrimaryAntivirusEXE, PrimaryAntivirusProductStateCode, PrimaryAntivirusProductStateTimestamp, PrimaryAntivirusRealTimeStatus, PrimaryAntivirusDefinitionStatus,Alternative1AntivirusProduct, Alternative1AntivirusEXE, Alternative1AntivirusProductStateCode, Alternative1AntivirusProductStateTimestamp\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"OTHER PRIMARY ANTIVIRUS (SECURITY CENTER) | CLIENTS | COUNT\",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "5": {
+            "position": {
+              "x": 5,
+              "y": 2,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "DEFENDER AV - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where (AMRunningMode =~ \\\"Not running\\\")\\r\\n| project Computer, UserLoggedOn, AMEngineVersion, AMProductVersion, AMRunningMode, AMServiceEnabled, AMServiceVersion\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"AM SERVICE NOT RUNNING DEFENDER AV | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "6": {
+            "position": {
+              "x": 10,
+              "y": 2,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "DEFENDER AV - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where (AMRunningMode =~ \\\"EDR Block Mode\\\")\\r\\n| project Computer, UserLoggedOn, CollectionTime, MPComputerStatusFound, MPPreferenceFound, AMEngineVersion, AMProductVersion, AMRunningMode, AMServiceEnabled, AMServiceVersion, AntispywareEnabled, AntispywareSignatureAge, AntispywareSignatureLastUpdated, AntispywareSignatureVersion, AntivirusEnabled, AntivirusSignatureAge, AntivirusSignatureLastUpdated, AntivirusSignatureVersion, BehaviorMonitorEnabled, DefenderSignaturesOutOfDate, DisableAutoExclusions, DisableBehaviorMonitoring, DisableRealtimeMonitoring, DisableScanningMappedNetworkDrivesForFullScan, DisableScanningNetworkFiles, DisableScriptScanning, EnableControlledFolderAccess, EnableNetworkProtection,    FullScanAge, IoavProtectionEnabled, IsTamperProtected, IsVirtualMachine, MAPSReporting, NISEnabled, NISEngineVersion, NISSignatureAge, NISSignatureLastUpdated, NISSignatureVersion, OnAccessProtectionEnabled, ProductStatus, PUAProtection, QuickScanAge, RealTimeProtectionEnabled, RealTimeScanDirection, RebootRequired, ScanAvgCPULoadFactor, SignatureUpdateCatchupInterval, SignatureUpdateInterval, SubmitSamplesConsent, TamperProtectionSource \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"PASSIVE / EDB BLOCK MODE DEFENDER AV | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "7": {
+            "position": {
+              "x": 15,
+              "y": 2,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "DEFENDER AV - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where (AntispywareSignatureAge >= 7)\\r\\n| project Computer, UserLoggedOn, AMEngineVersion, AMProductVersion, AMRunningMode, AMServiceEnabled, AMServiceVersion, AntispywareEnabled, AntispywareSignatureAge, AntispywareSignatureLastUpdated, AntispywareSignatureVersion, AntivirusEnabled, AntivirusSignatureAge, AntivirusSignatureLastUpdated, AntivirusSignatureVersion, BehaviorMonitorEnabled, DefenderSignaturesOutOfDate, DisableAutoExclusions, DisableBehaviorMonitoring, DisableRealtimeMonitoring, DisableScanningMappedNetworkDrivesForFullScan, DisableScanningNetworkFiles, DisableScriptScanning, EnableControlledFolderAccess, EnableNetworkProtection,    FullScanAge, IoavProtectionEnabled, IsTamperProtected, IsVirtualMachine, MAPSReporting, NISEnabled, NISEngineVersion, NISSignatureAge, NISSignatureLastUpdated, NISSignatureVersion, OnAccessProtectionEnabled, ProductStatus, PUAProtection, QuickScanAge, RealTimeProtectionEnabled, RealTimeScanDirection, RebootRequired, ScanAvgCPULoadFactor, SignatureUpdateCatchupInterval, SignatureUpdateInterval, SubmitSamplesConsent, TamperProtectionSource, MPComputerStatusFound, MPPreferenceFound, CollectionTime\\r\\n| summarize total = count()\",\"size\":0,\"showAnalytics\":true,\"title\":\"ANTISPYWARE TOO OLD DEFENDER AV | CLIENTS | COUNT\",\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "8": {
+            "position": {
+              "x": 0,
+              "y": 4,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "DEFENDER AV - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ( (AMRunningMode == \\\"Not running\\\") or \\r\\n          (parse_version(AMProductVersion) < parse_version(\\\"4.18.2203\\\") ) or \\r\\n          (MPComputerStatusFound == false) or (MPPreferenceFound == false) or\\r\\n          (RealTimeProtectionEnabled == false) or\\r\\n          (AntivirusSignatureAge > 7) or (AntispywareSignatureAge > 7) or (NISSignatureAge > 7) or\\r\\n          (AMRunningMode == \\\"EDR Block Mode\\\") or (AMRunningMode == \\\"Passive Mode\\\") or\\r\\n          (AntispywareEnabled == false) or\\r\\n         ( (TamperProtectionSource != \\\"ATP\\\") and (TamperProtectionSource != \\\"Intune\\\") ) or (IsTamperProtected == false)\\r\\n        )\\r\\n| project Computer, UserLoggedOn, CollectionTime, MPComputerStatusFound, MPPreferenceFound, AMEngineVersion, AMProductVersion, AMRunningMode, AMServiceEnabled, AMServiceVersion, AntispywareEnabled, AntispywareSignatureAge, AntispywareSignatureLastUpdated, AntispywareSignatureVersion, AntivirusEnabled, AntivirusSignatureAge, AntivirusSignatureLastUpdated, AntivirusSignatureVersion, BehaviorMonitorEnabled, DefenderSignaturesOutOfDate, DisableAutoExclusions, DisableBehaviorMonitoring, DisableRealtimeMonitoring, DisableScanningMappedNetworkDrivesForFullScan, DisableScanningNetworkFiles, DisableScriptScanning, EnableControlledFolderAccess, EnableNetworkProtection,    FullScanAge, IoavProtectionEnabled, IsTamperProtected, IsVirtualMachine, MAPSReporting, NISEnabled, NISEngineVersion, NISSignatureAge, NISSignatureLastUpdated, NISSignatureVersion, OnAccessProtectionEnabled, ProductStatus, PUAProtection, QuickScanAge, RealTimeProtectionEnabled, RealTimeScanDirection, RebootRequired, ScanAvgCPULoadFactor, SignatureUpdateCatchupInterval, SignatureUpdateInterval, SubmitSamplesConsent, TamperProtectionSource \\r\\n| distinct Computer\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"INCOMPLIANT DEFENDER AV | CLIENTS | COUNT \",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "9": {
+            "position": {
+              "x": 5,
+              "y": 4,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "DEFENDER AV - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ( parse_version(AMProductVersion) < parse_version(\\\"4.18.2203\\\") )\\r\\n| project Computer, UserLoggedOn, AMProductVersion\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"AM VERSION TOO OLD DEFENDER AV | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "10": {
+            "position": {
+              "x": 10,
+              "y": 4,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "DEFENDER AV - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where (AntispywareEnabled == false)\\r\\n| project Computer, UserLoggedOn, AMEngineVersion, AMProductVersion, AMRunningMode, AMServiceEnabled, AMServiceVersion, AntispywareEnabled, AntispywareSignatureAge, AntispywareSignatureLastUpdated, AntispywareSignatureVersion, AntivirusEnabled, AntivirusSignatureAge, AntivirusSignatureLastUpdated, AntivirusSignatureVersion, BehaviorMonitorEnabled, DefenderSignaturesOutOfDate, DisableAutoExclusions, DisableBehaviorMonitoring, DisableRealtimeMonitoring, DisableScanningMappedNetworkDrivesForFullScan, DisableScanningNetworkFiles, DisableScriptScanning, EnableControlledFolderAccess, EnableNetworkProtection,    FullScanAge, IoavProtectionEnabled, IsTamperProtected, IsVirtualMachine, MAPSReporting, NISEnabled, NISEngineVersion, NISSignatureAge, NISSignatureLastUpdated, NISSignatureVersion, OnAccessProtectionEnabled, ProductStatus, PUAProtection, QuickScanAge, RealTimeProtectionEnabled, RealTimeScanDirection, RebootRequired, ScanAvgCPULoadFactor, SignatureUpdateCatchupInterval, SignatureUpdateInterval, SubmitSamplesConsent, TamperProtectionSource, CollectionTime, MPComputerStatusFound, MPPreferenceFound\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"ANTISPYWARE NOT ENABLED DEFENDER AV | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "11": {
+            "position": {
+              "x": 15,
+              "y": 4,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/WINDOWS FIREWALL - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "WINDOWS FIREWALL - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsFirewallInfoV2_CL \\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer, Profile\\r\\n| where Enabled != 1                   // 1=Enabled\\r\\n| where DefaultInboundAction != 4      // 4=Block\\r\\n| where DefaultOutboundAction != 2     // 2=Allow\\r\\n| where AllowInboundRules != 1         // 1=True\\r\\n| summarize total = count()\\r\\n\",\"size\":0,\"title\":\"INCOMPLIANT WINDOWS FIREWALL | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "12": {
+            "position": {
+              "x": 0,
+              "y": 6,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "DEFENDER AV - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where (MPComputerStatusFound == false) or (MPPreferenceFound == false)\\r\\n| project Computer, UserLoggedOn,  CollectionTime, MPComputerStatusFound, MPPreferenceFound, AMEngineVersion, AMProductVersion, AMRunningMode, AMServiceEnabled, AMServiceVersion, AntispywareEnabled, AntispywareSignatureAge, AntispywareSignatureLastUpdated, AntispywareSignatureVersion, AntivirusEnabled, AntivirusSignatureAge, AntivirusSignatureLastUpdated, AntivirusSignatureVersion, BehaviorMonitorEnabled, DefenderSignaturesOutOfDate, DisableAutoExclusions, DisableBehaviorMonitoring, DisableRealtimeMonitoring, DisableScanningMappedNetworkDrivesForFullScan, DisableScanningNetworkFiles, DisableScriptScanning, EnableControlledFolderAccess, EnableNetworkProtection,    FullScanAge, IoavProtectionEnabled, IsTamperProtected, IsVirtualMachine, MAPSReporting, NISEnabled, NISEngineVersion, NISSignatureAge, NISSignatureLastUpdated, NISSignatureVersion, OnAccessProtectionEnabled, ProductStatus, PUAProtection, QuickScanAge, RealTimeProtectionEnabled, RealTimeScanDirection, RebootRequired, ScanAvgCPULoadFactor, SignatureUpdateCatchupInterval, SignatureUpdateInterval, SubmitSamplesConsent, TamperProtectionSource \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"DEFENDER AV NOT INSTALED OR ENABLED | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "13": {
+            "position": {
+              "x": 5,
+              "y": 6,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "DEFENDER AV - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where (AntivirusSignatureAge >= 7) or (AntispywareSignatureAge >= 7) or (NISSignatureAge >= 7)\\r\\n| project Computer \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"SIGNATURE TOO OLD DEFENDER AV | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "14": {
+            "position": {
+              "x": 10,
+              "y": 6,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "DEFENDER AV - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where (OnAccessProtectionEnabled == false)\\r\\n| project Computer, UserLoggedOn, AMEngineVersion, AMProductVersion, AMRunningMode, AMServiceEnabled, AMServiceVersion, AntispywareEnabled, AntispywareSignatureAge, AntispywareSignatureLastUpdated, AntispywareSignatureVersion, AntivirusEnabled, AntivirusSignatureAge, AntivirusSignatureLastUpdated, AntivirusSignatureVersion, BehaviorMonitorEnabled, DefenderSignaturesOutOfDate, DisableAutoExclusions, DisableBehaviorMonitoring, DisableRealtimeMonitoring, DisableScanningMappedNetworkDrivesForFullScan, DisableScanningNetworkFiles, DisableScriptScanning, EnableControlledFolderAccess, EnableNetworkProtection,    FullScanAge, IoavProtectionEnabled, IsTamperProtected, IsVirtualMachine, MAPSReporting, NISEnabled, NISEngineVersion, NISSignatureAge, NISSignatureLastUpdated, NISSignatureVersion, OnAccessProtectionEnabled, ProductStatus, PUAProtection, QuickScanAge, RealTimeProtectionEnabled, RealTimeScanDirection, RebootRequired, ScanAvgCPULoadFactor, SignatureUpdateCatchupInterval, SignatureUpdateInterval, SubmitSamplesConsent, TamperProtectionSource, MPComputerStatusFound, MPPreferenceFound, CollectionTime\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"ONACCESSPROTECTION DISABLED DEFENDER AV | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "15": {
+            "position": {
+              "x": 15,
+              "y": 6,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/LOCAL ADMINS - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "LOCAL ADMINS - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientLocalAdminsV2_CL \\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer, Name\\r\\n| where Name notcontains \\\"Domain Admins\\\" and Name notcontains \\\"Administrator\\\"\\r\\n| project Computer, UserLoggedOn, TimeGenerated, Name, ObjectClass\\r\\n| distinct Computer\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"DEVICES WITH NON-STANDARD MEMBERS LOCAL ADMINS GROUP | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "16": {
+            "position": {
+              "x": 0,
+              "y": 8,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "DEFENDER AV - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where (RealTimeProtectionEnabled == false)\\r\\n| project Computer, UserLoggedOn, CollectionTime, MPComputerStatusFound, MPPreferenceFound, AMEngineVersion, AMProductVersion, AMRunningMode, AMServiceEnabled, AMServiceVersion, AntispywareEnabled, AntispywareSignatureAge, AntispywareSignatureLastUpdated, AntispywareSignatureVersion, AntivirusEnabled, AntivirusSignatureAge, AntivirusSignatureLastUpdated, AntivirusSignatureVersion, BehaviorMonitorEnabled, DefenderSignaturesOutOfDate, DisableAutoExclusions, DisableBehaviorMonitoring, DisableRealtimeMonitoring, DisableScanningMappedNetworkDrivesForFullScan, DisableScanningNetworkFiles, DisableScriptScanning, EnableControlledFolderAccess, EnableNetworkProtection,    FullScanAge, IoavProtectionEnabled, IsTamperProtected, IsVirtualMachine, MAPSReporting, NISEnabled, NISEngineVersion, NISSignatureAge, NISSignatureLastUpdated, NISSignatureVersion, OnAccessProtectionEnabled, ProductStatus, PUAProtection, QuickScanAge, RealTimeProtectionEnabled, RealTimeScanDirection, RebootRequired, ScanAvgCPULoadFactor, SignatureUpdateCatchupInterval, SignatureUpdateInterval, SubmitSamplesConsent, TamperProtectionSource \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"REALTIME PROTECTION NOT RUNNING DEFENDER AV | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "17": {
+            "position": {
+              "x": 5,
+              "y": 8,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/INVENTORY COLLECTION ISSUES - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "INVENTORY COLLECTION ISSUES - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"let MissingTable = datatable(ResourceId: string) [];\\r\\nunion isfuzzy=true MissingTable, (InvClientCollectionIssuesV2_CL)\\r\\n| extend Computer = column_ifexists('Computer', '')\\r\\n| extend CollectionTime = column_ifexists('CollectionTime', '')\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"DEVICES WITH COLLECTION ISSUES (FIX WMI) | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "18": {
+            "position": {
+              "x": 10,
+              "y": 8,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/LAPS - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "LAPS - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"let LAPS_Target = \\\"6.2.0.0\\\";\\r\\nInvClientLAPSInfoV2_CL\\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer\\r\\n| where (parse_version(LAPSVersion) < parse_version(LAPS_Target)) or (LAPSVersion == \\\"\\\")\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"INCOMPLIANT LAPS | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "19": {
+            "position": {
+              "x": 0,
+              "y": 10,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "DEFENDER AV - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ( (TamperProtectionSource != \\\"ATP\\\") and (TamperProtectionSource != \\\"Intune\\\") ) or (IsTamperProtected == false)\\r\\n| project Computer\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"TAMPERPROTECTION NOT ENABLED DEFENDER AV | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "20": {
+            "position": {
+              "x": 5,
+              "y": 10,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "OFFICE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ProductReleaseIds contains \\\"O365\\\"\\r\\n| where UpdatesEnabled notcontains \\\"True\\\"\\r\\n| project Computer, CollectionTime, UserLoggedOn, ProductReleaseIds, VersionToReport, OfficeMgmtCOM, Platform, ClientCulture, ClientFolder, CDNBaseUrl, OneDriveClientAddon, TeamsAddon, BingAddon, UpdatesEnabled, UpdateChannel\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"UPDATING O365 OFFICE NOT ENABLED | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "21": {
+            "position": {
+              "x": 10,
+              "y": 10,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "OFFICE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| extend OfficeDescription_ = column_ifexists(\\\"OfficeDescription\\\", \\\"noata_found\\\")\\r\\n| extend OfficeVersionBuild_ = column_ifexists(\\\"OfficeVersionBuild\\\", \\\"noata_found\\\")\\r\\n| extend OfficeProductSKU_ = column_ifexists(\\\"OfficeProductSKU\\\", \\\"noata_found\\\")\\r\\n| extend OfficeInstallationPath_ = column_ifexists(\\\"OfficeInstallationPath\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateChannel_ = column_ifexists(\\\"OfficeUpdateChannel\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateChannelName_ = column_ifexists(\\\"OfficeUpdateChannelName\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateEnabled_ = column_ifexists(\\\"OfficeUpdateEnabled\\\", \\\"noata_found\\\")\\r\\n| extend VersionToReport_ = column_ifexists(\\\"VersionToReport\\\", \\\"noata_found\\\")\\r\\n| extend ProductReleaseIds_ = column_ifexists(\\\"ProductReleaseIds\\\", \\\"noata_found\\\")\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where OfficeProductSKU_ contains \\\"O365\\\"\\r\\n| where OfficeUpdateChannelName_ notcontains \\\"Current Channel\\\"\\r\\n| project Computer, UserLoggedOn, OfficeDescription=OfficeDescription_, OfficeVersionBuild=OfficeVersionBuild_ , OfficeProductSKU=OfficeProductSKU_, OfficeInstallationPath=OfficeInstallationPath_, OfficeUpdateChannel=OfficeUpdateChannel_, OfficeUpdateChannelName=OfficeUpdateChannelName_, OfficeUpdateEnabled=OfficeUpdateEnabled_\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"INCOMPLIANT UPDATE CHANNEL O365 OFFICE | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "22": {
+            "position": {
+              "x": 0,
+              "y": 12,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdateLastResultsV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where LastInstallationSuccessDate < ago(40d)\\r\\n| project Computer, UserLoggedOn, LastInstallationSuccessDate, LastSearchSuccessDate, CollectionTime\\r\\n| sort by Computer asc\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"LAST WINDOWS UPDATE MORE THAN 40 DAYS AGO | CLIENTS | COUNT\",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "23": {
+            "position": {
+              "x": 5,
+              "y": 12,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdatePendingUpdatesV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where LastDeploymentChangeTime < now(-40d)\\r\\n| where Computer != \\\"\\\"\\r\\n| project Computer, UserLoggedOn, KBPublished = LastDeploymentChangeTime, Title=Title_, KB, CollectionTime\\r\\n| sort by Computer asc\\r\\n| distinct Computer\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"CLIENTS WITH PENDING UPDATES OLDER THAN 40 DAYS | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "24": {
+            "position": {
+              "x": 10,
+              "y": 12,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdatePendingUpdatesV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where LastDeploymentChangeTime < now(-40d)\\r\\n| where DriverClass notcontains \\\"Drivers\\\"\\r\\n| sort by Computer asc\\r\\n| distinct Computer\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"CLIENTS WITH PENDING UPDATES OLDER THAN 40 DAYS, NO DRIVERS | CLIENTS | COUNT\",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "model": {
+        "timeRange": {
+          "value": {
+            "relative": {
+              "duration": 24,
+              "timeUnit": 1
+            }
+          },
+          "type": "MsPortalFx.Composition.Configuration.ValueTypes.TimeRange"
+        },
+        "filterLocale": {
+          "value": "en-us"
+        },
+        "filters": {
+          "value": {
+            "MsPortalFx_TimeRange": {
+              "model": {
+                "format": "utc",
+                "granularity": "auto",
+                "relative": "24h"
+              },
+              "displayCache": {
+                "name": "UTC Time",
+                "value": "Past 24 hours"
+              },
+              "filteredPartIds": [
+                "StartboardPart-PinnedNotebookQueryPart-8c976001-dffa-492b-a7ef-7d0762419075",
+                "StartboardPart-PinnedNotebookQueryPart-8c976001-dffa-492b-a7ef-7d0762419077",
+                "StartboardPart-PinnedNotebookQueryPart-8c976001-dffa-492b-a7ef-7d0762419079",
+                "StartboardPart-PinnedNotebookQueryPart-8c976001-dffa-492b-a7ef-7d076241907b",
+                "StartboardPart-PinnedNotebookQueryPart-8c976001-dffa-492b-a7ef-7d076241907d",
+                "StartboardPart-PinnedNotebookQueryPart-8c976001-dffa-492b-a7ef-7d076241907f",
+                "StartboardPart-PinnedNotebookQueryPart-8c976001-dffa-492b-a7ef-7d0762419081",
+                "StartboardPart-PinnedNotebookQueryPart-8c976001-dffa-492b-a7ef-7d0762419083",
+                "StartboardPart-PinnedNotebookQueryPart-8c976001-dffa-492b-a7ef-7d0762419085",
+                "StartboardPart-PinnedNotebookQueryPart-8c976001-dffa-492b-a7ef-7d0762419087",
+                "StartboardPart-PinnedNotebookQueryPart-8c976001-dffa-492b-a7ef-7d0762419089",
+                "StartboardPart-PinnedNotebookQueryPart-8c976001-dffa-492b-a7ef-7d076241908b",
+                "StartboardPart-PinnedNotebookQueryPart-8c976001-dffa-492b-a7ef-7d076241908d",
+                "StartboardPart-PinnedNotebookQueryPart-8c976001-dffa-492b-a7ef-7d076241908f",
+                "StartboardPart-PinnedNotebookQueryPart-8c976001-dffa-492b-a7ef-7d0762419091",
+                "StartboardPart-PinnedNotebookQueryPart-8c976001-dffa-492b-a7ef-7d0762419095",
+                "StartboardPart-PinnedNotebookQueryPart-8c976001-dffa-492b-a7ef-7d0762419097",
+                "StartboardPart-PinnedNotebookQueryPart-8c976001-dffa-492b-a7ef-7d0762419099",
+                "StartboardPart-PinnedNotebookQueryPart-8c976001-dffa-492b-a7ef-7d076241909b",
+                "StartboardPart-PinnedNotebookQueryPart-8c976001-dffa-492b-a7ef-7d076241909d",
+                "StartboardPart-PinnedNotebookQueryPart-8c976001-dffa-492b-a7ef-7d076241909f",
+                "StartboardPart-PinnedNotebookQueryPart-8c976001-dffa-492b-a7ef-7d07624190a1",
+                "StartboardPart-PinnedNotebookQueryPart-8c976001-dffa-492b-a7ef-7d07624190a3",
+                "StartboardPart-PinnedNotebookQueryPart-8c976001-dffa-492b-a7ef-7d07624190a5",
+                "StartboardPart-PinnedNotebookQueryPart-8c976001-dffa-492b-a7ef-7d07624190a7"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "name": "CLIENT KPI STATUS | MANAGED DASHBOARD (V2)",
+  "type": "Microsoft.Portal/dashboards",
+  "location": "INSERT LOCATION",
+  "tags": {
+    "hidden-title": "CLIENT KPI STATUS | MANAGED DASHBOARD (V2)"
+  },
+  "apiVersion": "2015-08-01-preview"
+}

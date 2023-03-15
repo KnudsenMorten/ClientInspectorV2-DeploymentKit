@@ -1,0 +1,311 @@
+{
+  "properties": {
+    "lenses": {
+      "0": {
+        "order": 0,
+        "parts": {
+          "0": {
+            "position": {
+              "x": 0,
+              "y": 0,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/UNEXPECTED SHUTDOWNS - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "UNEXPECTED SHUTDOWNS - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientEventlogInfoV2_CL\\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by MachineName, TimeCreated\\r\\n| project-reorder CollectionTime desc\\r\\n| project-reorder MachineName, Message asc \\r\\n| project-rename EventID=Id_\\r\\n| where EventID == 6008\\r\\n| distinct MachineName\\r\\n| sort by MachineName asc \\r\\n|summarize total = count()\",\"size\":0,\"title\":\"UNEXPECTED SHUTDOWNS | CLIENTS | COUNT\",\"noDataMessageStyle\":3,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "1": {
+            "position": {
+              "x": 0,
+              "y": 2,
+              "colSpan": 17,
+              "rowSpan": 5
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/UNEXPECTED SHUTDOWNS - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "UNEXPECTED SHUTDOWNS - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientEventlogInfoV2_CL\\r\\n| where TimeCreated > ago(7d)\\r\\n| project-rename EventID=Id_\\r\\n| where EventID == 6008\\r\\n| sort by MachineName asc \\r\\n| summarize total = count() by bin(TimeCreated, 1d)\",\"size\":0,\"aggregation\":3,\"title\":\"UNEXPECTED SHUTDOWNS | CLIENTS | TIME 7 DAYS\",\"noDataMessageStyle\":3,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"timechart\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"},\"chartSettings\":{\"ySettings\":{\"numberFormatSettings\":{\"unit\":0,\"options\":{\"style\":\"decimal\",\"useGrouping\":true,\"minimumFractionDigits\":0,\"maximumFractionDigits\":0}}}}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "2": {
+            "position": {
+              "x": 0,
+              "y": 7,
+              "colSpan": 17,
+              "rowSpan": 5
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/UNEXPECTED SHUTDOWNS - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "UNEXPECTED SHUTDOWNS - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientEventlogInfoV2_CL\\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by MachineName, TimeCreated\\r\\n| project-reorder MachineName, Message asc \\r\\n| project-rename EventID = Id_\\r\\n| where EventID == 6008\\r\\n| sort by MachineName asc \",\"size\":0,\"showAnalytics\":true,\"title\":\"UNEXPECTED SHUTDOWNS | CLIENTS | GROUPED\",\"noDataMessageStyle\":3,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true,\"hierarchySettings\":{\"treeType\":1,\"groupBy\":[\"MachineName\"],\"expandTopLevel\":true}}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "3": {
+            "position": {
+              "x": 0,
+              "y": 12,
+              "colSpan": 17,
+              "rowSpan": 5
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/UNEXPECTED SHUTDOWNS - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "UNEXPECTED SHUTDOWNS - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientEventlogInfoV2_CL\\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by MachineName, TimeCreated\\r\\n| project-rename EventID = Id_\\r\\n| where EventID == 6008\\r\\n| project Computer, UserLoggedOn, CollectionTime, MachineName, TimeGenerated, Message\\r\\n| sort by Computer asc \",\"size\":0,\"showAnalytics\":true,\"title\":\"UNEXPECTED SHUTDOWNS | CLIENTS | LIST\",\"noDataMessageStyle\":3,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "model": {
+        "timeRange": {
+          "value": {
+            "relative": {
+              "duration": 24,
+              "timeUnit": 1
+            }
+          },
+          "type": "MsPortalFx.Composition.Configuration.ValueTypes.TimeRange"
+        },
+        "filterLocale": {
+          "value": "en-us"
+        },
+        "filters": {
+          "value": {
+            "MsPortalFx_TimeRange": {
+              "model": {
+                "format": "utc",
+                "granularity": "auto",
+                "relative": "24h"
+              },
+              "displayCache": {
+                "name": "UTC Time",
+                "value": "Past 24 hours"
+              },
+              "filteredPartIds": [
+                "StartboardPart-PinnedNotebookQueryPart-8e836176-7a1a-46c8-a5c9-46be924100c7",
+                "StartboardPart-PinnedNotebookQueryPart-8e836176-7a1a-46c8-a5c9-46be924100c9",
+                "StartboardPart-PinnedNotebookQueryPart-8e836176-7a1a-46c8-a5c9-46be924100cb",
+                "StartboardPart-PinnedNotebookQueryPart-8e836176-7a1a-46c8-a5c9-46be924100cd"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "name": "UNEXPECTED SHUTDOWNS | CLIENTS | MANAGED DASHBOARD (V2)",
+  "type": "Microsoft.Portal/dashboards",
+  "location": "INSERT LOCATION",
+  "tags": {
+    "hidden-title": "UNEXPECTED SHUTDOWNS | CLIENTS | MANAGED DASHBOARD (V2)"
+  },
+  "apiVersion": "2015-08-01-preview"
+}

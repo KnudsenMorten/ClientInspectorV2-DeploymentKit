@@ -1,0 +1,1286 @@
+{
+  "properties": {
+    "lenses": {
+      "0": {
+        "order": 0,
+        "parts": {
+          "0": {
+            "position": {
+              "x": 0,
+              "y": 0,
+              "colSpan": 6,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdatePendingUpdatesV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where LastDeploymentChangeTime < now(-40d)\\r\\n| where Computer != \\\"\\\"\\r\\n| project Computer, UserLoggedOn, KBPublished = LastDeploymentChangeTime, Title=Title_, KB, CollectionTime\\r\\n| sort by Computer asc\\r\\n| distinct Computer\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"CLIENTS WITH PENDING UPDATES OLDER THAN 40 DAYS | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "1": {
+            "position": {
+              "x": 6,
+              "y": 0,
+              "colSpan": 6,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdateLastResultsV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where LastInstallationSuccessDate < ago(40d)\\r\\n| project Computer, UserLoggedOn, LastInstallationSuccessDate, LastSearchSuccessDate, CollectionTime\\r\\n| sort by Computer asc\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"LAST WINDOWS UPDATE MORE THAN 40 DAYS AGO | CLIENTS | COUNT\",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "2": {
+            "position": {
+              "x": 0,
+              "y": 2,
+              "colSpan": 6,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdatePendingUpdatesV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where LastDeploymentChangeTime < now(-40d)\\r\\n| where DriverClass notcontains \\\"Drivers\\\"\\r\\n| sort by Computer asc\\r\\n| distinct Computer\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"CLIENTS WITH PENDING UPDATES OLDER THAN 40 DAYS, NO DRIVERS | CLIENTS | COUNT\",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "3": {
+            "position": {
+              "x": 6,
+              "y": 2,
+              "colSpan": 6,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdateServiceManagerV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer, Name\\r\\n| where Name contains \\\"Microsoft Update\\\"\\r\\n| project Computer, UserLoggedOn, Name, IsDefaultAUService, IsManaged\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\\r\\n\",\"size\":0,\"title\":\"UPDATE SOURCE MICROSOFT UPDATE | CLIENTS | COUNT\",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"blue\"}},\"showBorder\":false}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "4": {
+            "position": {
+              "x": 0,
+              "y": 4,
+              "colSpan": 6,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdateServiceManagerV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer, Name\\r\\n| where Name contains \\\"Windows Update\\\"\\r\\n| project Computer, UserLoggedOn, Name, IsDefaultAUService, IsManaged\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\\r\\n\",\"size\":0,\"title\":\"UPDATE SOURCE WINDOWS UPDATE | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"blue\"}},\"showBorder\":false}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "5": {
+            "position": {
+              "x": 0,
+              "y": 6,
+              "colSpan": 19,
+              "rowSpan": 6
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdatePendingUpdatesV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where LastDeploymentChangeTime < now(-40d)\\r\\n| sort by Computer asc \",\"size\":0,\"showAnalytics\":true,\"title\":\"CLIENTS WITH PENDING UPDATES OLDER THAN 40 DAYS | CLIENTS | LIST\",\"noDataMessageStyle\":3,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "6": {
+            "position": {
+              "x": 0,
+              "y": 12,
+              "colSpan": 19,
+              "rowSpan": 5
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdatePendingUpdatesV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where (DriverClass notcontains \\\"Drivers\\\") and (DriverClass notcontains \\\"Firmware\\\")\\r\\n| where LastDeploymentChangeTime < now(-40d)\\r\\n| sort by Computer asc \",\"size\":0,\"showAnalytics\":true,\"title\":\"CLIENTS WITH PENDING UPDATES OLDER THAN 40 DAYS, NO DRIVERS | CLIENTS | LIST \",\"noDataMessageStyle\":3,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "7": {
+            "position": {
+              "x": 0,
+              "y": 17,
+              "colSpan": 19,
+              "rowSpan": 5
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdatePendingUpdatesV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where LastDeploymentChangeTime < now(-40d)\\r\\n| summarize total = count() by Computer\\r\\n| sort by total desc\",\"size\":0,\"showAnalytics\":true,\"title\":\"CLIENTS WITH PENDING UPDATES OLDER THAN 40 DAYS | CLIENTS | SUM BY CLIENTS\",\"noDataMessageStyle\":3,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "8": {
+            "position": {
+              "x": 0,
+              "y": 22,
+              "colSpan": 19,
+              "rowSpan": 5
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdatePendingUpdatesV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where LastDeploymentChangeTime < now(-40d)\\r\\n| where (DriverClass notcontains \\\"Drivers\\\") and (DriverClass notcontains \\\"Firmware\\\")\\r\\n| summarize total = count() by Computer\\r\\n| sort by total desc\",\"size\":0,\"showAnalytics\":true,\"title\":\"CLIENTS WITH PENDING UPDATES OLDER THAN 40 DAYS, NO DRIVERS | CLIENTS | SUM BY CLIENTS\",\"noDataMessageStyle\":3,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "9": {
+            "position": {
+              "x": 0,
+              "y": 27,
+              "colSpan": 19,
+              "rowSpan": 6
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdatePendingUpdatesV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where LastDeploymentChangeTime < now(-40d)\\r\\n| sort by Computer asc \",\"size\":0,\"showAnalytics\":true,\"title\":\"CLIENTS WITH PENDING UPDATES OLDER THAN 40 DAYS | CLIENTS | GROUPED CLASSIFICATION\",\"noDataMessageStyle\":3,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"table\",\"gridSettings\":{\"formatters\":[{\"columnMatch\":\"Group\",\"formatter\":1}],\"rowLimit\":10000,\"filter\":true,\"hierarchySettings\":{\"treeType\":1,\"groupBy\":[\"DriverClass\",\"Title\"]}}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "10": {
+            "position": {
+              "x": 0,
+              "y": 33,
+              "colSpan": 19,
+              "rowSpan": 6
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdatePendingUpdatesV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where LastDeploymentChangeTime < now(-40d)\\r\\n| sort by KB asc \",\"size\":0,\"showAnalytics\":true,\"title\":\"CLIENTS WITH PENDING UPDATES OLDER THAN 40 DAYS | CLIENTS | GROUPED KBPUBLISHED\",\"noDataMessageStyle\":3,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"formatters\":[{\"columnMatch\":\"KBPublished\",\"formatter\":6,\"numberFormat\":{\"unit\":0,\"options\":{\"style\":\"decimal\"}},\"dateFormat\":{\"showUtcTime\":null,\"formatName\":\"yearMonthPattern\"}}],\"rowLimit\":10000,\"filter\":true}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "11": {
+            "position": {
+              "x": 0,
+              "y": 39,
+              "colSpan": 19,
+              "rowSpan": 7
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdatePendingUpdatesV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where LastDeploymentChangeTime < now(-40d)\\r\\n| sort by KB asc \",\"size\":0,\"showAnalytics\":true,\"title\":\"CLIENTS WITH PENDING UPDATES OLDER THAN 40 DAYS, NO DRIVERS | CLIENTS | SORTED KBPUBLISHED\",\"noDataMessageStyle\":3,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"formatters\":[{\"columnMatch\":\"KBPublished\",\"formatter\":6,\"numberFormat\":{\"unit\":0,\"options\":{\"style\":\"decimal\"}},\"dateFormat\":{\"showUtcTime\":null,\"formatName\":\"yearMonthPattern\"}}],\"rowLimit\":10000,\"filter\":true}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "12": {
+            "position": {
+              "x": 0,
+              "y": 46,
+              "colSpan": 19,
+              "rowSpan": 6
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdatePendingUpdatesV2_CL\\r\\n| where Computer != \\\"\\\"\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| sort by Computer asc \",\"size\":0,\"showAnalytics\":true,\"title\":\"WINDOWS UPDATE COMPLIANCE OVERVIEW | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "13": {
+            "position": {
+              "x": 0,
+              "y": 52,
+              "colSpan": 19,
+              "rowSpan": 5
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdateLastInstallationsV2_CL \\r\\n| where Computer != \\\"\\\"\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| sort by Computer asc\",\"size\":0,\"showAnalytics\":true,\"title\":\"WINDOWS UPDATE HISTORY | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "14": {
+            "position": {
+              "x": 0,
+              "y": 57,
+              "colSpan": 19,
+              "rowSpan": 5
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdateLastResultsV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| project Computer, UserLoggedOn, LastInstallationSuccessDate, LastSearchSuccessDate, CollectionTime\\r\\n| sort by Computer asc\",\"size\":0,\"showAnalytics\":true,\"title\":\"LAST WINDOWS UPDATE RESULTS | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "15": {
+            "position": {
+              "x": 0,
+              "y": 62,
+              "colSpan": 19,
+              "rowSpan": 6
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdateServiceManagerV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer, Name\\r\\n| project Computer, UserLoggedOn, Name, IsDefaultAUService, IsManaged\\r\\n| sort by Computer asc \\r\\n\",\"size\":0,\"showAnalytics\":true,\"title\":\"WINDOWS UPDATE SOURCE | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "16": {
+            "position": {
+              "x": 0,
+              "y": 68,
+              "colSpan": 19,
+              "rowSpan": 5
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdateServiceManagerV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer, Name\\r\\n| where Name contains \\\"Windows Update\\\"\\r\\n| project Computer, UserLoggedOn, Name, IsDefaultAUService, IsManaged\\r\\n| sort by Computer asc \\r\\n\",\"size\":0,\"showAnalytics\":true,\"title\":\"UPDATE SOURCE WINDOWS UPDATE | CLIENTS | LIST\",\"noDataMessageStyle\":3,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "17": {
+            "position": {
+              "x": 0,
+              "y": 73,
+              "colSpan": 19,
+              "rowSpan": 5
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdateLastResultsV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where LastInstallationSuccessDate < ago(40d)\\r\\n| project Computer, UserLoggedOn, LastInstallationSuccessDate, LastSearchSuccessDate, CollectionTime\\r\\n| sort by Computer asc\",\"size\":0,\"showAnalytics\":true,\"title\":\"LAST WINDOWS UPDATE MORE THAN 40 DAYS AGO | CLIENTS | LIST\",\"noDataMessageStyle\":3,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "18": {
+            "position": {
+              "x": 0,
+              "y": 78,
+              "colSpan": 19,
+              "rowSpan": 6
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "WINDOWS UPDATE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdateServiceManagerV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer, Name\\r\\n| where Name contains \\\"Microsoft Update\\\"\\r\\n| project Computer, UserLoggedOn, Name, IsDefaultAUService, IsManaged\\r\\n| sort by Computer asc \\r\\n\",\"size\":0,\"showAnalytics\":true,\"title\":\"PATCH UPDATE SOURCE MICROSOFT UPDATE | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "model": {
+        "timeRange": {
+          "value": {
+            "relative": {
+              "duration": 24,
+              "timeUnit": 1
+            }
+          },
+          "type": "MsPortalFx.Composition.Configuration.ValueTypes.TimeRange"
+        },
+        "filterLocale": {
+          "value": "en-us"
+        },
+        "filters": {
+          "value": {
+            "MsPortalFx_TimeRange": {
+              "model": {
+                "format": "utc",
+                "granularity": "auto",
+                "relative": "24h"
+              },
+              "displayCache": {
+                "name": "UTC Time",
+                "value": "Past 24 hours"
+              },
+              "filteredPartIds": [
+                "StartboardPart-PinnedNotebookQueryPart-b0a58b79-2645-4c8a-abe3-ba651195b092",
+                "StartboardPart-PinnedNotebookQueryPart-b0a58b79-2645-4c8a-abe3-ba651195b094",
+                "StartboardPart-PinnedNotebookQueryPart-b0a58b79-2645-4c8a-abe3-ba651195b096",
+                "StartboardPart-PinnedNotebookQueryPart-b0a58b79-2645-4c8a-abe3-ba651195b098",
+                "StartboardPart-PinnedNotebookQueryPart-b0a58b79-2645-4c8a-abe3-ba651195b09a",
+                "StartboardPart-PinnedNotebookQueryPart-b0a58b79-2645-4c8a-abe3-ba651195b09c",
+                "StartboardPart-PinnedNotebookQueryPart-b0a58b79-2645-4c8a-abe3-ba651195b09e",
+                "StartboardPart-PinnedNotebookQueryPart-b0a58b79-2645-4c8a-abe3-ba651195b0a0",
+                "StartboardPart-PinnedNotebookQueryPart-b0a58b79-2645-4c8a-abe3-ba651195b0a2",
+                "StartboardPart-PinnedNotebookQueryPart-b0a58b79-2645-4c8a-abe3-ba651195b0a4",
+                "StartboardPart-PinnedNotebookQueryPart-b0a58b79-2645-4c8a-abe3-ba651195b0a6",
+                "StartboardPart-PinnedNotebookQueryPart-b0a58b79-2645-4c8a-abe3-ba651195b0a8",
+                "StartboardPart-PinnedNotebookQueryPart-b0a58b79-2645-4c8a-abe3-ba651195b0aa",
+                "StartboardPart-PinnedNotebookQueryPart-b0a58b79-2645-4c8a-abe3-ba651195b0ac",
+                "StartboardPart-PinnedNotebookQueryPart-b0a58b79-2645-4c8a-abe3-ba651195b0ae",
+                "StartboardPart-PinnedNotebookQueryPart-b0a58b79-2645-4c8a-abe3-ba651195b0b0",
+                "StartboardPart-PinnedNotebookQueryPart-b0a58b79-2645-4c8a-abe3-ba651195b0b2",
+                "StartboardPart-PinnedNotebookQueryPart-b0a58b79-2645-4c8a-abe3-ba651195b0b4",
+                "StartboardPart-PinnedNotebookQueryPart-b0a58b79-2645-4c8a-abe3-ba651195b0b6"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "name": "WINDOWS UPDATE | CLIENTS | MANAGED DASHBOARD (V2)",
+  "type": "Microsoft.Portal/dashboards",
+  "location": "INSERT LOCATION",
+  "tags": {
+    "hidden-title": "WINDOWS UPDATE | CLIENTS | MANAGED DASHBOARD (V2)"
+  },
+  "apiVersion": "2015-08-01-preview"
+}

@@ -1,0 +1,766 @@
+{
+  "properties": {
+    "lenses": {
+      "0": {
+        "order": 0,
+        "parts": {
+          "0": {
+            "position": {
+              "x": 0,
+              "y": 0,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "OFFICE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ProductReleaseIds contains \\\"O365\\\"\\r\\n| where UpdatesEnabled notcontains \\\"True\\\"\\r\\n| project Computer, CollectionTime, UserLoggedOn, ProductReleaseIds, VersionToReport, OfficeMgmtCOM, Platform, ClientCulture, ClientFolder, CDNBaseUrl, OneDriveClientAddon, TeamsAddon, BingAddon, UpdatesEnabled, UpdateChannel\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"UPDATING O365 OFFICE NOT ENABLED | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "1": {
+            "position": {
+              "x": 5,
+              "y": 0,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "OFFICE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| extend OfficeDescription_ = column_ifexists(\\\"OfficeDescription\\\", \\\"noata_found\\\")\\r\\n| extend OfficeVersionBuild_ = column_ifexists(\\\"OfficeVersionBuild\\\", \\\"noata_found\\\")\\r\\n| extend OfficeProductSKU_ = column_ifexists(\\\"OfficeProductSKU\\\", \\\"noata_found\\\")\\r\\n| extend OfficeInstallationPath_ = column_ifexists(\\\"OfficeInstallationPath\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateChannel_ = column_ifexists(\\\"OfficeUpdateChannel\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateChannelName_ = column_ifexists(\\\"OfficeUpdateChannelName\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateEnabled_ = column_ifexists(\\\"OfficeUpdateEnabled\\\", \\\"noata_found\\\")\\r\\n| extend VersionToReport_ = column_ifexists(\\\"VersionToReport\\\", \\\"noata_found\\\")\\r\\n| extend ProductReleaseIds_ = column_ifexists(\\\"ProductReleaseIds\\\", \\\"noata_found\\\")\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where OfficeProductSKU_ contains \\\"O365\\\"\\r\\n| where OfficeUpdateChannelName_ notcontains \\\"Current Channel\\\"\\r\\n| project Computer, UserLoggedOn, OfficeDescription=OfficeDescription_, OfficeVersionBuild=OfficeVersionBuild_ , OfficeProductSKU=OfficeProductSKU_, OfficeInstallationPath=OfficeInstallationPath_, OfficeUpdateChannel=OfficeUpdateChannel_, OfficeUpdateChannelName=OfficeUpdateChannelName_, OfficeUpdateEnabled=OfficeUpdateEnabled_\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"INCOMPLIANT UPDATE CHANNEL O365 OFFICE | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "2": {
+            "position": {
+              "x": 10,
+              "y": 0,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "OFFICE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ProductReleaseIds contains \\\"O365\\\"\\r\\n| project Computer, CollectionTime, UserLoggedOn, ProductReleaseIds, VersionToReport, OfficeMgmtCOM, Platform, ClientCulture, ClientFolder, CDNBaseUrl, OneDriveClientAddon, TeamsAddon, BingAddon, UpdatesEnabled, UpdateChannel\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"O365 OFFICE | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"green\"}},\"showBorder\":false}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "3": {
+            "position": {
+              "x": 15,
+              "y": 0,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "OFFICE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| extend OfficeDescription_ = column_ifexists(\\\"OfficeDescription\\\", \\\"noata_found\\\")\\r\\n| extend OfficeVersionBuild_ = column_ifexists(\\\"OfficeVersionBuild\\\", \\\"noata_found\\\")\\r\\n| extend OfficeProductSKU_ = column_ifexists(\\\"OfficeProductSKU\\\", \\\"noata_found\\\")\\r\\n| extend OfficeInstallationPath_ = column_ifexists(\\\"OfficeInstallationPath\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateChannel_ = column_ifexists(\\\"OfficeUpdateChannel\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateChannelName_ = column_ifexists(\\\"OfficeUpdateChannelName\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateEnabled_ = column_ifexists(\\\"OfficeUpdateEnabled\\\", \\\"noata_found\\\")\\r\\n| extend VersionToReport_ = column_ifexists(\\\"VersionToReport\\\", \\\"noata_found\\\")\\r\\n| extend ProductReleaseIds_ = column_ifexists(\\\"ProductReleaseIds\\\", \\\"noata_found\\\")\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer, OfficeDescription_\\r\\n| where OfficeDescription_ contains \\\"2016\\\" and OfficeProductSKU_ contains \\\"O365\\\"\\r\\n| project Computer, UserLoggedOn, OfficeDescription=OfficeDescription_, OfficeVersionBuild=OfficeVersionBuild_ , OfficeProductSKU=OfficeProductSKU_, OfficeInstallationPath=OfficeInstallationPath_, OfficeUpdateChannel=OfficeUpdateChannel_, OfficeUpdateChannelName=OfficeUpdateChannelName_, OfficeUpdateEnabled=OfficeUpdateEnabled_\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"STANDALONE OFFICE 2016 | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "4": {
+            "position": {
+              "x": 20,
+              "y": 0,
+              "colSpan": 5,
+              "rowSpan": 2
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "OFFICE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| extend OfficeDescription_ = column_ifexists(\\\"OfficeDescription\\\", \\\"noata_found\\\")\\r\\n| extend OfficeVersionBuild_ = column_ifexists(\\\"OfficeVersionBuild\\\", \\\"noata_found\\\")\\r\\n| extend OfficeProductSKU_ = column_ifexists(\\\"OfficeProductSKU\\\", \\\"noata_found\\\")\\r\\n| extend OfficeInstallationPath_ = column_ifexists(\\\"OfficeInstallationPath\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateChannel_ = column_ifexists(\\\"OfficeUpdateChannel\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateChannelName_ = column_ifexists(\\\"OfficeUpdateChannelName\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateEnabled_ = column_ifexists(\\\"OfficeUpdateEnabled\\\", \\\"noata_found\\\")\\r\\n| extend VersionToReport_ = column_ifexists(\\\"VersionToReport\\\", \\\"noata_found\\\")\\r\\n| extend ProductReleaseIds_ = column_ifexists(\\\"ProductReleaseIds\\\", \\\"noata_found\\\")\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where OfficeDescription_ contains \\\"2013\\\" and ProductReleaseIds_ notcontains \\\"O365\\\"\\r\\n| project Computer, UserLoggedOn, OfficeDescription=OfficeDescription_, OfficeVersionBuild=OfficeVersionBuild_ , OfficeProductSKU=OfficeProductSKU_, OfficeInstallationPath=OfficeInstallationPath_, OfficeUpdateChannel=OfficeUpdateChannel_, OfficeUpdateChannelName=OfficeUpdateChannelName_, OfficeUpdateEnabled=OfficeUpdateEnabled_\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"LEGACY OFFICE | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "5": {
+            "position": {
+              "x": 0,
+              "y": 2,
+              "colSpan": 25,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "OFFICE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ProductReleaseIds contains \\\"O365\\\"\\r\\n| project Computer, CollectionTime, UserLoggedOn, ProductReleaseIds, VersionToReport, OfficeMgmtCOM, Platform, ClientCulture, ClientFolder, CDNBaseUrl, OneDriveClientAddon, TeamsAddon, BingAddon, UpdatesEnabled, UpdateChannel\\r\\n| sort by Computer asc \\r\\n\",\"size\":0,\"title\":\"O365 OFFICE | CLIENTS | LIST\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"table\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"green\"}},\"showBorder\":false}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "6": {
+            "position": {
+              "x": 0,
+              "y": 6,
+              "colSpan": 25,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "OFFICE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ProductReleaseIds contains \\\"O365\\\"\\r\\n| where UpdateChannel notcontains \\\"492350f6-3a01-4f97-b9c0-c7c6ddf67d60\\\"  // 492350f6-3a01-4f97-b9c0-c7c6ddf67d60 = Current channel\\r\\n| project Computer, CollectionTime, UserLoggedOn, ProductReleaseIds, VersionToReport, OfficeMgmtCOM, Platform, ClientCulture, ClientFolder, CDNBaseUrl, OneDriveClientAddon, TeamsAddon, BingAddon, UpdatesEnabled, UpdateChannel\\r\\n| sort by Computer asc \",\"size\":0,\"title\":\"INCOMPLIANT UPDATE CHANNEL O365 OFFICE | CLIENTS | LIST\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"table\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"green\"}},\"showBorder\":false}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "7": {
+            "position": {
+              "x": 0,
+              "y": 10,
+              "colSpan": 25,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "OFFICE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ProductReleaseIds contains \\\"O365\\\"\\r\\n| where UpdatesEnabled notcontains \\\"True\\\"\\r\\n| project Computer, CollectionTime, UserLoggedOn, ProductReleaseIds, VersionToReport, OfficeMgmtCOM, Platform, ClientCulture, ClientFolder, CDNBaseUrl, OneDriveClientAddon, TeamsAddon, BingAddon, UpdatesEnabled, UpdateChannel\\r\\n| sort by Computer asc \\r\\n\",\"size\":0,\"title\":\"UPDATING O365 OFFICE NOT ENABLED | CLIENTS | LIST\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"table\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "8": {
+            "position": {
+              "x": 0,
+              "y": 14,
+              "colSpan": 25,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "OFFICE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| extend OfficeDescription_ = column_ifexists(\\\"OfficeDescription\\\", \\\"noata_found\\\")\\r\\n| extend OfficeVersionBuild_ = column_ifexists(\\\"OfficeVersionBuild\\\", \\\"noata_found\\\")\\r\\n| extend OfficeProductSKU_ = column_ifexists(\\\"OfficeProductSKU\\\", \\\"noata_found\\\")\\r\\n| extend OfficeInstallationPath_ = column_ifexists(\\\"OfficeInstallationPath\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateChannel_ = column_ifexists(\\\"OfficeUpdateChannel\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateChannelName_ = column_ifexists(\\\"OfficeUpdateChannelName\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateEnabled_ = column_ifexists(\\\"OfficeUpdateEnabled\\\", \\\"noata_found\\\")\\r\\n| extend VersionToReport_ = column_ifexists(\\\"VersionToReport\\\", \\\"noata_found\\\")\\r\\n| extend ProductReleaseIds_ = column_ifexists(\\\"ProductReleaseIds\\\", \\\"noata_found\\\")\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer, OfficeDescription_\\r\\n| where OfficeDescription_ contains \\\"2016\\\" and OfficeProductSKU_ contains \\\"O365\\\"\\r\\n| project Computer, UserLoggedOn, OfficeDescription=OfficeDescription_, OfficeVersionBuild=OfficeVersionBuild_ , OfficeProductSKU=OfficeProductSKU_, OfficeInstallationPath=OfficeInstallationPath_, OfficeUpdateChannel=OfficeUpdateChannel_, OfficeUpdateChannelName=OfficeUpdateChannelName_, OfficeUpdateEnabled=OfficeUpdateEnabled_\\r\\n| sort by Computer asc \",\"size\":0,\"showAnalytics\":true,\"title\":\"STANDALONE OFFICE 2016 | CLIENTS | LIST\",\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "9": {
+            "position": {
+              "x": 0,
+              "y": 18,
+              "colSpan": 25,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "OFFICE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| extend OfficeDescription_ = column_ifexists(\\\"OfficeDescription\\\", \\\"noata_found\\\")\\r\\n| extend OfficeVersionBuild_ = column_ifexists(\\\"OfficeVersionBuild\\\", \\\"noata_found\\\")\\r\\n| extend OfficeProductSKU_ = column_ifexists(\\\"OfficeProductSKU\\\", \\\"noata_found\\\")\\r\\n| extend OfficeInstallationPath_ = column_ifexists(\\\"OfficeInstallationPath\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateChannel_ = column_ifexists(\\\"OfficeUpdateChannel\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateChannelName_ = column_ifexists(\\\"OfficeUpdateChannelName\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateEnabled_ = column_ifexists(\\\"OfficeUpdateEnabled\\\", \\\"noata_found\\\")\\r\\n| extend VersionToReport_ = column_ifexists(\\\"VersionToReport\\\", \\\"noata_found\\\")\\r\\n| extend ProductReleaseIds_ = column_ifexists(\\\"ProductReleaseIds\\\", \\\"noata_found\\\")\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where OfficeDescription_ contains \\\"2013\\\" and ProductReleaseIds_ notcontains \\\"O365\\\"\\r\\n| project Computer, UserLoggedOn, OfficeDescription=OfficeDescription_, OfficeVersionBuild=OfficeVersionBuild_ , OfficeProductSKU=OfficeProductSKU_, OfficeInstallationPath=OfficeInstallationPath_, OfficeUpdateChannel=OfficeUpdateChannel_, OfficeUpdateChannelName=OfficeUpdateChannelName_, OfficeUpdateEnabled=OfficeUpdateEnabled_\\r\\n| sort by Computer asc \\r\\n//| summarize total = count()\",\"size\":0,\"title\":\"LEGACY OFFICE | CLIENTS | LIST\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"table\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "10": {
+            "position": {
+              "x": 0,
+              "y": 22,
+              "colSpan": 25,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "OFFICE - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| extend OfficeDescription_ = column_ifexists(\\\"OfficeDescription\\\", \\\"noata_found\\\")\\r\\n| extend OfficeVersionBuild_ = column_ifexists(\\\"OfficeVersionBuild\\\", \\\"noata_found\\\")\\r\\n| extend OfficeProductSKU_ = column_ifexists(\\\"OfficeProductSKU\\\", \\\"noata_found\\\")\\r\\n| extend OfficeInstallationPath_ = column_ifexists(\\\"OfficeInstallationPath\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateChannel_ = column_ifexists(\\\"OfficeUpdateChannel\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateChannelName_ = column_ifexists(\\\"OfficeUpdateChannelName\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateEnabled_ = column_ifexists(\\\"OfficeUpdateEnabled\\\", \\\"noata_found\\\")\\r\\n| extend VersionToReport_ = column_ifexists(\\\"VersionToReport\\\", \\\"noata_found\\\")\\r\\n| extend ProductReleaseIds_ = column_ifexists(\\\"ProductReleaseIds\\\", \\\"noata_found\\\")\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| project Computer, UserLoggedOn, ProductReleaseIds, VersionToReport, OfficeMgmtCOM, Platform, ClientCulture, ClientFolder, CDNBaseUrl, OneDriveClientAddon, TeamsAddon, BingAddon, UpdatesEnabled, UpdateChannel, OfficeDescription=OfficeDescription_, OfficeVersionBuild=OfficeVersionBuild_ , OfficeProductSKU=OfficeProductSKU_, OfficeInstallationPath=OfficeInstallationPath_, OfficeUpdateChannel=OfficeUpdateChannel_, OfficeUpdateChannelName=OfficeUpdateChannelName_, OfficeUpdateEnabled=OfficeUpdateEnabled_\\r\\n| sort by Computer asc \",\"size\":0,\"showAnalytics\":true,\"title\":\"OFFICE OVERVIEW | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true,\"sortBy\":[{\"itemKey\":\"ProductReleaseIds\",\"sortOrder\":2}]},\"sortBy\":[{\"itemKey\":\"ProductReleaseIds\",\"sortOrder\":2}]}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "model": {
+        "timeRange": {
+          "value": {
+            "relative": {
+              "duration": 24,
+              "timeUnit": 1
+            }
+          },
+          "type": "MsPortalFx.Composition.Configuration.ValueTypes.TimeRange"
+        },
+        "filterLocale": {
+          "value": "en-us"
+        },
+        "filters": {
+          "value": {
+            "MsPortalFx_TimeRange": {
+              "model": {
+                "format": "utc",
+                "granularity": "auto",
+                "relative": "24h"
+              },
+              "displayCache": {
+                "name": "UTC Time",
+                "value": "Past 24 hours"
+              },
+              "filteredPartIds": [
+                "StartboardPart-PinnedNotebookQueryPart-0229bed7-5bba-4ff0-a7e8-52c4ecd81155",
+                "StartboardPart-PinnedNotebookQueryPart-0229bed7-5bba-4ff0-a7e8-52c4ecd81157",
+                "StartboardPart-PinnedNotebookQueryPart-0229bed7-5bba-4ff0-a7e8-52c4ecd81159",
+                "StartboardPart-PinnedNotebookQueryPart-0229bed7-5bba-4ff0-a7e8-52c4ecd8115b",
+                "StartboardPart-PinnedNotebookQueryPart-0229bed7-5bba-4ff0-a7e8-52c4ecd8115d",
+                "StartboardPart-PinnedNotebookQueryPart-0229bed7-5bba-4ff0-a7e8-52c4ecd8115f",
+                "StartboardPart-PinnedNotebookQueryPart-0229bed7-5bba-4ff0-a7e8-52c4ecd81161",
+                "StartboardPart-PinnedNotebookQueryPart-0229bed7-5bba-4ff0-a7e8-52c4ecd81163",
+                "StartboardPart-PinnedNotebookQueryPart-0229bed7-5bba-4ff0-a7e8-52c4ecd81165",
+                "StartboardPart-PinnedNotebookQueryPart-0229bed7-5bba-4ff0-a7e8-52c4ecd81167",
+                "StartboardPart-PinnedNotebookQueryPart-0229bed7-5bba-4ff0-a7e8-52c4ecd81169"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "name": "OFFICE | CLIENTS | MANAGED DASHBOARD (V2)",
+  "type": "Microsoft.Portal/dashboards",
+  "location": "INSERT LOCATION",
+  "tags": {
+    "hidden-title": "OFFICE | CLIENTS | MANAGED DASHBOARD (V2)"
+  },
+  "apiVersion": "2015-08-01-preview"
+}
