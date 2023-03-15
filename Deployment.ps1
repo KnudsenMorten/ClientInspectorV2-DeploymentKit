@@ -50,6 +50,10 @@
 # Variables
 #------------------------------------------------------------------------------------------------------------
 
+
+    # put in your path where ClientInspector, AzLogDcrIngestPS and workbooks/dashboards will be downloaded to !
+    $FolderRoot                            = (Get-location).Path
+   
     # Azure App
     $AzureAppName                          = "<put in name for your Azure App used for log ingestion>" # sample - "xxxx - Automation - Log-Ingestion"
     $AzAppSecretName                       = "Secret used for Log-Ingestion"  # sample showed - use any text to show purpose of secret on Azure app
@@ -81,9 +85,112 @@
     $Dashboard_Repository_Path             = "$($ScriptDirectory)\AZURE_DASHBOARDS_LATEST_RELEASE_v2"
     
 
+    $WorkBook_Repository_Path              = "AZURE_WORKBOOKS_LATEST_RELEASE_V2"
+    $Dashboard_Repository_Path             = "AZURE_DASHBOARDS_LATEST_RELEASE_V2"
+
+    $Workbooks    = @("ANTIVIRUS SECURITY CENTER - CLIENTS - V2.json", `
+                      "APPLICATIONS - CLIENTS - V2.json", `
+                      "BITLOCKER - CLIENTS - V2.json", `
+                      "DEFENDER AV - CLIENTS - V2.json", `
+                      "GROUP POLICY REFRESH - CLIENTS - V2.json", `
+                      "INVENTORY - CLIENTS - V2.json", `
+                      "INVENTORY COLLECTION ISSUES - CLIENTS - V2.json", `
+                      "LAPS - CLIENTS - V2.json", `
+                      "LOCAL ADMINS - CLIENTS - V2.json",`
+                      "NETWORK INFORMATION - CLIENTS - V2.json", `
+                      "OFFICE - CLIENTS - V2.json", `
+                      "UNEXPECTED SHUTDOWNS - CLIENTS - V2.json", `
+                      "WINDOWS FIREWALL - CLIENTS - V2.json", `
+                      "WINDOWS UPDATE - CLIENTS - V2.json"
+                     )
+
+    $Dashboards   = @("ANTIVIRUS SECURITY CENTER - CLIENTS.json", `
+                      "APPLICATIONS - CLIENTS.json", `
+                      "BITLOCKER - CLIENTS.json", `
+                      "CLIENT KPI STATUS.json", `
+                      "DEFENDER AV - CLIENTS.json", `
+                      "GROUP POLICY REFRESH - CLIENTS.json", `
+                      "INVENTORY - CLIENTS.json", `
+                      "INVENTORY COLLECTION ISSUES - CLIENTS.json", `
+                      "LAPS - CLIENTS.json", `
+                      "LOCAL ADMINS GROUP - CLIENTS.json",`
+                      "NETWORK INFORMATION - CLIENTS.json", `
+                      "OFFICE - CLIENTS.json", `
+                      "UNEXPECTED SHUTDOWNS - CLIENTS.json", `
+                      "WINDOWS FIREWALL - CLIENTS.json", `
+                      "WINDOWS UPDATE - CLIENTS.json"
+                     )
+
+#------------------------------------------------------------------------------------------------------------
+# Downloading newest versions of workbooks fra ClientInspector-DeploymentKit Github
+#------------------------------------------------------------------------------------------------------------
+    
+    $TempPath = (Get-location).Path + "\" + $WorkBook_Repository_Path
+    MD $TempPath -ErrorAction SilentlyContinue -force | Out-Null
+
+    ForEach ($Workbook in $Workbooks)
+        {
+            $SourceFile = $Workbook.replace(" ","%20")
+
+            $SourcePath = "https://raw.githubusercontent.com/KnudsenMorten/ClientInspectorV2-DeploymentKit/main/" + $WorkBook_Repository_Path + "/" + $SourceFile
+            $DestinationPath = $TempPath + "\" + $Workbook
+            Write-Output ""
+            Write-Output "Downloading latest version of Azure Workbooks [ $($Workbook) ]"
+            Write-Output "  from https://github.com/KnudsenMorten/ClientInspectorV2-DeploymentKit"
+            Write-Output "  into local path $($TempPath)"
+
+            # download newest version
+            $Download = (New-Object System.Net.WebClient).DownloadFile($SourcePath, $DestinationPath)
+        }
+
+#------------------------------------------------------------------------------------------------------------
+# Downloading newest versions of dashboards fra ClientInspector-DeploymentKit Github
+#------------------------------------------------------------------------------------------------------------
+    
+    $TempPath = (Get-location).Path + "\" + $Dashboard_Repository_Path
+    MD $TempPath -ErrorAction SilentlyContinue -Force | Out-Null
+
+    ForEach ($Dashboard in $Dashboards)
+        {
+            $SourceFile = $Dashboard.replace(" ","%20")
+
+            $SourcePath = "https://raw.githubusercontent.com/KnudsenMorten/ClientInspectorV2-DeploymentKit/main/" + $Dashboard_Repository_Path + "/" + $SourceFile
+            $DestinationPath = $TempPath + "\" + $Dashboard
+            Write-Output ""
+            Write-Output "Downloading latest version of Azure Dashboards [ $($Dashboard) ]"
+            Write-Output "  from https://github.com/KnudsenMorten/ClientInspectorV2-DeploymentKit"
+            Write-Output "  into $($TempPath)"
+
+            # download newest version
+            $Download = (New-Object System.Net.WebClient).DownloadFile($SourcePath, $DestinationPath)
+        }
+
+
 #------------------------------------------------------------------------------------------------------------
 # Functions
 #------------------------------------------------------------------------------------------------------------
+
+    Write-Output "Checking needed functions ... Please Wait !"
+    $ModuleCheck = Get-Module -Name Az.Resources -ListAvailable -ErrorAction SilentlyContinue
+    If (!($ModuleCheck))
+        {
+            Write-Output "Installing Az-module in CurrentUser scope ... Please Wait !"
+            Install-module -Name Az -Force -Scope CurrentUser
+        }
+
+    $ModuleCheck = Get-Module -Name Az.Portal -ListAvailable -ErrorAction SilentlyContinue
+    If (!($ModuleCheck))
+        {
+            Write-Output "Installing Az.Portal in CurrentUser scope ... Please Wait !"
+            Install-module -Name Az.Portal -Force -Scope CurrentUser
+        }
+
+    $ModuleCheck = Get-Module -Name Microsoft.Graph -ListAvailable -ErrorAction SilentlyContinue
+    If (!($ModuleCheck))
+        {
+            Write-Output "Installing Microsoft.Graph in CurrentUser scope ... Please Wait !"
+            Install-module -Name Microsoft.Graph -Force -Scope CurrentUser
+        }
 
     <#
         Install-module Az -Scope CurrentUser
@@ -105,7 +212,7 @@
     #---------------------------------------------------------
     # Connect to Azure
     #---------------------------------------------------------
-        Connect-AzAccount -Tenant $TenantId
+        Connect-AzAccount -Tenant $TenantId -WarningAction SilentlyContinue
 
         #---------------------------------------------------------
         # Get Access Token
@@ -472,7 +579,8 @@
         #------------------------------------
 
             Write-Output "Building list Azure workbooks to deploy"
-            $Files = Get-ChildItem -Path $WorkBook_Repository_Path | %{$_.FullName}
+            $TempPath = (Get-location).Path + "\" + $WorkBook_Repository_Path
+            $Files = Get-ChildItem -Path $TempPath | %{$_.FullName}
 
 
         #-------------------------------------------------------------------------------------
@@ -576,6 +684,7 @@
                         New-AzResourceGroupDeployment  @parameters
                 }
 
+
     #-------------------------------------------------------------------------------------
     # Azure Dashboard Deployment
     #-------------------------------------------------------------------------------------
@@ -585,7 +694,8 @@
         #------------------------------------
 
             Write-Output "Building list Azure dashboards to deploy"
-            $Files = Get-ChildItem -Path $Dashboard_Repository_Path | %{$_.FullName}
+            $TempPath = (Get-location).Path + "\" + $Dashboard_Repository_Path
+            $Files = Get-ChildItem -Path $TempPath | %{$_.FullName}
 
         #-------------------------------------------------------------------------------------
         # Create the resource group for Azure Workbooks & Dashboards
@@ -677,6 +787,35 @@
                         -DashboardName $DashboardName
                 }
 
+
+#-----------------------------------------------------------------------------------------------
+# Building demo-setup
+#-----------------------------------------------------------------------------------------------
+
+
+    Write-Output ""
+    Write-Output "Building demo structure in folder"
+    Write-Output $ClientFolder
+
+    MD $ClientFolder -ErrorAction SilentlyContinue -Force | Out-Null
+
+    Write-Output ""
+    Write-Output "Downloading latest version of module AzLogDcrIngestPS from https://github.com/KnudsenMorten/AzLogDcrIngestPS"
+    Write-Output "into local path $($ClientFolder)"
+
+    # download newest version
+    $Download = (New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/KnudsenMorten/AzLogDcrIngestPS/main/AzLogDcrIngestPS.psm1", "$($ClientFolder)\AzLogDcrIngestPS.psm1")
+
+    Write-Output ""
+    Write-Output "Downloading latest version of module ClientInspectorV2 from https://github.com/KnudsenMorten/ClientInspectorV2"
+    Write-Output "into local path $($ClientFolder)"
+
+    # download newest version
+    $Download = (New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/KnudsenMorten/ClientInspectorV2/main/ClientInspector.ps1", "$($ClientFolder)\ClientInspector.ps1")
+
+    # Changing to directory where files where downloaded
+    Cd $ClientFolder
+
 #-------------------------------------------------------------------------------------
 # Summarize
 #-------------------------------------------------------------------------------------
@@ -698,6 +837,7 @@
         Write-Output ""
         Write-Output "LogIngestion Azure App Id:"
         Write-Output $AppId
+        Write-Output ""
 
 
         If ($AzAppSecret)
@@ -718,6 +858,7 @@
         Write-Output $ServicePrincipalObjectId
 
     # Azure Loganalytics
+        Write-Output ""
         $LogWorkspaceInfo = Get-AzOperationalInsightsWorkspace -Name $LoganalyticsWorkspaceName -ResourceGroupName $LogAnalyticsResourceGroup
         $LogAnalyticsWorkspaceResourceId = $LogWorkspaceInfo.ResourceId
 
@@ -755,4 +896,22 @@
         Write-Output "`$AzDcrSetLogIngestApiAppPermissionsDcrLevel = `$false"
         Write-Output "`$AzDcrLogIngestServicePrincipalObjectId     = `"$($ServicePrincipalObjectId)`" "
         Write-Output "`$AzLogDcrTableCreateFromReferenceMachine    = @()"
-        Write-Output "`$AzDcrDceTableCreateFromAnyMachine          = `$true"
+        Write-Output "`$AzLogDcrTableCreateFromAnyMachine          = `$true"
+
+
+        Notepad ClientInspector.ps1
+
+        Write-Output ""
+        Write-Output "We are almost done ... we just need to wait 1-1,5 hours for Microsoft to replicate and update RBAC"
+        Write-Output ""
+        Write-Output "While waiting you have to copy the above variables into the open ClientInspector.ps1 file - and save it "
+        Write-Output ""
+        Write-Output "You can also prepare the command  .\ClientInspector.ps1 -function:localpath -verbose:$true in the path, where deployment was done"
+        Write-Output ""
+        Write-Output "NOTE: Powershell session must be running in local admin, when you kick off ClientInspector"
+        Write-Output ""
+        Write-Output "Feel free to try it a few times until it stops failing .... !"
+        Write-Output ""
+        Write-Output "When running, if the script throws lots of PUT = 200, then we are happy....it is creating tables and DCRs. It will take 15-20 min. first time !"
+        Write-Output ""
+        Write-Output "Happy hunting with ClientInspector :-)"

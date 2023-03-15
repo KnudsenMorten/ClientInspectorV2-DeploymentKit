@@ -50,26 +50,34 @@
 # Variables
 #------------------------------------------------------------------------------------------------------------
 
-    # random character + random number -> name for demo
-    $RandomChar                            = (65..90) + (97..122) | Get-Random -Count 1 | % {[char]$_}
-    $RandomNumber                          = [string](Get-Random -Minimum 1000 -Maximum 10000) + $RandomChar 
+    $UseRandomNumber                       = $false
+    If ($UseRandomNumber)
+        {
+            $Number                        = [string](Get-Random -Minimum 1000 -Maximum 10000)
+        }
+    Else
+        {
+            $Number                        = "1"
+        }
 
-$randomnumber = "6470D"
+    # put in your path where ClientInspector, AzLogDcrIngestPS and workbooks/dashboards will be downloaded to !
+    $FolderRoot                            = (Get-location).Path + "\" + "Demo" + $Number
+    
+    MD $FolderRoot -ErrorAction SilentlyContinue -Force | Out-Null
+    CD $FolderRoot | Out-Null
 
-    # put in your path where ClientInspector and AzLogDcrIngestPS will be downloaded to !
-    $ClientFolder                          = $Env:OneDrive + "\Desktop\Speaks\Fun with AzLogs\ClientInspectorV2\Demo" + $RandomNumber
 
     # Azure App
-    $AzureAppName                          = "Demo" + $RandomNumber + " - Automation - Log-Ingestion"
+    $AzureAppName                          = "Demo" + $Number + " - Automation - Log-Ingestion"
     $AzAppSecretName                       = "Secret used for Log-Ingestion"
 
     # Azure Active Directory (AAD)
-    $TenantId                              = "f0fa27a0-8e7c-4f63-9a77-ec94786b7c9e" # "<put in your Azure AD TenantId>"
+    $TenantId                              = "<xxxxxx>" # "<put in your Azure AD TenantId>"
 
     # Azure LogAnalytics
-    $LogAnalyticsSubscription              = "fce4f282-fcc6-43fb-94d8-bf1701b862c3" # "<put in the SubId of where to place environment>"
-    $LogAnalyticsResourceGroup             = "rg-logworkspaces-client-demo" + $RandomNumber  + "-t"
-    $LoganalyticsWorkspaceName             = "log-management-client-demo" + $RandomNumber + "-t"
+    $LogAnalyticsSubscription              = "<xxxxxx>" # "<put in the SubId of where to place environment>"
+    $LogAnalyticsResourceGroup             = "rg-logworkspaces-client-demo" + $Number  + "-t"
+    $LoganalyticsWorkspaceName             = "log-management-client-demo" + $Number + "-t"
     $LoganalyticsLocation                  = "westeurope"
 
 
@@ -82,37 +90,115 @@ $randomnumber = "6470D"
     $AzDcrPrefixClient                     = "clt"
 
     # Azure Workbooks & Dashboards
-    $TemplateCategory                      = "Demo" + $RandomNumber + " IT Operation Security Templates"
-    $WorkbookDashboardResourceGroup        = "rg-dashboards-workbooks-demo" + $RandomNumber + "-t"
+    $TemplateCategory                      = "Demo" + $Number + " IT Operation Security Templates"
+    $WorkbookDashboardResourceGroup        = "rg-dashboards-workbooks-demo" + $Number + "-t"
 
     $WorkBook_Repository_Path              = "AZURE_WORKBOOKS_LATEST_RELEASE_V2"
-    $Dashboard_Repository_Path             = "AZURE_DASHBOARDS_LATEST_RELEASE_v2"
-    
-#------------------------------------------------------------------------------------------------------------
-# Checking PreReq for folders
-#------------------------------------------------------------------------------------------------------------
+    $Dashboard_Repository_Path             = "AZURE_DASHBOARDS_LATEST_RELEASE_V2"
 
-    If (!(Get-childitem -Path .\$WorkBook_Repository_Path\*.json -ErrorAction SilentlyContinue))
+    $Workbooks    = @("ANTIVIRUS SECURITY CENTER - CLIENTS - V2.json", `
+                      "APPLICATIONS - CLIENTS - V2.json", `
+                      "BITLOCKER - CLIENTS - V2.json", `
+                      "DEFENDER AV - CLIENTS - V2.json", `
+                      "GROUP POLICY REFRESH - CLIENTS - V2.json", `
+                      "INVENTORY - CLIENTS - V2.json", `
+                      "INVENTORY COLLECTION ISSUES - CLIENTS - V2.json", `
+                      "LAPS - CLIENTS - V2.json", `
+                      "LOCAL ADMINS - CLIENTS - V2.json",`
+                      "NETWORK INFORMATION - CLIENTS - V2.json", `
+                      "OFFICE - CLIENTS - V2.json", `
+                      "UNEXPECTED SHUTDOWNS - CLIENTS - V2.json", `
+                      "WINDOWS FIREWALL - CLIENTS - V2.json", `
+                      "WINDOWS UPDATE - CLIENTS - V2.json"
+                     )
+
+    $Dashboards   = @("ANTIVIRUS SECURITY CENTER - CLIENTS.json", `
+                      "APPLICATIONS - CLIENTS.json", `
+                      "BITLOCKER - CLIENTS.json", `
+                      "CLIENT KPI STATUS.json", `
+                      "DEFENDER AV - CLIENTS.json", `
+                      "GROUP POLICY REFRESH - CLIENTS.json", `
+                      "INVENTORY - CLIENTS.json", `
+                      "INVENTORY COLLECTION ISSUES - CLIENTS.json", `
+                      "LAPS - CLIENTS.json", `
+                      "LOCAL ADMINS GROUP - CLIENTS.json",`
+                      "NETWORK INFORMATION - CLIENTS.json", `
+                      "OFFICE - CLIENTS.json", `
+                      "UNEXPECTED SHUTDOWNS - CLIENTS.json", `
+                      "WINDOWS FIREWALL - CLIENTS.json", `
+                      "WINDOWS UPDATE - CLIENTS.json"
+                     )
+
+#------------------------------------------------------------------------------------------------------------
+# Downloading newest versions of workbooks fra ClientInspector-DeploymentKit Github
+#------------------------------------------------------------------------------------------------------------
+    
+    $TempPath = (Get-location).Path + "\" + $WorkBook_Repository_Path
+    MD $TempPath -ErrorAction SilentlyContinue -force | Out-Null
+
+    ForEach ($Workbook in $Workbooks)
         {
-            If (!(Get-childitem -Path $PsScriptRoot\$WorkBook_Repository_Path\*.json  -ErrorAction SilentlyContinue))
-                {
-                    Write-Output "Cannot find the workbook files (AZURE_WORKBOOKS_LATEST_RELEASE_V2) in this directory !"
-                    Break
-                }
+            $SourceFile = $Workbook.replace(" ","%20")
+
+            $SourcePath = "https://raw.githubusercontent.com/KnudsenMorten/ClientInspectorV2-DeploymentKit/main/" + $WorkBook_Repository_Path + "/" + $SourceFile
+            $DestinationPath = $TempPath + "\" + $Workbook
+            Write-Output ""
+            Write-Output "Downloading latest version of Azure Workbooks [ $($Workbook) ]"
+            Write-Output "  from https://github.com/KnudsenMorten/ClientInspectorV2-DeploymentKit"
+            Write-Output "  into local path $($TempPath)"
+
+            # download newest version
+            $Download = (New-Object System.Net.WebClient).DownloadFile($SourcePath, $DestinationPath)
         }
-    If (!(Get-childitem -Path .\$Dashboard_Repository_Path\*.json -ErrorAction SilentlyContinue))
+
+#------------------------------------------------------------------------------------------------------------
+# Downloading newest versions of dashboards fra ClientInspector-DeploymentKit Github
+#------------------------------------------------------------------------------------------------------------
+    
+    $TempPath = (Get-location).Path + "\" + $Dashboard_Repository_Path
+    MD $TempPath -ErrorAction SilentlyContinue -Force | Out-Null
+
+    ForEach ($Dashboard in $Dashboards)
         {
-            If (!(Get-childitem -Path $PsScriptRoot\$Dashboard_Repository_Path\*.json  -ErrorAction SilentlyContinue))
-                {
-                    Write-Output "Cannot find the workbook files (AZURE_DASHBOARDS_LATEST_RELEASE_v2) in this directory !"
-                    Break
-                }
+            $SourceFile = $Dashboard.replace(" ","%20")
+
+            $SourcePath = "https://raw.githubusercontent.com/KnudsenMorten/ClientInspectorV2-DeploymentKit/main/" + $Dashboard_Repository_Path + "/" + $SourceFile
+            $DestinationPath = $TempPath + "\" + $Dashboard
+            Write-Output ""
+            Write-Output "Downloading latest version of Azure Dashboards [ $($Dashboard) ]"
+            Write-Output "  from https://github.com/KnudsenMorten/ClientInspectorV2-DeploymentKit"
+            Write-Output "  into $($TempPath)"
+
+            # download newest version
+            $Download = (New-Object System.Net.WebClient).DownloadFile($SourcePath, $DestinationPath)
         }
 
 
 #------------------------------------------------------------------------------------------------------------
 # Functions
 #------------------------------------------------------------------------------------------------------------
+
+    Write-Output "Checking needed functions ... Please Wait !"
+    $ModuleCheck = Get-Module -Name Az.Resources -ListAvailable -ErrorAction SilentlyContinue
+    If (!($ModuleCheck))
+        {
+            Write-Output "Installing Az-module in CurrentUser scope ... Please Wait !"
+            Install-module -Name Az -Force -Scope CurrentUser
+        }
+
+    $ModuleCheck = Get-Module -Name Az.Portal -ListAvailable -ErrorAction SilentlyContinue
+    If (!($ModuleCheck))
+        {
+            Write-Output "Installing Az.Portal in CurrentUser scope ... Please Wait !"
+            Install-module -Name Az.Portal -Force -Scope CurrentUser
+        }
+
+    $ModuleCheck = Get-Module -Name Microsoft.Graph -ListAvailable -ErrorAction SilentlyContinue
+    If (!($ModuleCheck))
+        {
+            Write-Output "Installing Microsoft.Graph in CurrentUser scope ... Please Wait !"
+            Install-module -Name Microsoft.Graph -Force -Scope CurrentUser
+        }
 
     <#
         Install-module Az -Scope CurrentUser
@@ -501,7 +587,8 @@ $randomnumber = "6470D"
         #------------------------------------
 
             Write-Output "Building list Azure workbooks to deploy"
-            $Files = Get-ChildItem -Path $WorkBook_Repository_Path | %{$_.FullName}
+            $TempPath = (Get-location).Path + "\" + $WorkBook_Repository_Path
+            $Files = Get-ChildItem -Path $TempPath | %{$_.FullName}
 
 
         #-------------------------------------------------------------------------------------
@@ -605,6 +692,7 @@ $randomnumber = "6470D"
                         New-AzResourceGroupDeployment  @parameters
                 }
 
+
     #-------------------------------------------------------------------------------------
     # Azure Dashboard Deployment
     #-------------------------------------------------------------------------------------
@@ -614,7 +702,8 @@ $randomnumber = "6470D"
         #------------------------------------
 
             Write-Output "Building list Azure dashboards to deploy"
-            $Files = Get-ChildItem -Path $Dashboard_Repository_Path | %{$_.FullName}
+            $TempPath = (Get-location).Path + "\" + $Dashboard_Repository_Path
+            $Files = Get-ChildItem -Path $TempPath | %{$_.FullName}
 
         #-------------------------------------------------------------------------------------
         # Create the resource group for Azure Workbooks & Dashboards
@@ -716,7 +805,7 @@ $randomnumber = "6470D"
     Write-Output "Building demo structure in folder"
     Write-Output $ClientFolder
 
-    MD $ClientFolder | Out-Null
+    MD $ClientFolder -ErrorAction SilentlyContinue -Force | Out-Null
 
     Write-Output ""
     Write-Output "Downloading latest version of module AzLogDcrIngestPS from https://github.com/KnudsenMorten/AzLogDcrIngestPS"
