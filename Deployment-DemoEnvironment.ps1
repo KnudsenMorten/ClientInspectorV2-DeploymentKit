@@ -132,10 +132,22 @@
 #------------------------------------------------------------------------------------------------------------
 # Downloading newest versions of workbooks fra ClientInspector-DeploymentKit Github
 #------------------------------------------------------------------------------------------------------------
-    
+
+    # path to store files
     $TempPath = (Get-location).Path + "\" + $WorkBook_Repository_Path
+
+    # Checking if existing workbook files are found. If $true, then they will be deleted
+    $ExistFilesCheck = Get-ChildItem "$($TempPath)\*.json" -ErrorAction SilentlyContinue
+    If ($ExistFilesCheck)
+        {
+            Write-Output "Existing files found .... removing ensuring latest are used !"
+            Remove-Item -Path $ExistFilesCheck -Force
+        }
+
+    # Creating
     MD $TempPath -ErrorAction SilentlyContinue -force | Out-Null
 
+    # Downloading
     ForEach ($Workbook in $Workbooks)
         {
             $SourceFile = $Workbook.replace(" ","%20")
@@ -155,7 +167,18 @@
 # Downloading newest versions of dashboards fra ClientInspector-DeploymentKit Github
 #------------------------------------------------------------------------------------------------------------
     
+    # path to store files
     $TempPath = (Get-location).Path + "\" + $Dashboard_Repository_Path
+
+    # Checking if existing dashboards files are found. If $true, then they will be deleted
+    $ExistFilesCheck = Get-ChildItem "$($TempPath)\*.json" -ErrorAction SilentlyContinue
+    If ($ExistFilesCheck)
+        {
+            Write-Output "Existing files found .... removing ensuring latest are used !"
+            Remove-Item -Path $ExistFilesCheck -Force
+        }
+
+    # Creating
     MD $TempPath -ErrorAction SilentlyContinue -Force | Out-Null
 
     ForEach ($Dashboard in $Dashboards)
