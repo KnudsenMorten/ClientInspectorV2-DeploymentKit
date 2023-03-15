@@ -792,29 +792,26 @@
 # Building demo-setup
 #-----------------------------------------------------------------------------------------------
 
-
     Write-Output ""
     Write-Output "Building demo structure in folder"
     Write-Output $ClientFolder
 
-    MD $ClientFolder -ErrorAction SilentlyContinue -Force | Out-Null
-
     Write-Output ""
     Write-Output "Downloading latest version of module AzLogDcrIngestPS from https://github.com/KnudsenMorten/AzLogDcrIngestPS"
-    Write-Output "into local path $($ClientFolder)"
+    Write-Output "into local path $($FolderRoot)"
 
     # download newest version
-    $Download = (New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/KnudsenMorten/AzLogDcrIngestPS/main/AzLogDcrIngestPS.psm1", "$($ClientFolder)\AzLogDcrIngestPS.psm1")
+    $Download = (New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/KnudsenMorten/AzLogDcrIngestPS/main/AzLogDcrIngestPS.psm1", "$($FolderRoot)\AzLogDcrIngestPS.psm1")
 
     Write-Output ""
     Write-Output "Downloading latest version of module ClientInspectorV2 from https://github.com/KnudsenMorten/ClientInspectorV2"
     Write-Output "into local path $($ClientFolder)"
 
     # download newest version
-    $Download = (New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/KnudsenMorten/ClientInspectorV2/main/ClientInspector.ps1", "$($ClientFolder)\ClientInspector.ps1")
+    $Download = (New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/KnudsenMorten/ClientInspectorV2/main/ClientInspector.ps1", "$($FolderRoot)\ClientInspector.ps1")
 
     # Changing to directory where files where downloaded
-    Cd $ClientFolder
+    Cd $FolderRoot
 
 #-------------------------------------------------------------------------------------
 # Summarize
