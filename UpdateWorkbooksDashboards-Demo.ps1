@@ -333,6 +333,14 @@ Write-Output ""
             }
 
         #-------------------------------------------------------------------------------------
+        # Get workspace details
+        #-------------------------------------------------------------------------------------
+
+            $LogWorkspaceInfo = Get-AzOperationalInsightsWorkspace -Name $LoganalyticsWorkspaceName -ResourceGroupName $LogAnalyticsResourceGroup
+    
+            $LogAnalyticsWorkspaceResourceId = $LogWorkspaceInfo.ResourceId
+
+        #-------------------------------------------------------------------------------------
         # Deployment of Workbooks (loop)
         #-------------------------------------------------------------------------------------
             
