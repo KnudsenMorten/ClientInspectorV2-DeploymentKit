@@ -65,7 +65,7 @@ Write-Output ""
         }
     Else
         {
-            $Number                        = "999"
+            $Number                        = "9632"
         }
 
     # put in your path where ClientInspector, AzLogDcrIngestPS and workbooks/dashboards will be downloaded to !
