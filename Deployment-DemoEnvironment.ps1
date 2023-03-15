@@ -45,6 +45,14 @@
     Use at your own risk, no warranty given!
 #>
 
+Write-Output "ClientInspector-DeploymentKit | Inventory of Operational & Security-related information"
+Write-Output
+Write-Output "Developed by Morten Knudsen, Microsoft MVP"
+Write-Output ""
+Write-Output "More information:"
+Write-Output "https://github.com/KnudsenMorten/ClientInspectorV2-DeploymentKit"
+Write-Output ""
+
 
 #------------------------------------------------------------------------------------------------------------
 # Variables
