@@ -112,21 +112,21 @@
                       "WINDOWS UPDATE - CLIENTS - V2.json"
                      )
 
-    $Dashboards   = @("ANTIVIRUS SECURITY CENTER - CLIENTS.json", `
-                      "APPLICATIONS - CLIENTS.json", `
-                      "BITLOCKER - CLIENTS.json", `
-                      "CLIENT KPI STATUS.json", `
-                      "DEFENDER AV - CLIENTS.json", `
-                      "GROUP POLICY REFRESH - CLIENTS.json", `
-                      "INVENTORY - CLIENTS.json", `
-                      "INVENTORY COLLECTION ISSUES - CLIENTS.json", `
-                      "LAPS - CLIENTS.json", `
-                      "LOCAL ADMINS GROUP - CLIENTS.json",`
-                      "NETWORK INFORMATION - CLIENTS.json", `
-                      "OFFICE - CLIENTS.json", `
-                      "UNEXPECTED SHUTDOWNS - CLIENTS.json", `
-                      "WINDOWS FIREWALL - CLIENTS.json", `
-                      "WINDOWS UPDATE - CLIENTS.json"
+    $Dashboards   = @("ANTIVIRUS SECURITY CENTER - CLIENTS - V2.json", `
+                      "APPLICATIONS - CLIENTS - V2.json", `
+                      "BITLOCKER - CLIENTS - V2.json", `
+                      "CLIENT KPI STATUS - V2.json", `
+                      "DEFENDER AV - CLIENTS - V2.json", `
+                      "GROUP POLICY REFRESH - CLIENTS - V2.json", `
+                      "INVENTORY - CLIENTS - V2.json", `
+                      "INVENTORY COLLECTION ISSUES - CLIENTS - V2.json", `
+                      "LAPS - CLIENTS - V2.json", `
+                      "LOCAL ADMINS GROUP - CLIENTS - V2.json",`
+                      "NETWORK INFORMATION - CLIENTS - V2.json", `
+                      "OFFICE - CLIENTS - V2.json", `
+                      "UNEXPECTED SHUTDOWNS - CLIENTS - V2.json", `
+                      "WINDOWS FIREWALL - CLIENTS - V2.json", `
+                      "WINDOWS UPDATE - CLIENTS - V2.json"
                      )
 
 #------------------------------------------------------------------------------------------------------------
