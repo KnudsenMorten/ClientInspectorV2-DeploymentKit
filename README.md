@@ -23,6 +23,8 @@ The deployment includes the following steps:
 
 [If you want to deploy a demo environment, you can click here](#deployment-of-clientinspector-v2-demo-environment)
 
+[Video - Deployment via ClientInspector DeploymentKit](https://youtu.be/DulF-Y5Pyn8)
+
 ### Workbooks & Dashboards, part of deployment
 [Click here to see the included workbooks](#azure-workbooks-part-of-deployment)
 
