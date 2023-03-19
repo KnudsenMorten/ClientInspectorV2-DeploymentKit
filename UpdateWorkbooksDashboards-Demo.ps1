@@ -68,12 +68,6 @@ Write-Output ""
             $Number                        = "9632"
         }
 
-    # put in your path where ClientInspector, AzLogDcrIngestPS and workbooks/dashboards will be downloaded to !
-    $FolderRoot                            = (Get-location).Path + "\" + "Demo" + $Number
-    
-    MD $FolderRoot -ErrorAction SilentlyContinue -Force | Out-Null
-    CD $FolderRoot | Out-Null
-
 
     # Azure App
     $AzureAppName                          = "Demo" + $Number + " - Automation - Log-Ingestion"
@@ -136,6 +130,35 @@ Write-Output ""
                       "WINDOWS FIREWALL - CLIENTS - V2.json", `
                       "WINDOWS UPDATE - CLIENTS - V2.json"
                      )
+
+#------------------------------------------------------------------------------------------------------------
+# Verification download path
+#------------------------------------------------------------------------------------------------------------
+
+    # put in your path where ClientInspector, AzLogDcrIngestPS and workbooks/dashboards will be downloaded to !
+    $FolderRoot = (Get-location).Path + "\" + "Demo" + $Number
+
+    $yes = New-Object System.Management.Automation.Host.ChoiceDescription "&Yes","Delete"
+    $no = New-Object System.Management.Automation.Host.ChoiceDescription "&No","Cancel"
+    $options = [System.Management.Automation.Host.ChoiceDescription[]]($yes, $no)
+    $heading = "Download path"
+    $message = "This deployment kit will download latest files into current directory. Do you want to continue with this path? `n`n $($FolderRoot) "
+    $Prompt = $host.ui.PromptForChoice($heading, $message, $options, 1)
+    switch ($prompt) {
+                        0
+                            {
+                                # Continuing
+                            }
+                        1
+                            {
+                                Write-Host "No" -ForegroundColor Red
+                                Exit
+                            }
+                    }
+
+    MD $FolderRoot -ErrorAction SilentlyContinue -Force | Out-Null
+    CD $FolderRoot | Out-Null
+
 
 #------------------------------------------------------------------------------------------------------------
 # Downloading newest versions of workbooks fra ClientInspector-DeploymentKit Github
