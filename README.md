@@ -1351,7 +1351,7 @@ $AzDcrDceTableCreateFromAnyMachine          = $true
 
 
 ## Deployment of ClientInspector (v2) demo-environment
-If you want to deploy a demo environment, please [download and modify the file **Deployment-DemoEnvironment.ps1**]](https://raw.githubusercontent.com/KnudsenMorten/ClientInspectorV2-DeploymentKit/main/Deployment-DemoEnvironment.ps1) and just fill out **Azure SubscriptionId** and **Azure TenantId** - and you will get a complete environment with this configuration. 
+If you want to deploy a demo environment, please [download and modify the file Deployment-DemoEnvironment.ps1](https://raw.githubusercontent.com/KnudsenMorten/ClientInspectorV2-DeploymentKit/main/Deployment-DemoEnvironment.ps1) and just fill out **Azure SubscriptionId** and **Azure TenantId** - and you will get a complete environment with this configuration. 
 
 You will have the option to control the demo number using the $UseRandomNumber = $true/false. If you choose $true the number will randomize, so it is easy to re-run multiple times.
 
