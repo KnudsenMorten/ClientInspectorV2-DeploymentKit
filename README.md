@@ -50,7 +50,7 @@ You can run the ClientInspector script using your favorite deployment tool. Scri
 
 
 ## Deployment of ClientInspector (v2) environment
-1. [Download all files in this Github Repository as zip to your environment](https://github.com/KnudsenMorten/ClientInspectorV2-DeploymentKit/archive/refs/heads/main.zip)
+1. [Download Deployment.ps1](https://raw.githubusercontent.com/KnudsenMorten/ClientInspectorV2-DeploymentKit/main/Deployment.ps1)
 2. Open the file **Deployment.ps1** in your favorite editor
 3. Change the variables to your needs
 ```
@@ -1351,7 +1351,7 @@ $AzDcrDceTableCreateFromAnyMachine          = $true
 
 
 ## Deployment of ClientInspector (v2) demo-environment
-If you want to deploy a demo environment, please modify the file **Deployment-Demo.ps1** and just fill out **Azure SubscriptionId** and **Azure TenantId** - and you will get a complete environment with this configuration. 
+If you want to deploy a demo environment, please [download and modify the file **Deployment-DemoEnvironment.ps1**]](https://raw.githubusercontent.com/KnudsenMorten/ClientInspectorV2-DeploymentKit/main/Deployment-DemoEnvironment.ps1) and just fill out **Azure SubscriptionId** and **Azure TenantId** - and you will get a complete environment with this configuration. 
 
 You will have the option to control the demo number using the $UseRandomNumber = $true/false. If you choose $true the number will randomize, so it is easy to re-run multiple times.
 
