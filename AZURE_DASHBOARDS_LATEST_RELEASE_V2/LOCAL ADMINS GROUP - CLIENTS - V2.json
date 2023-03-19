@@ -8,7 +8,7 @@
             "position": {
               "x": 0,
               "y": 0,
-              "colSpan": 6,
+              "colSpan": 5,
               "rowSpan": 2
             },
             "metadata": {
@@ -32,7 +32,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/LOCAL ADMINS - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo9632-t/providers/microsoft.insights/workbooktemplates/LOCAL ADMINS - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -52,7 +52,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientLocalAdminsV2_CL \\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer, Name\\r\\n| where Name notcontains \\\"Domain Admins\\\" and Name notcontains \\\"Administrator\\\"\\r\\n| project Computer, UserLoggedOn, TimeGenerated, Name, ObjectClass\\r\\n| distinct Computer\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"DEVICES WITH NON-STANDARD MEMBERS LOCAL ADMINS GROUP | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientLocalAdminsV2_CL \\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer, Name\\r\\n| where Name notcontains \\\"Domain Admins\\\" and Name notcontains \\\"Administrator\\\"\\r\\n| project Computer, UserLoggedOn, Name, Type_, TimeGenerated\\r\\n| distinct Computer\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"DEVICES WITH NON-STANDARD MEMBERS LOCAL ADMINS GROUP | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo9632-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo9632-t\"],\"visualization\":\"tiles\",\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true}}",
                   "isOptional": true
                 },
                 {
@@ -72,8 +72,8 @@
             "position": {
               "x": 0,
               "y": 2,
-              "colSpan": 11,
-              "rowSpan": 5
+              "colSpan": 6,
+              "rowSpan": 4
             },
             "metadata": {
               "inputs": [
@@ -96,7 +96,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/LOCAL ADMINS - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo9632-t/providers/microsoft.insights/workbooktemplates/LOCAL ADMINS - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -116,7 +116,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientLocalAdminsV2_CL \\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer, Name\\r\\n| where Name notcontains \\\"Domain Admins\\\" and Name notcontains \\\"Administrator\\\"\\r\\n| project Computer, UserLoggedOn, TimeGenerated, Name, ObjectClass\",\"size\":0,\"title\":\"DEVICES WITH NON-STANDARD MEMBERS LOCAL ADMINS GROUP | CLIENTS | LIST\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"]}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientLocalAdminsV2_CL \\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer, Name\\r\\n| where Name notcontains \\\"Domain Admins\\\" and Name notcontains \\\"Administrator\\\"\\r\\n| project Computer, UserLoggedOn, Name, Type_, TimeGenerated\\r\\n| distinct Computer\\r\\n\",\"size\":0,\"title\":\"DEVICES WITH NON-STANDARD MEMBERS LOCAL ADMINS GROUP | CLIENTS | LIST\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo9632-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo9632-t\"],\"sortBy\":[]}",
                   "isOptional": true
                 },
                 {
@@ -135,9 +135,9 @@
           "2": {
             "position": {
               "x": 0,
-              "y": 7,
-              "colSpan": 11,
-              "rowSpan": 6
+              "y": 6,
+              "colSpan": 18,
+              "rowSpan": 8
             },
             "metadata": {
               "inputs": [
@@ -160,7 +160,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/LOCAL ADMINS - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo9632-t/providers/microsoft.insights/workbooktemplates/LOCAL ADMINS - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -180,7 +180,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientLocalAdminsV2_CL \\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer, Name\\r\\n| where Name notcontains \\\"Domain Admins\\\" and Name notcontains \\\"Administrator\\\"\\r\\n| project Computer, UserLoggedOn, TimeGenerated, Name, ObjectClass\\r\\n| sort by Computer asc\",\"size\":0,\"showAnalytics\":true,\"title\":\"MEMBERS LOCAL ADMINS GROUP | CLIENTS | GROUPED\",\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true,\"hierarchySettings\":{\"treeType\":1,\"groupBy\":[\"Name\"]}}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientLocalAdminsV2_CL \\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer, Name\\r\\n| where Name notcontains \\\"Domain Admins\\\" and Name notcontains \\\"Administrator\\\"\\r\\n| project Computer, UserLoggedOn, Name, Type_, TimeGenerated\\r\\n\",\"size\":0,\"showAnalytics\":true,\"title\":\"MEMBERS LOCAL ADMINS GROUP | CLIENTS | GROUPED\",\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo9632-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo9632-t\"],\"gridSettings\":{\"formatters\":[{\"columnMatch\":\"Group\",\"formatter\":1}],\"rowLimit\":10000,\"filter\":true,\"hierarchySettings\":{\"treeType\":1,\"groupBy\":[\"Name\"]}}}",
                   "isOptional": true
                 },
                 {
@@ -199,9 +199,9 @@
           "3": {
             "position": {
               "x": 0,
-              "y": 13,
-              "colSpan": 11,
-              "rowSpan": 5
+              "y": 14,
+              "colSpan": 18,
+              "rowSpan": 8
             },
             "metadata": {
               "inputs": [
@@ -224,7 +224,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/LOCAL ADMINS - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo9632-t/providers/microsoft.insights/workbooktemplates/LOCAL ADMINS - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -244,7 +244,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientLocalAdminsV2_CL \\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer, Name\\r\\n| where Name notcontains \\\"Domain Admins\\\" and Name notcontains \\\"Administrator\\\"\\r\\n| project Computer, UserLoggedOn, TimeGenerated, Name, ObjectClass\\r\\n| sort by Computer asc\",\"size\":0,\"showAnalytics\":true,\"title\":\"MEMBERS LOCAL ADMINS GROUP | CLIENTS | LIST\",\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientLocalAdminsV2_CL \\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer, Name\\r\\n| where Name notcontains \\\"Domain Admins\\\" and Name notcontains \\\"Administrator\\\"\\r\\n| project Computer, UserLoggedOn, Name, Type_, TimeGenerated\\r\\n| sort by Computer asc\",\"size\":0,\"showAnalytics\":true,\"title\":\"MEMBERS LOCAL ADMINS GROUP | CLIENTS | LIST\",\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo9632-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo9632-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
                   "isOptional": true
                 },
                 {
@@ -290,10 +290,10 @@
                 "value": "Past 24 hours"
               },
               "filteredPartIds": [
-                "StartboardPart-PinnedNotebookQueryPart-e3b4bb30-c3f6-4509-bbda-81b98047c095",
-                "StartboardPart-PinnedNotebookQueryPart-e3b4bb30-c3f6-4509-bbda-81b98047c097",
-                "StartboardPart-PinnedNotebookQueryPart-e3b4bb30-c3f6-4509-bbda-81b98047c099",
-                "StartboardPart-PinnedNotebookQueryPart-e3b4bb30-c3f6-4509-bbda-81b98047c09b"
+                "StartboardPart-PinnedNotebookQueryPart-255e7d45-22a8-49cc-9713-7747cfce200e",
+                "StartboardPart-PinnedNotebookQueryPart-255e7d45-22a8-49cc-9713-7747cfce2010",
+                "StartboardPart-PinnedNotebookQueryPart-255e7d45-22a8-49cc-9713-7747cfce2012",
+                "StartboardPart-PinnedNotebookQueryPart-255e7d45-22a8-49cc-9713-7747cfce2014"
               ]
             }
           }
