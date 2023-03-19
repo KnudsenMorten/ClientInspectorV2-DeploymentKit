@@ -122,12 +122,53 @@
                      )
 
 #------------------------------------------------------------------------------------------------------------
+# Verification download path
+#------------------------------------------------------------------------------------------------------------
+
+    # put in your path where ClientInspector, AzLogDcrIngestPS and workbooks/dashboards will be downloaded to !
+    $FolderRoot = (Get-location).Path + "\" + "Demo" + $Number
+
+    $yes = New-Object System.Management.Automation.Host.ChoiceDescription "&Yes","Delete"
+    $no = New-Object System.Management.Automation.Host.ChoiceDescription "&No","Cancel"
+    $options = [System.Management.Automation.Host.ChoiceDescription[]]($yes, $no)
+    $heading = "Download path"
+    $message = "This deployment kit will download latest files into current directory. Do you want to continue with this path? `n`n $($FolderRoot) "
+    $Prompt = $host.ui.PromptForChoice($heading, $message, $options, 1)
+    switch ($prompt) {
+                        0
+                            {
+                                # Continuing
+                            }
+                        1
+                            {
+                                Write-Host "No" -ForegroundColor Red
+                                Exit
+                            }
+                    }
+
+    MD $FolderRoot -ErrorAction SilentlyContinue -Force | Out-Null
+    CD $FolderRoot | Out-Null
+
+
+#------------------------------------------------------------------------------------------------------------
 # Downloading newest versions of workbooks fra ClientInspector-DeploymentKit Github
 #------------------------------------------------------------------------------------------------------------
-    
+
+    # path to store files
     $TempPath = (Get-location).Path + "\" + $WorkBook_Repository_Path
+
+    # Checking if existing workbook files are found. If $true, then they will be deleted
+    $ExistFilesCheck = Get-ChildItem "$($TempPath)\*.json" -ErrorAction SilentlyContinue
+    If ($ExistFilesCheck)
+        {
+            Write-Output "Existing files found .... removing ensuring latest are used !"
+            Remove-Item -Path $ExistFilesCheck -Force
+        }
+
+    # Creating
     MD $TempPath -ErrorAction SilentlyContinue -force | Out-Null
 
+    # Downloading
     ForEach ($Workbook in $Workbooks)
         {
             $SourceFile = $Workbook.replace(" ","%20")
@@ -147,7 +188,18 @@
 # Downloading newest versions of dashboards fra ClientInspector-DeploymentKit Github
 #------------------------------------------------------------------------------------------------------------
     
+    # path to store files
     $TempPath = (Get-location).Path + "\" + $Dashboard_Repository_Path
+
+    # Checking if existing dashboards files are found. If $true, then they will be deleted
+    $ExistFilesCheck = Get-ChildItem "$($TempPath)\*.json" -ErrorAction SilentlyContinue
+    If ($ExistFilesCheck)
+        {
+            Write-Output "Existing files found .... removing ensuring latest are used !"
+            Remove-Item -Path $ExistFilesCheck -Force
+        }
+
+    # Creating
     MD $TempPath -ErrorAction SilentlyContinue -Force | Out-Null
 
     ForEach ($Dashboard in $Dashboards)
@@ -889,7 +941,7 @@
         Write-Output "`$LogAnalyticsWorkspaceResourceId            = "
         Write-Output "`"$($LogAnalyticsWorkspaceResourceId)`" "
         Write-Output ""
-        Write-Output "`$AzDcrPrefixClient                          = `"$($AzDcrPrefixClient)`" "
+        Write-Output "`$AzDcrPrefix                                = `"$($AzDcrPrefix)`" "
         Write-Output "`$AzDcrSetLogIngestApiAppPermissionsDcrLevel = `$false"
         Write-Output "`$AzDcrLogIngestServicePrincipalObjectId     = `"$($ServicePrincipalObjectId)`" "
         Write-Output "`$AzLogDcrTableCreateFromReferenceMachine    = @()"

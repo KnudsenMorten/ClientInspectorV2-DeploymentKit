@@ -32,7 +32,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/WINDOWS FIREWALL - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/WINDOWS FIREWALL - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -52,7 +52,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsFirewallInfoV2_CL \\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer, Profile\\r\\n| where Enabled != 1                   // 1=Enabled\\r\\n| where DefaultInboundAction != 4      // 4=Block\\r\\n| where DefaultOutboundAction != 2     // 2=Allow\\r\\n| where AllowInboundRules != 1         // 1=True\\r\\n|distinct Computer\\r\\n| summarize total = count()\\r\\n\",\"size\":0,\"title\":\"INCOMPLIANT WINDOWS FIREWALL | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsFirewallInfoV2_CL \\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer, Profile\\r\\n| where Enabled != 1                   // 1=Enabled\\r\\n| where DefaultInboundAction != 4      // 4=Block\\r\\n| where DefaultOutboundAction != 2     // 2=Allow\\r\\n| where AllowInboundRules != 1         // 1=True\\r\\n| distinct Computer\\r\\n| summarize total = count()\\r\\n\",\"size\":0,\"title\":\"INCOMPLIANT WINDOWS FIREWALL | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true}}",
                   "isOptional": true
                 },
                 {
@@ -96,7 +96,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/WINDOWS FIREWALL - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/WINDOWS FIREWALL - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -116,7 +116,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsFirewallInfoV2_CL \\r\\n| summarize TimeGenerated = arg_max(CollectionTime,*) by Computer, Profile\\r\\n| where Enabled == 1                   // 1=Enabled\\r\\n| where DefaultInboundAction == 4      // 4=Block\\r\\n| where DefaultOutboundAction == 2     // 2=Allow\\r\\n|distinct Computer\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"COMPLIANT WINDOWS FIREWALL | CLIENTS | LIST\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"green\"}},\"showBorder\":true}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsFirewallInfoV2_CL \\r\\n| summarize TimeGenerated = arg_max(CollectionTime,*) by Computer, Profile\\r\\n| where Enabled == 1                   // 1=Enabled\\r\\n| where DefaultInboundAction == 4      // 4=Block\\r\\n| where DefaultOutboundAction == 2     // 2=Allow\\r\\n| distinct Computer\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"COMPLIANT WINDOWS FIREWALL | CLIENTS | LIST\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"green\"}},\"showBorder\":true}}",
                   "isOptional": true
                 },
                 {
@@ -148,7 +148,6 @@
                 },
                 {
                   "name": "TimeContext",
-                  "value": null,
                   "isOptional": true
                 },
                 {
@@ -160,7 +159,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/WINDOWS FIREWALL - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/WINDOWS FIREWALL - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -180,7 +179,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsFirewallInfoV2_CL \\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer, Profile\\r\\n| where Enabled != 1                   // 1=Enabled\\r\\n| where DefaultInboundAction != 4      // 4=Block\\r\\n| where DefaultOutboundAction != 2     // 2=Allow\\r\\n| where AllowInboundRules != 1         // 1=True\\r\\n\",\"size\":0,\"showAnalytics\":true,\"title\":\"INCOMPLIANT WINDOWS FIREWALL | CLIENTS | LIST\",\"noDataMessageStyle\":3,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"]}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsFirewallInfoV2_CL \\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer, Profile\\r\\n| where Enabled != 1                   // 1=Enabled\\r\\n| where DefaultInboundAction != 4      // 4=Block\\r\\n| where DefaultOutboundAction != 2     // 2=Allow\\r\\n| where AllowInboundRules != 1         // 1=True\\r\\n\",\"size\":0,\"showAnalytics\":true,\"title\":\"INCOMPLIANT WINDOWS FIREWALL | CLIENTS | LIST\",\"noDataMessageStyle\":3,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"]}",
                   "isOptional": true
                 },
                 {
@@ -212,7 +211,6 @@
                 },
                 {
                   "name": "TimeContext",
-                  "value": null,
                   "isOptional": true
                 },
                 {
@@ -224,7 +222,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/WINDOWS FIREWALL - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/WINDOWS FIREWALL - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -244,7 +242,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsFirewallInfoV2_CL \\r\\n| summarize TimeGenerated = arg_max(CollectionTime,*) by Computer, Profile\\r\\n| where Enabled == 1                   // 1=Enabled\\r\\n| where DefaultInboundAction == 4      // 4=Block\\r\\n| where DefaultOutboundAction == 2     // 2=Allow\\r\\n\",\"size\":0,\"showAnalytics\":true,\"title\":\"COMPLIANT WINDOWS FIREWALL | CLIENTS | LIST\",\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsFirewallInfoV2_CL \\r\\n| summarize TimeGenerated = arg_max(CollectionTime,*) by Computer, Profile\\r\\n| where Enabled == 1                   // 1=Enabled\\r\\n| where DefaultInboundAction == 4      // 4=Block\\r\\n| where DefaultOutboundAction == 2     // 2=Allow\\r\\n\",\"size\":0,\"showAnalytics\":true,\"title\":\"COMPLIANT WINDOWS FIREWALL | CLIENTS | LIST\",\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
                   "isOptional": true
                 },
                 {
@@ -290,10 +288,10 @@
                 "value": "Past 24 hours"
               },
               "filteredPartIds": [
-                "StartboardPart-PinnedNotebookQueryPart-95ceb51b-d688-43ef-80b4-e9e7ed03709c",
-                "StartboardPart-PinnedNotebookQueryPart-95ceb51b-d688-43ef-80b4-e9e7ed03709e",
-                "StartboardPart-PinnedNotebookQueryPart-95ceb51b-d688-43ef-80b4-e9e7ed0370a0",
-                "StartboardPart-PinnedNotebookQueryPart-95ceb51b-d688-43ef-80b4-e9e7ed0370a2"
+                "StartboardPart-PinnedNotebookQueryPart-45a6cb68-d9de-4073-bb7a-5fb77f60300e",
+                "StartboardPart-PinnedNotebookQueryPart-45a6cb68-d9de-4073-bb7a-5fb77f603010",
+                "StartboardPart-PinnedNotebookQueryPart-45a6cb68-d9de-4073-bb7a-5fb77f603012",
+                "StartboardPart-PinnedNotebookQueryPart-45a6cb68-d9de-4073-bb7a-5fb77f603014"
               ]
             }
           }
