@@ -461,7 +461,6 @@
                 },
                 {
                   "name": "TimeContext",
-                  "value": null,
                   "isOptional": true
                 },
                 {
@@ -525,6 +524,7 @@
                 },
                 {
                   "name": "TimeContext",
+                  "value": null,
                   "isOptional": true
                 },
                 {
@@ -556,7 +556,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdatePendingUpdatesV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where LastDeploymentChangeTime \\u003c now(-40d)\\r\\n| where Computer != \\\"\\\"\\r\\n| project Computer, UserLoggedOn, KBPublished = LastDeploymentChangeTime, Title=Title_, KB, CollectionTime\\r\\n| sort by Computer asc\\r\\n| distinct Computer\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"CLIENTS WITH PENDING UPDATES OLDER THAN 40 DAYS | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdatePendingUpdatesV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer, Title_\\r\\n| where LastDeploymentChangeTime < ago(40d)\\r\\n| sort by Computer asc\\r\\n| distinct Computer\\r\\n| summarize total = count()\\r\\n\\r\\n\",\"size\":0,\"title\":\"CLIENTS WITH PENDING UPDATES OLDER THAN 40 DAYS | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
                   "isOptional": true
                 },
                 {
@@ -588,6 +588,7 @@
                 },
                 {
                   "name": "TimeContext",
+                  "value": null,
                   "isOptional": true
                 },
                 {
@@ -619,7 +620,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdatePendingUpdatesV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where LastDeploymentChangeTime \\u003c now(-40d)\\r\\n| where DriverClass notcontains \\\"Drivers\\\"\\r\\n| sort by Computer asc\\r\\n| distinct Computer\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"CLIENTS WITH PENDING UPDATES OLDER THAN 40 DAYS, NO DRIVERS | CLIENTS | COUNT\",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdatePendingUpdatesV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer, Title_\\r\\n| where LastDeploymentChangeTime < ago(40d)\\r\\n| where UpdateClassification notcontains \\\"Drivers\\\"\\r\\n| sort by Computer asc\\r\\n| distinct Computer\\r\\n| summarize total = count()\\r\\n\",\"size\":0,\"title\":\"CLIENTS WITH PENDING UPDATES OLDER THAN 40 DAYS, NO DRIVERS | CLIENTS | COUNT\",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
                   "isOptional": true
                 },
                 {
@@ -651,6 +652,7 @@
                 },
                 {
                   "name": "TimeContext",
+                  "value": null,
                   "isOptional": true
                 },
                 {
@@ -682,7 +684,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdateLastResultsV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where LastInstallationSuccessDate \\u003c ago(40d)\\r\\n| project Computer, UserLoggedOn, LastInstallationSuccessDate, LastSearchSuccessDate, CollectionTime\\r\\n| sort by Computer asc\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"LAST WINDOWS UPDATE MORE THAN 40 DAYS AGO | CLIENTS | COUNT\",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdateLastResultsV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where LastInstallationSuccessDate < ago(40d)\\r\\n| project Computer, UserLoggedOn, LastInstallationSuccessDate, LastSearchSuccessDate, CollectionTime\\r\\n| sort by Computer asc\\r\\n| summarize total = count()\\r\\n\",\"size\":0,\"title\":\"LAST WINDOWS UPDATE MORE THAN 40 DAYS AGO | CLIENTS | COUNT\",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
                   "isOptional": true
                 },
                 {
@@ -1547,30 +1549,30 @@
                 "value": "Past 24 hours"
               },
               "filteredPartIds": [
-                "StartboardPart-PinnedNotebookQueryPart-45a6cb68-d9de-4073-bb7a-5fb77f603177",
-                "StartboardPart-PinnedNotebookQueryPart-45a6cb68-d9de-4073-bb7a-5fb77f603179",
-                "StartboardPart-PinnedNotebookQueryPart-45a6cb68-d9de-4073-bb7a-5fb77f60317b",
-                "StartboardPart-PinnedNotebookQueryPart-45a6cb68-d9de-4073-bb7a-5fb77f60317d",
-                "StartboardPart-PinnedNotebookQueryPart-45a6cb68-d9de-4073-bb7a-5fb77f60317f",
-                "StartboardPart-PinnedNotebookQueryPart-45a6cb68-d9de-4073-bb7a-5fb77f603181",
-                "StartboardPart-PinnedNotebookQueryPart-45a6cb68-d9de-4073-bb7a-5fb77f603183",
-                "StartboardPart-PinnedNotebookQueryPart-45a6cb68-d9de-4073-bb7a-5fb77f603187",
-                "StartboardPart-PinnedNotebookQueryPart-45a6cb68-d9de-4073-bb7a-5fb77f603189",
-                "StartboardPart-PinnedNotebookQueryPart-45a6cb68-d9de-4073-bb7a-5fb77f60318b",
-                "StartboardPart-PinnedNotebookQueryPart-45a6cb68-d9de-4073-bb7a-5fb77f60318d",
-                "StartboardPart-PinnedNotebookQueryPart-45a6cb68-d9de-4073-bb7a-5fb77f60318f",
-                "StartboardPart-PinnedNotebookQueryPart-45a6cb68-d9de-4073-bb7a-5fb77f603191",
-                "StartboardPart-PinnedNotebookQueryPart-45a6cb68-d9de-4073-bb7a-5fb77f603193",
-                "StartboardPart-PinnedNotebookQueryPart-45a6cb68-d9de-4073-bb7a-5fb77f603195",
-                "StartboardPart-PinnedNotebookQueryPart-45a6cb68-d9de-4073-bb7a-5fb77f603197",
-                "StartboardPart-PinnedNotebookQueryPart-45a6cb68-d9de-4073-bb7a-5fb77f603199",
-                "StartboardPart-PinnedNotebookQueryPart-45a6cb68-d9de-4073-bb7a-5fb77f60319b",
-                "StartboardPart-PinnedNotebookQueryPart-45a6cb68-d9de-4073-bb7a-5fb77f60319d",
-                "StartboardPart-PinnedNotebookQueryPart-45a6cb68-d9de-4073-bb7a-5fb77f60319f",
-                "StartboardPart-PinnedNotebookQueryPart-45a6cb68-d9de-4073-bb7a-5fb77f6031a1",
-                "StartboardPart-PinnedNotebookQueryPart-45a6cb68-d9de-4073-bb7a-5fb77f6031a3",
-                "StartboardPart-PinnedNotebookQueryPart-45a6cb68-d9de-4073-bb7a-5fb77f6031a5",
-                "StartboardPart-PinnedNotebookQueryPart-45a6cb68-d9de-4073-bb7a-5fb77f6031a7"
+                "StartboardPart-PinnedNotebookQueryPart-1a683fc2-c202-40ff-9b01-1edaba61274c",
+                "StartboardPart-PinnedNotebookQueryPart-1a683fc2-c202-40ff-9b01-1edaba61274e",
+                "StartboardPart-PinnedNotebookQueryPart-1a683fc2-c202-40ff-9b01-1edaba612750",
+                "StartboardPart-PinnedNotebookQueryPart-1a683fc2-c202-40ff-9b01-1edaba612752",
+                "StartboardPart-PinnedNotebookQueryPart-1a683fc2-c202-40ff-9b01-1edaba612754",
+                "StartboardPart-PinnedNotebookQueryPart-1a683fc2-c202-40ff-9b01-1edaba612756",
+                "StartboardPart-PinnedNotebookQueryPart-1a683fc2-c202-40ff-9b01-1edaba612758",
+                "StartboardPart-PinnedNotebookQueryPart-1a683fc2-c202-40ff-9b01-1edaba61275a",
+                "StartboardPart-PinnedNotebookQueryPart-1a683fc2-c202-40ff-9b01-1edaba61275c",
+                "StartboardPart-PinnedNotebookQueryPart-1a683fc2-c202-40ff-9b01-1edaba61275e",
+                "StartboardPart-PinnedNotebookQueryPart-1a683fc2-c202-40ff-9b01-1edaba612760",
+                "StartboardPart-PinnedNotebookQueryPart-1a683fc2-c202-40ff-9b01-1edaba612762",
+                "StartboardPart-PinnedNotebookQueryPart-1a683fc2-c202-40ff-9b01-1edaba612764",
+                "StartboardPart-PinnedNotebookQueryPart-1a683fc2-c202-40ff-9b01-1edaba612766",
+                "StartboardPart-PinnedNotebookQueryPart-1a683fc2-c202-40ff-9b01-1edaba612768",
+                "StartboardPart-PinnedNotebookQueryPart-1a683fc2-c202-40ff-9b01-1edaba61276a",
+                "StartboardPart-PinnedNotebookQueryPart-1a683fc2-c202-40ff-9b01-1edaba61276c",
+                "StartboardPart-PinnedNotebookQueryPart-1a683fc2-c202-40ff-9b01-1edaba61276e",
+                "StartboardPart-PinnedNotebookQueryPart-1a683fc2-c202-40ff-9b01-1edaba612770",
+                "StartboardPart-PinnedNotebookQueryPart-1a683fc2-c202-40ff-9b01-1edaba612772",
+                "StartboardPart-PinnedNotebookQueryPart-1a683fc2-c202-40ff-9b01-1edaba612774",
+                "StartboardPart-PinnedNotebookQueryPart-1a683fc2-c202-40ff-9b01-1edaba612776",
+                "StartboardPart-PinnedNotebookQueryPart-1a683fc2-c202-40ff-9b01-1edaba612778",
+                "StartboardPart-PinnedNotebookQueryPart-1a683fc2-c202-40ff-9b01-1edaba61277a"
               ]
             }
           }
