@@ -941,6 +941,7 @@
         Write-Output "`$LogAnalyticsWorkspaceResourceId            = "
         Write-Output "`"$($LogAnalyticsWorkspaceResourceId)`" "
         Write-Output ""
+        Write-Output "`$AzDcrResourceGroup                         = `"$($AzDcrResourceGroup)`" "
         Write-Output "`$AzDcrPrefix                                = `"$($AzDcrPrefix)`" "
         Write-Output "`$AzDcrSetLogIngestApiAppPermissionsDcrLevel = `$false"
         Write-Output "`$AzDcrLogIngestServicePrincipalObjectId     = `"$($ServicePrincipalObjectId)`" "
