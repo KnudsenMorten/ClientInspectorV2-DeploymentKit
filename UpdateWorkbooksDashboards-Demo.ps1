@@ -74,10 +74,10 @@ Write-Output ""
     $AzAppSecretName                       = "Secret used for Log-Ingestion"
 
     # Azure Active Directory (AAD)
-    $TenantId                              = "f0fa27a0-8e7c-4f63-9a77-ec94786b7c9e" # "<put in your Azure AD TenantId>"
+    $TenantId                              = "<put in your Azure AD TenantId>"
 
     # Azure LogAnalytics
-    $LogAnalyticsSubscription              = "fce4f282-fcc6-43fb-94d8-bf1701b862c3" # "<put in the SubId of where to place environment>"
+    $LogAnalyticsSubscription              = "<put in the SubId of where to place environment>"
     $LogAnalyticsResourceGroup             = "rg-logworkspaces-client-demo" + $Number  + "-t"
     $LoganalyticsWorkspaceName             = "log-management-client-demo" + $Number + "-t"
     $LoganalyticsLocation                  = "westeurope"
