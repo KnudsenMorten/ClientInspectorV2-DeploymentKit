@@ -74,7 +74,7 @@
 
     # Azure Data Collection Rules
     $AzDcrResourceGroup                    = "<put in RG name for Azure DCRs>" # sample: "rg-dcr-" + $LoganalyticsWorkspaceName
-    $AzDcrPrefixClient                     = "<put in prefix for easier sorting/searching of DCRs>" # sample: "clt" (short for client)
+    $AzDcrPrefix                           = "<put in prefix for easier sorting/searching of DCRs>" # sample: "clt" (short for client)
 
     # Azure Workbooks & Dashboards
     $TemplateCategory                      = "<put in name for Azure Workbook Templates name>" # sample: "CompanyX IT Operation Security Templates"
