@@ -756,11 +756,11 @@
       }
     }
   },
-  "name": "OFFICE | CLIENTS | MANAGED DASHBOARD (V2)",
+  "name": "OFFICE | CLIENTS | MANAGED DASHBOARD V2",
   "type": "Microsoft.Portal/dashboards",
   "location": "INSERT LOCATION",
   "tags": {
-    "hidden-title": "OFFICE | CLIENTS | MANAGED DASHBOARD (V2)"
+    "hidden-title": "OFFICE | CLIENTS | MANAGED DASHBOARD V2"
   },
   "apiVersion": "2015-08-01-preview"
 }

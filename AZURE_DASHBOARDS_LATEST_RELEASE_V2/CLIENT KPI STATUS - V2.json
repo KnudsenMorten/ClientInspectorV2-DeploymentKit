@@ -1580,11 +1580,11 @@
       }
     }
   },
-  "name": "CLIENT KPI STATUS | MANAGED DASHBOARD (V2)",
+  "name": "CLIENT KPI STATUS | MANAGED DASHBOARD V2",
   "type": "Microsoft.Portal/dashboards",
   "location": "INSERT LOCATION",
   "tags": {
-    "hidden-title": "CLIENT KPI STATUS | MANAGED DASHBOARD (V2)"
+    "hidden-title": "CLIENT KPI STATUS | MANAGED DASHBOARD V2"
   },
   "apiVersion": "2015-08-01-preview"
 }

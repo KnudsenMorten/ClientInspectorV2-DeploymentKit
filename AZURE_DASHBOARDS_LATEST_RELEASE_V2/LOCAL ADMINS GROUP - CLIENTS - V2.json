@@ -301,11 +301,11 @@
       }
     }
   },
-  "name": "LOCAL ADMINS | CLIENTS | MANAGED DASHBOARD (V2)",
+  "name": "LOCAL ADMINS | CLIENTS | MANAGED DASHBOARD V2",
   "type": "Microsoft.Portal/dashboards",
   "location": "INSERT LOCATION",
   "tags": {
-    "hidden-title": "LOCAL ADMINS | CLIENTS | MANAGED DASHBOARD (V2)"
+    "hidden-title": "LOCAL ADMINS | CLIENTS | MANAGED DASHBOARD V2"
   },
   "apiVersion": "2015-08-01-preview"
 }

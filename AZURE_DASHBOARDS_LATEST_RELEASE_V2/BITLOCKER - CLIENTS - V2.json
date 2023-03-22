@@ -496,11 +496,11 @@
       }
     }
   },
-  "name": "BITLOCKER | CLIENTS | MANAGED DASHBOARD (V2)",
+  "name": "BITLOCKER | CLIENTS | MANAGED DASHBOARD V2",
   "type": "Microsoft.Portal/dashboards",
   "location": "INSERT LOCATION",
   "tags": {
-    "hidden-title": "BITLOCKER | CLIENTS | MANAGED DASHBOARD (V2)"
+    "hidden-title": "BITLOCKER | CLIENTS | MANAGED DASHBOARD V2"
   },
   "apiVersion": "2015-08-01-preview"
 }

@@ -171,11 +171,11 @@
       }
     }
   },
-  "name": "APPLICATIONS | CLIENTS | MANAGED DASHBOARD (V2)",
+  "name": "APPLICATIONS | CLIENTS | MANAGED DASHBOARD V2",
   "type": "Microsoft.Portal/dashboards",
   "location": "INSERT LOCATION",
   "tags": {
-    "hidden-title": "APPLICATIONS | CLIENTS | MANAGED DASHBOARD (V2)"
+    "hidden-title": "APPLICATIONS | CLIENTS | MANAGED DASHBOARD V2"
   },
   "apiVersion": "2015-08-01-preview"
 }

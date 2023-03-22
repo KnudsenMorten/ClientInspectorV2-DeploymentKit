@@ -299,11 +299,11 @@
       }
     }
   },
-  "name": "WINDOWS FIREWALL | CLIENTS | MANAGED DASHBOARD (V2)",
+  "name": "WINDOWS FIREWALL | CLIENTS | MANAGED DASHBOARD V2",
   "type": "Microsoft.Portal/dashboards",
   "location": "INSERT LOCATION",
   "tags": {
-    "hidden-title": "WINDOWS FIREWALL | CLIENTS | MANAGED DASHBOARD (V2)"
+    "hidden-title": "WINDOWS FIREWALL | CLIENTS | MANAGED DASHBOARD V2"
   },
   "apiVersion": "2015-08-01-preview"
 }

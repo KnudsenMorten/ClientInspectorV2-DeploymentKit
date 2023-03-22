@@ -1731,11 +1731,11 @@
       }
     }
   },
-  "name": "DEFENDER ANTIVIRUS | CLIENTS | MANAGED DASHBOARD (V2)",
+  "name": "DEFENDER ANTIVIRUS | CLIENTS | MANAGED DASHBOARD V2",
   "type": "Microsoft.Portal/dashboards",
   "location": "INSERT LOCATION",
   "tags": {
-    "hidden-title": "DEFENDER ANTIVIRUS | CLIENTS | MANAGED DASHBOARD (V2)"
+    "hidden-title": "DEFENDER ANTIVIRUS | CLIENTS | MANAGED DASHBOARD V2"
   },
   "apiVersion": "2015-08-01-preview"
 }
