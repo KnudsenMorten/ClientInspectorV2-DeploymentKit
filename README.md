@@ -1,5 +1,7 @@
 # Introduction
-The purpose of this repository is to provide everything needed to deploy a complete environment for **ClientInspector (v2)**
+The purpose of this repository is to provide everything needed to deploy a complete environment for **ClientInspector (v2)**. 
+
+[ClientInspector (Github)](https://github.com/KnudsenMorten/ClientInspectorV2)
 
 The deployment includes the following steps:
 1. create **Azure Resource Group** for **Azure LogAnalytics Workspace**
@@ -49,24 +51,6 @@ ClientInspector is **free** to the community - built to be a **cool showcase** o
 [Video - Dashboards](https://youtu.be/0MKPgzvDNRk) 
 
 ![Overview](docs/OverviewV2.png)
-
-# Archicture & flow of ClientInspector
-ClientInspector (v2) is uploading the collected data into **custom logs** in **Azure LogAnalytics workspace** - using **Log ingestion API**, **Azure Data Collection Rules (DCR)** and **Azure Data Collection Endpoints (DCE)**. 
-
-![Archicture](docs/ArchitectureV2.png)
-
-# Sample Dashboards
-![KPIs](img/KPI-Dashboard.png)
-
-![Antivirus](img/Sample-Bitlocker-2.png)
-
-![Bluescreens](img/Sample-Bluescreens.png)
-
-**ClientInspector (v2)** is uploading the collected data into custom logs in Azure LogAnalytics workspace - using Log ingestion API, Azure Data Collection Rules (DCR) and Azure Data Collection Endpoints (DCE). 
-
-You can run the ClientInspector script using your favorite deployment tool. Scripts for Microsoft Intune and ConfigMgr are provided. 
-
-[Click here if you want to get detailed insight about ClientInspector](https://github.com/KnudsenMorten/ClientInspectorV2) 
 
 
 # How to get deploy a ClientInspectorV2 demo-environment
