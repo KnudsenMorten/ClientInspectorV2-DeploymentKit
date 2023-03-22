@@ -164,7 +164,7 @@ Write-Output ""
 #------------------------------------------------------------------------------------------------------------
 
     # path to store files
-    $TempPath = (Get-location).Path + "\" + $WorkBook_Repository_Path
+    $TempPath = $FolderRoot + "\" + $WorkBook_Repository_Path
 
     # Checking if existing workbook files are found. If $true, then they will be deleted
     $ExistFilesCheck = Get-ChildItem "$($TempPath)\*.json" -ErrorAction SilentlyContinue
@@ -198,7 +198,7 @@ Write-Output ""
 #------------------------------------------------------------------------------------------------------------
     
     # path to store files
-    $TempPath = (Get-location).Path + "\" + $Dashboard_Repository_Path
+    $TempPath = $FolderRoot + "\" + $Dashboard_Repository_Path
 
     # Checking if existing dashboards files are found. If $true, then they will be deleted
     $ExistFilesCheck = Get-ChildItem "$($TempPath)\*.json" -ErrorAction SilentlyContinue
