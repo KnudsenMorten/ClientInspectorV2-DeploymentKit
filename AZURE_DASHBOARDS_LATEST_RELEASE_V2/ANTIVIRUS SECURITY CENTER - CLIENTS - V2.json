@@ -20,6 +20,7 @@
                 },
                 {
                   "name": "TimeContext",
+                  "value": null,
                   "isOptional": true
                 },
                 {
@@ -31,7 +32,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourceGroups/rg-managed-dashboards-workbooks/providers/microsoft.insights/workbooktemplates/ANTIVIRUS (SECURITY CENTER) - CLIENTS",
+                  "value": "ArmTemplates-/subscriptions/4862c56b-14ba-48ce-bc14-097883eb3dab/resourceGroups/rg-managed-dashboards-workbooks/providers/microsoft.insights/workbooktemplates/ANTIVIRUS SECURITY CENTER - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -46,12 +47,12 @@
                 },
                 {
                   "name": "PinName",
-                  "value": "ANTIVIRUS (SECURITY CENTER) - CLIENTS",
+                  "value": "ANTIVIRUS SECURITY CENTER - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientAntivirusV2_CL \\r\\n| summarize CollectionTime_t = arg_max(CollectionTime_t,*) by Computer\\r\\n| where PrimaryAntivirusProduct_s !contains \\\"Defender\\\"\\r\\n| project Computer, UserLoggedOn_s, CollectionTime_t, PrimaryAntivirusProduct_s, PrimaryAntivirusEXE_s, PrimaryAntivirusProductStateCode_d, PrimaryAntivirusProductStateTimestamp_s, PrimaryAntivirusRealTimeStatus_s, PrimaryAntivirusDefinitionStatus_s,Alternative1AntivirusProduct_s, Alternative1AntivirusEXE_s, Alternative1AntivirusProductStateCode_s, Alternative1AntivirusProductStateTimestamp_s\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"OTHER PRIMARY ANTIVIRUS (SECURITY CENTER) | CLIENTS | COUNT\",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourcegroups/we-rg-monitoring-p/providers/microsoft.operationalinsights/workspaces/CASA-ws\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientAntivirusV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where PrimaryAntivirusProduct !contains \\\"Defender\\\"\\r\\n| project Computer, CollectionTime, PrimaryAntivirusProduct, PrimaryAntivirusEXE, PrimaryAntivirusProductStateCode, PrimaryAntivirusProductStateTimestamp, PrimaryAntivirusRealTimeStatus, PrimaryAntivirusDefinitionStatus,Alternative1AntivirusProduct, Alternative1AntivirusEXE, Alternative1AntivirusProductStateCode, Alternative1AntivirusProductStateTimestamp\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"OTHER PRIMARY ANTIVIRUS (SECURITY CENTER) | CLIENTS | COUNT\",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/4862c56b-14ba-48ce-bc14-097883eb3dab/resourcegroups/rg-logworkspaces-p/providers/microsoft.operationalinsights/workspaces/log-platform-management-client-p\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
                   "isOptional": true
                 },
                 {
@@ -83,6 +84,7 @@
                 },
                 {
                   "name": "TimeContext",
+                  "value": null,
                   "isOptional": true
                 },
                 {
@@ -94,7 +96,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourceGroups/rg-managed-dashboards-workbooks/providers/microsoft.insights/workbooktemplates/ANTIVIRUS (SECURITY CENTER) - CLIENTS",
+                  "value": "ArmTemplates-/subscriptions/4862c56b-14ba-48ce-bc14-097883eb3dab/resourceGroups/rg-managed-dashboards-workbooks/providers/microsoft.insights/workbooktemplates/ANTIVIRUS SECURITY CENTER - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -109,12 +111,12 @@
                 },
                 {
                   "name": "PinName",
-                  "value": "ANTIVIRUS (SECURITY CENTER) - CLIENTS",
+                  "value": "ANTIVIRUS SECURITY CENTER - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientAntivirusV2_CL \\r\\n| summarize CollectionTime_t = arg_max(CollectionTime_t,*) by Computer\\r\\n| where PrimaryAntivirusProduct_s contains \\\"Defender\\\"\\r\\n| project Computer, UserLoggedOn_s, CollectionTime_t, PrimaryAntivirusProduct_s, PrimaryAntivirusEXE_s, PrimaryAntivirusProductStateCode_d, PrimaryAntivirusProductStateTimestamp_s, PrimaryAntivirusRealTimeStatus_s, PrimaryAntivirusDefinitionStatus_s,Alternative1AntivirusProduct_s, Alternative1AntivirusEXE_s, Alternative1AntivirusProductStateCode_s, Alternative1AntivirusProductStateTimestamp_s\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"DEFENDER PRIMARY ANTIVIRUS (SECURITY CENTER) | CLIENTS | COUNT\",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourcegroups/we-rg-monitoring-p/providers/microsoft.operationalinsights/workspaces/CASA-ws\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"green\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientAntivirusV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where PrimaryAntivirusProduct contains \\\"Defender\\\"\\r\\n| project Computer, CollectionTime, UserLoggedOn, PrimaryAntivirusProduct, PrimaryAntivirusEXE, PrimaryAntivirusProductStateCode, PrimaryAntivirusProductStateTimestamp, PrimaryAntivirusRealTimeStatus, PrimaryAntivirusDefinitionStatus,Alternative1AntivirusProduct, Alternative1AntivirusEXE, Alternative1AntivirusProductStateCode, Alternative1AntivirusProductStateTimestamp\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"DEFENDER PRIMARY ANTIVIRUS (SECURITY CENTER) | CLIENTS | COUNT\",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/4862c56b-14ba-48ce-bc14-097883eb3dab/resourcegroups/rg-logworkspaces-p/providers/microsoft.operationalinsights/workspaces/log-platform-management-client-p\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"green\"}},\"showBorder\":true,\"size\":\"auto\"}}",
                   "isOptional": true
                 },
                 {
@@ -134,71 +136,8 @@
             "position": {
               "x": 0,
               "y": 2,
-              "colSpan": 25,
-              "rowSpan": 5
-            },
-            "metadata": {
-              "inputs": [
-                {
-                  "name": "ComponentId",
-                  "value": "Azure Monitor",
-                  "isOptional": true
-                },
-                {
-                  "name": "TimeContext",
-                  "isOptional": true
-                },
-                {
-                  "name": "ResourceIds",
-                  "value": [
-                    "Azure Monitor"
-                  ],
-                  "isOptional": true
-                },
-                {
-                  "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourceGroups/rg-managed-dashboards-workbooks/providers/microsoft.insights/workbooktemplates/ANTIVIRUS (SECURITY CENTER) - CLIENTS",
-                  "isOptional": true
-                },
-                {
-                  "name": "Type",
-                  "value": "workbook",
-                  "isOptional": true
-                },
-                {
-                  "name": "GalleryResourceType",
-                  "value": "Azure Monitor",
-                  "isOptional": true
-                },
-                {
-                  "name": "PinName",
-                  "value": "ANTIVIRUS (SECURITY CENTER) - CLIENTS",
-                  "isOptional": true
-                },
-                {
-                  "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientAntivirusV2_CL \\r\\n| summarize CollectionTime_t = arg_max(CollectionTime_t,*) by Computer\\r\\n| where PrimaryAntivirusProduct_s contains \\\"Defender\\\"\\r\\n| project Computer, UserLoggedOn_s, CollectionTime_t, PrimaryAntivirusProduct_s, PrimaryAntivirusEXE_s, PrimaryAntivirusProductStateCode_d, PrimaryAntivirusProductStateTimestamp_s, PrimaryAntivirusRealTimeStatus_s, PrimaryAntivirusDefinitionStatus_s,Alternative1AntivirusProduct_s, Alternative1AntivirusEXE_s, Alternative1AntivirusProductStateCode_s, Alternative1AntivirusProductStateTimestamp_s\\r\\n| sort by Computer asc \",\"size\":0,\"showAnalytics\":true,\"title\":\"DEFENDER PRIMARY ANTIVIRUS (SECURITY CENTER) | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourcegroups/we-rg-monitoring-p/providers/microsoft.operationalinsights/workspaces/CASA-ws\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
-                  "isOptional": true
-                },
-                {
-                  "name": "ParameterValues",
-                  "value": {},
-                  "isOptional": true
-                },
-                {
-                  "name": "Location",
-                  "isOptional": true
-                }
-              ],
-              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
-            }
-          },
-          "3": {
-            "position": {
-              "x": 0,
-              "y": 7,
-              "colSpan": 25,
-              "rowSpan": 4
+              "colSpan": 24,
+              "rowSpan": 7
             },
             "metadata": {
               "inputs": [
@@ -221,7 +160,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourceGroups/rg-managed-dashboards-workbooks/providers/microsoft.insights/workbooktemplates/ANTIVIRUS SECURITY CENTER - CLIENTS",
+                  "value": "ArmTemplates-/subscriptions/4862c56b-14ba-48ce-bc14-097883eb3dab/resourceGroups/rg-managed-dashboards-workbooks/providers/microsoft.insights/workbooktemplates/ANTIVIRUS SECURITY CENTER - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -236,12 +175,76 @@
                 },
                 {
                   "name": "PinName",
-                  "value": "ANTIVIRUS SECURITY CENTER - CLIENTS",
+                  "value": "ANTIVIRUS SECURITY CENTER - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientAntivirusV2_CL \\r\\n| summarize CollectionTime_t = arg_max(CollectionTime_t,*) by Computer\\r\\n| where PrimaryAntivirusProduct_s !contains \\\"Defender\\\"\\r\\n| project Computer, CollectionTime_t, UserLoggedOn_s, PrimaryAntivirusProduct_s, PrimaryAntivirusEXE_s, PrimaryAntivirusProductStateCode_d, PrimaryAntivirusProductStateTimestamp_s, PrimaryAntivirusRealTimeStatus_s, PrimaryAntivirusDefinitionStatus_s,Alternative1AntivirusProduct_s, Alternative1AntivirusEXE_s, Alternative1AntivirusProductStateCode_s, Alternative1AntivirusProductStateTimestamp_s\\r\\n| sort by Computer asc \",\"size\":0,\"title\":\"OTHER PRIMARY ANTIVIRUS (SECURITY CENTER) | CLIENTS | LIST\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourcegroups/we-rg-monitoring-p/providers/microsoft.operationalinsights/workspaces/CASA-ws\"],\"visualization\":\"table\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientAntivirusV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where PrimaryAntivirusProduct !contains \\\"Defender\\\"\\r\\n| project Computer, CollectionTime, UserLoggedOn, PrimaryAntivirusProduct, PrimaryAntivirusEXE, PrimaryAntivirusProductStateCode, PrimaryAntivirusProductStateTimestamp, PrimaryAntivirusRealTimeStatus, PrimaryAntivirusDefinitionStatus,Alternative1AntivirusProduct, Alternative1AntivirusEXE, Alternative1AntivirusProductStateCode, Alternative1AntivirusProductStateTimestamp\\r\\n| sort by Computer asc \",\"size\":0,\"title\":\"OTHER PRIMARY ANTIVIRUS (SECURITY CENTER) | CLIENTS | LIST\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/4862c56b-14ba-48ce-bc14-097883eb3dab/resourcegroups/rg-logworkspaces-p/providers/microsoft.operationalinsights/workspaces/log-platform-management-client-p\"],\"visualization\":\"table\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "isOptional": true
+                },
+                {
+                  "name": "ParameterValues",
+                  "value": {},
+                  "isOptional": true
+                },
+                {
+                  "name": "Location",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookQueryPart"
+            }
+          },
+          "3": {
+            "position": {
+              "x": 0,
+              "y": 9,
+              "colSpan": 24,
+              "rowSpan": 6
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeContext",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "ResourceIds",
+                  "value": [
+                    "Azure Monitor"
+                  ],
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "ArmTemplates-/subscriptions/4862c56b-14ba-48ce-bc14-097883eb3dab/resourceGroups/rg-managed-dashboards-workbooks/providers/microsoft.insights/workbooktemplates/ANTIVIRUS SECURITY CENTER - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "Type",
+                  "value": "workbook",
+                  "isOptional": true
+                },
+                {
+                  "name": "GalleryResourceType",
+                  "value": "Azure Monitor",
+                  "isOptional": true
+                },
+                {
+                  "name": "PinName",
+                  "value": "ANTIVIRUS SECURITY CENTER - CLIENTS - V2",
+                  "isOptional": true
+                },
+                {
+                  "name": "StepSettings",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientAntivirusV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where PrimaryAntivirusProduct contains \\\"Defender\\\"\\r\\n| project Computer, CollectionTime, UserLoggedOn, PrimaryAntivirusProduct, PrimaryAntivirusEXE, PrimaryAntivirusProductStateCode, PrimaryAntivirusProductStateTimestamp, PrimaryAntivirusRealTimeStatus, PrimaryAntivirusDefinitionStatus,Alternative1AntivirusProduct, Alternative1AntivirusEXE, Alternative1AntivirusProductStateCode, Alternative1AntivirusProductStateTimestamp\\r\\n| sort by Computer asc \",\"size\":0,\"showAnalytics\":true,\"title\":\"DEFENDER PRIMARY ANTIVIRUS (SECURITY CENTER) | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/4862c56b-14ba-48ce-bc14-097883eb3dab/resourcegroups/rg-logworkspaces-p/providers/microsoft.operationalinsights/workspaces/log-platform-management-client-p\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
                   "isOptional": true
                 },
                 {
@@ -260,9 +263,9 @@
           "4": {
             "position": {
               "x": 0,
-              "y": 11,
-              "colSpan": 25,
-              "rowSpan": 5
+              "y": 15,
+              "colSpan": 24,
+              "rowSpan": 6
             },
             "metadata": {
               "inputs": [
@@ -273,6 +276,7 @@
                 },
                 {
                   "name": "TimeContext",
+                  "value": null,
                   "isOptional": true
                 },
                 {
@@ -284,7 +288,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourceGroups/rg-managed-dashboards-workbooks/providers/microsoft.insights/workbooktemplates/ANTIVIRUS (SECURITY CENTER) - CLIENTS",
+                  "value": "ArmTemplates-/subscriptions/4862c56b-14ba-48ce-bc14-097883eb3dab/resourceGroups/rg-managed-dashboards-workbooks/providers/microsoft.insights/workbooktemplates/ANTIVIRUS SECURITY CENTER - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -299,12 +303,12 @@
                 },
                 {
                   "name": "PinName",
-                  "value": "ANTIVIRUS (SECURITY CENTER) - CLIENTS",
+                  "value": "ANTIVIRUS SECURITY CENTER - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientAntivirusV2_CL \\r\\n| summarize CollectionTime_t = arg_max(CollectionTime_t,*) by Computer\\r\\n| project Computer, UserLoggedOn_s, CollectionTime_t, PrimaryAntivirusProduct_s, PrimaryAntivirusEXE_s, PrimaryAntivirusProductStateCode_d, PrimaryAntivirusProductStateTimestamp_s, PrimaryAntivirusRealTimeStatus_s, PrimaryAntivirusDefinitionStatus_s,Alternative1AntivirusProduct_s, Alternative1AntivirusEXE_s, Alternative1AntivirusProductStateCode_s, Alternative1AntivirusProductStateTimestamp_s\\r\\n| sort by Computer asc \",\"size\":0,\"showAnalytics\":true,\"title\":\"ANTIVIRUS COMPLIANCE OVERVIEW (SECURITY CENTER) | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourcegroups/we-rg-monitoring-p/providers/microsoft.operationalinsights/workspaces/CASA-ws\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientAntivirusV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| project Computer, CollectionTime, PrimaryAntivirusProduct, PrimaryAntivirusEXE, UserLoggedOn, PrimaryAntivirusProductStateCode, PrimaryAntivirusProductStateTimestamp, PrimaryAntivirusRealTimeStatus, PrimaryAntivirusDefinitionStatus,Alternative1AntivirusProduct, Alternative1AntivirusEXE, Alternative1AntivirusProductStateCode, Alternative1AntivirusProductStateTimestamp\\r\\n| sort by Computer asc \",\"size\":0,\"showAnalytics\":true,\"title\":\"ANTIVIRUS COMPLIANCE OVERVIEW (SECURITY CENTER) | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/4862c56b-14ba-48ce-bc14-097883eb3dab/resourcegroups/rg-logworkspaces-p/providers/microsoft.operationalinsights/workspaces/log-platform-management-client-p\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
                   "isOptional": true
                 },
                 {
@@ -350,11 +354,11 @@
                 "value": "Past 24 hours"
               },
               "filteredPartIds": [
-                "StartboardPart-PinnedNotebookQueryPart-9db8240d-3826-461a-9d52-0953e9a01636",
-                "StartboardPart-PinnedNotebookQueryPart-9db8240d-3826-461a-9d52-0953e9a01638",
-                "StartboardPart-PinnedNotebookQueryPart-9db8240d-3826-461a-9d52-0953e9a0163a",
-                "StartboardPart-PinnedNotebookQueryPart-9db8240d-3826-461a-9d52-0953e9a0163e",
-                "StartboardPart-PinnedNotebookQueryPart-9db8240d-3826-461a-9d52-0953e9a0163c"
+                "StartboardPart-PinnedNotebookQueryPart-87085f1a-cc14-4d4f-9d64-c1feaca1fb7a",
+                "StartboardPart-PinnedNotebookQueryPart-87085f1a-cc14-4d4f-9d64-c1feaca1fb7c",
+                "StartboardPart-PinnedNotebookQueryPart-87085f1a-cc14-4d4f-9d64-c1feaca1fb7e",
+                "StartboardPart-PinnedNotebookQueryPart-87085f1a-cc14-4d4f-9d64-c1feaca1fb80",
+                "StartboardPart-PinnedNotebookQueryPart-87085f1a-cc14-4d4f-9d64-c1feaca1fb82"
               ]
             }
           }
