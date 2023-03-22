@@ -27,7 +27,7 @@ ClientInspector is **free** to the community - built to be a **cool showcase** o
 
 [You can see details on how to configure the deployment here](#deployment-of-clientinspector-v2-environment)
 
-[Video - Deployment via ClientInspector DeploymentKit](https://youtu.be/_RNlSqRcetg)   
+[Video 7m 25s - Deployment via ClientInspector DeploymentKit](https://youtu.be/_RNlSqRcetg)  
 
 ### Workbooks & Dashboards, part of deployment
 [Click here to see the included workbooks](#azure-workbooks-part-of-deployment)
