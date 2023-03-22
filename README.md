@@ -1,6 +1,4 @@
-# ClientInspectorV2-DeploymentKit
-
-## Introduction
+# Introduction
 The purpose of this repository is to provide everything needed to deploy a complete environment for **ClientInspector (v2)**
 
 The deployment includes the following steps:
@@ -18,10 +16,14 @@ The deployment includes the following steps:
 12. deployment of **Azure Workbooks**
 13. deployment of **Azure Dashboards**
 
-### Deployment
-[You can see details on how to configure the deployment here](#deployment-of-clientinspector-v2-environment)
+ClientInspector is **free** to the community - built to be a **cool showcase** of how you can bring back **data** from your clients using **Azure Log Ingestion Pipeline**, **Azure Data Collection Rules**, **Azure LogAnalytics**; view them with **Azure Monitor & Azure Dashboards** - and get "drift-alerts" using **Microsoft Sentinel**.
 
+## Quicklinks
+
+### Deployment
 [If you want to deploy a demo environment, you can click here](#deployment-of-clientinspector-v2-demo-environment)
+
+[You can see details on how to configure the deployment here](#deployment-of-clientinspector-v2-environment)
 
 [Video - Deployment via ClientInspector DeploymentKit](https://youtu.be/_RNlSqRcetg)   
 
@@ -35,15 +37,31 @@ The deployment includes the following steps:
 
 [Click here to see the security separate with 2 Azure app's](#azure-rbac-security-adjustment-separation-of-permissions-between-log-ingestion-and-tabledcr-management)
 
-## Introduction - ClientInspector
-**ClientInspector** can be used to collect lots of great information of from your **Windows clients** - and send the data to **Azure LogAnalytics Custom Tables**.
+# Introduction to ClientInspector
+![ClientInspector](img/ClientInspector_300.png)
 
-All the data can be accessed using Kusto (KQL) queries in Azure LogAnalytics - or by the provided Azure Workbooks and Azure Dashboards
+**Are you in control?** - or are some of your core infrastructure processes like **patching, antivirus, bitlocker enablement** drifting? Or would you like to do **advanced inventory**, where you can lookup your **warranty state** against Lenovo or Dell warranty, then keep reading.
 
-The deployment installs **13 ready-to-use workbooks** and **14 ready-to-use dashboards**.
+Check out **ClientInspector**, which can help you get **great insight** to your complete **client environment**.
 
-If you want to add more views (or workbooks), you can start by investigating the collected data in the custom logs tables using KQL quries. Then make your new views in the workbooks - and pin your favorites to your dashboards.
-   
+ClientInspector is **free** to the community - built to be a **cool showcase** of how you can bring back **data** from your clients using **Azure Log Ingestion Pipeline**, **Azure Data Collection Rules**, **Azure LogAnalytics**; view them with **Azure Monitor & Azure Dashboards** - and get "drift-alerts" using **Microsoft Sentinel**.
+
+[Video - Dashboards](https://youtu.be/0MKPgzvDNRk) 
+
+![Overview](docs/OverviewV2.png)
+
+# Archicture & flow of ClientInspector
+ClientInspector (v2) is uploading the collected data into **custom logs** in **Azure LogAnalytics workspace** - using **Log ingestion API**, **Azure Data Collection Rules (DCR)** and **Azure Data Collection Endpoints (DCE)**. 
+
+![Archicture](docs/ArchitectureV2.png)
+
+# Sample Dashboards
+![KPIs](img/KPI-Dashboard.png)
+
+![Antivirus](img/Sample-Bitlocker-2.png)
+
+![Bluescreens](img/Sample-Bluescreens.png)
+
 **ClientInspector (v2)** is uploading the collected data into custom logs in Azure LogAnalytics workspace - using Log ingestion API, Azure Data Collection Rules (DCR) and Azure Data Collection Endpoints (DCE). 
 
 You can run the ClientInspector script using your favorite deployment tool. Scripts for Microsoft Intune and ConfigMgr are provided. 
@@ -51,10 +69,34 @@ You can run the ClientInspector script using your favorite deployment tool. Scri
 [Click here if you want to get detailed insight about ClientInspector](https://github.com/KnudsenMorten/ClientInspectorV2) 
 
 
-## Deployment of ClientInspector (v2) environment
+# How to get deploy a ClientInspectorV2 demo-environment
+
+[Video 7m 25s - Deployment of demo environment via ClientInspector DeploymentKit](https://youtu.be/_RNlSqRcetg)  
+
+If you want to deploy a demo environment, please [download and modify the file Deployment-DemoEnvironment.ps1](https://raw.githubusercontent.com/KnudsenMorten/ClientInspectorV2-DeploymentKit/main/Deployment-DemoEnvironment.ps1) and just fill out **Azure SubscriptionId** and **Azure TenantId** - and you will get a complete environment with this configuration. 
+
+You will have the option to control the demo number using the $UseRandomNumber = $true/false. If you choose $true the number will randomize, so it is easy to re-run multiple times.
+
+| Parameter                       | Configuration                                |
+| :-------------                  | :------------------                          |
+| AzureAppName                    | Demo1 - Automation - Log-Ingestion            |
+| AzAppSecretName                 | Secret used for Log-Ingestion                |
+| LogAnalyticsResourceGroup       | rg-logworkspaces-demo1                        |
+| LoganalyticsWorkspaceName       | log-platform-management-client-demo1-p        |
+| LoganalyticsLocation            | westeurope                                   |
+| AzDceName                       | dce-log-platform-management-client-demo1-p    |
+| AzDceResourceGroup              | rg-dce-log-platform-management-client-demo1-p |
+| AzDcrResourceGroup              | rg-dcr-log-platform-management-client-demo1-p |
+| AzDcrPrefix                     | clt                                          |
+| TemplateCategory                | Demo IT Operation Security Templates         |
+| WorkbookDashboardResourceGroup  | rg-dashboards-workbooks-demo1                 |
+
+# How to deploy your production setup
+
 1. [Download Deployment.ps1](https://raw.githubusercontent.com/KnudsenMorten/ClientInspectorV2-DeploymentKit/main/Deployment.ps1)
 2. Open the file **Deployment.ps1** in your favorite editor
 3. Change the variables to your needs
+
 ```
 #------------------------------------------------------------------------------------------------------------
 # Variables
@@ -1352,25 +1394,6 @@ $AzDcrDceTableCreateFromAnyMachine          = $true
 </details>
 
 
-## Deployment of ClientInspector (v2) demo-environment
-If you want to deploy a demo environment, please [download and modify the file Deployment-DemoEnvironment.ps1](https://raw.githubusercontent.com/KnudsenMorten/ClientInspectorV2-DeploymentKit/main/Deployment-DemoEnvironment.ps1) and just fill out **Azure SubscriptionId** and **Azure TenantId** - and you will get a complete environment with this configuration. 
-
-You will have the option to control the demo number using the $UseRandomNumber = $true/false. If you choose $true the number will randomize, so it is easy to re-run multiple times.
-
-| Parameter                       | Configuration                                |
-| :-------------                  | :------------------                          |
-| AzureAppName                    | Demo1 - Automation - Log-Ingestion            |
-| AzAppSecretName                 | Secret used for Log-Ingestion                |
-| LogAnalyticsResourceGroup       | rg-logworkspaces-demo1                        |
-| LoganalyticsWorkspaceName       | log-platform-management-client-demo1-p        |
-| LoganalyticsLocation            | westeurope                                   |
-| AzDceName                       | dce-log-platform-management-client-demo1-p    |
-| AzDceResourceGroup              | rg-dce-log-platform-management-client-demo1-p |
-| AzDcrResourceGroup              | rg-dcr-log-platform-management-client-demo1-p |
-| AzDcrPrefix                     | clt                                          |
-| TemplateCategory                | Demo IT Operation Security Templates         |
-| WorkbookDashboardResourceGroup  | rg-dashboards-workbooks-demo1                 |
-
 ## Azure Workbooks, part of deployment
 
 | Workbook Name                                | Purpose
@@ -1412,7 +1435,7 @@ You will have the option to control the demo number using the $UseRandomNumber =
 ## Security
 
 
-For simplicity demo-purpose, the deployment will configure the created Azure app with RBAC permissions to both do log ingestion and table/DCR management. If you want to go into product, I recommend, that you implement separation 
+For simplicity, the deployment will configure the created Azure app with RBAC permissions to both do log ingestion and table/DCR management. 
 
 | Target                                                  | Delegation To                    | Azure RBAC Permission        | Comment                                                                   | 
 |:-------------                                           |:-----                            |:-----                        |:-----                                                                     |
