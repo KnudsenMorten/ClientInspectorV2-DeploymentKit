@@ -52,6 +52,7 @@ ClientInspector is **free** to the community - built to be a **cool showcase** o
 
 ![Overview](docs/OverviewV2.png)
 
+<br>
 
 # How to get deploy a ClientInspectorV2 demo-environment
 
@@ -74,6 +75,8 @@ You will have the option to control the demo number using the $UseRandomNumber =
 | AzDcrPrefix                     | clt                                          |
 | TemplateCategory                | Demo IT Operation Security Templates         |
 | WorkbookDashboardResourceGroup  | rg-dashboards-workbooks-demo1                 |
+
+<br>
 
 # How to deploy your production setup
 
