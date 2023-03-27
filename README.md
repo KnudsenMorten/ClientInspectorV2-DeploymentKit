@@ -1,7 +1,5 @@
 # Introduction
-The purpose of this repository is to provide everything needed to deploy a complete environment for **ClientInspector (v2)**. 
-
-[ClientInspector (Github)](https://github.com/KnudsenMorten/ClientInspectorV2)
+The purpose of this repository is to provide everything needed to deploy a complete environment for [ClientInspector (Github)](https://github.com/KnudsenMorten/ClientInspectorV2)
 
 The deployment includes the following steps:
 1. create **Azure Resource Group** for **Azure LogAnalytics Workspace**
