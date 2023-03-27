@@ -20,7 +20,7 @@ The deployment includes the following steps:
 
 ClientInspector is **free** to the community - built to be a **cool showcase** of how you can bring back **data** from your clients using **Azure Log Ingestion Pipeline**, **Azure Data Collection Rules**, **Azure LogAnalytics**; view them with **Azure Monitor & Azure Dashboards** - and get "drift-alerts" using **Microsoft Sentinel**.
 
-## Quicklinks
+# Quicklinks
 
 ### Deployment
 [If you want to deploy a demo environment, you can click here](#deployment-of-clientinspector-v2-demo-environment)
@@ -1381,7 +1381,7 @@ $AzDcrDceTableCreateFromAnyMachine          = $true
 </details>
 
 
-## Azure Workbooks, part of deployment
+# Azure Workbooks, part of deployment
 
 | Workbook Name                                | Purpose
 | -------------                                | :-----|
@@ -1399,7 +1399,7 @@ $AzDcrDceTableCreateFromAnyMachine          = $true
 | WINDOWS FIREWALL - CLIENTS - V2              | Windows firewall - settings for all 3 modes |
 | WINDOWS UPDATE - CLIENTS - V2                | Windows Update - last result (when), windows update source information (where), pending updates, last installations (what) |
 
-## Azure Dashboards, part of deployment
+# Azure Dashboards, part of deployment
 
 | Dashboards Name                              | Purpose
 | -------------                                | :-----|
@@ -1419,9 +1419,22 @@ $AzDcrDceTableCreateFromAnyMachine          = $true
 | WINDOWS UPDATE | CLIENTS | MANAGED DASHBOARD (V2)               | Windows Update - last result (when), windows update source information (where), pending updates, last installations (what) |
 
 
-## Security
+# Security
+## Code signing
+Both the **ClientInspector.ps1-file** and the **AzLogDcrIngestPS module (AzLogDcrIngest.psm1)** are signed with my code signing certificate (2LINKIT - my company). This way you can run it, if you require scripts to be signed.
+![Signed](img/codesigning1.png)
+
+Please [download the public key certificate](https://github.com/KnudsenMorten/ClientInspectorV2/raw/main/Trusted_Publisher_Certificate/2LINKIT-TrustedPublisher.cer) and put it into your 'trusted publisher' container to trust the publisher (2LINKIT - my company). You can deploy this using Intune or Group Policy.
+
+![Trusted Publisher](img/codesigning4.png)  
+![Trusted Publisher](img/codesigning3.png)  
+![Trusted Publisher](img/codesigning2.png)  
 
 
+### Intune deployment doesn't require trusted publisher to be in place
+By default Intune will do a BYPASS when running a remediation scripts.
+
+## Azure RBAC
 For simplicity, the deployment will configure the created Azure app with RBAC permissions to both do log ingestion and table/DCR management. 
 
 | Target                                                  | Delegation To                    | Azure RBAC Permission        | Comment                                                                   | 
