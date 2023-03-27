@@ -58,7 +58,7 @@ ClientInspector is **free** to the community - built to be a **cool showcase** o
 
 [Video 7m 25s - Deployment of demo environment via ClientInspector DeploymentKit](https://youtu.be/_RNlSqRcetg)  
 
-If you want to deploy a demo environment, please [download and modify the file Deployment-DemoEnvironment.ps1](https://raw.githubusercontent.com/KnudsenMorten/ClientInspectorV2-DeploymentKit/main/Deployment-DemoEnvironment.ps1) and just fill out **Azure SubscriptionId** and **Azure TenantId** - and you will get a complete environment with this configuration. 
+If you want to deploy a demo environment, please [download and modify the file Deployment-DemoEnvironment.ps1](https://raw.githubusercontent.com/KnudsenMorten/ClientInspectorV2-DeploymentKit/raw/main/Deployment-DemoEnvironment.ps1) and just fill out **Azure SubscriptionId** and **Azure TenantId** - and you will get a complete environment with this configuration. 
 
 You will have the option to control the demo number using the $UseRandomNumber = $true/false. If you choose $true the number will randomize, so it is easy to re-run multiple times.
 
@@ -80,7 +80,7 @@ You will have the option to control the demo number using the $UseRandomNumber =
 
 # How to deploy your production setup
 
-1. [Download Deployment.ps1](https://raw.githubusercontent.com/KnudsenMorten/ClientInspectorV2-DeploymentKit/main/Deployment.ps1)
+1. [Download Deployment.ps1](https://raw.githubusercontent.com/KnudsenMorten/ClientInspectorV2-DeploymentKit/raw/main/Deployment.ps1)
 2. Open the file **Deployment.ps1** in your favorite editor
 3. Change the variables to your needs
 
