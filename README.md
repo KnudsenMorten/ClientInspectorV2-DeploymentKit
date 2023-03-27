@@ -76,7 +76,7 @@ You will have the option to control the demo number using the $UseRandomNumber =
 
 # How to deploy your production setup
 
-1. [Download Deployment.ps1](https://github.com/KnudsenMorten/ClientInspectorV2-DeploymentKit/raw/main/Deployment.ps1)
+1. [Download Deployment.ps1](https://github.com/KnudsenMorten/ClientInspectorV2-DeploymentKit/raw/main/Deployment.ps1) (right-click and choose 'save link as')
 2. Open the file **Deployment.ps1** in your favorite editor
 3. Change the variables to your needs
 
