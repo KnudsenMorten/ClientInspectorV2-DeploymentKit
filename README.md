@@ -48,8 +48,6 @@ ClientInspector is **free** to the community - built to be a **cool showcase** o
 
 [Video 3m 01s - Dashboards](https://youtu.be/0MKPgzvDNRk) 
 
-![Overview](docs/OverviewV2.png)
-
 <br>
 
 # How to get deploy a ClientInspectorV2 demo-environment
