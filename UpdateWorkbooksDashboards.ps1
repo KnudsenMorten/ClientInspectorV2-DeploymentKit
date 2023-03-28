@@ -2,7 +2,7 @@
 
 <#
     .NAME
-    Update Workboks & Dashboards
+    Update Workboks & Dashboards - ClientInspector
 
     .AUTHOR
     Morten Knudsen, Microsoft MVP - https://mortenknudsen.net
