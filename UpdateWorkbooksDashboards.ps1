@@ -2,28 +2,7 @@
 
 <#
     .NAME
-    ClientInspector-DeploymentKit
-
-    .SYNOPSIS
-    The purpose of this repository is to provide everything needed to deploy a complete environment for ClientInspector (v2)
-
-    The deployment includes the following steps:
-
-    (1)  create Azure Resource Group for Azure LogAnalytics Workspace
-    (2)  create Azure LogAnalytics Workspace
-    (3)  create Azure App registration used for upload of data by ClientInspector
-    (4)  create Azure service principal on Azure App
-    (5)  create needed secret on Azure app
-    (6)  create the Azure Resource Group for Azure Data Collection Endpoint (DCE) in same region as Azure LogAnalytics Workspace
-    (7)  create the Azure Resource Group for Azure Data Collection Rules (DCR) in same region as Azure LogAnalytics Workspace
-    (8)  create Azure Data Collection Endpoint (DCE) in same region as Azure LogAnalytics Workspace
-    (9)  delegate permissions for Azure App on LogAnalytics workspace - see section Security for more info
-    (10) delegate permissions for Azure App on Azure Resource Group for Azure Data Collection Rules (DCR)
-    (11) delegate permissions for Azure App on Azure Resource Group for Azure Data Collection Endpoints (DCE)
-    (12) deployment of Azure Workbooks
-    (13) deployment of Azure Dashboards
-
-    Please check out the deployment guide on link https://github.com/KnudsenMorten/ClientInspectorV2-DeploymentKit
+    Update Workboks & Dashboards
 
     .AUTHOR
     Morten Knudsen, Microsoft MVP - https://mortenknudsen.net
@@ -48,31 +27,22 @@ Write-Output "https://github.com/KnudsenMorten/ClientInspectorV2-DeploymentKit"
 Write-Output ""
 
 
+#------------------------------------------------------------------------------------------------------------
+# Variables
+#------------------------------------------------------------------------------------------------------------
+
     # put in your path where ClientInspector, AzLogDcrIngestPS and workbooks/dashboards will be downloaded to !
     $FolderRoot                            = (Get-location).Path
    
-    # Azure App
-    # Azure App
-    $AzureAppName                          = "xxx - Automation - Log-Ingestion"
-    $AzAppSecretName                       = "Secret used for Log-Ingestion"
-
     # Azure Active Directory (AAD)
-    $TenantId                              = "<put in your Azure AD TenantId>"
+    $TenantId                              = ""
 
     # Azure LogAnalytics
-    $LogAnalyticsSubscription              = "<put in the SubId of where to place environment>"
+    $LogAnalyticsSubscription              = ""
     $LogAnalyticsResourceGroup             = ""
     $LoganalyticsWorkspaceName             = ""
     $LoganalyticsLocation                  = "westeurope"
 
-
-    # Azure Data Collection Endpoint
-    $AzDceName                             = ""
-    $AzDceResourceGroup                    = ""
-
-    # Azure Data Collection Rules
-    $AzDcrResourceGroup                    = ""
-    $AzDcrPrefix                           = "clt"
 
     # Azure Workbooks & Dashboards
     $TemplateCategory                      = "xxx IT Operation Security Templates"
