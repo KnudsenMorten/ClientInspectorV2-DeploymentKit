@@ -43,15 +43,9 @@ Write-Output ""
     $LoganalyticsWorkspaceName             = ""
     $LoganalyticsLocation                  = "westeurope"
 
-
     # Azure Workbooks & Dashboards
     $TemplateCategory                      = "xxx IT Operation Security Templates"
     $WorkbookDashboardResourceGroup        = ""
-
-    $ScriptDirectory                       = $PSScriptRoot
-    $WorkBook_Repository_Path              = "$($ScriptDirectory)\AZURE_WORKBOOKS_LATEST_RELEASE_V2"
-    $Dashboard_Repository_Path             = "$($ScriptDirectory)\AZURE_DASHBOARDS_LATEST_RELEASE_v2"
-    
 
     $WorkBook_Repository_Path              = "AZURE_WORKBOOKS_LATEST_RELEASE_V2"
     $Dashboard_Repository_Path             = "AZURE_DASHBOARDS_LATEST_RELEASE_V2"
