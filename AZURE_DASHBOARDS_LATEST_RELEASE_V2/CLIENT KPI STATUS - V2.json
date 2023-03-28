@@ -713,6 +713,7 @@
                 },
                 {
                   "name": "TimeContext",
+                  "value": null,
                   "isOptional": true
                 },
                 {
@@ -744,7 +745,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"let LAPS_Target = \\\"6.2.0.0\\\";\\r\\nInvClientLAPSInfoV2_CL\\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer\\r\\n| where (parse_version(LAPSVersion) \\u003c parse_version(LAPS_Target)) or (LAPSVersion == \\\"\\\")\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"INCOMPLIANT LAPS | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"let LAPS_Target = \\\"6.2.0.0\\\";\\r\\nInvClientLAPSInfoV2_CL\\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer\\r\\n| where ComputerFqdn !contains \\\".workgroup\\\"\\r\\n| where (parse_version(LAPSVersion) < parse_version(LAPS_Target)) or (LAPSVersion == \\\"\\\")\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"INCOMPLIANT LAPS | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true}}",
                   "isOptional": true
                 },
                 {
@@ -1406,7 +1407,6 @@
                 },
                 {
                   "name": "TimeContext",
-                  "value": null,
                   "isOptional": true
                 },
                 {
@@ -1547,30 +1547,30 @@
                 "value": "Past 24 hours"
               },
               "filteredPartIds": [
-                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b00f",
-                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b011",
-                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b013",
-                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b015",
-                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b017",
-                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b019",
-                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b01b",
-                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b01d",
-                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b01f",
-                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b021",
-                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b023",
-                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b025",
-                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b027",
-                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b029",
-                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b02b",
-                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b02d",
-                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b02f",
-                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b031",
-                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b033",
-                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b035",
-                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b037",
-                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b039",
-                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b03b",
-                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b03d"
+                "StartboardPart-PinnedNotebookQueryPart-f213c801-9a88-4eb4-ab60-72157f72c08b",
+                "StartboardPart-PinnedNotebookQueryPart-f213c801-9a88-4eb4-ab60-72157f72c08d",
+                "StartboardPart-PinnedNotebookQueryPart-f213c801-9a88-4eb4-ab60-72157f72c08f",
+                "StartboardPart-PinnedNotebookQueryPart-f213c801-9a88-4eb4-ab60-72157f72c091",
+                "StartboardPart-PinnedNotebookQueryPart-f213c801-9a88-4eb4-ab60-72157f72c093",
+                "StartboardPart-PinnedNotebookQueryPart-f213c801-9a88-4eb4-ab60-72157f72c095",
+                "StartboardPart-PinnedNotebookQueryPart-f213c801-9a88-4eb4-ab60-72157f72c097",
+                "StartboardPart-PinnedNotebookQueryPart-f213c801-9a88-4eb4-ab60-72157f72c099",
+                "StartboardPart-PinnedNotebookQueryPart-f213c801-9a88-4eb4-ab60-72157f72c09b",
+                "StartboardPart-PinnedNotebookQueryPart-f213c801-9a88-4eb4-ab60-72157f72c09d",
+                "StartboardPart-PinnedNotebookQueryPart-f213c801-9a88-4eb4-ab60-72157f72c09f",
+                "StartboardPart-PinnedNotebookQueryPart-f213c801-9a88-4eb4-ab60-72157f72c0a3",
+                "StartboardPart-PinnedNotebookQueryPart-f213c801-9a88-4eb4-ab60-72157f72c0a5",
+                "StartboardPart-PinnedNotebookQueryPart-f213c801-9a88-4eb4-ab60-72157f72c0a7",
+                "StartboardPart-PinnedNotebookQueryPart-f213c801-9a88-4eb4-ab60-72157f72c0a9",
+                "StartboardPart-PinnedNotebookQueryPart-f213c801-9a88-4eb4-ab60-72157f72c0ab",
+                "StartboardPart-PinnedNotebookQueryPart-f213c801-9a88-4eb4-ab60-72157f72c0ad",
+                "StartboardPart-PinnedNotebookQueryPart-f213c801-9a88-4eb4-ab60-72157f72c0af",
+                "StartboardPart-PinnedNotebookQueryPart-f213c801-9a88-4eb4-ab60-72157f72c0b1",
+                "StartboardPart-PinnedNotebookQueryPart-f213c801-9a88-4eb4-ab60-72157f72c0b3",
+                "StartboardPart-PinnedNotebookQueryPart-f213c801-9a88-4eb4-ab60-72157f72c0b5",
+                "StartboardPart-PinnedNotebookQueryPart-f213c801-9a88-4eb4-ab60-72157f72c0b7",
+                "StartboardPart-PinnedNotebookQueryPart-f213c801-9a88-4eb4-ab60-72157f72c0b9",
+                "StartboardPart-PinnedNotebookQueryPart-f213c801-9a88-4eb4-ab60-72157f72c0bb"
               ]
             }
           }

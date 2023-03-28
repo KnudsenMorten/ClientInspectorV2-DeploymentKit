@@ -32,7 +32,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/LAPS - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-dashboards-workbooks-prod-westeu-001/providers/microsoft.insights/workbooktemplates/LAPS - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -52,7 +52,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"let LAPS_Target = \\\"6.2.0.0\\\";\\r\\nInvClientLAPSInfoV2_CL\\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer\\r\\n| where (parse_version(LAPSVersion) < parse_version(LAPS_Target)) or (LAPSVersion == \\\"\\\")\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"INCOMPLIANT LAPS | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"let LAPS_Target = \\\"6.2.0.0\\\";\\r\\nInvClientLAPSInfoV2_CL\\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer\\r\\n| where ComputerFqdn !contains \\\".workgroup\\\"\\r\\n| where (parse_version(LAPSVersion) < parse_version(LAPS_Target)) or (LAPSVersion == \\\"\\\")\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"INCOMPLIANT LAPS | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true}}",
                   "isOptional": true
                 },
                 {
@@ -96,7 +96,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/LAPS - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-dashboards-workbooks-prod-westeu-001/providers/microsoft.insights/workbooktemplates/LAPS - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -116,7 +116,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"let LAPS_Target = \\\"6.2.0.0\\\";\\r\\nInvClientLAPSInfoV2_CL\\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer\\r\\n| where (parse_version(LAPSVersion) >= parse_version(LAPS_Target)) and (LAPSVersion != \\\"\\\")\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"COMPLIANT LAPS | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"green\"}},\"showBorder\":true}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"let LAPS_Target = \\\"6.2.0.0\\\";\\r\\nInvClientLAPSInfoV2_CL\\r\\n| where ComputerFqdn !contains \\\".workgroup\\\"\\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer\\r\\n| where (parse_version(LAPSVersion) >= parse_version(LAPS_Target)) and (LAPSVersion != \\\"\\\")\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"COMPLIANT LAPS | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"green\"}},\"showBorder\":true}}",
                   "isOptional": true
                 },
                 {
@@ -160,7 +160,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/LAPS - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-dashboards-workbooks-prod-westeu-001/providers/microsoft.insights/workbooktemplates/LAPS - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -180,7 +180,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientLAPSInfoV2_CL\\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer\\r\\n| project-reorder Computer asc\\r\\n| sort by Computer asc \",\"size\":0,\"showAnalytics\":true,\"title\":\"LAPS OVERVIEW | CLIENTS | LIST\",\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"rowLimit\":10000}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientLAPSInfoV2_CL\\r\\n| where ComputerFqdn !contains \\\".workgroup\\\"\\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer\\r\\n| project-reorder Computer asc\\r\\n| sort by Computer asc \",\"size\":0,\"showAnalytics\":true,\"title\":\"LAPS OVERVIEW | CLIENTS | LIST\",\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"gridSettings\":{\"rowLimit\":10000}}",
                   "isOptional": true
                 },
                 {
@@ -226,9 +226,9 @@
                 "value": "Past 24 hours"
               },
               "filteredPartIds": [
-                "StartboardPart-PinnedNotebookQueryPart-867307b5-4816-459a-a520-3c57ef8ba1f2",
-                "StartboardPart-PinnedNotebookQueryPart-867307b5-4816-459a-a520-3c57ef8ba1f4",
-                "StartboardPart-PinnedNotebookQueryPart-867307b5-4816-459a-a520-3c57ef8ba1f6"
+                "StartboardPart-PinnedNotebookQueryPart-f213c801-9a88-4eb4-ab60-72157f72c050",
+                "StartboardPart-PinnedNotebookQueryPart-f213c801-9a88-4eb4-ab60-72157f72c052",
+                "StartboardPart-PinnedNotebookQueryPart-f213c801-9a88-4eb4-ab60-72157f72c054"
               ]
             }
           }
