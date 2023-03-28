@@ -32,7 +32,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -52,7 +52,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ProductReleaseIds contains \\\"O365\\\"\\r\\n| where UpdatesEnabled notcontains \\\"True\\\"\\r\\n| project Computer, CollectionTime, UserLoggedOn, ProductReleaseIds, VersionToReport, Platform, ClientCulture, ClientFolder, CDNBaseUrl, OneDriveClientAddon, TeamsAddon, BingAddon, UpdatesEnabled, UpdateChannel\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"UPDATING O365 OFFICE NOT ENABLED | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| extend enableautomaticupdates_ = column_ifexists(\\\"enableautomaticupdates\\\", 0)\\r\\n| extend OfficeDescription_ = column_ifexists(\\\"OfficeDescription\\\", \\\"not_found\\\")\\r\\n| extend OfficeVersionBuild_ = column_ifexists(\\\"OfficeVersionBuild\\\", \\\"not_found\\\")\\r\\n| extend OfficeProductSKU_ = column_ifexists(\\\"OfficeProductSKU\\\", \\\"not_found\\\")\\r\\n| extend OfficeInstallationPath_ = column_ifexists(\\\"InstallationPath\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannel_ = column_ifexists(\\\"UpdateChannel\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannelName_ = column_ifexists(\\\"UpdateChannelName\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateEnabled_ = column_ifexists(\\\"OfficeUpdateEnabled\\\", \\\"not_found\\\")\\r\\n| extend VersionToReport_ = column_ifexists(\\\"VersionToReport\\\", \\\"not_found\\\")\\r\\n| extend ProductReleaseIds_ = column_ifexists(\\\"ProductReleaseIds\\\", \\\"not_found\\\")\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ProductReleaseIds_ contains \\\"O365\\\"\\r\\n| where (OfficeUpdateEnabled_ == \\\"False\\\") or (enableautomaticupdates_ == 0) \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"UPDATING O365 OFFICE NOT ENABLED | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
                   "isOptional": true
                 },
                 {
@@ -96,7 +96,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -116,7 +116,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| extend OfficeDescription_ = column_ifexists(\\\"OfficeDescription\\\", \\\"noata_found\\\")\\r\\n| extend OfficeVersionBuild_ = column_ifexists(\\\"OfficeVersionBuild\\\", \\\"noata_found\\\")\\r\\n| extend OfficeProductSKU_ = column_ifexists(\\\"OfficeProductSKU\\\", \\\"noata_found\\\")\\r\\n| extend OfficeInstallationPath_ = column_ifexists(\\\"OfficeInstallationPath\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateChannel_ = column_ifexists(\\\"OfficeUpdateChannel\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateChannelName_ = column_ifexists(\\\"OfficeUpdateChannelName\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateEnabled_ = column_ifexists(\\\"OfficeUpdateEnabled\\\", \\\"noata_found\\\")\\r\\n| extend VersionToReport_ = column_ifexists(\\\"VersionToReport\\\", \\\"noata_found\\\")\\r\\n| extend ProductReleaseIds_ = column_ifexists(\\\"ProductReleaseIds\\\", \\\"noata_found\\\")\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where OfficeProductSKU_ contains \\\"O365\\\"\\r\\n| where OfficeUpdateChannelName_ notcontains \\\"Current Channel\\\"\\r\\n| project Computer, UserLoggedOn, OfficeDescription=OfficeDescription_, OfficeVersionBuild=OfficeVersionBuild_ , OfficeProductSKU=OfficeProductSKU_, OfficeInstallationPath=OfficeInstallationPath_, OfficeUpdateChannel=OfficeUpdateChannel_, OfficeUpdateChannelName=OfficeUpdateChannelName_, OfficeUpdateEnabled=OfficeUpdateEnabled_\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"INCOMPLIANT UPDATE CHANNEL O365 OFFICE | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| extend enableautomaticupdates_ = column_ifexists(\\\"enableautomaticupdates\\\", 0)\\r\\n| extend OfficeDescription_ = column_ifexists(\\\"OfficeDescription\\\", \\\"not_found\\\")\\r\\n| extend OfficeVersionBuild_ = column_ifexists(\\\"OfficeVersionBuild\\\", \\\"not_found\\\")\\r\\n| extend OfficeProductSKU_ = column_ifexists(\\\"OfficeProductSKU\\\", \\\"not_found\\\")\\r\\n| extend OfficeInstallationPath_ = column_ifexists(\\\"InstallationPath\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannel_ = column_ifexists(\\\"UpdateChannel\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannelName_ = column_ifexists(\\\"UpdateChannelName\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateEnabled_ = column_ifexists(\\\"OfficeUpdateEnabled\\\", \\\"not_found\\\")\\r\\n| extend VersionToReport_ = column_ifexists(\\\"VersionToReport\\\", \\\"not_found\\\")\\r\\n| extend ProductReleaseIds_ = column_ifexists(\\\"ProductReleaseIds\\\", \\\"not_found\\\")\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ProductReleaseIds_ contains \\\"O365\\\"\\r\\n| where (OfficeUpdateChannel_ notcontains \\\"492350f6-3a01-4f97-b9c0-c7c6ddf67d60\\\") and (OfficeUpdateChannel_ notcontains \\\"55336b82-a18d-4dd6-b5f6-9e5095c314a6\\\") // 492350f6-3a01-4f97-b9c0-c7c6ddf67d60 = Current channel, 55336b82-a18d-4dd6-b5f6-9e5095c314a6 = monthly enterprise channel\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"INCOMPLIANT UPDATE CHANNEL O365 OFFICE | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
                   "isOptional": true
                 },
                 {
@@ -160,7 +160,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -180,7 +180,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ProductReleaseIds contains \\\"O365\\\"\\r\\n| project Computer, CollectionTime, UserLoggedOn, ProductReleaseIds, VersionToReport, Platform, ClientCulture, ClientFolder, CDNBaseUrl, OneDriveClientAddon, TeamsAddon, BingAddon, UpdatesEnabled, UpdateChannel\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"O365 OFFICE | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"green\"}},\"showBorder\":false}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| extend enableautomaticupdates_ = column_ifexists(\\\"enableautomaticupdates\\\", 0)\\r\\n| extend OfficeDescription_ = column_ifexists(\\\"OfficeDescription\\\", \\\"not_found\\\")\\r\\n| extend OfficeVersionBuild_ = column_ifexists(\\\"OfficeVersionBuild\\\", \\\"not_found\\\")\\r\\n| extend OfficeProductSKU_ = column_ifexists(\\\"OfficeProductSKU\\\", \\\"not_found\\\")\\r\\n| extend OfficeInstallationPath_ = column_ifexists(\\\"InstallationPath\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannel_ = column_ifexists(\\\"UpdateChannel\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannelName_ = column_ifexists(\\\"UpdateChannelName\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateEnabled_ = column_ifexists(\\\"OfficeUpdateEnabled\\\", \\\"not_found\\\")\\r\\n| extend VersionToReport_ = column_ifexists(\\\"VersionToReport\\\", \\\"not_found\\\")\\r\\n| extend ProductReleaseIds_ = column_ifexists(\\\"ProductReleaseIds\\\", \\\"not_found\\\")\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ProductReleaseIds_ contains \\\"O365\\\"\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"O365 OFFICE | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"green\"}},\"showBorder\":false}}",
                   "isOptional": true
                 },
                 {
@@ -224,7 +224,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -244,7 +244,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| extend OfficeDescription_ = column_ifexists(\\\"OfficeDescription\\\", \\\"noata_found\\\")\\r\\n| extend OfficeVersionBuild_ = column_ifexists(\\\"OfficeVersionBuild\\\", \\\"noata_found\\\")\\r\\n| extend OfficeProductSKU_ = column_ifexists(\\\"OfficeProductSKU\\\", \\\"noata_found\\\")\\r\\n| extend OfficeInstallationPath_ = column_ifexists(\\\"OfficeInstallationPath\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateChannel_ = column_ifexists(\\\"OfficeUpdateChannel\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateChannelName_ = column_ifexists(\\\"OfficeUpdateChannelName\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateEnabled_ = column_ifexists(\\\"OfficeUpdateEnabled\\\", \\\"noata_found\\\")\\r\\n| extend VersionToReport_ = column_ifexists(\\\"VersionToReport\\\", \\\"noata_found\\\")\\r\\n| extend ProductReleaseIds_ = column_ifexists(\\\"ProductReleaseIds\\\", \\\"noata_found\\\")\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer, OfficeDescription_\\r\\n| where OfficeDescription_ contains \\\"2016\\\" and OfficeProductSKU_ contains \\\"O365\\\"\\r\\n| project Computer, UserLoggedOn, OfficeDescription=OfficeDescription_, OfficeVersionBuild=OfficeVersionBuild_ , OfficeProductSKU=OfficeProductSKU_, OfficeInstallationPath=OfficeInstallationPath_, OfficeUpdateChannel=OfficeUpdateChannel_, OfficeUpdateChannelName=OfficeUpdateChannelName_, OfficeUpdateEnabled=OfficeUpdateEnabled_\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"STANDALONE OFFICE 2016 | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| extend enableautomaticupdates_ = column_ifexists(\\\"enableautomaticupdates\\\", 0)\\r\\n| extend OfficeDescription_ = column_ifexists(\\\"OfficeDescription\\\", \\\"not_found\\\")\\r\\n| extend OfficeVersionBuild_ = column_ifexists(\\\"OfficeVersionBuild\\\", \\\"not_found\\\")\\r\\n| extend OfficeProductSKU_ = column_ifexists(\\\"OfficeProductSKU\\\", \\\"not_found\\\")\\r\\n| extend OfficeInstallationPath_ = column_ifexists(\\\"InstallationPath\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannel_ = column_ifexists(\\\"UpdateChannel\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannelName_ = column_ifexists(\\\"UpdateChannelName\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateEnabled_ = column_ifexists(\\\"OfficeUpdateEnabled\\\", \\\"not_found\\\")\\r\\n| extend VersionToReport_ = column_ifexists(\\\"VersionToReport\\\", \\\"not_found\\\")\\r\\n| extend ProductReleaseIds_ = column_ifexists(\\\"ProductReleaseIds\\\", \\\"not_found\\\")\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where OfficeDescription_ contains \\\"2016\\\" and OfficeProductSKU_ contains \\\"O365\\\"\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"STANDALONE OFFICE 2016 | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
                   "isOptional": true
                 },
                 {
@@ -288,7 +288,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -308,7 +308,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| extend OfficeDescription_ = column_ifexists(\\\"OfficeDescription\\\", \\\"noata_found\\\")\\r\\n| extend OfficeVersionBuild_ = column_ifexists(\\\"OfficeVersionBuild\\\", \\\"noata_found\\\")\\r\\n| extend OfficeProductSKU_ = column_ifexists(\\\"OfficeProductSKU\\\", \\\"noata_found\\\")\\r\\n| extend OfficeInstallationPath_ = column_ifexists(\\\"OfficeInstallationPath\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateChannel_ = column_ifexists(\\\"OfficeUpdateChannel\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateChannelName_ = column_ifexists(\\\"OfficeUpdateChannelName\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateEnabled_ = column_ifexists(\\\"OfficeUpdateEnabled\\\", \\\"noata_found\\\")\\r\\n| extend VersionToReport_ = column_ifexists(\\\"VersionToReport\\\", \\\"noata_found\\\")\\r\\n| extend ProductReleaseIds_ = column_ifexists(\\\"ProductReleaseIds\\\", \\\"noata_found\\\")\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where OfficeDescription_ contains \\\"2013\\\" and ProductReleaseIds_ notcontains \\\"O365\\\"\\r\\n| project Computer, UserLoggedOn, OfficeDescription=OfficeDescription_, OfficeVersionBuild=OfficeVersionBuild_ , OfficeProductSKU=OfficeProductSKU_, OfficeInstallationPath=OfficeInstallationPath_, OfficeUpdateChannel=OfficeUpdateChannel_, OfficeUpdateChannelName=OfficeUpdateChannelName_, OfficeUpdateEnabled=OfficeUpdateEnabled_\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"LEGACY OFFICE | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| extend enableautomaticupdates_ = column_ifexists(\\\"enableautomaticupdates\\\", 0)\\r\\n| extend OfficeDescription_ = column_ifexists(\\\"OfficeDescription\\\", \\\"not_found\\\")\\r\\n| extend OfficeVersionBuild_ = column_ifexists(\\\"OfficeVersionBuild\\\", \\\"not_found\\\")\\r\\n| extend OfficeProductSKU_ = column_ifexists(\\\"OfficeProductSKU\\\", \\\"not_found\\\")\\r\\n| extend OfficeInstallationPath_ = column_ifexists(\\\"InstallationPath\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannel_ = column_ifexists(\\\"UpdateChannel\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannelName_ = column_ifexists(\\\"UpdateChannelName\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateEnabled_ = column_ifexists(\\\"OfficeUpdateEnabled\\\", \\\"not_found\\\")\\r\\n| extend VersionToReport_ = column_ifexists(\\\"VersionToReport\\\", \\\"not_found\\\")\\r\\n| extend ProductReleaseIds_ = column_ifexists(\\\"ProductReleaseIds\\\", \\\"not_found\\\")\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where OfficeDescription_ contains \\\"2013\\\" and ProductReleaseIds_ notcontains \\\"O365\\\"\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"LEGACY OFFICE | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
                   "isOptional": true
                 },
                 {
@@ -352,7 +352,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -372,7 +372,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ProductReleaseIds contains \\\"O365\\\"\\r\\n| project Computer, CollectionTime, UserLoggedOn, ProductReleaseIds, VersionToReport, Platform, ClientCulture, ClientFolder, CDNBaseUrl, OneDriveClientAddon, TeamsAddon, BingAddon, UpdatesEnabled, UpdateChannel\\r\\n| sort by Computer asc \\r\\n\",\"size\":0,\"title\":\"O365 OFFICE | CLIENTS | LIST\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"table\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"green\"}},\"showBorder\":false}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| extend enableautomaticupdates_ = column_ifexists(\\\"enableautomaticupdates\\\", 0)\\r\\n| extend OfficeDescription_ = column_ifexists(\\\"OfficeDescription\\\", \\\"not_found\\\")\\r\\n| extend OfficeVersionBuild_ = column_ifexists(\\\"OfficeVersionBuild\\\", \\\"not_found\\\")\\r\\n| extend OfficeProductSKU_ = column_ifexists(\\\"OfficeProductSKU\\\", \\\"not_found\\\")\\r\\n| extend OfficeInstallationPath_ = column_ifexists(\\\"InstallationPath\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannel_ = column_ifexists(\\\"UpdateChannel\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannelName_ = column_ifexists(\\\"UpdateChannelName\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateEnabled_ = column_ifexists(\\\"OfficeUpdateEnabled\\\", \\\"not_found\\\")\\r\\n| extend VersionToReport_ = column_ifexists(\\\"VersionToReport\\\", \\\"not_found\\\")\\r\\n| extend ProductReleaseIds_ = column_ifexists(\\\"ProductReleaseIds\\\", \\\"not_found\\\")\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ProductReleaseIds_ contains \\\"O365\\\"\\r\\n| where (OfficeUpdateChannel_ notcontains \\\"492350f6-3a01-4f97-b9c0-c7c6ddf67d60\\\") and (OfficeUpdateChannel_ notcontains \\\"55336b82-a18d-4dd6-b5f6-9e5095c314a6\\\") // 492350f6-3a01-4f97-b9c0-c7c6ddf67d60 = Current channel, 55336b82-a18d-4dd6-b5f6-9e5095c314a6 = monthly enterprise channel\\r\\n| sort by Computer asc \",\"size\":0,\"title\":\"INCOMPLIANT UPDATE CHANNEL O365 OFFICE | CLIENTS | LIST\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"table\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"green\"}},\"showBorder\":false}}",
                   "isOptional": true
                 },
                 {
@@ -393,7 +393,7 @@
               "x": 0,
               "y": 6,
               "colSpan": 25,
-              "rowSpan": 4
+              "rowSpan": 5
             },
             "metadata": {
               "inputs": [
@@ -416,7 +416,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -436,7 +436,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ProductReleaseIds contains \\\"O365\\\"\\r\\n| where UpdateChannel notcontains \\\"492350f6-3a01-4f97-b9c0-c7c6ddf67d60\\\"  // 492350f6-3a01-4f97-b9c0-c7c6ddf67d60 = Current channel\\r\\n| project Computer, CollectionTime, UserLoggedOn, ProductReleaseIds, VersionToReport, Platform, ClientCulture, ClientFolder, CDNBaseUrl, OneDriveClientAddon, TeamsAddon, BingAddon, UpdatesEnabled, UpdateChannel\\r\\n| sort by Computer asc \",\"size\":0,\"title\":\"INCOMPLIANT UPDATE CHANNEL O365 OFFICE | CLIENTS | LIST\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"table\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"green\"}},\"showBorder\":false}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| extend enableautomaticupdates_ = column_ifexists(\\\"enableautomaticupdates\\\", 0)\\r\\n| extend OfficeDescription_ = column_ifexists(\\\"OfficeDescription\\\", \\\"not_found\\\")\\r\\n| extend OfficeVersionBuild_ = column_ifexists(\\\"OfficeVersionBuild\\\", \\\"not_found\\\")\\r\\n| extend OfficeProductSKU_ = column_ifexists(\\\"OfficeProductSKU\\\", \\\"not_found\\\")\\r\\n| extend OfficeInstallationPath_ = column_ifexists(\\\"InstallationPath\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannel_ = column_ifexists(\\\"UpdateChannel\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannelName_ = column_ifexists(\\\"UpdateChannelName\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateEnabled_ = column_ifexists(\\\"OfficeUpdateEnabled\\\", \\\"not_found\\\")\\r\\n| extend VersionToReport_ = column_ifexists(\\\"VersionToReport\\\", \\\"not_found\\\")\\r\\n| extend ProductReleaseIds_ = column_ifexists(\\\"ProductReleaseIds\\\", \\\"not_found\\\")\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ProductReleaseIds_ contains \\\"O365\\\"\\r\\n| where (OfficeUpdateEnabled_ == \\\"False\\\") or (enableautomaticupdates_ == 0)\",\"size\":0,\"title\":\"UPDATING O365 OFFICE NOT ENABLED | CLIENTS | LIST\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"table\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
                   "isOptional": true
                 },
                 {
@@ -455,9 +455,9 @@
           "7": {
             "position": {
               "x": 0,
-              "y": 10,
+              "y": 11,
               "colSpan": 25,
-              "rowSpan": 4
+              "rowSpan": 6
             },
             "metadata": {
               "inputs": [
@@ -480,7 +480,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -500,7 +500,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ProductReleaseIds contains \\\"O365\\\"\\r\\n| where UpdatesEnabled notcontains \\\"True\\\"\\r\\n| project Computer, CollectionTime, UserLoggedOn, ProductReleaseIds, VersionToReport, Platform, ClientCulture, ClientFolder, CDNBaseUrl, OneDriveClientAddon, TeamsAddon, BingAddon, UpdatesEnabled, UpdateChannel\\r\\n| sort by Computer asc \\r\\n\",\"size\":0,\"title\":\"UPDATING O365 OFFICE NOT ENABLED | CLIENTS | LIST\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"table\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| extend enableautomaticupdates_ = column_ifexists(\\\"enableautomaticupdates\\\", 0)\\r\\n| extend OfficeDescription_ = column_ifexists(\\\"OfficeDescription\\\", \\\"not_found\\\")\\r\\n| extend OfficeVersionBuild_ = column_ifexists(\\\"OfficeVersionBuild\\\", \\\"not_found\\\")\\r\\n| extend OfficeProductSKU_ = column_ifexists(\\\"OfficeProductSKU\\\", \\\"not_found\\\")\\r\\n| extend OfficeInstallationPath_ = column_ifexists(\\\"InstallationPath\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannel_ = column_ifexists(\\\"UpdateChannel\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannelName_ = column_ifexists(\\\"UpdateChannelName\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateEnabled_ = column_ifexists(\\\"OfficeUpdateEnabled\\\", \\\"not_found\\\")\\r\\n| extend VersionToReport_ = column_ifexists(\\\"VersionToReport\\\", \\\"not_found\\\")\\r\\n| extend ProductReleaseIds_ = column_ifexists(\\\"ProductReleaseIds\\\", \\\"not_found\\\")\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ProductReleaseIds_ contains \\\"O365\\\"\\r\\n| sort by Computer asc \\r\\n\",\"size\":0,\"title\":\"O365 OFFICE | CLIENTS | LIST\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"table\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"green\"}},\"showBorder\":false}}",
                   "isOptional": true
                 },
                 {
@@ -519,9 +519,9 @@
           "8": {
             "position": {
               "x": 0,
-              "y": 14,
+              "y": 17,
               "colSpan": 25,
-              "rowSpan": 4
+              "rowSpan": 6
             },
             "metadata": {
               "inputs": [
@@ -544,7 +544,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -564,7 +564,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| extend OfficeDescription_ = column_ifexists(\\\"OfficeDescription\\\", \\\"noata_found\\\")\\r\\n| extend OfficeVersionBuild_ = column_ifexists(\\\"OfficeVersionBuild\\\", \\\"noata_found\\\")\\r\\n| extend OfficeProductSKU_ = column_ifexists(\\\"OfficeProductSKU\\\", \\\"noata_found\\\")\\r\\n| extend OfficeInstallationPath_ = column_ifexists(\\\"OfficeInstallationPath\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateChannel_ = column_ifexists(\\\"OfficeUpdateChannel\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateChannelName_ = column_ifexists(\\\"OfficeUpdateChannelName\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateEnabled_ = column_ifexists(\\\"OfficeUpdateEnabled\\\", \\\"noata_found\\\")\\r\\n| extend VersionToReport_ = column_ifexists(\\\"VersionToReport\\\", \\\"noata_found\\\")\\r\\n| extend ProductReleaseIds_ = column_ifexists(\\\"ProductReleaseIds\\\", \\\"noata_found\\\")\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer, OfficeDescription_\\r\\n| where OfficeDescription_ contains \\\"2016\\\" and OfficeProductSKU_ contains \\\"O365\\\"\\r\\n| project Computer, UserLoggedOn, OfficeDescription=OfficeDescription_, OfficeVersionBuild=OfficeVersionBuild_ , OfficeProductSKU=OfficeProductSKU_, OfficeInstallationPath=OfficeInstallationPath_, OfficeUpdateChannel=OfficeUpdateChannel_, OfficeUpdateChannelName=OfficeUpdateChannelName_, OfficeUpdateEnabled=OfficeUpdateEnabled_\\r\\n| sort by Computer asc \",\"size\":0,\"showAnalytics\":true,\"title\":\"STANDALONE OFFICE 2016 | CLIENTS | LIST\",\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| extend enableautomaticupdates_ = column_ifexists(\\\"enableautomaticupdates\\\", 0)\\r\\n| extend OfficeDescription_ = column_ifexists(\\\"OfficeDescription\\\", \\\"not_found\\\")\\r\\n| extend OfficeVersionBuild_ = column_ifexists(\\\"OfficeVersionBuild\\\", \\\"not_found\\\")\\r\\n| extend OfficeProductSKU_ = column_ifexists(\\\"OfficeProductSKU\\\", \\\"not_found\\\")\\r\\n| extend OfficeInstallationPath_ = column_ifexists(\\\"InstallationPath\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannel_ = column_ifexists(\\\"UpdateChannel\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannelName_ = column_ifexists(\\\"UpdateChannelName\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateEnabled_ = column_ifexists(\\\"OfficeUpdateEnabled\\\", \\\"not_found\\\")\\r\\n| extend VersionToReport_ = column_ifexists(\\\"VersionToReport\\\", \\\"not_found\\\")\\r\\n| extend ProductReleaseIds_ = column_ifexists(\\\"ProductReleaseIds\\\", \\\"not_found\\\")\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where OfficeDescription_ contains \\\"2016\\\" and OfficeProductSKU_ contains \\\"O365\\\"\\r\\n\",\"size\":0,\"showAnalytics\":true,\"title\":\"STANDALONE OFFICE 2016 | CLIENTS | LIST\",\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
                   "isOptional": true
                 },
                 {
@@ -583,9 +583,9 @@
           "9": {
             "position": {
               "x": 0,
-              "y": 18,
+              "y": 23,
               "colSpan": 25,
-              "rowSpan": 4
+              "rowSpan": 6
             },
             "metadata": {
               "inputs": [
@@ -608,7 +608,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -628,7 +628,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| extend OfficeDescription_ = column_ifexists(\\\"OfficeDescription\\\", \\\"noata_found\\\")\\r\\n| extend OfficeVersionBuild_ = column_ifexists(\\\"OfficeVersionBuild\\\", \\\"noata_found\\\")\\r\\n| extend OfficeProductSKU_ = column_ifexists(\\\"OfficeProductSKU\\\", \\\"noata_found\\\")\\r\\n| extend OfficeInstallationPath_ = column_ifexists(\\\"OfficeInstallationPath\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateChannel_ = column_ifexists(\\\"OfficeUpdateChannel\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateChannelName_ = column_ifexists(\\\"OfficeUpdateChannelName\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateEnabled_ = column_ifexists(\\\"OfficeUpdateEnabled\\\", \\\"noata_found\\\")\\r\\n| extend VersionToReport_ = column_ifexists(\\\"VersionToReport\\\", \\\"noata_found\\\")\\r\\n| extend ProductReleaseIds_ = column_ifexists(\\\"ProductReleaseIds\\\", \\\"noata_found\\\")\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where OfficeDescription_ contains \\\"2013\\\" and ProductReleaseIds_ notcontains \\\"O365\\\"\\r\\n| project Computer, UserLoggedOn, OfficeDescription=OfficeDescription_, OfficeVersionBuild=OfficeVersionBuild_ , OfficeProductSKU=OfficeProductSKU_, OfficeInstallationPath=OfficeInstallationPath_, OfficeUpdateChannel=OfficeUpdateChannel_, OfficeUpdateChannelName=OfficeUpdateChannelName_, OfficeUpdateEnabled=OfficeUpdateEnabled_\\r\\n| sort by Computer asc \\r\\n//| summarize total = count()\",\"size\":0,\"title\":\"LEGACY OFFICE | CLIENTS | LIST\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"visualization\":\"table\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| extend enableautomaticupdates_ = column_ifexists(\\\"enableautomaticupdates\\\", 0)\\r\\n| extend OfficeDescription_ = column_ifexists(\\\"OfficeDescription\\\", \\\"not_found\\\")\\r\\n| extend OfficeVersionBuild_ = column_ifexists(\\\"OfficeVersionBuild\\\", \\\"not_found\\\")\\r\\n| extend OfficeProductSKU_ = column_ifexists(\\\"OfficeProductSKU\\\", \\\"not_found\\\")\\r\\n| extend OfficeInstallationPath_ = column_ifexists(\\\"InstallationPath\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannel_ = column_ifexists(\\\"UpdateChannel\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannelName_ = column_ifexists(\\\"UpdateChannelName\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateEnabled_ = column_ifexists(\\\"OfficeUpdateEnabled\\\", \\\"not_found\\\")\\r\\n| extend VersionToReport_ = column_ifexists(\\\"VersionToReport\\\", \\\"not_found\\\")\\r\\n| extend ProductReleaseIds_ = column_ifexists(\\\"ProductReleaseIds\\\", \\\"not_found\\\")\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where OfficeDescription_ contains \\\"2013\\\" and ProductReleaseIds_ notcontains \\\"O365\\\"\\r\\n| sort by Computer asc \",\"size\":0,\"title\":\"LEGACY OFFICE | CLIENTS | LIST\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"table\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
                   "isOptional": true
                 },
                 {
@@ -647,9 +647,9 @@
           "10": {
             "position": {
               "x": 0,
-              "y": 22,
+              "y": 29,
               "colSpan": 25,
-              "rowSpan": 4
+              "rowSpan": 5
             },
             "metadata": {
               "inputs": [
@@ -672,7 +672,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo6470D-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -692,7 +692,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| extend OfficeDescription_ = column_ifexists(\\\"OfficeDescription\\\", \\\"noata_found\\\")\\r\\n| extend OfficeVersionBuild_ = column_ifexists(\\\"OfficeVersionBuild\\\", \\\"noata_found\\\")\\r\\n| extend OfficeProductSKU_ = column_ifexists(\\\"OfficeProductSKU\\\", \\\"noata_found\\\")\\r\\n| extend OfficeInstallationPath_ = column_ifexists(\\\"OfficeInstallationPath\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateChannel_ = column_ifexists(\\\"OfficeUpdateChannel\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateChannelName_ = column_ifexists(\\\"OfficeUpdateChannelName\\\", \\\"noata_found\\\")\\r\\n| extend OfficeUpdateEnabled_ = column_ifexists(\\\"OfficeUpdateEnabled\\\", \\\"noata_found\\\")\\r\\n| extend VersionToReport_ = column_ifexists(\\\"VersionToReport\\\", \\\"noata_found\\\")\\r\\n| extend ProductReleaseIds_ = column_ifexists(\\\"ProductReleaseIds\\\", \\\"noata_found\\\")\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| project Computer, UserLoggedOn, ProductReleaseIds, VersionToReport, Platform, ClientCulture, ClientFolder, CDNBaseUrl, OneDriveClientAddon, TeamsAddon, BingAddon, UpdatesEnabled, UpdateChannel, OfficeDescription=OfficeDescription_, OfficeVersionBuild=OfficeVersionBuild_ , OfficeProductSKU=OfficeProductSKU_, OfficeInstallationPath=OfficeInstallationPath_, OfficeUpdateChannel=OfficeUpdateChannel_, OfficeUpdateChannelName=OfficeUpdateChannelName_, OfficeUpdateEnabled=OfficeUpdateEnabled_\\r\\n| sort by Computer asc \",\"size\":0,\"showAnalytics\":true,\"title\":\"OFFICE OVERVIEW | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo6470D-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo6470D-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true,\"sortBy\":[{\"itemKey\":\"ProductReleaseIds\",\"sortOrder\":2}]},\"sortBy\":[{\"itemKey\":\"ProductReleaseIds\",\"sortOrder\":2}]}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| extend enableautomaticupdates_ = column_ifexists(\\\"enableautomaticupdates\\\", 0)\\r\\n| extend OfficeDescription_ = column_ifexists(\\\"OfficeDescription\\\", \\\"not_found\\\")\\r\\n| extend OfficeVersionBuild_ = column_ifexists(\\\"OfficeVersionBuild\\\", \\\"not_found\\\")\\r\\n| extend OfficeProductSKU_ = column_ifexists(\\\"OfficeProductSKU\\\", \\\"not_found\\\")\\r\\n| extend OfficeInstallationPath_ = column_ifexists(\\\"InstallationPath\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannel_ = column_ifexists(\\\"UpdateChannel\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannelName_ = column_ifexists(\\\"UpdateChannelName\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateEnabled_ = column_ifexists(\\\"OfficeUpdateEnabled\\\", \\\"not_found\\\")\\r\\n| extend VersionToReport_ = column_ifexists(\\\"VersionToReport\\\", \\\"not_found\\\")\\r\\n| extend ProductReleaseIds_ = column_ifexists(\\\"ProductReleaseIds\\\", \\\"not_found\\\")\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| sort by Computer asc \",\"size\":0,\"showAnalytics\":true,\"title\":\"OFFICE OVERVIEW | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true,\"sortBy\":[{\"itemKey\":\"ProductReleaseIds\",\"sortOrder\":2}]},\"sortBy\":[{\"itemKey\":\"ProductReleaseIds\",\"sortOrder\":2}]}",
                   "isOptional": true
                 },
                 {
@@ -738,17 +738,17 @@
                 "value": "Past 24 hours"
               },
               "filteredPartIds": [
-                "StartboardPart-PinnedNotebookQueryPart-0229bed7-5bba-4ff0-a7e8-52c4ecd81155",
-                "StartboardPart-PinnedNotebookQueryPart-0229bed7-5bba-4ff0-a7e8-52c4ecd81157",
-                "StartboardPart-PinnedNotebookQueryPart-0229bed7-5bba-4ff0-a7e8-52c4ecd81159",
-                "StartboardPart-PinnedNotebookQueryPart-0229bed7-5bba-4ff0-a7e8-52c4ecd8115b",
-                "StartboardPart-PinnedNotebookQueryPart-0229bed7-5bba-4ff0-a7e8-52c4ecd8115d",
-                "StartboardPart-PinnedNotebookQueryPart-0229bed7-5bba-4ff0-a7e8-52c4ecd8115f",
-                "StartboardPart-PinnedNotebookQueryPart-0229bed7-5bba-4ff0-a7e8-52c4ecd81161",
-                "StartboardPart-PinnedNotebookQueryPart-0229bed7-5bba-4ff0-a7e8-52c4ecd81163",
-                "StartboardPart-PinnedNotebookQueryPart-0229bed7-5bba-4ff0-a7e8-52c4ecd81165",
-                "StartboardPart-PinnedNotebookQueryPart-0229bed7-5bba-4ff0-a7e8-52c4ecd81167",
-                "StartboardPart-PinnedNotebookQueryPart-0229bed7-5bba-4ff0-a7e8-52c4ecd81169"
+                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e27203",
+                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e27205",
+                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e27207",
+                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e27209",
+                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e2720b",
+                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e2720d",
+                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e2720f",
+                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e27211",
+                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e27213",
+                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e27215",
+                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e27217"
               ]
             }
           }
