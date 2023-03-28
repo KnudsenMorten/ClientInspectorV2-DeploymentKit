@@ -31,7 +31,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/UNEXPECTED SHUTDOWNS - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-dashboards-workbooks-prod-westeu-001/providers/microsoft.insights/workbooktemplates/UNEXPECTED SHUTDOWNS - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -51,7 +51,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientEventlogInfoV2_CL\\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by MachineName, TimeCreated\\r\\n| project-reorder CollectionTime desc\\r\\n| project-reorder MachineName, Message asc \\r\\n| project-rename EventID=Id_\\r\\n| where EventID == 6008\\r\\n| distinct MachineName\\r\\n| sort by MachineName asc \\r\\n|summarize total = count()\",\"size\":0,\"title\":\"UNEXPECTED SHUTDOWNS | CLIENTS | COUNT\",\"noDataMessageStyle\":3,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientEventlogInfoV2_CL\\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by MachineName, TimeCreated\\r\\n| project-reorder CollectionTime desc\\r\\n| project-reorder MachineName, Message asc \\r\\n| project-rename EventID=Id_\\r\\n| where EventID == 6008\\r\\n| distinct MachineName\\r\\n| sort by MachineName asc \\r\\n|summarize total = count()\",\"size\":0,\"title\":\"UNEXPECTED SHUTDOWNS | CLIENTS | COUNT\",\"noDataMessageStyle\":3,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
                   "isOptional": true
                 },
                 {
@@ -94,7 +94,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/BITLOCKER - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-dashboards-workbooks-prod-westeu-001/providers/microsoft.insights/workbooktemplates/BITLOCKER - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -114,7 +114,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientBitlockerInfoV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where OSDisk_ProtectionStatus == 0\\r\\n| project Computer, UserLoggedOn, CollectionTime, OSDisk_DriveLetter, OSDisk_EncryptionPercentage, OSDisk_VolumeStatus, OSDisk_ProtectionStatus, OSDisk_CapacityGB,  OSDisk_KeyProtector\\r\\n| sort by Computer asc  \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"INCOMPLIANT BITLOCKER | CLIENTS | COUNT\",\"noDataMessageStyle\":3,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientBitlockerInfoV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where OSDisk_ProtectionStatus == 0\\r\\n| project Computer, UserLoggedOn, CollectionTime, OSDisk_DriveLetter, OSDisk_EncryptionPercentage, OSDisk_VolumeStatus, OSDisk_ProtectionStatus, OSDisk_CapacityGB,  OSDisk_KeyProtector\\r\\n| sort by Computer asc  \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"INCOMPLIANT BITLOCKER | CLIENTS | COUNT\",\"noDataMessageStyle\":3,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
                   "isOptional": true
                 },
                 {
@@ -157,7 +157,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/GROUP POLICY REFRESH - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-dashboards-workbooks-prod-westeu-001/providers/microsoft.insights/workbooktemplates/GROUP POLICY REFRESH - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -177,7 +177,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientGroupPolicyRefreshV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where GPLastRefresh \\u003e ago(-7d)\\r\\n| project Computer, UserLoggedOn, CollectionTime, GPLastRefreshDays, GPLastRefresh\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"LAST GROUP POLICY REFRESH MORE THAN 7 DAYS AGO | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientGroupPolicyRefreshV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where GPLastRefresh \\u003e ago(-7d)\\r\\n| project Computer, UserLoggedOn, CollectionTime, GPLastRefreshDays, GPLastRefresh\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"LAST GROUP POLICY REFRESH MORE THAN 7 DAYS AGO | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true}}",
                   "isOptional": true
                 },
                 {
@@ -220,7 +220,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/INVENTORY - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-dashboards-workbooks-prod-westeu-001/providers/microsoft.insights/workbooktemplates/INVENTORY - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -240,7 +240,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientComputerInfoV2_CL \\r\\n| extend OsUpTime = todynamic(OsUptime)\\r\\n| mv-expand OsUptime\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| project Computer, UserLoggedOn, OsUptime_Days=toint(OsUpTime.Days), CollectionTime\\r\\n| sort by OsUptime_Days desc\\r\\n| where OsUptime_Days \\u003e 7\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"NO RESTART MORE THAN 7 DAYS DAY | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientComputerInfoV2_CL \\r\\n| extend OsUpTime = todynamic(OsUptime)\\r\\n| mv-expand OsUptime\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| project Computer, UserLoggedOn, OsUptime_Days=toint(OsUpTime.Days), CollectionTime\\r\\n| sort by OsUptime_Days desc\\r\\n| where OsUptime_Days \\u003e 7\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"NO RESTART MORE THAN 7 DAYS DAY | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"visualization\":\"tiles\",\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
                   "isOptional": true
                 },
                 {
@@ -283,7 +283,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/ANTIVIRUS SECURITY CENTER - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-dashboards-workbooks-prod-westeu-001/providers/microsoft.insights/workbooktemplates/ANTIVIRUS SECURITY CENTER - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -303,7 +303,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientAntivirusV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where PrimaryAntivirusProduct !contains \\\"Defender\\\"\\r\\n| project Computer, CollectionTime, PrimaryAntivirusProduct, PrimaryAntivirusEXE, PrimaryAntivirusProductStateCode, PrimaryAntivirusProductStateTimestamp, PrimaryAntivirusRealTimeStatus, PrimaryAntivirusDefinitionStatus,Alternative1AntivirusProduct, Alternative1AntivirusEXE, Alternative1AntivirusProductStateCode, Alternative1AntivirusProductStateTimestamp\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"OTHER PRIMARY ANTIVIRUS (SECURITY CENTER) | CLIENTS | COUNT\",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientAntivirusV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where PrimaryAntivirusProduct !contains \\\"Defender\\\"\\r\\n| project Computer, CollectionTime, PrimaryAntivirusProduct, PrimaryAntivirusEXE, PrimaryAntivirusProductStateCode, PrimaryAntivirusProductStateTimestamp, PrimaryAntivirusRealTimeStatus, PrimaryAntivirusDefinitionStatus,Alternative1AntivirusProduct, Alternative1AntivirusEXE, Alternative1AntivirusProductStateCode, Alternative1AntivirusProductStateTimestamp\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"OTHER PRIMARY ANTIVIRUS (SECURITY CENTER) | CLIENTS | COUNT\",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
                   "isOptional": true
                 },
                 {
@@ -346,7 +346,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/INVENTORY COLLECTION ISSUES - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-dashboards-workbooks-prod-westeu-001/providers/microsoft.insights/workbooktemplates/INVENTORY COLLECTION ISSUES - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -366,7 +366,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"let MissingTable = datatable(ResourceId: string) [];\\r\\nunion isfuzzy=true MissingTable, (InvClientCollectionIssuesV2_CL)\\r\\n| extend Computer = column_ifexists(\\u0027Computer\\u0027, \\u0027\\u0027)\\r\\n| extend CollectionTime = column_ifexists(\\u0027CollectionTime\\u0027, \\u0027\\u0027)\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"DEVICES WITH COLLECTION ISSUES (FIX WMI) | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"let MissingTable = datatable(ResourceId: string) [];\\r\\nunion isfuzzy=true MissingTable, (InvClientCollectionIssuesV2_CL)\\r\\n| extend Computer = column_ifexists(\\u0027Computer\\u0027, \\u0027\\u0027)\\r\\n| extend CollectionTime = column_ifexists(\\u0027CollectionTime\\u0027, \\u0027\\u0027)\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"DEVICES WITH COLLECTION ISSUES (FIX WMI) | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true}}",
                   "isOptional": true
                 },
                 {
@@ -409,7 +409,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-dashboards-workbooks-prod-westeu-001/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -429,7 +429,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ( (AMRunningMode == \\\"Not running\\\") or \\r\\n          (parse_version(AMProductVersion) \\u003c parse_version(\\\"4.18.2203\\\") ) or \\r\\n          (MPComputerStatusFound == false) or (MPPreferenceFound == false) or\\r\\n          (RealTimeProtectionEnabled == false) or\\r\\n          (AntivirusSignatureAge \\u003e 7) or (AntispywareSignatureAge \\u003e 7) or (NISSignatureAge \\u003e 7) or\\r\\n          (AMRunningMode == \\\"EDR Block Mode\\\") or (AMRunningMode == \\\"Passive Mode\\\") or\\r\\n          (AntispywareEnabled == false) or\\r\\n         ( (TamperProtectionSource != \\\"ATP\\\") and (TamperProtectionSource != \\\"Intune\\\") ) or (IsTamperProtected == false)\\r\\n        )\\r\\n| project Computer, UserLoggedOn, CollectionTime, MPComputerStatusFound, MPPreferenceFound, AMEngineVersion, AMProductVersion, AMRunningMode, AMServiceEnabled, AMServiceVersion, AntispywareEnabled, AntispywareSignatureAge, AntispywareSignatureLastUpdated, AntispywareSignatureVersion, AntivirusEnabled, AntivirusSignatureAge, AntivirusSignatureLastUpdated, AntivirusSignatureVersion, BehaviorMonitorEnabled, DefenderSignaturesOutOfDate, DisableAutoExclusions, DisableBehaviorMonitoring, DisableRealtimeMonitoring, DisableScanningMappedNetworkDrivesForFullScan, DisableScanningNetworkFiles, DisableScriptScanning, EnableControlledFolderAccess, EnableNetworkProtection,    FullScanAge, IoavProtectionEnabled, IsTamperProtected, IsVirtualMachine, MAPSReporting, NISEnabled, NISEngineVersion, NISSignatureAge, NISSignatureLastUpdated, NISSignatureVersion, OnAccessProtectionEnabled, ProductStatus, PUAProtection, QuickScanAge, RealTimeProtectionEnabled, RealTimeScanDirection, RebootRequired, ScanAvgCPULoadFactor, SignatureUpdateCatchupInterval, SignatureUpdateInterval, SubmitSamplesConsent, TamperProtectionSource \\r\\n| distinct Computer\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"INCOMPLIANT DEFENDER AV | CLIENTS | COUNT \",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ( (AMRunningMode == \\\"Not running\\\") or \\r\\n          (parse_version(AMProductVersion) \\u003c parse_version(\\\"4.18.2203\\\") ) or \\r\\n          (MPComputerStatusFound == false) or (MPPreferenceFound == false) or\\r\\n          (RealTimeProtectionEnabled == false) or\\r\\n          (AntivirusSignatureAge \\u003e 7) or (AntispywareSignatureAge \\u003e 7) or (NISSignatureAge \\u003e 7) or\\r\\n          (AMRunningMode == \\\"EDR Block Mode\\\") or (AMRunningMode == \\\"Passive Mode\\\") or\\r\\n          (AntispywareEnabled == false) or\\r\\n         ( (TamperProtectionSource != \\\"ATP\\\") and (TamperProtectionSource != \\\"Intune\\\") ) or (IsTamperProtected == false)\\r\\n        )\\r\\n| project Computer, UserLoggedOn, CollectionTime, MPComputerStatusFound, MPPreferenceFound, AMEngineVersion, AMProductVersion, AMRunningMode, AMServiceEnabled, AMServiceVersion, AntispywareEnabled, AntispywareSignatureAge, AntispywareSignatureLastUpdated, AntispywareSignatureVersion, AntivirusEnabled, AntivirusSignatureAge, AntivirusSignatureLastUpdated, AntivirusSignatureVersion, BehaviorMonitorEnabled, DefenderSignaturesOutOfDate, DisableAutoExclusions, DisableBehaviorMonitoring, DisableRealtimeMonitoring, DisableScanningMappedNetworkDrivesForFullScan, DisableScanningNetworkFiles, DisableScriptScanning, EnableControlledFolderAccess, EnableNetworkProtection,    FullScanAge, IoavProtectionEnabled, IsTamperProtected, IsVirtualMachine, MAPSReporting, NISEnabled, NISEngineVersion, NISSignatureAge, NISSignatureLastUpdated, NISSignatureVersion, OnAccessProtectionEnabled, ProductStatus, PUAProtection, QuickScanAge, RealTimeProtectionEnabled, RealTimeScanDirection, RebootRequired, ScanAvgCPULoadFactor, SignatureUpdateCatchupInterval, SignatureUpdateInterval, SubmitSamplesConsent, TamperProtectionSource \\r\\n| distinct Computer\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"INCOMPLIANT DEFENDER AV | CLIENTS | COUNT \",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
                   "isOptional": true
                 },
                 {
@@ -472,7 +472,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/WINDOWS FIREWALL - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-dashboards-workbooks-prod-westeu-001/providers/microsoft.insights/workbooktemplates/WINDOWS FIREWALL - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -492,7 +492,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsFirewallInfoV2_CL \\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer, Profile\\r\\n| where Enabled != 1                   // 1=Enabled\\r\\n| where DefaultInboundAction != 4      // 4=Block\\r\\n| where DefaultOutboundAction != 2     // 2=Allow\\r\\n| where AllowInboundRules != 1         // 1=True\\r\\n| distinct Computer\\r\\n| summarize total = count()\\r\\n\",\"size\":0,\"title\":\"INCOMPLIANT WINDOWS FIREWALL | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsFirewallInfoV2_CL \\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer, Profile\\r\\n| where Enabled != 1                   // 1=Enabled\\r\\n| where DefaultInboundAction != 4      // 4=Block\\r\\n| where DefaultOutboundAction != 2     // 2=Allow\\r\\n| where AllowInboundRules != 1         // 1=True\\r\\n| distinct Computer\\r\\n| summarize total = count()\\r\\n\",\"size\":0,\"title\":\"INCOMPLIANT WINDOWS FIREWALL | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"visualization\":\"tiles\",\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true}}",
                   "isOptional": true
                 },
                 {
@@ -535,7 +535,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/WINDOWS UPDATE - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-dashboards-workbooks-prod-westeu-001/providers/microsoft.insights/workbooktemplates/WINDOWS UPDATE - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -555,7 +555,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdatePendingUpdatesV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where LastDeploymentChangeTime \\u003c ago(40d)\\r\\n| sort by Computer asc\\r\\n| distinct Computer\\r\\n| summarize total = count()\\r\\n\\r\\n\",\"size\":0,\"title\":\"PENDING UPDATES OLDER THAN 40 DAYS | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdatePendingUpdatesV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where LastDeploymentChangeTime \\u003c ago(40d)\\r\\n| sort by Computer asc\\r\\n| distinct Computer\\r\\n| summarize total = count()\\r\\n\\r\\n\",\"size\":0,\"title\":\"PENDING UPDATES OLDER THAN 40 DAYS | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
                   "isOptional": true
                 },
                 {
@@ -598,7 +598,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/WINDOWS UPDATE - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-dashboards-workbooks-prod-westeu-001/providers/microsoft.insights/workbooktemplates/WINDOWS UPDATE - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -618,7 +618,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdatePendingUpdatesV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where LastDeploymentChangeTime \\u003c ago(40d)\\r\\n| where UpdateClassification notcontains \\\"Drivers\\\"\\r\\n| sort by Computer asc\\r\\n| distinct Computer\\r\\n| summarize total = count()\\r\\n\",\"size\":0,\"title\":\"PENDING UPDATES, NO DRV, OLDER THAN 40 DAYS | CLIENTS | COUNT\",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdatePendingUpdatesV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where LastDeploymentChangeTime \\u003c ago(40d)\\r\\n| where UpdateClassification notcontains \\\"Drivers\\\"\\r\\n| sort by Computer asc\\r\\n| distinct Computer\\r\\n| summarize total = count()\\r\\n\",\"size\":0,\"title\":\"PENDING UPDATES, NO DRV, OLDER THAN 40 DAYS | CLIENTS | COUNT\",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
                   "isOptional": true
                 },
                 {
@@ -661,7 +661,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/WINDOWS UPDATE - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-dashboards-workbooks-prod-westeu-001/providers/microsoft.insights/workbooktemplates/WINDOWS UPDATE - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -681,7 +681,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdateLastResultsV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where LastInstallationSuccessDate \\u003c ago(40d)\\r\\n| project Computer, UserLoggedOn, LastInstallationSuccessDate, LastSearchSuccessDate, CollectionTime\\r\\n| sort by Computer asc\\r\\n| summarize total = count()\\r\\n\",\"size\":0,\"title\":\"LAST WINDOWS UPDATE MORE THAN 40 DAYS AGO | CLIENTS | COUNT\",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientWindowsUpdateLastResultsV2_CL\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where LastInstallationSuccessDate \\u003c ago(40d)\\r\\n| project Computer, UserLoggedOn, LastInstallationSuccessDate, LastSearchSuccessDate, CollectionTime\\r\\n| sort by Computer asc\\r\\n| summarize total = count()\\r\\n\",\"size\":0,\"title\":\"LAST WINDOWS UPDATE MORE THAN 40 DAYS AGO | CLIENTS | COUNT\",\"noDataMessageStyle\":5,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
                   "isOptional": true
                 },
                 {
@@ -724,7 +724,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/LAPS - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-dashboards-workbooks-prod-westeu-001/providers/microsoft.insights/workbooktemplates/LAPS - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -744,7 +744,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"let LAPS_Target = \\\"6.2.0.0\\\";\\r\\nInvClientLAPSInfoV2_CL\\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer\\r\\n| where (parse_version(LAPSVersion) \\u003c parse_version(LAPS_Target)) or (LAPSVersion == \\\"\\\")\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"INCOMPLIANT LAPS | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"let LAPS_Target = \\\"6.2.0.0\\\";\\r\\nInvClientLAPSInfoV2_CL\\r\\n| summarize TimeGenerated = arg_max(TimeGenerated,*) by Computer\\r\\n| where (parse_version(LAPSVersion) \\u003c parse_version(LAPS_Target)) or (LAPSVersion == \\\"\\\")\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"INCOMPLIANT LAPS | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true}}",
                   "isOptional": true
                 },
                 {
@@ -776,7 +776,6 @@
                 },
                 {
                   "name": "TimeContext",
-                  "value": null,
                   "isOptional": true
                 },
                 {
@@ -788,7 +787,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-dashboards-workbooks-prod-westeu-001/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -808,7 +807,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| extend enableautomaticupdates_ = column_ifexists(\\\"enableautomaticupdates\\\", 0)\\r\\n| extend OfficeDescription_ = column_ifexists(\\\"OfficeDescription\\\", \\\"not_found\\\")\\r\\n| extend OfficeVersionBuild_ = column_ifexists(\\\"OfficeVersionBuild\\\", \\\"not_found\\\")\\r\\n| extend OfficeProductSKU_ = column_ifexists(\\\"OfficeProductSKU\\\", \\\"not_found\\\")\\r\\n| extend OfficeInstallationPath_ = column_ifexists(\\\"InstallationPath\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannel_ = column_ifexists(\\\"UpdateChannel\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannelName_ = column_ifexists(\\\"UpdateChannelName\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateEnabled_ = column_ifexists(\\\"OfficeUpdateEnabled\\\", \\\"not_found\\\")\\r\\n| extend VersionToReport_ = column_ifexists(\\\"VersionToReport\\\", \\\"not_found\\\")\\r\\n| extend ProductReleaseIds_ = column_ifexists(\\\"ProductReleaseIds\\\", \\\"not_found\\\")\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ProductReleaseIds_ contains \\\"O365\\\"\\r\\n| where (OfficeUpdateEnabled_ == \\\"False\\\") or (enableautomaticupdates_ == 0) \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"UPDATING O365 OFFICE NOT ENABLED | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| extend enableautomaticupdates_ = column_ifexists(\\\"enableautomaticupdates\\\", 0)\\r\\n| extend OfficeDescription_ = column_ifexists(\\\"OfficeDescription\\\", \\\"not_found\\\")\\r\\n| extend OfficeVersionBuild_ = column_ifexists(\\\"OfficeVersionBuild\\\", \\\"not_found\\\")\\r\\n| extend OfficeProductSKU_ = column_ifexists(\\\"OfficeProductSKU\\\", \\\"not_found\\\")\\r\\n| extend OfficeInstallationPath_ = column_ifexists(\\\"InstallationPath\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannel_ = column_ifexists(\\\"UpdateChannel\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannelName_ = column_ifexists(\\\"UpdateChannelName\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateEnabled_ = column_ifexists(\\\"OfficeUpdateEnabled\\\", \\\"not_found\\\")\\r\\n| extend VersionToReport_ = column_ifexists(\\\"VersionToReport\\\", \\\"not_found\\\")\\r\\n| extend ProductReleaseIds_ = column_ifexists(\\\"ProductReleaseIds\\\", \\\"not_found\\\")\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ProductReleaseIds_ contains \\\"O365\\\"\\r\\n| where (OfficeUpdateEnabled_ == \\\"False\\\") or (enableautomaticupdates_ == 0) \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"UPDATING O365 OFFICE NOT ENABLED | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
                   "isOptional": true
                 },
                 {
@@ -840,7 +839,6 @@
                 },
                 {
                   "name": "TimeContext",
-                  "value": null,
                   "isOptional": true
                 },
                 {
@@ -852,7 +850,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-dashboards-workbooks-prod-westeu-001/providers/microsoft.insights/workbooktemplates/OFFICE - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -872,7 +870,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| extend enableautomaticupdates_ = column_ifexists(\\\"enableautomaticupdates\\\", 0)\\r\\n| extend OfficeDescription_ = column_ifexists(\\\"OfficeDescription\\\", \\\"not_found\\\")\\r\\n| extend OfficeVersionBuild_ = column_ifexists(\\\"OfficeVersionBuild\\\", \\\"not_found\\\")\\r\\n| extend OfficeProductSKU_ = column_ifexists(\\\"OfficeProductSKU\\\", \\\"not_found\\\")\\r\\n| extend OfficeInstallationPath_ = column_ifexists(\\\"InstallationPath\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannel_ = column_ifexists(\\\"UpdateChannel\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannelName_ = column_ifexists(\\\"UpdateChannelName\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateEnabled_ = column_ifexists(\\\"OfficeUpdateEnabled\\\", \\\"not_found\\\")\\r\\n| extend VersionToReport_ = column_ifexists(\\\"VersionToReport\\\", \\\"not_found\\\")\\r\\n| extend ProductReleaseIds_ = column_ifexists(\\\"ProductReleaseIds\\\", \\\"not_found\\\")\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ProductReleaseIds_ contains \\\"O365\\\"\\r\\n| where (OfficeUpdateChannel_ notcontains \\\"492350f6-3a01-4f97-b9c0-c7c6ddf67d60\\\") and (OfficeUpdateChannel_ notcontains \\\"55336b82-a18d-4dd6-b5f6-9e5095c314a6\\\") // 492350f6-3a01-4f97-b9c0-c7c6ddf67d60 = Current channel, 55336b82-a18d-4dd6-b5f6-9e5095c314a6 = monthly enterprise channel\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"INCOMPLIANT UPDATE CHANNEL O365 OFFICE | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientOfficeInfoV2_CL\\r\\n| extend enableautomaticupdates_ = column_ifexists(\\\"enableautomaticupdates\\\", 0)\\r\\n| extend OfficeDescription_ = column_ifexists(\\\"OfficeDescription\\\", \\\"not_found\\\")\\r\\n| extend OfficeVersionBuild_ = column_ifexists(\\\"OfficeVersionBuild\\\", \\\"not_found\\\")\\r\\n| extend OfficeProductSKU_ = column_ifexists(\\\"OfficeProductSKU\\\", \\\"not_found\\\")\\r\\n| extend OfficeInstallationPath_ = column_ifexists(\\\"InstallationPath\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannel_ = column_ifexists(\\\"UpdateChannel\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateChannelName_ = column_ifexists(\\\"UpdateChannelName\\\", \\\"not_found\\\")\\r\\n| extend OfficeUpdateEnabled_ = column_ifexists(\\\"OfficeUpdateEnabled\\\", \\\"not_found\\\")\\r\\n| extend VersionToReport_ = column_ifexists(\\\"VersionToReport\\\", \\\"not_found\\\")\\r\\n| extend ProductReleaseIds_ = column_ifexists(\\\"ProductReleaseIds\\\", \\\"not_found\\\")\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ProductReleaseIds_ contains \\\"O365\\\"\\r\\n| where (OfficeUpdateChannel_ notcontains \\\"492350f6-3a01-4f97-b9c0-c7c6ddf67d60\\\") and (OfficeUpdateChannel_ notcontains \\\"55336b82-a18d-4dd6-b5f6-9e5095c314a6\\\") // 492350f6-3a01-4f97-b9c0-c7c6ddf67d60 = Current channel, 55336b82-a18d-4dd6-b5f6-9e5095c314a6 = monthly enterprise channel\\r\\n| sort by Computer asc \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"INCOMPLIANT UPDATE CHANNEL O365 OFFICE | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":false}}",
                   "isOptional": true
                 },
                 {
@@ -915,7 +913,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-dashboards-workbooks-prod-westeu-001/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -935,7 +933,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where (OnAccessProtectionEnabled == false)\\r\\n| project Computer, UserLoggedOn, AMEngineVersion, AMProductVersion, AMRunningMode, AMServiceEnabled, AMServiceVersion, AntispywareEnabled, AntispywareSignatureAge, AntispywareSignatureLastUpdated, AntispywareSignatureVersion, AntivirusEnabled, AntivirusSignatureAge, AntivirusSignatureLastUpdated, AntivirusSignatureVersion, BehaviorMonitorEnabled, DefenderSignaturesOutOfDate, DisableAutoExclusions, DisableBehaviorMonitoring, DisableRealtimeMonitoring, DisableScanningMappedNetworkDrivesForFullScan, DisableScanningNetworkFiles, DisableScriptScanning, EnableControlledFolderAccess, EnableNetworkProtection,    FullScanAge, IoavProtectionEnabled, IsTamperProtected, IsVirtualMachine, MAPSReporting, NISEnabled, NISEngineVersion, NISSignatureAge, NISSignatureLastUpdated, NISSignatureVersion, OnAccessProtectionEnabled, ProductStatus, PUAProtection, QuickScanAge, RealTimeProtectionEnabled, RealTimeScanDirection, RebootRequired, ScanAvgCPULoadFactor, SignatureUpdateCatchupInterval, SignatureUpdateInterval, SubmitSamplesConsent, TamperProtectionSource, MPComputerStatusFound, MPPreferenceFound, CollectionTime\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"ONACCESSPROTECTION DISABLED DEFENDER AV | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where (OnAccessProtectionEnabled == false)\\r\\n| project Computer, UserLoggedOn, AMEngineVersion, AMProductVersion, AMRunningMode, AMServiceEnabled, AMServiceVersion, AntispywareEnabled, AntispywareSignatureAge, AntispywareSignatureLastUpdated, AntispywareSignatureVersion, AntivirusEnabled, AntivirusSignatureAge, AntivirusSignatureLastUpdated, AntivirusSignatureVersion, BehaviorMonitorEnabled, DefenderSignaturesOutOfDate, DisableAutoExclusions, DisableBehaviorMonitoring, DisableRealtimeMonitoring, DisableScanningMappedNetworkDrivesForFullScan, DisableScanningNetworkFiles, DisableScriptScanning, EnableControlledFolderAccess, EnableNetworkProtection,    FullScanAge, IoavProtectionEnabled, IsTamperProtected, IsVirtualMachine, MAPSReporting, NISEnabled, NISEngineVersion, NISSignatureAge, NISSignatureLastUpdated, NISSignatureVersion, OnAccessProtectionEnabled, ProductStatus, PUAProtection, QuickScanAge, RealTimeProtectionEnabled, RealTimeScanDirection, RebootRequired, ScanAvgCPULoadFactor, SignatureUpdateCatchupInterval, SignatureUpdateInterval, SubmitSamplesConsent, TamperProtectionSource, MPComputerStatusFound, MPPreferenceFound, CollectionTime\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"ONACCESSPROTECTION DISABLED DEFENDER AV | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true}}",
                   "isOptional": true
                 },
                 {
@@ -978,7 +976,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-dashboards-workbooks-prod-westeu-001/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -998,7 +996,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where (AMRunningMode =~ \\\"EDR Block Mode\\\")\\r\\n| project Computer, UserLoggedOn, CollectionTime, MPComputerStatusFound, MPPreferenceFound, AMEngineVersion, AMProductVersion, AMRunningMode, AMServiceEnabled, AMServiceVersion, AntispywareEnabled, AntispywareSignatureAge, AntispywareSignatureLastUpdated, AntispywareSignatureVersion, AntivirusEnabled, AntivirusSignatureAge, AntivirusSignatureLastUpdated, AntivirusSignatureVersion, BehaviorMonitorEnabled, DefenderSignaturesOutOfDate, DisableAutoExclusions, DisableBehaviorMonitoring, DisableRealtimeMonitoring, DisableScanningMappedNetworkDrivesForFullScan, DisableScanningNetworkFiles, DisableScriptScanning, EnableControlledFolderAccess, EnableNetworkProtection,    FullScanAge, IoavProtectionEnabled, IsTamperProtected, IsVirtualMachine, MAPSReporting, NISEnabled, NISEngineVersion, NISSignatureAge, NISSignatureLastUpdated, NISSignatureVersion, OnAccessProtectionEnabled, ProductStatus, PUAProtection, QuickScanAge, RealTimeProtectionEnabled, RealTimeScanDirection, RebootRequired, ScanAvgCPULoadFactor, SignatureUpdateCatchupInterval, SignatureUpdateInterval, SubmitSamplesConsent, TamperProtectionSource \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"PASSIVE / EDB BLOCK MODE DEFENDER AV | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where (AMRunningMode =~ \\\"EDR Block Mode\\\")\\r\\n| project Computer, UserLoggedOn, CollectionTime, MPComputerStatusFound, MPPreferenceFound, AMEngineVersion, AMProductVersion, AMRunningMode, AMServiceEnabled, AMServiceVersion, AntispywareEnabled, AntispywareSignatureAge, AntispywareSignatureLastUpdated, AntispywareSignatureVersion, AntivirusEnabled, AntivirusSignatureAge, AntivirusSignatureLastUpdated, AntivirusSignatureVersion, BehaviorMonitorEnabled, DefenderSignaturesOutOfDate, DisableAutoExclusions, DisableBehaviorMonitoring, DisableRealtimeMonitoring, DisableScanningMappedNetworkDrivesForFullScan, DisableScanningNetworkFiles, DisableScriptScanning, EnableControlledFolderAccess, EnableNetworkProtection,    FullScanAge, IoavProtectionEnabled, IsTamperProtected, IsVirtualMachine, MAPSReporting, NISEnabled, NISEngineVersion, NISSignatureAge, NISSignatureLastUpdated, NISSignatureVersion, OnAccessProtectionEnabled, ProductStatus, PUAProtection, QuickScanAge, RealTimeProtectionEnabled, RealTimeScanDirection, RebootRequired, ScanAvgCPULoadFactor, SignatureUpdateCatchupInterval, SignatureUpdateInterval, SubmitSamplesConsent, TamperProtectionSource \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"PASSIVE / EDB BLOCK MODE DEFENDER AV | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
                   "isOptional": true
                 },
                 {
@@ -1041,7 +1039,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-dashboards-workbooks-prod-westeu-001/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -1061,7 +1059,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where (RealTimeProtectionEnabled == false)\\r\\n| project Computer, UserLoggedOn, CollectionTime, MPComputerStatusFound, MPPreferenceFound, AMEngineVersion, AMProductVersion, AMRunningMode, AMServiceEnabled, AMServiceVersion, AntispywareEnabled, AntispywareSignatureAge, AntispywareSignatureLastUpdated, AntispywareSignatureVersion, AntivirusEnabled, AntivirusSignatureAge, AntivirusSignatureLastUpdated, AntivirusSignatureVersion, BehaviorMonitorEnabled, DefenderSignaturesOutOfDate, DisableAutoExclusions, DisableBehaviorMonitoring, DisableRealtimeMonitoring, DisableScanningMappedNetworkDrivesForFullScan, DisableScanningNetworkFiles, DisableScriptScanning, EnableControlledFolderAccess, EnableNetworkProtection,    FullScanAge, IoavProtectionEnabled, IsTamperProtected, IsVirtualMachine, MAPSReporting, NISEnabled, NISEngineVersion, NISSignatureAge, NISSignatureLastUpdated, NISSignatureVersion, OnAccessProtectionEnabled, ProductStatus, PUAProtection, QuickScanAge, RealTimeProtectionEnabled, RealTimeScanDirection, RebootRequired, ScanAvgCPULoadFactor, SignatureUpdateCatchupInterval, SignatureUpdateInterval, SubmitSamplesConsent, TamperProtectionSource \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"REALTIME PROTECTION NOT RUNNING DEFENDER AV | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where (RealTimeProtectionEnabled == false)\\r\\n| project Computer, UserLoggedOn, CollectionTime, MPComputerStatusFound, MPPreferenceFound, AMEngineVersion, AMProductVersion, AMRunningMode, AMServiceEnabled, AMServiceVersion, AntispywareEnabled, AntispywareSignatureAge, AntispywareSignatureLastUpdated, AntispywareSignatureVersion, AntivirusEnabled, AntivirusSignatureAge, AntivirusSignatureLastUpdated, AntivirusSignatureVersion, BehaviorMonitorEnabled, DefenderSignaturesOutOfDate, DisableAutoExclusions, DisableBehaviorMonitoring, DisableRealtimeMonitoring, DisableScanningMappedNetworkDrivesForFullScan, DisableScanningNetworkFiles, DisableScriptScanning, EnableControlledFolderAccess, EnableNetworkProtection,    FullScanAge, IoavProtectionEnabled, IsTamperProtected, IsVirtualMachine, MAPSReporting, NISEnabled, NISEngineVersion, NISSignatureAge, NISSignatureLastUpdated, NISSignatureVersion, OnAccessProtectionEnabled, ProductStatus, PUAProtection, QuickScanAge, RealTimeProtectionEnabled, RealTimeScanDirection, RebootRequired, ScanAvgCPULoadFactor, SignatureUpdateCatchupInterval, SignatureUpdateInterval, SubmitSamplesConsent, TamperProtectionSource \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"REALTIME PROTECTION NOT RUNNING DEFENDER AV | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
                   "isOptional": true
                 },
                 {
@@ -1104,7 +1102,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-dashboards-workbooks-prod-westeu-001/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -1124,7 +1122,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where (AntivirusSignatureAge \\u003e= 7) or (AntispywareSignatureAge \\u003e= 7) or (NISSignatureAge \\u003e= 7)\\r\\n| project Computer \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"SIGNATURE TOO OLD DEFENDER AV | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where (AntivirusSignatureAge \\u003e= 7) or (AntispywareSignatureAge \\u003e= 7) or (NISSignatureAge \\u003e= 7)\\r\\n| project Computer \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"SIGNATURE TOO OLD DEFENDER AV | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
                   "isOptional": true
                 },
                 {
@@ -1167,7 +1165,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-dashboards-workbooks-prod-westeu-001/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -1187,7 +1185,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where (AMRunningMode =~ \\\"Not running\\\")\\r\\n| project Computer, UserLoggedOn, AMEngineVersion, AMProductVersion, AMRunningMode, AMServiceEnabled, AMServiceVersion\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"AM SERVICE NOT RUNNING DEFENDER AV | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where (AMRunningMode =~ \\\"Not running\\\")\\r\\n| project Computer, UserLoggedOn, AMEngineVersion, AMProductVersion, AMRunningMode, AMServiceEnabled, AMServiceVersion\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"AM SERVICE NOT RUNNING DEFENDER AV | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
                   "isOptional": true
                 },
                 {
@@ -1230,7 +1228,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-dashboards-workbooks-prod-westeu-001/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -1250,7 +1248,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where (AntispywareEnabled == false)\\r\\n| project Computer, UserLoggedOn, AMEngineVersion, AMProductVersion, AMRunningMode, AMServiceEnabled, AMServiceVersion, AntispywareEnabled, AntispywareSignatureAge, AntispywareSignatureLastUpdated, AntispywareSignatureVersion, AntivirusEnabled, AntivirusSignatureAge, AntivirusSignatureLastUpdated, AntivirusSignatureVersion, BehaviorMonitorEnabled, DefenderSignaturesOutOfDate, DisableAutoExclusions, DisableBehaviorMonitoring, DisableRealtimeMonitoring, DisableScanningMappedNetworkDrivesForFullScan, DisableScanningNetworkFiles, DisableScriptScanning, EnableControlledFolderAccess, EnableNetworkProtection,    FullScanAge, IoavProtectionEnabled, IsTamperProtected, IsVirtualMachine, MAPSReporting, NISEnabled, NISEngineVersion, NISSignatureAge, NISSignatureLastUpdated, NISSignatureVersion, OnAccessProtectionEnabled, ProductStatus, PUAProtection, QuickScanAge, RealTimeProtectionEnabled, RealTimeScanDirection, RebootRequired, ScanAvgCPULoadFactor, SignatureUpdateCatchupInterval, SignatureUpdateInterval, SubmitSamplesConsent, TamperProtectionSource, CollectionTime, MPComputerStatusFound, MPPreferenceFound\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"ANTISPYWARE NOT ENABLED DEFENDER AV | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where (AntispywareEnabled == false)\\r\\n| project Computer, UserLoggedOn, AMEngineVersion, AMProductVersion, AMRunningMode, AMServiceEnabled, AMServiceVersion, AntispywareEnabled, AntispywareSignatureAge, AntispywareSignatureLastUpdated, AntispywareSignatureVersion, AntivirusEnabled, AntivirusSignatureAge, AntivirusSignatureLastUpdated, AntivirusSignatureVersion, BehaviorMonitorEnabled, DefenderSignaturesOutOfDate, DisableAutoExclusions, DisableBehaviorMonitoring, DisableRealtimeMonitoring, DisableScanningMappedNetworkDrivesForFullScan, DisableScanningNetworkFiles, DisableScriptScanning, EnableControlledFolderAccess, EnableNetworkProtection,    FullScanAge, IoavProtectionEnabled, IsTamperProtected, IsVirtualMachine, MAPSReporting, NISEnabled, NISEngineVersion, NISSignatureAge, NISSignatureLastUpdated, NISSignatureVersion, OnAccessProtectionEnabled, ProductStatus, PUAProtection, QuickScanAge, RealTimeProtectionEnabled, RealTimeScanDirection, RebootRequired, ScanAvgCPULoadFactor, SignatureUpdateCatchupInterval, SignatureUpdateInterval, SubmitSamplesConsent, TamperProtectionSource, CollectionTime, MPComputerStatusFound, MPPreferenceFound\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"ANTISPYWARE NOT ENABLED DEFENDER AV | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
                   "isOptional": true
                 },
                 {
@@ -1293,7 +1291,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-dashboards-workbooks-prod-westeu-001/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -1313,7 +1311,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ( (TamperProtectionSource != \\\"ATP\\\") and (TamperProtectionSource != \\\"Intune\\\") ) or (IsTamperProtected == false)\\r\\n| project Computer\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"TAMPERPROTECTION NOT ENABLED DEFENDER AV | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ( (TamperProtectionSource != \\\"ATP\\\") and (TamperProtectionSource != \\\"Intune\\\") ) or (IsTamperProtected == false)\\r\\n| project Computer\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"TAMPERPROTECTION NOT ENABLED DEFENDER AV | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
                   "isOptional": true
                 },
                 {
@@ -1356,7 +1354,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-dashboards-workbooks-prod-westeu-001/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -1376,7 +1374,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where (MPComputerStatusFound == false) or (MPPreferenceFound == false)\\r\\n| project Computer, UserLoggedOn,  CollectionTime, MPComputerStatusFound, MPPreferenceFound, AMEngineVersion, AMProductVersion, AMRunningMode, AMServiceEnabled, AMServiceVersion, AntispywareEnabled, AntispywareSignatureAge, AntispywareSignatureLastUpdated, AntispywareSignatureVersion, AntivirusEnabled, AntivirusSignatureAge, AntivirusSignatureLastUpdated, AntivirusSignatureVersion, BehaviorMonitorEnabled, DefenderSignaturesOutOfDate, DisableAutoExclusions, DisableBehaviorMonitoring, DisableRealtimeMonitoring, DisableScanningMappedNetworkDrivesForFullScan, DisableScanningNetworkFiles, DisableScriptScanning, EnableControlledFolderAccess, EnableNetworkProtection,    FullScanAge, IoavProtectionEnabled, IsTamperProtected, IsVirtualMachine, MAPSReporting, NISEnabled, NISEngineVersion, NISSignatureAge, NISSignatureLastUpdated, NISSignatureVersion, OnAccessProtectionEnabled, ProductStatus, PUAProtection, QuickScanAge, RealTimeProtectionEnabled, RealTimeScanDirection, RebootRequired, ScanAvgCPULoadFactor, SignatureUpdateCatchupInterval, SignatureUpdateInterval, SubmitSamplesConsent, TamperProtectionSource \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"DEFENDER AV NOT INSTALED OR ENABLED | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where (MPComputerStatusFound == false) or (MPPreferenceFound == false)\\r\\n| project Computer, UserLoggedOn,  CollectionTime, MPComputerStatusFound, MPPreferenceFound, AMEngineVersion, AMProductVersion, AMRunningMode, AMServiceEnabled, AMServiceVersion, AntispywareEnabled, AntispywareSignatureAge, AntispywareSignatureLastUpdated, AntispywareSignatureVersion, AntivirusEnabled, AntivirusSignatureAge, AntivirusSignatureLastUpdated, AntivirusSignatureVersion, BehaviorMonitorEnabled, DefenderSignaturesOutOfDate, DisableAutoExclusions, DisableBehaviorMonitoring, DisableRealtimeMonitoring, DisableScanningMappedNetworkDrivesForFullScan, DisableScanningNetworkFiles, DisableScriptScanning, EnableControlledFolderAccess, EnableNetworkProtection,    FullScanAge, IoavProtectionEnabled, IsTamperProtected, IsVirtualMachine, MAPSReporting, NISEnabled, NISEngineVersion, NISSignatureAge, NISSignatureLastUpdated, NISSignatureVersion, OnAccessProtectionEnabled, ProductStatus, PUAProtection, QuickScanAge, RealTimeProtectionEnabled, RealTimeScanDirection, RebootRequired, ScanAvgCPULoadFactor, SignatureUpdateCatchupInterval, SignatureUpdateInterval, SubmitSamplesConsent, TamperProtectionSource \\r\\n| summarize total = count()\",\"size\":0,\"title\":\"DEFENDER AV NOT INSTALED OR ENABLED | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
                   "isOptional": true
                 },
                 {
@@ -1408,6 +1406,7 @@
                 },
                 {
                   "name": "TimeContext",
+                  "value": null,
                   "isOptional": true
                 },
                 {
@@ -1419,7 +1418,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-dashboards-workbooks-prod-westeu-001/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -1439,7 +1438,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where (AntispywareSignatureAge \\u003e= 7)\\r\\n| project Computer, UserLoggedOn, AMEngineVersion, AMProductVersion, AMRunningMode, AMServiceEnabled, AMServiceVersion, AntispywareEnabled, AntispywareSignatureAge, AntispywareSignatureLastUpdated, AntispywareSignatureVersion, AntivirusEnabled, AntivirusSignatureAge, AntivirusSignatureLastUpdated, AntivirusSignatureVersion, BehaviorMonitorEnabled, DefenderSignaturesOutOfDate, DisableAutoExclusions, DisableBehaviorMonitoring, DisableRealtimeMonitoring, DisableScanningMappedNetworkDrivesForFullScan, DisableScanningNetworkFiles, DisableScriptScanning, EnableControlledFolderAccess, EnableNetworkProtection,    FullScanAge, IoavProtectionEnabled, IsTamperProtected, IsVirtualMachine, MAPSReporting, NISEnabled, NISEngineVersion, NISSignatureAge, NISSignatureLastUpdated, NISSignatureVersion, OnAccessProtectionEnabled, ProductStatus, PUAProtection, QuickScanAge, RealTimeProtectionEnabled, RealTimeScanDirection, RebootRequired, ScanAvgCPULoadFactor, SignatureUpdateCatchupInterval, SignatureUpdateInterval, SubmitSamplesConsent, TamperProtectionSource, MPComputerStatusFound, MPPreferenceFound, CollectionTime\\r\\n| summarize total = count()\",\"size\":0,\"showAnalytics\":true,\"title\":\"ANTISPYWARE TOO OLD DEFENDER AV | CLIENTS | COUNT\",\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where (AntispywareEnabled == false)\\r\\n| project Computer, UserLoggedOn, AMEngineVersion, AMProductVersion, AMRunningMode, AMServiceEnabled, AMServiceVersion, AntispywareEnabled, AntispywareSignatureAge, AntispywareSignatureLastUpdated, AntispywareSignatureVersion, AntivirusEnabled, AntivirusSignatureAge, AntivirusSignatureLastUpdated, AntivirusSignatureVersion, BehaviorMonitorEnabled, DefenderSignaturesOutOfDate, DisableAutoExclusions, DisableBehaviorMonitoring, DisableRealtimeMonitoring, DisableScanningMappedNetworkDrivesForFullScan, DisableScanningNetworkFiles, DisableScriptScanning, EnableControlledFolderAccess, EnableNetworkProtection,    FullScanAge, IoavProtectionEnabled, IsTamperProtected, IsVirtualMachine, MAPSReporting, NISEnabled, NISEngineVersion, NISSignatureAge, NISSignatureLastUpdated, NISSignatureVersion, OnAccessProtectionEnabled, ProductStatus, PUAProtection, QuickScanAge, RealTimeProtectionEnabled, RealTimeScanDirection, RebootRequired, ScanAvgCPULoadFactor, SignatureUpdateCatchupInterval, SignatureUpdateInterval, SubmitSamplesConsent, TamperProtectionSource, CollectionTime, MPComputerStatusFound, MPPreferenceFound\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"ANTISPYWARE NOT ENABLED DEFENDER AV | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
                   "isOptional": true
                 },
                 {
@@ -1482,7 +1481,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-dashboards-workbooks-prod-westeu-001/providers/microsoft.insights/workbooktemplates/DEFENDER AV - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -1502,7 +1501,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ( parse_version(AMProductVersion) \\u003c parse_version(\\\"4.18.2203\\\") )\\r\\n| project Computer, UserLoggedOn, AMProductVersion\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"AM VERSION TOO OLD DEFENDER AV | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientDefenderAvV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where ( parse_version(AMProductVersion) \\u003c parse_version(\\\"4.18.2203\\\") )\\r\\n| project Computer, UserLoggedOn, AMProductVersion\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"AM VERSION TOO OLD DEFENDER AV | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/baa3bd90-fb77-4dc1-9047-562f9993a200/resourceGroups/rg-logworkspaces-prod-westeu-001/providers/Microsoft.OperationalInsights/workspaces/log-platform-mgt-client-prod-westeu-001\"],\"visualization\":\"tiles\",\"gridSettings\":{\"rowLimit\":10000},\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
                   "isOptional": true
                 },
                 {
@@ -1548,30 +1547,30 @@
                 "value": "Past 24 hours"
               },
               "filteredPartIds": [
-                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e2700e",
-                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e27010",
-                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e27012",
-                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e27014",
-                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e27016",
-                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e27018",
-                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e2701a",
-                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e2701c",
-                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e2701e",
-                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e27020",
-                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e27022",
-                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e27024",
-                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e27026",
-                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e27028",
-                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e2702a",
-                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e2702c",
-                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e2702e",
-                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e27030",
-                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e27032",
-                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e27034",
-                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e27036",
-                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e27038",
-                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e2703a",
-                "StartboardPart-PinnedNotebookQueryPart-28870a32-dcd7-4116-b9c8-51cf55e2703c"
+                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b00f",
+                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b011",
+                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b013",
+                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b015",
+                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b017",
+                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b019",
+                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b01b",
+                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b01d",
+                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b01f",
+                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b021",
+                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b023",
+                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b025",
+                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b027",
+                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b029",
+                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b02b",
+                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b02d",
+                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b02f",
+                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b031",
+                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b033",
+                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b035",
+                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b037",
+                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b039",
+                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b03b",
+                "StartboardPart-PinnedNotebookQueryPart-3373632e-0cf2-47ce-83d9-edd8fa47b03d"
               ]
             }
           }
