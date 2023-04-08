@@ -31,7 +31,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/INVENTORY - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/4862c56b-14ba-48ce-bc14-097883eb3dab/resourceGroups/rg-managed-dashboards-workbooks/providers/microsoft.insights/workbooktemplates/INVENTORY - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -51,7 +51,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientComputerInfoV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"DEVICES IN INVENTORY LAST 31 DAYS | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"blue\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientComputerInfoV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"DEVICES IN INVENTORY LAST 31 DAYS | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/4862c56b-14ba-48ce-bc14-097883eb3dab/resourcegroups/rg-logworkspaces-p/providers/microsoft.operationalinsights/workspaces/log-platform-management-client-p\"],\"visualization\":\"tiles\",\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"blue\"}},\"showBorder\":true,\"size\":\"auto\"}}",
                   "isOptional": true
                 },
                 {
@@ -83,6 +83,7 @@
                 },
                 {
                   "name": "TimeContext",
+                  "value": null,
                   "isOptional": true
                 },
                 {
@@ -94,7 +95,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/INVENTORY - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/4862c56b-14ba-48ce-bc14-097883eb3dab/resourceGroups/rg-managed-dashboards-workbooks/providers/microsoft.insights/workbooktemplates/INVENTORY - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -114,7 +115,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientComputerInfoV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| extend OsUpTime = todynamic(OsUptime)\\r\\n| mv-expand OsUptime\\r\\n| project Computer, UserLoggedOn, OsUptime_Days=toint(OsUpTime.Days), CollectionTime\\r\\n| sort by OsUptime_Days desc\\r\\n| where OsUptime_Days \\u003e 7\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"NO RESTART MORE THAN 7 DAYS DAY | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"tiles\",\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientComputerInfoV2_CL \\r\\n| extend OsUpTime = todynamic(OsUptime)\\r\\n| mv-expand OsUptime\\r\\n| where toint(OsUpTime.Days) > 7\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| project Computer, UserLoggedOn, OsUptime_Days=toint(OsUpTime.Days), CollectionTime\\r\\n| sort by OsUptime_Days desc\\r\\n| summarize total = count()\",\"size\":0,\"title\":\"NO RESTART MORE THAN 7 DAYS DAY | CLIENTS | COUNT\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/4862c56b-14ba-48ce-bc14-097883eb3dab/resourcegroups/rg-logworkspaces-p/providers/microsoft.operationalinsights/workspaces/log-platform-management-client-p\"],\"visualization\":\"tiles\",\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
                   "isOptional": true
                 },
                 {
@@ -157,7 +158,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/INVENTORY - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/4862c56b-14ba-48ce-bc14-097883eb3dab/resourceGroups/rg-managed-dashboards-workbooks/providers/microsoft.insights/workbooktemplates/INVENTORY - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -177,7 +178,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientComputerInfoV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| project-reorder CollectionTime desc\\r\\n| project-reorder Computer asc\\r\\n| project Computer, UserLoggedOn, CollectionTime, CsManufacturer, CsModel, CsName, CsNetworkAdapters, CsNetworkServerModeEnabled, CsNumberOfLogicalProcessors, CsNumberOfProcessors, CsOEMStringArray, CsPartOfDomain, CsPauseAfterReset, CsPCSystemTypeEx, CsPCSystemType, CsPhyicallyInstalledMemory, CsPowerOnPasswordStatus, CsPowerState, CsPowerSupplyState, CsPrimaryOwnerName, CsProcessors, CsResetCapability, CsResetCount, CsResetLimit, CsRoles, CsStatus, CsSystemFamily, CsSystemSKUNumber, CsSystemType, CsThermalState, CsTotalPhysicalMemory, CsUserName, CsWakeUpType, CsAdminPasswordStatus, CsAutomaticManagedPagefile, CsAutomaticResetBootOption, CsAutomaticResetCapability, CsBootROMSupported, CsBootStatus, CsBootupState, CsCaption, CsChassisBootupState, CsChassisSKUNumber, CsCurrentTimeZone, CsDaylightInEffect, CsDescription, CsDNSHostName, CsDomainRole, CsDomain, CsEnableDaylightSavingsTime, CsFrontPanelResetStatus, CsHypervisorPresent, CsInfraredSupported, CsKeyboardPasswordStatus \\r\\n| sort by Computer asc\",\"size\":0,\"showAnalytics\":true,\"title\":\"INVENTORY OVERVIEW (CS)  | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientComputerInfoV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| project-reorder CollectionTime desc\\r\\n| project-reorder Computer asc\\r\\n| project Computer, UserLoggedOn, CollectionTime, CsManufacturer, CsModel, CsName, CsNetworkAdapters, CsNetworkServerModeEnabled, CsNumberOfLogicalProcessors, CsNumberOfProcessors, CsOEMStringArray, CsPartOfDomain, CsPauseAfterReset, CsPCSystemTypeEx, CsPCSystemType, CsPhyicallyInstalledMemory, CsPowerOnPasswordStatus, CsPowerState, CsPowerSupplyState, CsPrimaryOwnerName, CsProcessors, CsResetCapability, CsResetCount, CsResetLimit, CsRoles, CsStatus, CsSystemFamily, CsSystemSKUNumber, CsSystemType, CsThermalState, CsTotalPhysicalMemory, CsUserName, CsWakeUpType, CsAdminPasswordStatus, CsAutomaticManagedPagefile, CsAutomaticResetBootOption, CsAutomaticResetCapability, CsBootROMSupported, CsBootStatus, CsBootupState, CsCaption, CsChassisBootupState, CsChassisSKUNumber, CsCurrentTimeZone, CsDaylightInEffect, CsDescription, CsDNSHostName, CsDomainRole, CsDomain, CsEnableDaylightSavingsTime, CsFrontPanelResetStatus, CsHypervisorPresent, CsInfraredSupported, CsKeyboardPasswordStatus \\r\\n| sort by Computer asc\",\"size\":0,\"showAnalytics\":true,\"title\":\"INVENTORY OVERVIEW (CS)  | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/4862c56b-14ba-48ce-bc14-097883eb3dab/resourcegroups/rg-logworkspaces-p/providers/microsoft.operationalinsights/workspaces/log-platform-management-client-p\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
                   "isOptional": true
                 },
                 {
@@ -209,7 +210,6 @@
                 },
                 {
                   "name": "TimeContext",
-                  "value": null,
                   "isOptional": true
                 },
                 {
@@ -221,7 +221,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/INVENTORY - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/4862c56b-14ba-48ce-bc14-097883eb3dab/resourceGroups/rg-managed-dashboards-workbooks/providers/microsoft.insights/workbooktemplates/INVENTORY - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -241,7 +241,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientComputerInfoV2_CL \\r\\n| extend OsUpTime = todynamic(OsUptime)\\r\\n| mv-expand OsUptime\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| project Computer, UserLoggedOn, CollectionTime, OsArchitecture,OsBootDevice,OsBuildNumber,OsBuildType,OsCodeSet,OsCountryCode,OsCurrentTimeZone,OsDataExecutionPrevention32BitApplications,OsDataExecutionPreventionAvailable,OsDataExecutionPreventionDrivers,OsDataExecutionPreventionSupportPolicy,OsDebug,OsDistributed,OsEncryptionLevel,OsForegroundApplicationBoost,OsFreePhysicalMemory,OsFreeSpaceInPagingFiles,OsFreeVirtualMemory,OsHardwareAbstractionLayer,OsHotFixes,OsInstallDate,OsInUseVirtualMemory,OsLanguage,OsLastBootUpTime,OsLocalDateTime,OsLocaleID,OsLocale,OsManufacturer,OsMaxNumberOfProcesses,OsMaxProcessMemorySize,OsMuiLanguages,OsName,OsNumberOfLicensedUsers,OsNumberOfProcesses,OsNumberOfUsers,OsOperatingSystemSKU,OsPagingFiles,OsPortableOperatingSystem,OsPrimary,OsProductSuites,OsProductType,OsRegisteredUser,OsSerialNumber,OsServicePackMajorVersion,OsServicePackMinorVersion,OsSizeStoredInPagingFiles,OsStatus,OsSuites,OsSystemDevice,OsSystemDirectory,OsSystemDrive,OsTotalVirtualMemorySize,OsTotalVisibleMemorySize,OsType,OsUptime_Days=toint(OsUpTime.Days),OsUptime_Hours=toint(OsUpTime.Hours),OsVersion,OsWindowsDirectory\",\"size\":0,\"showAnalytics\":true,\"title\":\"INVENTORY OVERVIEW (OS)  | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientComputerInfoV2_CL \\r\\n| extend OsUpTime = todynamic(OsUptime)\\r\\n| mv-expand OsUptime\\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| project Computer, UserLoggedOn, CollectionTime, OsArchitecture,OsBootDevice,OsBuildNumber,OsBuildType,OsCodeSet,OsCountryCode,OsCurrentTimeZone,OsDataExecutionPrevention32BitApplications,OsDataExecutionPreventionAvailable,OsDataExecutionPreventionDrivers,OsDataExecutionPreventionSupportPolicy,OsDebug,OsDistributed,OsEncryptionLevel,OsForegroundApplicationBoost,OsFreePhysicalMemory,OsFreeSpaceInPagingFiles,OsFreeVirtualMemory,OsHardwareAbstractionLayer,OsHotFixes,OsInstallDate,OsInUseVirtualMemory,OsLanguage,OsLastBootUpTime,OsLocalDateTime,OsLocaleID,OsLocale,OsManufacturer,OsMaxNumberOfProcesses,OsMaxProcessMemorySize,OsMuiLanguages,OsName,OsNumberOfLicensedUsers,OsNumberOfProcesses,OsNumberOfUsers,OsOperatingSystemSKU,OsPagingFiles,OsPortableOperatingSystem,OsPrimary,OsProductSuites,OsProductType,OsRegisteredUser,OsSerialNumber,OsServicePackMajorVersion,OsServicePackMinorVersion,OsSizeStoredInPagingFiles,OsStatus,OsSuites,OsSystemDevice,OsSystemDirectory,OsSystemDrive,OsTotalVirtualMemorySize,OsTotalVisibleMemorySize,OsType,OsUptime_Days=toint(OsUpTime.Days),OsUptime_Hours=toint(OsUpTime.Hours),OsVersion,OsWindowsDirectory\",\"size\":0,\"showAnalytics\":true,\"title\":\"INVENTORY OVERVIEW (OS)  | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/4862c56b-14ba-48ce-bc14-097883eb3dab/resourcegroups/rg-logworkspaces-p/providers/microsoft.operationalinsights/workspaces/log-platform-management-client-p\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
                   "isOptional": true
                 },
                 {
@@ -284,7 +284,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/INVENTORY - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/4862c56b-14ba-48ce-bc14-097883eb3dab/resourceGroups/rg-managed-dashboards-workbooks/providers/microsoft.insights/workbooktemplates/INVENTORY - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -304,7 +304,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientComputerInfoV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| project-reorder CollectionTime desc\\r\\n| project-reorder Computer asc\\r\\n| project Computer, UserLoggedOn, CollectionTime, OsName, OsVersion, WindowsVersion,WindowsProductName,WindowsProductId,WindowsCurrentVersion,WindowsBuildLabEx,WindowsSystemRoot,WindowsRegisteredOwner,WindowsInstallDateFromRegistry,WindowsInstallationType,WindowsEditionId\\r\\n| sort by Computer asc\",\"size\":0,\"showAnalytics\":true,\"title\":\"INVENTORY OVERVIEW (WINDOWS)  | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientComputerInfoV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| project-reorder CollectionTime desc\\r\\n| project-reorder Computer asc\\r\\n| project Computer, UserLoggedOn, CollectionTime, OsName, OsVersion, WindowsVersion,WindowsProductName,WindowsProductId,WindowsCurrentVersion,WindowsBuildLabEx,WindowsSystemRoot,WindowsRegisteredOwner,WindowsInstallDateFromRegistry,WindowsInstallationType,WindowsEditionId\\r\\n| sort by Computer asc\",\"size\":0,\"showAnalytics\":true,\"title\":\"INVENTORY OVERVIEW (WINDOWS)  | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/4862c56b-14ba-48ce-bc14-097883eb3dab/resourcegroups/rg-logworkspaces-p/providers/microsoft.operationalinsights/workspaces/log-platform-management-client-p\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
                   "isOptional": true
                 },
                 {
@@ -347,7 +347,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/INVENTORY - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/4862c56b-14ba-48ce-bc14-097883eb3dab/resourceGroups/rg-managed-dashboards-workbooks/providers/microsoft.insights/workbooktemplates/INVENTORY - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -367,7 +367,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientComputerInfoV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| project-reorder CollectionTime desc\\r\\n| project-reorder Computer asc\\r\\n| project Computer, UserLoggedOn, OsArchitecture, OsBuildNumber, OsName, WindowsVersion, CsSystemFamily, CsModel\\r\\n| sort by Computer asc\",\"size\":0,\"showAnalytics\":true,\"title\":\"INVENTORY | CLIENTS | GROUPED OS\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true,\"hierarchySettings\":{\"treeType\":1,\"groupBy\":[\"WindowsVersion\",\"OsBuildNumber\"],\"expandTopLevel\":true}}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientComputerInfoV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| project-reorder CollectionTime desc\\r\\n| project-reorder Computer asc\\r\\n| project Computer, UserLoggedOn, OsArchitecture, OsBuildNumber, OsName, WindowsVersion, CsSystemFamily, CsModel\\r\\n| sort by Computer asc\",\"size\":0,\"showAnalytics\":true,\"title\":\"INVENTORY | CLIENTS | GROUPED OS\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/4862c56b-14ba-48ce-bc14-097883eb3dab/resourcegroups/rg-logworkspaces-p/providers/microsoft.operationalinsights/workspaces/log-platform-management-client-p\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true,\"hierarchySettings\":{\"treeType\":1,\"groupBy\":[\"WindowsVersion\",\"OsBuildNumber\"],\"expandTopLevel\":true}}}",
                   "isOptional": true
                 },
                 {
@@ -410,7 +410,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/INVENTORY - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/4862c56b-14ba-48ce-bc14-097883eb3dab/resourceGroups/rg-managed-dashboards-workbooks/providers/microsoft.insights/workbooktemplates/INVENTORY - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -430,7 +430,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientComputerInfoV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| project-reorder CollectionTime desc\\r\\n| project-reorder Computer asc\\r\\n| project Computer, UserLoggedOn, CollectionTime, BiosBIOSVersion, BiosCaption, BiosCharacteristics, BiosCurrentLanguage, BiosDescription, BiosEmbeddedControllerMajorVersion, BiosEmbeddedControllerMinorVersion, BiosFirmwareType, BiosInstallableLanguages, BiosListOfLanguages, BiosManufacturer, BiosName, BiosPrimaryBIOS, BiosReleaseDate, BiosSerialNumber=BiosSeralNumber, BiosSMBIOSBIOSVersion, BiosSMBIOSMajorVersion, BiosSMBIOSMinorVersion, BiosSMBIOSPresent, BiosSoftwareElementState, BiosStatus, BiosSystemBiosMajorVersion, BiosSystemBiosMinorVersion, BiosTargetOperatingSystem, BiosVersion \\r\\n| sort by Computer asc\",\"size\":0,\"showAnalytics\":true,\"title\":\"INVENTORY OVERVIEW (BIOS)  | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientComputerInfoV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| project-reorder CollectionTime desc\\r\\n| project-reorder Computer asc\\r\\n| project Computer, UserLoggedOn, CollectionTime, BiosBIOSVersion, BiosCaption, BiosCharacteristics, BiosCurrentLanguage, BiosDescription, BiosEmbeddedControllerMajorVersion, BiosEmbeddedControllerMinorVersion, BiosFirmwareType, BiosInstallableLanguages, BiosListOfLanguages, BiosManufacturer, BiosName, BiosPrimaryBIOS, BiosReleaseDate, BiosSerialNumber=BiosSeralNumber, BiosSMBIOSBIOSVersion, BiosSMBIOSMajorVersion, BiosSMBIOSMinorVersion, BiosSMBIOSPresent, BiosSoftwareElementState, BiosStatus, BiosSystemBiosMajorVersion, BiosSystemBiosMinorVersion, BiosTargetOperatingSystem, BiosVersion \\r\\n| sort by Computer asc\",\"size\":0,\"showAnalytics\":true,\"title\":\"INVENTORY OVERVIEW (BIOS)  | CLIENTS | LIST\",\"noDataMessageStyle\":5,\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/4862c56b-14ba-48ce-bc14-097883eb3dab/resourcegroups/rg-logworkspaces-p/providers/microsoft.operationalinsights/workspaces/log-platform-management-client-p\"],\"gridSettings\":{\"rowLimit\":10000,\"filter\":true}}",
                   "isOptional": true
                 },
                 {
@@ -473,7 +473,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/INVENTORY - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/4862c56b-14ba-48ce-bc14-097883eb3dab/resourceGroups/rg-managed-dashboards-workbooks/providers/microsoft.insights/workbooktemplates/INVENTORY - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -493,7 +493,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientComputerInfoV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where CollectionTime \\u003e ago(31d)\\r\\n| extend OsUpTime = todynamic(OsUptime)\\r\\n| mv-expand OsUptime\\r\\n| project Computer, UserLoggedOn, OsUptime_Days=toint(OsUpTime.Days), CollectionTime\\r\\n| sort by OsUptime_Days desc\\r\\n| where OsUptime_Days \\u003e 7\\r\\n| summarize total = count() by bin(CollectionTime, 1d)\",\"size\":0,\"aggregation\":3,\"title\":\"NO RESTART MORE THAN 7 DAYS DAY | CLIENTS | TIME 1 MONTH COLLECTION TIME\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"timechart\",\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"},\"chartSettings\":{\"ySettings\":{\"numberFormatSettings\":{\"unit\":0,\"options\":{\"style\":\"decimal\",\"useGrouping\":true,\"minimumFractionDigits\":0,\"maximumFractionDigits\":0}}}}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientComputerInfoV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| where CollectionTime \\u003e ago(31d)\\r\\n| extend OsUpTime = todynamic(OsUptime)\\r\\n| mv-expand OsUptime\\r\\n| project Computer, UserLoggedOn, OsUptime_Days=toint(OsUpTime.Days), CollectionTime\\r\\n| sort by OsUptime_Days desc\\r\\n| where OsUptime_Days \\u003e 7\\r\\n| summarize total = count() by bin(CollectionTime, 1d)\",\"size\":0,\"aggregation\":3,\"title\":\"NO RESTART MORE THAN 7 DAYS DAY | CLIENTS | TIME 1 MONTH COLLECTION TIME\",\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/4862c56b-14ba-48ce-bc14-097883eb3dab/resourcegroups/rg-logworkspaces-p/providers/microsoft.operationalinsights/workspaces/log-platform-management-client-p\"],\"visualization\":\"timechart\",\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"},\"chartSettings\":{\"ySettings\":{\"numberFormatSettings\":{\"unit\":0,\"options\":{\"style\":\"decimal\",\"useGrouping\":true,\"minimumFractionDigits\":0,\"maximumFractionDigits\":0}}}}}",
                   "isOptional": true
                 },
                 {
@@ -536,7 +536,7 @@
                 },
                 {
                   "name": "ConfigurationId",
-                  "value": "ArmTemplates-/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-dashboards-workbooks-demo1-t/providers/microsoft.insights/workbooktemplates/INVENTORY - CLIENTS - V2",
+                  "value": "ArmTemplates-/subscriptions/4862c56b-14ba-48ce-bc14-097883eb3dab/resourceGroups/rg-managed-dashboards-workbooks/providers/microsoft.insights/workbooktemplates/INVENTORY - CLIENTS - V2",
                   "isOptional": true
                 },
                 {
@@ -556,7 +556,7 @@
                 },
                 {
                   "name": "StepSettings",
-                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientComputerInfoV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| extend OsUpTime = todynamic(OsUptime)\\r\\n| mv-expand OsUptime\\r\\n| project Computer, UserLoggedOn, OsUptime_Days=toint(OsUpTime.Days), CollectionTime\\r\\n| sort by OsUptime_Days desc\\r\\n| where OsUptime_Days \\u003e 7\\r\\n\",\"size\":0,\"showAnalytics\":true,\"title\":\"NO RESTART MORE THAN 7 DAYS DAY | CLIENTS | LIST\",\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/fce4f282-fcc6-43fb-94d8-bf1701b862c3/resourceGroups/rg-logworkspaces-client-demo1-t/providers/Microsoft.OperationalInsights/workspaces/log-management-client-demo1-t\"],\"visualization\":\"table\",\"sortBy\":[],\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
+                  "value": "{\"version\":\"KqlItem/1.0\",\"query\":\"InvClientComputerInfoV2_CL \\r\\n| summarize CollectionTime = arg_max(CollectionTime,*) by Computer\\r\\n| extend OsUpTime = todynamic(OsUptime)\\r\\n| mv-expand OsUptime\\r\\n| project Computer, UserLoggedOn, OsUptime_Days=toint(OsUpTime.Days), CollectionTime\\r\\n| sort by OsUptime_Days desc\\r\\n| where OsUptime_Days \\u003e 7\\r\\n\",\"size\":0,\"showAnalytics\":true,\"title\":\"NO RESTART MORE THAN 7 DAYS DAY | CLIENTS | LIST\",\"showExportToExcel\":true,\"queryType\":0,\"resourceType\":\"microsoft.operationalinsights/workspaces\",\"crossComponentResources\":[\"/subscriptions/4862c56b-14ba-48ce-bc14-097883eb3dab/resourcegroups/rg-logworkspaces-p/providers/microsoft.operationalinsights/workspaces/log-platform-management-client-p\"],\"visualization\":\"table\",\"sortBy\":[],\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"total\",\"formatter\":12,\"formatOptions\":{\"min\":0,\"palette\":\"redBright\"}},\"showBorder\":true,\"size\":\"auto\"}}",
                   "isOptional": true
                 },
                 {
@@ -602,15 +602,15 @@
                 "value": "Past 24 hours"
               },
               "filteredPartIds": [
-                "StartboardPart-PinnedNotebookQueryPart-8d9f5a6e-b1a8-47c2-a62c-bd709b9bd796",
-                "StartboardPart-PinnedNotebookQueryPart-8d9f5a6e-b1a8-47c2-a62c-bd709b9bd798",
-                "StartboardPart-PinnedNotebookQueryPart-8d9f5a6e-b1a8-47c2-a62c-bd709b9bd79a",
-                "StartboardPart-PinnedNotebookQueryPart-8d9f5a6e-b1a8-47c2-a62c-bd709b9bd7a6",
-                "StartboardPart-PinnedNotebookQueryPart-8d9f5a6e-b1a8-47c2-a62c-bd709b9bd79c",
-                "StartboardPart-PinnedNotebookQueryPart-8d9f5a6e-b1a8-47c2-a62c-bd709b9bd79e",
-                "StartboardPart-PinnedNotebookQueryPart-8d9f5a6e-b1a8-47c2-a62c-bd709b9bd7a0",
-                "StartboardPart-PinnedNotebookQueryPart-8d9f5a6e-b1a8-47c2-a62c-bd709b9bd7a2",
-                "StartboardPart-PinnedNotebookQueryPart-8d9f5a6e-b1a8-47c2-a62c-bd709b9bd7a4"
+                "StartboardPart-PinnedNotebookQueryPart-39b82766-7c1f-4c64-bbd1-04d6e6797d67",
+                "StartboardPart-PinnedNotebookQueryPart-39b82766-7c1f-4c64-bbd1-04d6e6797d69",
+                "StartboardPart-PinnedNotebookQueryPart-39b82766-7c1f-4c64-bbd1-04d6e6797d6b",
+                "StartboardPart-PinnedNotebookQueryPart-39b82766-7c1f-4c64-bbd1-04d6e6797d6d",
+                "StartboardPart-PinnedNotebookQueryPart-39b82766-7c1f-4c64-bbd1-04d6e6797d6f",
+                "StartboardPart-PinnedNotebookQueryPart-39b82766-7c1f-4c64-bbd1-04d6e6797d71",
+                "StartboardPart-PinnedNotebookQueryPart-39b82766-7c1f-4c64-bbd1-04d6e6797d73",
+                "StartboardPart-PinnedNotebookQueryPart-39b82766-7c1f-4c64-bbd1-04d6e6797d75",
+                "StartboardPart-PinnedNotebookQueryPart-39b82766-7c1f-4c64-bbd1-04d6e6797d77"
               ]
             }
           }
