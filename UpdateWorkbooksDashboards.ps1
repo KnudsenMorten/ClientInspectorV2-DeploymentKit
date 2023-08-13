@@ -258,7 +258,7 @@ Write-Output ""
                     )
 
 
-        Connect-MgGraph -TenantId $TenantId -ForceRefresh -Scopes $MgScope
+        Connect-MgGraph -TenantId $TenantId  -Scopes $MgScope
 
 
     #-------------------------------------------------------------------------------------
