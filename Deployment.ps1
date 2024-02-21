@@ -487,8 +487,8 @@
     # Sleeping 1 min to let Azure AD replicate before doing delegation
     #-------------------------------------------------------------------------------------
 
-        Write-Output "Sleeping 1 min to let Azure AD replicate before doing delegation"
-        Start-Sleep -s 60
+        Write-Output "Sleeping 3 min to let Azure AD replicate before doing delegation"
+        Start-Sleep -s 180
 
     #-------------------------------------------------------------------------------------
     # Delegation permissions for Azure App on LogAnalytics workspace
