@@ -780,8 +780,6 @@ Write-Output ""
                     $TemplateFileName = $File.Split("\")[-1]
                     $TemplateName = $TemplateFileName.Split(".")[0]
 
-                    $DashboardName = $TemplateName -replace "-", "_" -replace " ", "_"
-
                     Write-Output ""
                     Write-Output "Deployment of Azure Dashboard [ $TemplateName ] in progress .... please wait !"
                     Write-Output "   Adjusting ARM template with LogAnalytics workspace information"
@@ -859,7 +857,7 @@ Write-Output ""
                     $ArmTemplateJson = $RawJson | ConvertFrom-Json
 
                     New-AzResource -Properties $ArmTemplateJson.properties  `
-                                                -ResourceName $DashboardName `
+                                                -ResourceName $TemplateName  `
                                                 -ResourceType "Microsoft.Portal/dashboards" `
                                                 -ResourceGroupName $WorkbookDashboardResourceGroup  `
                                                 -ApiVersion "2022-12-01-preview" `
