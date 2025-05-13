@@ -768,69 +768,95 @@
         #-------------------------------------------------------------------------------------
             ForEach ($File in $Files)
                 {
-                    # read ARM file
-                    $TemplateFileName    = $File.Split("\")[-1]
-                    $TemplateName        = $TemplateFileName.Split(".")[0]
+                    $TemplateFileName = $File.Split("\")[-1]
+                    $TemplateName = $TemplateFileName.Split(".")[0]
 
-                    $DashboardName      = ($TemplateName -replace "-", "_" -replace " ", "_")
+                    $DashboardName = $TemplateName -replace "-", "_" -replace " ", "_"
 
                     Write-Output ""
-                    Write-Output "Deployment of Azure Dashboard [ $($TemplateName) ] in progress .... please wait !"
-
+                    Write-Output "Deployment of Azure Dashboard [ $TemplateName ] in progress .... please wait !"
                     Write-Output "   Adjusting ARM template with LogAnalytics workspace information"
 
-                    # convert file to JSON
-                    $ArmTemplate         = Get-Content $File -Raw -Encoding UTF8
-                    $ArmTemplateJson     = $ArmTemplate | ConvertFrom-Json -Depth 100
+                    # Convert file to JSON
+                    $ArmTemplate = Get-Content $File -Raw -Encoding UTF8
+                    $ArmTemplateJson = $ArmTemplate | ConvertFrom-Json
 
-                    # Convert lenses object to array
-                    $lensesArray = @()
-                    foreach ($lensKey in ($ArmTemplateJson.properties.lenses.PSObject.Properties.Name | Sort-Object)) {
-                        $lens = $ArmTemplateJson.properties.lenses.$lensKey
-
-                        # Convert parts object to array
-                        $partsArray = @()
-                        foreach ($partKey in ($lens.parts.PSObject.Properties.Name | Sort-Object)) {
-                            $partsArray += $lens.parts.$partKey
-                        }
-
-                        $lens.parts = $partsArray
-                        $lensesArray += $lens
-                    }
-                    $ArmTemplateJson.properties.lenses = $lensesArray
-
-                    # tell ARM template location
+                    # Update location and API version
                     $ArmTemplateJson | Add-Member -MemberType NoteProperty -Name "location" -Value $LogAnalyticsLocation -Force
+                    $ArmTemplateJson.apiVersion = "2022-12-01-preview"
 
-                    foreach ($lens in $ArmTemplateJson.properties.lenses) {
-                        foreach ($part in $lens.parts) {
-                            for ($i = 0; $i -lt $part.metadata.inputs.Count; $i++) {
-                                $entry = $part.metadata.inputs[$i]
-                                if ($entry.name -eq "ConfigurationId") {
-                                    $wbName = ($entry.value -split "/")[-1]
-                                    $entry.value = "ArmTemplates-/subscriptions/$LogAnalyticsSubscription/resourceGroups/$WorkbookDashboardResourceGroup/providers/microsoft.insights/workbooktemplates/$wbName"
+                    # Convert lenses from hashtable to array
+                    $LensesObject = $ArmTemplateJson.properties.lenses
+                    $LensesArray = @()
+
+                    foreach ($lenseKey in ($LensesObject.PSObject.Properties.Name | Sort-Object)) {
+                        $Lens = $LensesObject.$lenseKey
+
+                        # Convert parts from hashtable to array
+                        $PartsObject = $Lens.parts
+                        $PartsArray = @()
+
+                        foreach ($partKey in ($PartsObject.PSObject.Properties.Name | Sort-Object)) {
+                            $Part = $PartsObject.$partKey
+
+                            # Process each input in the part
+                            $Inputs = $Part.metadata.inputs
+                            for ($i = 0; $i -lt $Inputs.Count; $i++) {
+                                $Entry = $Inputs[$i]
+
+                                if ($Entry.name -eq "ConfigurationId") {
+                                    $WorkbookTemplateName = $Entry.value.Split("/")[-1]
+                                    $NewValue = "ArmTemplates-/subscriptions/$LogAnalyticsSubscription/resourceGroups/$WorkbookDashboardResourceGroup/providers/microsoft.insights/workbooktemplates/$WorkbookTemplateName"
+                                    $Inputs[$i].value = $NewValue
                                 }
-                                elseif ($entry.name -eq "StepSettings") {
-                                    $stepSettings = $entry.value | ConvertFrom-Json
-                                    $stepSettings.crossComponentResources = @($LogAnalyticsWorkspaceResourceId)
-                                    $entry.value = ($stepSettings | ConvertTo-Json -Depth 50)
+
+                                elseif ($Entry.name -eq "StepSettings") {
+                                    $StepSettings = $Entry.value | ConvertFrom-Json
+                                    $StepSettings.crossComponentResources = @($LogAnalyticsWorkspaceResourceId)
+                                    $Inputs[$i].value = $StepSettings | ConvertTo-Json -Depth 50 -Compress
                                 }
                             }
+
+                            # Assign modified inputs back
+                            $Part.metadata.inputs = $Inputs
+
+                            # Add to parts array
+                            $PartsArray += $Part
                         }
+
+                        # Replace parts object with array
+                        $Lens.parts = $PartsArray
+                        $LensesArray += $Lens
                     }
 
-                    $ArmTemplateExport = $ArmTemplateJson | ConvertTo-Json -Depth 50
-                    $TemplateFile      = Join-Path $env:TEMP $TemplateFileName
-                    $ArmTemplateExport | Out-File -FilePath $TemplateFile -Encoding utf8 -Force
+                    # Replace lenses object with array
+                    $ArmTemplateJson.properties.lenses = $LensesArray
 
-                    Write-Output "   Starting deployment of dashboard [ $($TemplateName) ] "
+                    # Convert updated template back to JSON
+                    $ArmTemplateExport = $ArmTemplateJson | ConvertTo-Json -Depth 50
+
+                    # Save updated template
+                    $TemplateFile = "$env:TEMP\$TemplateFileName"
+                    $ArmTemplateExport | Out-File $TemplateFile -Force
+
+                    Write-Output "   Starting deployment of dashboard [ $TemplateName ]"
                     Write-Output ""
 
+                    # You can add your deployment command here, e.g.:
+
                     # parameters for ARM deployment
-                    New-AzPortalDashboard `
-                        -DashboardPath $TemplateFile `
-                        -ResourceGroupName $WorkbookDashboardResourceGroup `
-                        -DashboardName $DashboardName
+
+                    $RawJson = Get-Content -Path $TemplateFile -Raw
+                    $ArmTemplateJson = $RawJson | ConvertFrom-Json
+
+                    New-AzResource -Properties $ArmTemplateJson.properties  `
+                                                -ResourceName $DashboardName `
+                                                -ResourceType "Microsoft.Portal/dashboards" `
+                                                -ResourceGroupName $WorkbookDashboardResourceGroup  `
+                                                -ApiVersion "2022-12-01-preview" `
+                                                -Location $LogAnalyticsLocation `
+                                                -Force
+
                 }
 
 
