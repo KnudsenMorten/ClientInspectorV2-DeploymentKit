@@ -769,92 +769,123 @@
             ForEach ($File in $Files)
                 {
                     $TemplateFileName = $File.Split("\")[-1]
-                    $TemplateName = $TemplateFileName.Split(".")[0]
+                    $TemplateName     = $TemplateFileName.Split(".")[0]
+
+                    # Microsoft.Portal/dashboards resource name must not contain spaces.
+                    # Also convert dashes for safety. Chain BOTH replacements — the
+                    # original code overwrote the first assignment so dashes survived.
+                    $DashboardName    = $TemplateName.Replace("-","_").Replace(" ","_")
 
                     Write-Output ""
                     Write-Output "Deployment of Azure Dashboard [ $TemplateName ] in progress .... please wait !"
                     Write-Output "   Adjusting ARM template with LogAnalytics workspace information"
 
                     # Convert file to JSON
-                    $ArmTemplate = Get-Content $File -Raw -Encoding UTF8
+                    $ArmTemplate     = Get-Content $File -Raw -Encoding UTF8
                     $ArmTemplateJson = $ArmTemplate | ConvertFrom-Json
 
-                    # Update location and API version
+                    # Update location on the outer template (not strictly required for the REST PUT
+                    # below since we pass location in the payload, but kept for parity)
                     $ArmTemplateJson | Add-Member -MemberType NoteProperty -Name "location" -Value $LogAnalyticsLocation -Force
-                    $ArmTemplateJson.apiVersion = "2022-12-01-preview"
 
-                    # Convert lenses from hashtable to array
+                    # ----------------------------------------------------------------------------
+                    # FIX 1: The Microsoft.Portal/dashboards REST API at 2022-12-01-preview
+                    # requires `lenses` and `parts` to be JSON ARRAYS, not hashtables keyed by
+                    # "0","1",... If they are sent as hashtables the API returns:
+                    #   "Cannot deserialize the current JSON object ... into type
+                    #    'System.Collections.Generic.List`1[...DashboardLensDefinition...]'
+                    #    because the type requires a JSON array"
+                    # So we convert both, sorting NUMERICALLY (not alphabetically — otherwise
+                    # part order becomes 0,1,10,11,...,17,2,3,...,9).
+                    #
+                    # FIX 2: While transforming inputs, iterate the object directly and skip
+                    # inputs that have no `value` property. The previous code built a parallel
+                    # array of names and indexed into `.value[$i]`, but PowerShell drops missing
+                    # values silently from that projection, so the indices desync and the wrong
+                    # input gets overwritten on dashboards where `Location` or `TimeContext`
+                    # have no `value` field.
+                    # ----------------------------------------------------------------------------
                     $LensesObject = $ArmTemplateJson.properties.lenses
-                    $LensesArray = @()
+                    $LensesArray  = @()
 
-                    foreach ($lenseKey in ($LensesObject.PSObject.Properties.Name | Sort-Object)) {
+                    foreach ($lenseKey in ($LensesObject.PSObject.Properties.Name | Sort-Object { [int]$_ })) {
                         $Lens = $LensesObject.$lenseKey
 
-                        # Convert parts from hashtable to array
                         $PartsObject = $Lens.parts
-                        $PartsArray = @()
+                        $PartsArray  = @()
 
-                        foreach ($partKey in ($PartsObject.PSObject.Properties.Name | Sort-Object)) {
+                        foreach ($partKey in ($PartsObject.PSObject.Properties.Name | Sort-Object { [int]$_ })) {
                             $Part = $PartsObject.$partKey
 
-                            # Process each input in the part
+                            # Process inputs — iterate by index so we can write back into the array
                             $Inputs = $Part.metadata.inputs
-                            for ($i = 0; $i -lt $Inputs.Count; $i++) {
-                                $Entry = $Inputs[$i]
+                            if ($null -ne $Inputs) {
+                                for ($i = 0; $i -lt $Inputs.Count; $i++) {
+                                    $Entry = $Inputs[$i]
 
-                                if ($Entry.name -eq "ConfigurationId") {
-                                    $WorkbookTemplateName = $Entry.value.Split("/")[-1]
-                                    $NewValue = "ArmTemplates-/subscriptions/$LogAnalyticsSubscription/resourceGroups/$WorkbookDashboardResourceGroup/providers/microsoft.insights/workbooktemplates/$WorkbookTemplateName"
-                                    $Inputs[$i].value = $NewValue
-                                }
+                                    # Skip inputs that have no value property (e.g. Location, some TimeContext entries)
+                                    if ($null -eq $Entry.value) { continue }
 
-                                elseif ($Entry.name -eq "StepSettings") {
-                                    $StepSettings = $Entry.value | ConvertFrom-Json
-                                    $StepSettings.crossComponentResources = @($LogAnalyticsWorkspaceResourceId)
-                                    $Inputs[$i].value = $StepSettings | ConvertTo-Json -Depth 50 -Compress
+                                    if ($Entry.name -eq "ConfigurationId") {
+                                        $WorkbookTemplateName = ([string]$Entry.value).Split("/")[-1]
+                                        $Inputs[$i].value = "ArmTemplates-/subscriptions/$LogAnalyticsSubscription/resourceGroups/$WorkbookDashboardResourceGroup/providers/microsoft.insights/workbooktemplates/$WorkbookTemplateName"
+                                    }
+                                    elseif ($Entry.name -eq "StepSettings") {
+                                        $StepSettings = $Entry.value | ConvertFrom-Json
+                                        $StepSettings.crossComponentResources = @($LogAnalyticsWorkspaceResourceId)
+                                        $Inputs[$i].value = $StepSettings | ConvertTo-Json -Depth 50 -Compress
+                                    }
                                 }
+                                $Part.metadata.inputs = $Inputs
                             }
 
-                            # Assign modified inputs back
-                            $Part.metadata.inputs = $Inputs
-
-                            # Add to parts array
                             $PartsArray += $Part
                         }
 
-                        # Replace parts object with array
-                        $Lens.parts = $PartsArray
+                        # Replace parts hashtable with array, force array even when only one part
+                        $Lens.parts = @($PartsArray)
                         $LensesArray += $Lens
                     }
 
-                    # Replace lenses object with array
-                    $ArmTemplateJson.properties.lenses = $LensesArray
+                    # Replace lenses hashtable with array, force array even when only one lens
+                    $ArmTemplateJson.properties.lenses = @($LensesArray)
 
-                    # Convert updated template back to JSON
-                    $ArmTemplateExport = $ArmTemplateJson | ConvertTo-Json -Depth 50
+                    # ----------------------------------------------------------------------------
+                    # FIX 3: New-AzPortalDashboard -DashboardPath and New-AzResource both have
+                    # serialization issues with complex dashboards. Microsoft's recommended
+                    # workaround is to PUT the payload directly via Invoke-AzRestMethod.
+                    # Ref: https://github.com/Azure/azure-powershell/issues/28427
+                    # ----------------------------------------------------------------------------
+                    $PayloadObject = [PSCustomObject]@{
+                                        properties = $ArmTemplateJson.properties
+                                        location   = $LoganalyticsLocation
+                                        tags       = $ArmTemplateJson.tags
+                                    }
+                    $Payload = $PayloadObject | ConvertTo-Json -Depth 50 -Compress
 
-                    # Save updated template
+                    # Keep a copy on disk for debugging
                     $TemplateFile = "$env:TEMP\$TemplateFileName"
-                    $ArmTemplateExport | Out-File $TemplateFile -Force
+                    $Payload | Out-File $TemplateFile -Force -Encoding utf8
 
                     Write-Output "   Starting deployment of dashboard [ $TemplateName ]"
                     Write-Output ""
 
-                    # You can add your deployment command here, e.g.:
+                    $RestResult = Invoke-AzRestMethod `
+                                    -SubscriptionId       $LogAnalyticsSubscription `
+                                    -ResourceGroupName    $WorkbookDashboardResourceGroup `
+                                    -ResourceProviderName "Microsoft.Portal" `
+                                    -ResourceType         "dashboards" `
+                                    -Name                 $DashboardName `
+                                    -ApiVersion           "2022-12-01-preview" `
+                                    -Method               PUT `
+                                    -Payload              $Payload
 
-                    # parameters for ARM deployment
-
-                    $RawJson = Get-Content -Path $TemplateFile -Raw
-                    $ArmTemplateJson = $RawJson | ConvertFrom-Json
-
-                    New-AzResource -Properties $ArmTemplateJson.properties  `
-                                                -ResourceName $TemplateName  `
-                                                -ResourceType "Microsoft.Portal/dashboards" `
-                                                -ResourceGroupName $WorkbookDashboardResourceGroup  `
-                                                -ApiVersion "2022-12-01-preview" `
-                                                -Location $LogAnalyticsLocation `
-                                                -Force
-
+                    if ($RestResult.StatusCode -ge 200 -and $RestResult.StatusCode -lt 300) {
+                        Write-Output "   Dashboard [ $DashboardName ] deployed successfully (HTTP $($RestResult.StatusCode))"
+                    } else {
+                        Write-Warning "   Dashboard [ $DashboardName ] deployment FAILED (HTTP $($RestResult.StatusCode))"
+                        Write-Warning "   Response: $($RestResult.Content)"
+                    }
                 }
 
 
